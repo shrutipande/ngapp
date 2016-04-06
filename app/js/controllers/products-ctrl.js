@@ -17,6 +17,9 @@ define(['./index'], function (controllers) {
 		craftsvillaService.getProducts(productsDetails)
 			.then(function (data) {
 				$scope.products = data.data.data;
-			});
+			})
+			.catch(function (err) {
+				throw new Error(err);
+			})
 	}]);
 });
