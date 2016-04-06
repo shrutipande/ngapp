@@ -8,12 +8,18 @@ define(['./app'], function (app) {
     $locationProvider.html5Mode(true);
 
     $stateProvider
-        .state('index', {
-          url: '/',
+        .state('products', {
+          url: '/products',
           templateUrl: 'partials/products.html',
           controller: 'productsCtrl',
           title: 'Home'
         })
+		    .state('productById', {
+			    url: '/products/:id',
+			    templateUrl: 'partials/product.html',
+			    controller: 'ctrl.product',
+			    title: 'Product Display'
+		    })
         .state('cart', {
           url: "/cart",
           templateUrl: 'partials/cart.html',
@@ -21,7 +27,7 @@ define(['./app'], function (app) {
           title: 'Cart'
         });
 
-    $urlRouterProvider.otherwise("/");
+    $urlRouterProvider.otherwise("/products");
 
   }]);
 });
