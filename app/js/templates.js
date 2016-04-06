@@ -7,7 +7,9 @@ define(['angular', 'app'], function(angular, app) { app.run(['$templateCache', f
 
   $templateCache.put('partials/products.html',
     "<div class=\"container\">\n" +
-    "<div itemprop=\"itemListElement\" itemscope=\"\" itemtype=\"http://schema.org/Product\"\n" +
+    "    <div ui-view></div>\n" +
+    "\n" +
+    "    <div itemprop=\"itemListElement\" itemscope=\"\" itemtype=\"http://schema.org/Product\"\n" +
     "     class=\"col-xs-6 col-md-3 product mob_padding\" ng-repeat=\"product in products\">\n" +
     "\n" +
     "    <div class=\"product-image-container\">\n" +

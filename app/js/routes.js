@@ -8,13 +8,14 @@ define(['./app'], function (app) {
     $locationProvider.html5Mode(true);
 
     $stateProvider
-        .state('index', {
-          url: '/',
+        .state('products', {
+          url: '/products',
           templateUrl: 'partials/products.html',
           controller: 'productsCtrl',
           title: 'Home'
         })
-        .state('cart', {
+
+        .state('products.cart', {
           url: "/cart",
           templateUrl: 'partials/cart.html',
           controller: 'cartCtrl',
