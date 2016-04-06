@@ -5,19 +5,24 @@ define(['angular', 'app'], function(angular, app) { app.run(['$templateCache', f
   );
 
 
+  $templateCache.put('partials/product.html',
+    "Product Display Page"
+  );
+
+
   $templateCache.put('partials/products.html',
     "<div class=\"container\">\n" +
     "<div itemprop=\"itemListElement\" itemscope=\"\" itemtype=\"http://schema.org/Product\"\n" +
     "     class=\"col-xs-6 col-md-3 product mob_padding\" ng-repeat=\"product in products\">\n" +
     "\n" +
     "    <div class=\"product-image-container\">\n" +
-    "        <a href=\"/cart\">\n" +
+    "        <a ui-sref=\"productById({id: product.entity_id})\">\n" +
     "            <img itemprop=\"image\"\n" +
-    "                 src=\"http://img1.craftsvilla.com/thumb/500x500/C/V/CV-MKATA48233802450--KATARIA_SILK_HOUSE_PVT_LTD-Craftsvilla_1.jpg\" class=\"product-image lazy\">\n" +
+    "                 src=\"http://img1.craftsvilla.com/thumb/500x500{{product.image}}\" class=\"product-image lazy\">\n" +
     "        </a>\n" +
     "    </div>\n" +
     "    <div class=\"product-details-container col-xs-12\">\n" +
-    "        <a itemprop=\"url\" href=\"/cart\">\n" +
+    "        <a itemprop=\"url\" ui-sref=\"productById({id: product.entity_id})\">\n" +
     "            <div class=\"product-name\" itemprop=\"name\">Mimosa Silk Saree (r...</div>\n" +
     "        </a>\n" +
     "\n" +
