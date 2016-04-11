@@ -1,0 +1,439 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Shipping</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
+<link href="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+<div data-overlay class="hide">&nbsp;</div>
+<!--// Header -->
+<div role-header class="container-fluid nopadding">
+	<div role-nav class="container">
+		<div class="col-xs-6 nopadding" role="logo">
+			<img role="back" src="images/Shape.png" alt="" title="">
+			<a href="#" title=""><img class="logo" src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/cv_logo.png" alt="" title=""></a>
+			<span class="hidden-xs">Call 022 288288281 for any assistance</span>
+		</div>
+		<div class="col-xs-6 nopadding buyerProtection">
+			<ul>
+				<li class="visible-xs">100% Buyer Protection<br>Secure Payments</li>
+				<li class="hidden-xs">100% BUYER<br>PROTECTION</li>
+				<li class="hidden-xs"><strong>SECURE</strong><br>PAYMENTS</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<!--// Header -->
+
+<!--// Content -->
+<div class="container-fluid nopadding">
+	<div class="container">
+		<!--// login Flow Start -->
+		<div class="loginProcessContainer container-fluid">
+			<div role="loginFlow" class="col-xs-12 nopadding">
+				<div class="circleBox LoginIcon rougeBack">
+					<span><img src="images/check.png" data-complete alt="" title=""></span>
+					<span class="rougeColor">Login</span>
+				</div>
+				<div class="Progressliner Firstliner rougeBack"></div>
+				<div class="circleBox ShippingIcon rougeBack">
+					<span><img src="images/Shipping-icon.png" alt="" title=""></span>
+					<span class="rougeColor">Shipping</span>
+				</div>
+				<div class="Progressliner Secoundliner white-nine"></div>
+				<div class="circleBox PaymentIcon white-nine">
+					<span><img src="images/payment-icon.png" alt="" title=""></span>
+					<span class="warm-greyColor">Payment</span>
+				</div>
+			</div>
+		</div>
+		<!--// login Flow End -->
+	</div>
+</div>
+
+<div class="container-fluid nopadding">
+	<div class="container">
+		<!--// login Container Start -->
+		<div class="col-xs-12 nopadding shippingContainer">
+			<h4 role="headding">SELECT SHIPPING ADDRESS <small><a class="rougeColor" href="#">Change</a></small></h4>
+			<!--// -->
+			<div class="row">
+				<div class="col-xs-12 col-sm-6 col-md-4">
+					<div class="col-xs-12 addressCard addressCardActive">
+						<div class="col-xs-12 nopadding customer-address">
+							<div class="col-xs-12 nopadding">
+								<h5>Shruti Kartikey <span><a href="#"><img src="images/edit-icon.png"></a></span><span class="pull-right delete-shipping"><a href="#"><img src="images/remove.png"></a></span></h5>
+								<p>G-1502, Craftsvilla, Lotus Business Park, Goregaon East, Mumbai, Maharashtra - 400056</p>
+								<p class="margin0">+91 7738233261</p>
+							</div>
+						</div>
+						<div class="col-xs-12 nopadding hidden-xs">
+							<input class="btn btn-newStyle" type="button" value="DELIVER TO THIS ADDRESS">
+						</div>
+					</div>
+					<div class="checkbox col-xs-12 nopadding">
+						<label><input type="checkbox" id="Guest"><span for="Guest"></span> This is also my Billing Address</label>
+					</div>
+				</div>
+				<!--// Edit Shipping Address Start -->
+				<div class="col-xs-12 add-new-shipping">
+					<!--// -->
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="col-xs-12 new-address">
+								<div class="col-xs-12 col-sm-6 nopadding">
+									<form role="form">
+										<h4 role="headding">
+											<a href="#new-address">Edit Address </a>
+										</h4>
+										<div class="form-group nopadding col-sm-8 col-xs-12">
+											<label>Country: <span role="country">India</span> <a href="#change-country">Change</a></label>
+											<select class="form-control" id="change-country" style="display:none;">
+												<option value="0">Select Country</option>
+												<option value="1">India</option>
+												<option value="2">US</option>
+												<option value="3">UK</option>
+												<option value="4">Dubai</option>
+											</select>
+										</div>
+										<div class="form-group nopadding col-sm-8 col-xs-12">
+											<label for="name">Name</label>
+											<input id="name" type="text" class="form-control" placeholder="Enter Full Name" >
+										</div>
+										<div class="form-group nopadding col-xs-12">
+											<label for="Address">Address</label>
+											<textarea id="Address" class="form-control"></textarea>
+										</div>
+										<div class="col-xs-12 col-sm-4 nopadding">
+											<div class="form-group">
+												<label for="Pincode">Pincode</label>
+												<input id="Pincode" type="text" class="form-control" placeholder="Pincode" >
+											</div>
+										</div>
+										<div class="col-xs-12 col-sm-7 m-padding">
+											<div class="form-group">
+												<label for="City">City</label>
+												<input id="City" type="text" class="form-control" placeholder="Select City" >
+											</div>
+										</div>
+										<div class="form-group col-sm-8 col-xs-12 nopadding">
+											<label for="State">State</label>
+											<input id="State" type="text" class="form-control" placeholder="Select State" >
+										</div>
+										<div class="form-group col-sm-8 col-xs-12 nopadding">
+											<label for="Country">Country</label>
+											<input id="Country" type="text" class="form-control" placeholder="Select Country" >
+										</div>
+										<div class="form-group col-sm-8 col-xs-12 nopadding">
+											<label for="Number">Phone Number</label>
+											<div class="input-group">
+												<div class="input-group-addon">+91</div>
+												<input type="text" class="form-control" id="Number" placeholder="Phone Number">
+											</div>
+										</div>
+										<div class="form-group col-xs-12 nopadding">
+											<a role="button" class="btn btn-default outline-btn" href="#">SAVE</a>
+											<a role="button" class="btn btn-default outline-btn" href="#">CANCEL</a>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--// Edit Shipping Address End -->
+				<!--// Desktop Edit Shipping Address Start -->
+				<div class="addressEditContainer hide">
+					<div class="col-xs-12 new-address">
+						<div class="col-xs-12 col-sm-6 nopadding">
+							<form role="form">
+								<h4 role="headding">
+									<a href="#new-address">Edit Address </a>
+								</h4>
+								<div class="form-group nopadding col-sm-8 col-xs-12">
+									<label>Country: <span role="country">India</span> <a href="#change-country">Change</a></label>
+									<select class="form-control" id="change-country" style="display:none;">
+										<option value="0">Select Country</option>
+										<option value="1">India</option>
+										<option value="2">US</option>
+										<option value="3">UK</option>
+										<option value="4">Dubai</option>
+									</select>
+								</div>
+								<div class="form-group nopadding col-sm-8 col-xs-12">
+									<label for="name">Name</label>
+									<input id="name" type="text" class="form-control" placeholder="Enter Full Name" >
+								</div>
+								<div class="form-group nopadding col-xs-12">
+									<label for="Address">Address</label>
+									<textarea id="Address" class="form-control"></textarea>
+								</div>
+								<div class="col-xs-12 col-sm-4 nopadding">
+									<div class="form-group">
+										<label for="Pincode">Pincode</label>
+										<input id="Pincode" type="text" class="form-control" placeholder="Pincode" >
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-7 m-padding">
+									<div class="form-group">
+										<label for="City">City</label>
+										<input id="City" type="text" class="form-control" placeholder="Select City" >
+									</div>
+								</div>
+								<div class="form-group col-sm-8 col-xs-12 nopadding">
+									<label for="State">State</label>
+									<input id="State" type="text" class="form-control" placeholder="Select State" >
+								</div>
+								<div class="form-group col-sm-8 col-xs-12 nopadding">
+									<label for="Country">Country</label>
+									<input id="Country" type="text" class="form-control" placeholder="Select Country" >
+								</div>
+								<div class="form-group col-sm-8 col-xs-12 nopadding">
+									<label for="Number">Phone Number</label>
+									<div class="input-group">
+										<div class="input-group-addon">+91</div>
+										<input type="text" class="form-control" id="Number" placeholder="Phone Number">
+									</div>
+								</div>
+								<div class="form-group col-xs-12 nopadding">
+									<a role="button" class="btn btn-default outline-btn" href="#">SAVE</a>
+									<a role="button" class="btn btn-default outline-btn" href="#">CANCEL</a>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<!--// Desktop Edit Shipping Address End -->
+				<!--// Select Billing Address -->
+				<div class="col-xs-12"><h4 role="headding">SELECT BILLING ADDRESS</h4></div>
+				<!--// Billing Address Not select Error -->
+				<div class="col-xs-12">
+					<div class="col-xs-12 col-sm-4 text-center form-error">Please select billing address or add new billing Address</div>
+				</div>
+				<!--// -->
+				<div class="col-xs-12 col-sm-6 col-md-4">
+					<div class="col-xs-12 addressCard">
+						<div class="col-xs-12 nopadding customer-address">
+							<div class="col-xs-12 nopadding">
+								<h5>Shruti Kartikey <span><a href="#"><img src="images/edit-icon.png"></a></span><span class="pull-right delete-shipping"><a href="#"><img src="images/remove.png"></a></span></h5>
+								<p>G-1502, Craftsvilla, Lotus Business Park, Goregaon East, Mumbai, Maharashtra - 400056</p>
+								<p class="margin0">+91 7738233261</p>
+							</div>
+						</div>
+						<div class="col-xs-12 nopadding hidden-xs">
+							<input class="btn btn-newStyle" type="button" value="DELIVER TO THIS ADDRESS">
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-4">
+					<div class="col-xs-12 addressCard">
+						<div class="col-xs-12 nopadding customer-address">
+							<div class="col-xs-12 nopadding">
+								<h5>Shruti Kartikey <span><a href="#"><img src="images/edit-icon.png"></a></span><span class="pull-right delete-shipping"><a href="#"><img src="images/remove.png"></a></span></h5>
+								<p>G-1502, Craftsvilla, Lotus Business Park, Goregaon East, Mumbai, Maharashtra - 400056</p>
+								<p class="margin0">+91 7738233261</p>
+							</div>
+						</div>
+						<div class="col-xs-12 nopadding hidden-xs">
+							<input class="btn btn-newStyle" type="button" value="DELIVER TO THIS ADDRESS">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--// -->
+		<!--// -->
+		<div class="col-xs-12 nopadding add-new-shipping">
+			<h4 class="M-add-new-address" role="headding">
+				<a href="#new-address">ADD NEW ADDRESS <span><img src="images/Shape.png" title="" alt=""></span></a>
+			</h4>
+			<!--// -->
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="col-xs-12 new-address">
+						<div class="col-xs-12 col-sm-7 nopadding">
+							<form role="form">
+								<div class="form-group nopadding col-sm-8 col-xs-12">
+									<label>Country: <span role="country">India</span> <a href="#change-country">Change</a></label>
+									<select class="form-control" id="change-country" style="display:none;">
+										<option value="0">Select Country</option>
+										<option value="1">India</option>
+										<option value="2">US</option>
+										<option value="3">UK</option>
+										<option value="4">Dubai</option>
+									</select>
+								</div>
+								<div class="form-group nopadding col-sm-8 col-xs-12">
+									<label for="name">Name</label>
+									<input id="name" type="text" class="form-control" placeholder="Enter Full Name" >
+								</div>
+								<div class="form-group nopadding col-xs-12">
+									<label for="Address">Address</label>
+									<textarea id="Address" class="form-control"></textarea>
+								</div>
+								<div class="col-xs-12 col-sm-4 nopadding">
+									<div class="form-group">
+										<label for="Pincode">Pincode</label>
+										<input id="Pincode" type="text" class="form-control" placeholder="Pincode" >
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-7 m-padding">
+									<div class="form-group">
+										<label for="City">City</label>
+										<input id="City" type="text" class="form-control" placeholder="Select City" >
+									</div>
+								</div>
+								<div class="form-group nopadding col-sm-8 col-xs-12">
+									<label for="State">State</label>
+									<input id="State" type="text" class="form-control" placeholder="Select State" >
+								</div>
+								<div class="form-group nopadding col-sm-8 col-xs-12">
+									<label for="Country">Country</label>
+									<input id="Country" type="text" class="form-control" placeholder="Select Country" >
+								</div>
+								<div class="form-group nopadding col-sm-8 col-xs-12">
+									<label for="Number">Phone Number</label>
+									<div class="input-group">
+										<div class="input-group-addon">+91</div>
+										<input type="text" class="form-control" id="Number" placeholder="Phone Number">
+									</div>
+								</div>
+								<div class="form-group nopadding col-xs-12">
+									<div class="checkbox col-xs-12 nopadding margin0">
+										<label><input type="checkbox" id="Guest"><span for="Guest"></span> This is also my Billing Address</label>
+									</div>
+								</div>
+							</form>
+						</div>
+						<hr class="line-divider" />
+						<div class="col-xs-12 nopadding">
+							<h4 role="headding">ADD BILLING ADDRESS</h4>
+						</div>
+						<div class="col-xs-12 col-sm-7 nopadding">
+							<form role="form">
+								<div class="form-group nopadding col-sm-8 col-xs-12">
+									<label>Country: <span role="country">India</span> <a href="#change-country">Change</a></label>
+									<select class="form-control" id="change-country" style="display:none;">
+										<option value="0">Select Country</option>
+										<option value="1">India</option>
+										<option value="2">US</option>
+										<option value="3">UK</option>
+										<option value="4">Dubai</option>
+									</select>
+								</div>
+								<div class="form-group nopadding col-sm-8 col-xs-12">
+									<div class="form-group col-sm-8 nopadding">
+										<label for="name">Name</label>
+										<input id="name" type="text" class="form-control" placeholder="Enter Full Name" >
+									</div>
+								</div>
+								<div class="form-group nopadding col-xs-12">
+									<label for="Address">Address</label>
+									<textarea id="Address" class="form-control"></textarea>
+								</div>
+								<div class="col-xs-12 col-sm-4 nopadding">
+									<div class="form-group">
+										<label for="Pincode">Pincode</label>
+										<input id="Pincode" type="text" class="form-control" placeholder="Pincode" >
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-7 m-padding">
+									<div class="form-group">
+										<label for="City">City</label>
+										<input id="City" type="text" class="form-control" placeholder="Select City" >
+									</div>
+								</div>
+								<div class="form-group nopadding col-sm-8 col-xs-12">
+									<label for="State">State</label>
+									<input id="State" type="text" class="form-control" placeholder="Select State" >
+								</div>
+								<div class="form-group nopadding col-sm-8 col-xs-12">
+									<label for="Country">Country</label>
+									<input id="Country" type="text" class="form-control" placeholder="Select Country" >
+								</div>
+								<div class="form-group nopadding col-sm-8 col-xs-12">
+									<label for="Number">Phone Number</label>
+									<div class="input-group">
+										<div class="input-group-addon">+91</div>
+										<input type="text" class="form-control" id="Number" placeholder="Phone Number">
+									</div>
+								</div>
+								<div class="form-group nopadding col-xs-12">
+									<div class="checkbox col-xs-12 nopadding margin0">
+										<label><input type="checkbox" id="Guest"><span for="Guest"></span> This is also my Billing Address</label>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="form-group nopadding col-xs-12">
+							<input class="btn btn-newStyle btn-newStyleActive Width60" type="button" value="SAVE & CONTINUE">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--// Button Mobile Start -->
+		<div class="BtnContainer col-xs-12 nopadding visible-xs">
+			<a class="btn newBtn" href="#">PROCEED TO PAYMENT <span><img src="images/Checkout-CTA-icon.png" title="" alt=""></span></a>
+		</div>
+		<!--// Button Mobile End -->
+		<!--// login Container End -->
+		<div class="col-xs-12 nopadding spacer">&nbsp;</div>
+	</div>
+</div>
+<!--// Content -->
+
+<!--// Footer -->
+<div role="footer" class="container-fluid">
+	<div class="container">
+		<section class="col-xs-12 m-padding hidden-xs">
+		  <ul class="footer-col col-xs-12 col-sm-3 m-padding">
+		    <li class="FooterHeader">SUPPORT</li>
+		    <li><span class="ln-hgt-15">For Help, send email to </span>
+		      <a href="mailto:customercare@craftsvilla.com"><span class="rouge ln-hgt-15">customercare@craftsvilla.com</span></a>
+		    </li>
+		  </ul>
+
+		  <ul class="footer-col col-xs-12 col-sm-3 m-padding">
+		    <li class="FooterHeader"> PAYMENT OPTIONS </li>
+		    <li><img src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/Visa_1.png"> <img src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/Visa_2.png"> <img src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/Visa_3.png"></li>
+		  </ul>
+
+		  <ul class="footer-col col-xs-12 col-sm-3 m-padding">
+		    <li class="FooterHeader">STAY CONNECTED</li>
+		    <li>
+		      <a target="_blank" href="http://www.facebook.com/craftsvilla"><img src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/FB.png"></a>
+		      <a target="_blank" href="https://twitter.com/craftsvilla"><img src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/Twitter.png" class="p-l-5"></a>
+		      <a target="_blank" href="https://plus.google.com/117677147285924975963"><!-- <img class="p-l-5" src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/g-plus.png"> --></a>
+		      <a target="_blank" href="https://www.pinterest.com/craftsvilla/">
+		        <img src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/pin.png" class="p-l-5">
+		      </a>
+		    </li>
+		  </ul>
+		  <ul class="footer-col col-xs-12 col-sm-3 m-padding">
+		    <li class="FooterHeader">DOWNLOAD OUR APP</li>
+		    <li><a target="_blank" href="https://play.google.com/store/apps/details?id=com.craftsvilla.app&amp;hl=en">
+		      <img src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/Googleplay.png">
+		      </a>
+		    </li>
+		  </ul>
+		</section>
+	</div>
+</div>
+<!--// Footer -->
+<!--// Jquery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+
+</body>
+
+</html>

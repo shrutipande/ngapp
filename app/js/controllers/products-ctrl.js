@@ -1,20 +1,25 @@
 define(['./index'], function (controllers) {
-  'use strict';
-  controllers.controller('productsCtrl', ['$scope', '$rootScope','craftsvillaService', function ($scope, $rootScope,craftsvillaService) {
+	'use strict';
+	controllers.controller('productsCtrl', ['$scope', '$rootScope', 'craftsvillaService', function ($scope, $rootScope, craftsvillaService) {
 
-    $scope.products = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-    var productsDetails = {
-      "search":"saree",
-      "color": ["red", "black"],
-      "price": [{
-        "500": "1000"
-      }],
-      "newestSort": "ASC",
-      "pageId": "1"
-    };
+		//$scope.products = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+		//console.log("i");
+		var productsDetails = {
+			"search": "saree",
+			"color": ["red", "black"],
+			"price": [{
+				"500": "1000"
+			}],
+			"newestSort": "ASC",
 
-    var x = craftsvillaService.getProducts(productsDetails);
-    console.log(x);
-
-  }]);
+			"pageId": "1"
+		};
+		craftsvillaService.getProducts(productsDetails)
+			.then(function (data) {
+				$scope.products = data.data.data;
+			})
+			.catch(function (err) {
+				throw new Error(err);
+			})
+	}]);
 });

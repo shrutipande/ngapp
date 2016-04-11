@@ -15,14 +15,38 @@ define(['./app'], function (app) {
           title: 'Home'
         })
 
-        .state('products.cart', {
+		    .state('productById', {
+			    url: '/products/:id',
+			    templateUrl: 'partials/product.html',
+			    controller: 'ctrl.product',
+			    title: 'Product Display'
+		    })
+
+        .state('cart', {
           url: "/cart",
           templateUrl: 'partials/cart.html',
           controller: 'cartCtrl',
           title: 'Cart'
-        });
-
-    $urlRouterProvider.otherwise("/");
+        })
+    .state('login', {
+      url: "/login",
+      templateUrl: 'partials/login.html',
+      controller: 'loginCtrl',
+      title: 'login'
+    })
+    .state('shipping', {
+      url: "/shipping",
+      templateUrl: 'partials/shipping.html',
+      //controller: 'cartCtrl',
+      title: 'shipping'
+    })
+    .state('payments', {
+      url: "/payments",
+      templateUrl: 'partials/payments.html',
+      //controller: 'cartCtrl',
+      title: 'Cart'
+    });
+    $urlRouterProvider.otherwise("/products");
 
   }]);
 });

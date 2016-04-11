@@ -5,7 +5,9 @@
 define([
     './templates',
      './controllers/cart-ctrl',
+     './controllers/login-ctrl',
     './controllers/products-ctrl',
+		'./controllers/ctrl.product',
     './directives/craftsvilla-directive',
     './services/craftsvilla-service',
     './filters/craftsvilla-filter',

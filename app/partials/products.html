@@ -3,13 +3,13 @@
      class="col-xs-6 col-md-3 product mob_padding" ng-repeat="product in products">
 
     <div class="product-image-container">
-        <a href="/cart">
+        <a ui-sref="productById({id: product.entity_id})">
             <img itemprop="image"
-                 src="http://img1.craftsvilla.com/thumb/500x500/C/V/CV-MKATA48233802450--KATARIA_SILK_HOUSE_PVT_LTD-Craftsvilla_1.jpg" class="product-image lazy">
+                 src="http://img1.craftsvilla.com/thumb/500x500{{product.image}}" class="product-image lazy">
         </a>
     </div>
     <div class="product-details-container col-xs-12">
-        <a itemprop="url" href="/cart">
+        <a itemprop="url" ui-sref="productById({id: product.entity_id})">
             <div class="product-name" itemprop="name">Mimosa Silk Saree (r...</div>
         </a>
 
