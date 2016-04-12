@@ -20,20 +20,20 @@ define(['./app'], function (app) {
           controller: 'shippingCtrl',
           title: 'shipping'
         })
-        .state('payments', {
-          url: "/payments",
-          templateUrl: 'partials/payments.html',
+        .state('payment', {
+          url: "/payment",
+          templateUrl: 'partials/payment.html',
           controller: 'paymentCtrl',
           title: 'payments'
         })
         .state('payments-error', {
-          url: "/payments-error",
+          url: "/payment-error",
           templateUrl: 'partials/payment-error.html',
           controller: 'paymentErrorCtrl',
           title: 'payments-error'
         })
         .state('payments-success', {
-          url: "/payments-success",
+          url: "/payment-success",
           templateUrl: 'partials/payment-success.html',
           controller: 'paymentSuccessCtrl',
           title: 'payments-success'
