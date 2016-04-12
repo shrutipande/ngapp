@@ -1,83 +1,7 @@
 define(['angular', 'app'], function(angular, app) { app.run(['$templateCache', function($templateCache) {  'use strict';
 
   $templateCache.put('partials/checkout-cart.html',
-    "<!DOCTYPE html>\n" +
-    "<html lang=\"en\">\n" +
-    "<head><title>Checkout - Cart</title>\n" +
-    "<base target=\"_self\">\n" +
-    "<meta charset=\"utf-8\">\n" +
-    "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n" +
-    "<meta name=\"description\" content=\"&lt;p&gt;It is Off White Art Silk Saree with exclusive Maroon Zari border and Zari pallu with superb quality . saree has weaving Zari design all over .This saree comes with unstitched Zari weaving Maroon blouse . Blouse which is shown on model is only for model\" />\n" +
-    "<meta name=\"keywords\" content=\"handicrafts, indian handicrafts, handicrafts of india, handmade crafts, handicraft items, crafts of india, handmade items, hand made, designer products, designer, art and craft, vintage, handmade gifts, handcrafted gifts, home made, homemade, crafts, artisan, handcrafted products, online handicrafts, natural, organic, gift ideas, gift items, craftsvilla, crafts villa\" />\n" +
-    "<meta name=\"robots\" content=\"INDEX,FOLLOW\" />\n" +
-    "<meta name=\"msvalidate.01\" content=\"4E5D359E6324750669BC46C6109DC035\"/>\n" +
-    "<meta property=\"og:title\" content=\"Largest Online Marketplace in India\"/>\n" +
-    "<meta property=\"og:type\" content=\"website\"/>\n" +
-    "<meta property=\"og:url\" content=\"http://www.craftsvilla.com\"/>\n" +
-    "<meta property=\"og:image\" content=\"http://www.craftsvilla.com/skin/frontend/default/default/images/logo_email.gif\"/>\n" +
-    "<meta property=\"og:site_name\" content=\"Craftsvilla.com\"/>\n" +
-    "<meta property=\"fb:admins\" content=\"places@craftsvilla.com\"/>\n" +
-    "<meta property=\"og:description\" content=\"Largest online marketplace for unique Indian products with more than 300,000+ jewellery, sarees, salwar suits and handmade and natural products. It is ETSY of India.\"/>\n" +
-    "<meta property=\"og:latitude\" content=\"19.21028\"/>\n" +
-    "<meta property=\"og:longitude\" content=\"72.87341\"/>\n" +
-    "<meta property=\"og:street-address\" content=\"36,CENTRIUM, Lokhandwala, Kandivli (E)\"/>\n" +
-    "<meta property=\"og:locality\" content=\"Mumbai\"/>\n" +
-    "<meta property=\"og:region\" content=\"Maharashtra\"/>\n" +
-    "<meta property=\"og:postal-code\" content=\"400101\"/>\n" +
-    "<meta property=\"og:country-name\" content=\"India\"/>\n" +
-    "<meta property=\"og:email\" content=\"customercare@craftsvilla.com\"/>\n" +
-    "<meta name=\"p:domain_verify\" content=\"510940beb9db6381236151038bd51da7\"/>\n" +
-    "<meta property=\"og:phone_number\" content=\"+91-80806-22233\"/>\n" +
-    "<meta name=\"google-site-verification\" content=\"1tkbXQEgmaBJhxZBdx65hIZWqITga0hzB1ogs1xLp88\" />\n" +
-    "<meta name=\"netinsert\" content=\"0.0.1.12.5.1\">\n" +
-    "<link rel=\"alternate\" href=\"android-app://com.craftsvilla.app/craftsvilla/com.craftsvilla.android/http/craftsvilla.com/p/3142433/mimosa-kanchipuram-tassar-wedding-silk-saree-white-3051-97-hlfwhitemarun\">\n" +
-    "<link rel=\"icon\" href=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/img/favicon.ico\" type=\"image/x-icon\" />\n" +
-    "<link href=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/css/bootstrap.min.css\" rel=\"stylesheet\">\n" +
-    "<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700|Roboto+Slab:400,100,300,700|Satisfy' rel='stylesheet' type='text/css'>\n" +
-    "<link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>\n" +
-    "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css\">\n" +
-    "<link href=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/css/custom.1457501855.css\" rel=\"stylesheet\">\n" +
-    "<link rel=\"stylesheet\" href=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/css/jquery.fancybox.css\" type=\"text/css\" media=\"screen\" />\n" +
     "\n" +
-    "<link href=\"css/checkOut.css\" rel=\"stylesheet\">\n" +
-    "\n" +
-    "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1\">\n" +
-    "<meta name=\"google\" value=\"notranslate\">\n" +
-    "<!--[if lt IE 9]>\n" +
-    " <script src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/js/html5shiv.js\" type=\"text/javascript\"></script>\n" +
-    " <script src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/js/respond.js\" type=\"text/javascript\"></script>\n" +
-    "<![endif]-->\n" +
-    "<script>\n" +
-    "    var dataLayer = window.dataLayer || [];\n" +
-    "</script>\n" +
-    "<script type=\"text/javascript\">\n" +
-    "   var clevertap = {event:[], profile:[], account:[]};\n" +
-    "   clevertap.account.push({\"id\": \"86K-6R4-844Z\"});\n" +
-    "   clevertap.enablePersonalization = true; // enables Personalization\n" +
-    "   (function () {\n" +
-    "       var wzrk = document.createElement('script');\n" +
-    "       wzrk.type = 'text/javascript';\n" +
-    "       wzrk.async = true;\n" +
-    "       wzrk.src = ('https:' == document.location.protocol ? 'https://d2r1yp2w7bby2u.cloudfront.net' : 'http://static.clevertap.com') + '/js/a.js';\n" +
-    "       var s = document.getElementsByTagName('script')[0];\n" +
-    "       s.parentNode.insertBefore(wzrk, s);\n" +
-    "   })();\n" +
-    "</script>\n" +
-    " <!-- Begin Inspectlet Embed Code -->\n" +
-    "<script type=\"text/javascript\" id=\"inspectletjs\">\n" +
-    "function loadinspectlet(){\n" +
-    "    window.__insp = window.__insp || [];\n" +
-    "    __insp.push(['wid', 978117391]);\n" +
-    "    (function() {\n" +
-    "    function ldinsp(){if(typeof window.__inspld != \"undefined\") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = \"inspsync\"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js'; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); };\n" +
-    "    setTimeout(ldinsp, 500); document.readyState != \"complete\" ? (window.attachEvent ? window.attachEvent('onload', ldinsp) : window.addEventListener('load', ldinsp, false)) : ldinsp();\n" +
-    "    })();\n" +
-    "}\n" +
-    "window.onload = loadinspectlet;\n" +
-    "</script>\n" +
-    "<!-- End Inspectlet Embed Code -->\n" +
-    "</head>\n" +
-    "<body class=\" catalogproduct-index-index\"><div class=\"container-fluid nopadding\"><!-- International navbar section starts here-->\n" +
     "\n" +
     "    <div class=\"navbar navbar-default craftsvilla-international hidden-sm hidden-xs\" role=\"navigation\">\n" +
     "        <div class=\"container craftsvilla-international-navbar \">\n" +
@@ -796,136 +720,11 @@ define(['angular', 'app'], function(angular, app) { app.run(['$templateCache', f
     "            </section>\n" +
     "        </footer>\n" +
     "    </div>\n" +
-    "</div>\n" +
-    "  <!-- footer ends here -->\n" +
-    "    <script src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/js/jquery.min.js\"></script>\n" +
-    "    <script src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/js/bootstrap.min.js\"></script>\n" +
-    "    <script src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/js/jquery.form-validator.min.js\"></script>\n" +
-    "    <script src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/js/ajaxupload.js\"></script>\n" +
-    "    <script src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/js/responsiveCarousel.min.js\"></script>\n" +
-    "    <script src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/js/jquery.fancybox.pack.js\"></script>\n" +
-    "    <script src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/js/jquery.zoom.min.js\"></script>\n" +
-    "    <script src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/js/typeahead.min.js\"></script>\n" +
-    "    <script src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/js/custom.1457501855.js\"></script>\n" +
-    "    <script src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/js/uisearch.1455285770.js\"></script>\n" +
-    "    <script>\n" +
-    "      new UISearch( document.getElementById( 'sb-search' ) );\n" +
-    "    </script>\n" +
-    "    <script>\n" +
-    "        $(document).ready(function(){\n" +
-    "        $('.big-zoom').zoom({\n" +
-    "            touch: false,\n" +
-    "            callback: function(){\n" +
-    "              $(this).fancybox({href: this.src});\n" +
-    "            }\n" +
-    "        });\n" +
-    "    });\n" +
-    "    </script>\n" +
-    "    <script async defer src=\"//assets.pinterest.com/js/pinit.js\"></script>\n" +
-    "    <div id=\"fb-root\"></div>\n" +
-    "    <script>\n" +
-    "        (function(d, s, id) {\n" +
-    "          var js, fjs = d.getElementsByTagName(s)[0];\n" +
-    "          if (d.getElementById(id)) return;\n" +
-    "          js = d.createElement(s); js.id = id;\n" +
-    "          js.src = \"//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5\";\n" +
-    "          fjs.parentNode.insertBefore(js, fjs);\n" +
-    "        }(document, 'script', 'facebook-jssdk'));\n" +
-    "    </script>\n" +
-    "    <script>\n" +
-    "        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');\n" +
-    "    </script>\n" +
-    "    </div>\n" +
-    "        <noscript><iframe src=\"//www.googletagmanager.com/ns.html?id=GTM-5W7X48\"\n" +
-    "    height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe></noscript>\n" +
-    "    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\n" +
-    "    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\n" +
-    "    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=\n" +
-    "    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);\n" +
-    "    })(window,document,'script','dataLayer','GTM-5W7X48');</script>\n" +
-    "    <script type=\"text/javascript\">window.NREUM||(NREUM={});NREUM.info={\"beacon\":\"bam.nr-data.net\",\"licenseKey\":\"0a0c2d97c7\",\"applicationID\":\"7548043\",\"transactionName\":\"MlUANUJUDENZVRIKXQsfIwJEXA1eF1UHF1MJXwVOQEcNVE1VEkxEDFUV\",\"queueTime\":0,\"applicationTime\":444,\"atts\":\"HhIDQwpOH00=\",\"errorBeacon\":\"bam.nr-data.net\",\"agent\":\"\"}</script></body>\n" +
-    "</html>\n"
+    "</div>\n"
   );
 
 
   $templateCache.put('partials/empty-cart.html',
-    "<!DOCTYPE html>\n" +
-    "<html lang=\"en\">\n" +
-    "<head><title>Checkout - Cart</title>\n" +
-    "<base target=\"_self\">\n" +
-    "<meta charset=\"utf-8\">\n" +
-    "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n" +
-    "<meta name=\"description\" content=\"&lt;p&gt;It is Off White Art Silk Saree with exclusive Maroon Zari border and Zari pallu with superb quality . saree has weaving Zari design all over .This saree comes with unstitched Zari weaving Maroon blouse . Blouse which is shown on model is only for model\" />\n" +
-    "<meta name=\"keywords\" content=\"handicrafts, indian handicrafts, handicrafts of india, handmade crafts, handicraft items, crafts of india, handmade items, hand made, designer products, designer, art and craft, vintage, handmade gifts, handcrafted gifts, home made, homemade, crafts, artisan, handcrafted products, online handicrafts, natural, organic, gift ideas, gift items, craftsvilla, crafts villa\" />\n" +
-    "<meta name=\"robots\" content=\"INDEX,FOLLOW\" />\n" +
-    "<meta name=\"msvalidate.01\" content=\"4E5D359E6324750669BC46C6109DC035\"/>\n" +
-    "<meta property=\"og:title\" content=\"Largest Online Marketplace in India\"/>\n" +
-    "<meta property=\"og:type\" content=\"website\"/>\n" +
-    "<meta property=\"og:url\" content=\"http://www.craftsvilla.com\"/>\n" +
-    "<meta property=\"og:image\" content=\"http://www.craftsvilla.com/skin/frontend/default/default/images/logo_email.gif\"/>\n" +
-    "<meta property=\"og:site_name\" content=\"Craftsvilla.com\"/>\n" +
-    "<meta property=\"fb:admins\" content=\"places@craftsvilla.com\"/>\n" +
-    "<meta property=\"og:description\" content=\"Largest online marketplace for unique Indian products with more than 300,000+ jewellery, sarees, salwar suits and handmade and natural products. It is ETSY of India.\"/>\n" +
-    "<meta property=\"og:latitude\" content=\"19.21028\"/>\n" +
-    "<meta property=\"og:longitude\" content=\"72.87341\"/>\n" +
-    "<meta property=\"og:street-address\" content=\"36,CENTRIUM, Lokhandwala, Kandivli (E)\"/>\n" +
-    "<meta property=\"og:locality\" content=\"Mumbai\"/>\n" +
-    "<meta property=\"og:region\" content=\"Maharashtra\"/>\n" +
-    "<meta property=\"og:postal-code\" content=\"400101\"/>\n" +
-    "<meta property=\"og:country-name\" content=\"India\"/>\n" +
-    "<meta property=\"og:email\" content=\"customercare@craftsvilla.com\"/>\n" +
-    "<meta name=\"p:domain_verify\" content=\"510940beb9db6381236151038bd51da7\"/>\n" +
-    "<meta property=\"og:phone_number\" content=\"+91-80806-22233\"/>\n" +
-    "<meta name=\"google-site-verification\" content=\"1tkbXQEgmaBJhxZBdx65hIZWqITga0hzB1ogs1xLp88\" />\n" +
-    "<meta name=\"netinsert\" content=\"0.0.1.12.5.1\">\n" +
-    "<link rel=\"alternate\" href=\"android-app://com.craftsvilla.app/craftsvilla/com.craftsvilla.android/http/craftsvilla.com/p/3142433/mimosa-kanchipuram-tassar-wedding-silk-saree-white-3051-97-hlfwhitemarun\">\n" +
-    "<link rel=\"icon\" href=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/img/favicon.ico\" type=\"image/x-icon\" />\n" +
-    "<link href=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/css/bootstrap.min.css\" rel=\"stylesheet\">\n" +
-    "<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700|Roboto+Slab:400,100,300,700|Satisfy' rel='stylesheet' type='text/css'>\n" +
-    "<link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>\n" +
-    "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css\">\n" +
-    "<link href=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/css/custom.1457501855.css\" rel=\"stylesheet\">\n" +
-    "<link rel=\"stylesheet\" href=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/css/jquery.fancybox.css\" type=\"text/css\" media=\"screen\" />\n" +
-    "\n" +
-    "<link href=\"css/checkOut.css\" rel=\"stylesheet\">\n" +
-    "\n" +
-    "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1\">\n" +
-    "<meta name=\"google\" value=\"notranslate\">\n" +
-    "<!--[if lt IE 9]>\n" +
-    " <script src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/js/html5shiv.js\" type=\"text/javascript\"></script>\n" +
-    " <script src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/js/respond.js\" type=\"text/javascript\"></script>\n" +
-    "<![endif]-->\n" +
-    "<script>\n" +
-    "    var dataLayer = window.dataLayer || [];\n" +
-    "</script>\n" +
-    "<script type=\"text/javascript\">\n" +
-    "   var clevertap = {event:[], profile:[], account:[]};\n" +
-    "   clevertap.account.push({\"id\": \"86K-6R4-844Z\"});\n" +
-    "   clevertap.enablePersonalization = true; // enables Personalization\n" +
-    "   (function () {\n" +
-    "       var wzrk = document.createElement('script');\n" +
-    "       wzrk.type = 'text/javascript';\n" +
-    "       wzrk.async = true;\n" +
-    "       wzrk.src = ('https:' == document.location.protocol ? 'https://d2r1yp2w7bby2u.cloudfront.net' : 'http://static.clevertap.com') + '/js/a.js';\n" +
-    "       var s = document.getElementsByTagName('script')[0];\n" +
-    "       s.parentNode.insertBefore(wzrk, s);\n" +
-    "   })();\n" +
-    "</script>\n" +
-    " <!-- Begin Inspectlet Embed Code -->\n" +
-    "<script type=\"text/javascript\" id=\"inspectletjs\">\n" +
-    "function loadinspectlet(){\n" +
-    "    window.__insp = window.__insp || [];\n" +
-    "    __insp.push(['wid', 978117391]);\n" +
-    "    (function() {\n" +
-    "    function ldinsp(){if(typeof window.__inspld != \"undefined\") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = \"inspsync\"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js'; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); };\n" +
-    "    setTimeout(ldinsp, 500); document.readyState != \"complete\" ? (window.attachEvent ? window.attachEvent('onload', ldinsp) : window.addEventListener('load', ldinsp, false)) : ldinsp();\n" +
-    "    })();\n" +
-    "}\n" +
-    "window.onload = loadinspectlet;\n" +
-    "</script>\n" +
-    "<!-- End Inspectlet Embed Code -->\n" +
-    "</head>\n" +
-    "<body class=\" catalogproduct-index-index\"><div class=\"container-fluid nopadding\"><!-- International navbar section starts here-->\n" +
     "\n" +
     "    <div class=\"navbar navbar-default craftsvilla-international hidden-sm hidden-xs\" role=\"navigation\">\n" +
     "        <div class=\"container craftsvilla-international-navbar \">\n" +
@@ -1373,74 +1172,12 @@ define(['angular', 'app'], function(angular, app) { app.run(['$templateCache', f
     "            </section>\n" +
     "        </footer>\n" +
     "    </div>\n" +
-    "</div>\n" +
-    "  <!-- footer ends here -->\n" +
-    "    <script src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/js/jquery.min.js\"></script>\n" +
-    "    <script src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/js/bootstrap.min.js\"></script>\n" +
-    "    <script src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/js/jquery.form-validator.min.js\"></script>\n" +
-    "    <script src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/js/ajaxupload.js\"></script>\n" +
-    "    <script src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/js/responsiveCarousel.min.js\"></script>\n" +
-    "    <script src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/js/jquery.fancybox.pack.js\"></script>\n" +
-    "    <script src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/js/jquery.zoom.min.js\"></script>\n" +
-    "    <script src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/js/typeahead.min.js\"></script>\n" +
-    "    <script src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/js/custom.1457501855.js\"></script>\n" +
-    "    <script src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/js/uisearch.1455285770.js\"></script>\n" +
-    "    <script>\n" +
-    "      new UISearch( document.getElementById( 'sb-search' ) );\n" +
-    "    </script>\n" +
-    "    <script>\n" +
-    "        $(document).ready(function(){\n" +
-    "        $('.big-zoom').zoom({\n" +
-    "            touch: false,\n" +
-    "            callback: function(){\n" +
-    "              $(this).fancybox({href: this.src});\n" +
-    "            }\n" +
-    "        });\n" +
-    "    });\n" +
-    "    </script>\n" +
-    "    <script async defer src=\"//assets.pinterest.com/js/pinit.js\"></script>\n" +
-    "    <div id=\"fb-root\"></div>\n" +
-    "    <script>\n" +
-    "        (function(d, s, id) {\n" +
-    "          var js, fjs = d.getElementsByTagName(s)[0];\n" +
-    "          if (d.getElementById(id)) return;\n" +
-    "          js = d.createElement(s); js.id = id;\n" +
-    "          js.src = \"//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5\";\n" +
-    "          fjs.parentNode.insertBefore(js, fjs);\n" +
-    "        }(document, 'script', 'facebook-jssdk'));\n" +
-    "    </script>\n" +
-    "    <script>\n" +
-    "        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');\n" +
-    "    </script>\n" +
-    "    </div>\n" +
-    "        <noscript><iframe src=\"//www.googletagmanager.com/ns.html?id=GTM-5W7X48\"\n" +
-    "    height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe></noscript>\n" +
-    "    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\n" +
-    "    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\n" +
-    "    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=\n" +
-    "    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);\n" +
-    "    })(window,document,'script','dataLayer','GTM-5W7X48');</script>\n" +
-    "    <script type=\"text/javascript\">window.NREUM||(NREUM={});NREUM.info={\"beacon\":\"bam.nr-data.net\",\"licenseKey\":\"0a0c2d97c7\",\"applicationID\":\"7548043\",\"transactionName\":\"MlUANUJUDENZVRIKXQsfIwJEXA1eF1UHF1MJXwVOQEcNVE1VEkxEDFUV\",\"queueTime\":0,\"applicationTime\":444,\"atts\":\"HhIDQwpOH00=\",\"errorBeacon\":\"bam.nr-data.net\",\"agent\":\"\"}</script></body>\n" +
-    "</html>\n"
+    "</div>\n"
   );
 
 
   $templateCache.put('partials/login.html',
-    " <!DOCTYPE html>\n" +
-    "<html>\n" +
-    "<head>\n" +
-    "<meta charset=\"UTF-8\">\n" +
-    "<title>Login</title>\n" +
-    "<meta name=\"description\" content=\"\">\n" +
-    "<meta name=\"keywords\" content=\"\">\n" +
-    "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
-    "<meta name=\"apple-mobile-web-app-capable\" content=\"yes\">\n" +
-    "<link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>\n" +
-    "<link href=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/css/bootstrap.min.css\" rel=\"stylesheet\">\n" +
-    "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\">\n" +
-    "</head>\n" +
     "\n" +
-    "<body>\n" +
     "<div data-overlay class=\"hide\">&nbsp;</div>\n" +
     "<!--// Header -->\n" +
     "<div role-header class=\"container-fluid nopadding\">\n" +
@@ -1610,34 +1347,12 @@ define(['angular', 'app'], function(angular, app) { app.run(['$templateCache', f
     "\t\t  </ul>\n" +
     "\t\t</section>\n" +
     "\t</div>\n" +
-    "</div>\n" +
-    "<!--// Footer -->\n" +
-    "<!--// Jquery -->\n" +
-    "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js\"></script>\n" +
-    "<script src=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js\"></script>\n" +
-    "\n" +
-    "</body>\n" +
-    "\n" +
-    "</html>\n"
+    "</div>\n"
   );
 
 
   $templateCache.put('partials/payment-error.html',
-    " <!DOCTYPE html>\n" +
-    "<html>\n" +
-    "<head>\n" +
-    "<meta charset=\"UTF-8\">\n" +
-    "<title>Shipping</title>\n" +
-    "<meta name=\"description\" content=\"\">\n" +
-    "<meta name=\"keywords\" content=\"\">\n" +
-    "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
-    "<meta name=\"apple-mobile-web-app-capable\" content=\"yes\">\n" +
-    "<link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>\n" +
-    "<link href=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/css/bootstrap.min.css\" rel=\"stylesheet\">\n" +
-    "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\">\n" +
-    "</head>\n" +
     "\n" +
-    "<body>\n" +
     "<div data-overlay class=\"hide\">&nbsp;</div>\n" +
     "<!--// Header -->\n" +
     "<div role-header class=\"container-fluid nopadding\">\n" +
@@ -1730,24 +1445,7 @@ define(['angular', 'app'], function(angular, app) { app.run(['$templateCache', f
 
 
   $templateCache.put('partials/payment-success.html',
-    " <!DOCTYPE html>\n" +
-    "<html>\n" +
-    "<head>\n" +
-    "<meta charset=\"UTF-8\">\n" +
-    "<title>Order Success</title>\n" +
-    "<meta name=\"description\" content=\"\">\n" +
-    "<meta name=\"keywords\" content=\"\">\n" +
-    "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
-    "<meta name=\"apple-mobile-web-app-capable\" content=\"yes\">\n" +
-    "<link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>\n" +
-    "<link href=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/css/bootstrap.min.css\" rel=\"stylesheet\">\n" +
-    "<link href=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/css/custom.1457501855.css\" rel=\"stylesheet\">\n" +
-    "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\">\n" +
-    "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/order_success.css\">\n" +
     "\n" +
-    "</head>\n" +
-    "\n" +
-    "<body>\n" +
     "<!--// Header -->\n" +
     "<div role-header class=\"container-fluid nopadding\">\n" +
     "\t<div class=\"h-space hidden-xs hidden-sm\"></div>\n" +
@@ -1927,35 +1625,12 @@ define(['angular', 'app'], function(angular, app) { app.run(['$templateCache', f
     "\t\t  </ul>\n" +
     "\t\t</section>\n" +
     "\t</div>\n" +
-    "</div>\n" +
-    "<!--// Footer -->\n" +
-    "<!--// Jquery -->\n" +
-    "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js\"></script>\n" +
-    "<script src=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js\"></script>\n" +
-    "\n" +
-    "</body>\n" +
-    "\n" +
-    "</html>\n"
+    "</div>"
   );
 
 
   $templateCache.put('partials/payments.html',
-    " <!DOCTYPE html>\n" +
-    "<html>\n" +
-    "<head>\n" +
-    "<meta charset=\"UTF-8\">\n" +
-    "<title>Payments</title>\n" +
-    "<meta name=\"description\" content=\"\">\n" +
-    "<meta name=\"keywords\" content=\"\">\n" +
-    "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
-    "<meta name=\"apple-mobile-web-app-capable\" content=\"yes\">\n" +
-    "<link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>\n" +
-    "<link href=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/css/bootstrap.min.css\" rel=\"stylesheet\">\n" +
-    "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\">\n" +
-    "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/bootstrap.vertical-tabs.css\">\n" +
-    "</head>\n" +
     "\n" +
-    "<body>\n" +
     "<!--// Header -->\n" +
     "<div role-header class=\"container-fluid nopadding\">\n" +
     "\t<div role-nav class=\"container\">\n" +
@@ -2414,80 +2089,12 @@ define(['angular', 'app'], function(angular, app) { app.run(['$templateCache', f
     "\t\t  </ul>\n" +
     "\t\t</section>\n" +
     "\t</div>\n" +
-    "</div>\n" +
-    "<!--// Footer -->\n" +
-    "<!--// Jquery -->\n" +
-    "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js\"></script>\n" +
-    "<script src=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js\"></script>\n" +
-    "<script type=\"text/javascript\" src=\"js/common.js\"></script>\n" +
-    "\n" +
-    "</body>\n" +
-    "\n" +
-    "</html>\n"
-  );
-
-
-  $templateCache.put('partials/products.html',
-    "<div class=\"container\">\n" +
-    "    <div itemprop=\"itemListElement\" itemscope=\"\" itemtype=\"http://schema.org/Product\"\n" +
-    "     class=\"col-xs-6 col-md-3 product mob_padding\" ng-repeat=\"product in products\">\n" +
-    "\n" +
-    "    <div class=\"product-image-container\">\n" +
-    "        <a ui-sref=\"productById({id: product.entity_id})\">\n" +
-    "            <img itemprop=\"image\"\n" +
-    "                 src=\"http://img1.craftsvilla.com/thumb/500x500{{product.image}}\" class=\"product-image lazy\">\n" +
-    "        </a>\n" +
-    "    </div>\n" +
-    "    <div class=\"product-details-container col-xs-12\">\n" +
-    "        <a itemprop=\"url\" ui-sref=\"productById({id: product.entity_id})\">\n" +
-    "            <div class=\"product-name\" itemprop=\"name\">Mimosa Silk Saree (r...</div>\n" +
-    "        </a>\n" +
-    "\n" +
-    "        <a href=\"/Mimosa\" title=\"Kataria Silk House Pvt Ltd\" target=\"_blank\">\n" +
-    "            <div class=\"vendor-name\">By Kataria Silk House</div>\n" +
-    "        </a>\n" +
-    "\n" +
-    "        <div class=\"price-container col-xs-12 nopadding\" itemprop=\"offers\" itemscope=\"\"\n" +
-    "             itemtype=\"http://schema.org/Offer\">\n" +
-    "            <div class=\"col-xs-6 col-md-8 nopadding\">\n" +
-    "                <div class=\"col-xs-12 col-md-6 original-price price nopadding visible-xs\"><s><span itemprop=\"price\"> 4256</span></s>\n" +
-    "                </div>\n" +
-    "                <div class=\"col-xs-12 col-md-6 discounted-price price nopadding\">\n" +
-    "                    Rs 2,149\n" +
-    "                </div>\n" +
-    "                <div class=\"col-xs-6 col-md-6 original-price price nopadding hidden-xs\"><s> <span\n" +
-    "                        itemprop=\"price\">4256</span></s></div>\n" +
-    "            </div>\n" +
-    "            <div class=\"col-xs-6 col-md-4 save-percent nopadding\">\n" +
-    "                Save 50%\n" +
-    "            </div>\n" +
-    "        </div>\n" +
-    "    </div>\n" +
-    "    <div class=\"wishit\">\n" +
-    "        <div class=\"wishitIcon\"><i class=\"icon-small icon-v2 icon-wish\" id=\"wishicon-3150468\"></i></div>\n" +
-    "        <div class=\"wishitText hidden-xs\" id=\"wished-3150468\">Wished</div>\n" +
-    "    </div>\n" +
-    "</div>\n" +
-    "</div>"
+    "</div>\n"
   );
 
 
   $templateCache.put('partials/shipping.html',
-    " <!DOCTYPE html>\n" +
-    "<html>\n" +
-    "<head>\n" +
-    "<meta charset=\"UTF-8\">\n" +
-    "<title>Shipping</title>\n" +
-    "<meta name=\"description\" content=\"\">\n" +
-    "<meta name=\"keywords\" content=\"\">\n" +
-    "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
-    "<meta name=\"apple-mobile-web-app-capable\" content=\"yes\">\n" +
-    "<link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>\n" +
-    "<link href=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/css/bootstrap.min.css\" rel=\"stylesheet\">\n" +
-    "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\">\n" +
-    "</head>\n" +
     "\n" +
-    "<body>\n" +
     "<div data-overlay class=\"hide\">&nbsp;</div>\n" +
     "<!--// Header -->\n" +
     "<div role-header class=\"container-fluid nopadding\">\n" +
@@ -2956,15 +2563,6 @@ define(['angular', 'app'], function(angular, app) { app.run(['$templateCache', f
     "\t\t  </ul>\n" +
     "\t\t</section>\n" +
     "\t</div>\n" +
-    "</div>\n" +
-    "<!--// Footer -->\n" +
-    "<!--// Jquery -->\n" +
-    "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js\"></script>\n" +
-    "<script src=\"http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js\"></script>\n" +
-    "<script type=\"text/javascript\" src=\"js/common.js\"></script>\n" +
-    "\n" +
-    "</body>\n" +
-    "\n" +
-    "</html>\n"
+    "</div>\n"
   );
 }]); });
