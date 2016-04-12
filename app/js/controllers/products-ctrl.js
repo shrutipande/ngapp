@@ -2,23 +2,13 @@ define(['./index'], function (controllers) {
 	'use strict';
 	controllers.controller('productsCtrl', ['$scope', '$rootScope', 'craftsvillaService', function ($scope, $rootScope, craftsvillaService) {
 
-		//$scope.products = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-		//console.log("i");
-		var productsDetails = {
-			"search": "saree",
-			"color": ["red", "black"],
-			"price": [{
-				"500": "1000"
-			}],
-			"newestSort": "ASC",
-
-			"pageId": "1"
-		};
-		craftsvillaService.getProducts(productsDetails)
-			.then(function (data) {
-				$scope.products = data.data.data;
+		craftsvillaService.getProducts()
+			.success(function (response) {
+        console.log(response);
+				$scope.products = response.data.data;
+        console.log( + $scope.products)
 			})
-			.catch(function (err) {
+			.error(function (err) {
 				throw new Error(err);
 			})
 	}]);

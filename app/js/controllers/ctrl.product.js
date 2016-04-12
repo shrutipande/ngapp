@@ -19,12 +19,12 @@ define(['./index'], function (controllers) {
 					$scope.activeImageIndex = index;
 				},
 				getProduct: function (id) {
-					craftsvillaService.getProductById(id)
-						.then(function (data) {
+					craftsvillaService.getProductById()
+						.success(function (data) {
 							$scope.product = data;
 							$scope.product.images = $scope.product.gallery_images.split(",");
 						})
-						.catch(function (err) {
+						.error(function (err) {
 							throw new Error(err);
 						})
 				},

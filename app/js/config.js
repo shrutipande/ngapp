@@ -5,8 +5,8 @@ define(['angular'], function (angular) {
 
   return angular.module('app.config', [])
       .constant('VERSION', '0.0.1')
-      .constant('HOST', 'http://localhost:8000/api')
-      //.constant('HOST', 'https://staging.craftsvilla.com/api')
+      //.constant('HOST', 'http://localhost:8000/api')
+      .constant('HOST', 'https://api.myjson.com/bins/')
       //.constant('HOST', 'https://www.craftsvilla.com/api')
       .constant('ENVIRONMENT', 'development')
       .config(['$httpProvider', function ($httpProvider) {

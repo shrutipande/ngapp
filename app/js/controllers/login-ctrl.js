@@ -3,7 +3,7 @@ define(['./index'], function (controllers) {
     controllers.controller('loginCtrl', ['$scope', '$rootScope', function ($scope) {
         $scope.guestUser = false;
       $scope.changeGuest = function() {
-        alert("hi");
+        $scope.guestUser = !$scope.guestUser;
       };
     }]);
 });

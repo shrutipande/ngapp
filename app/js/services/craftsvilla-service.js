@@ -1,44 +1,47 @@
 define(['./index'], function (services) {
   'use strict';
   // expand input and show post button on focus
-  services.service('craftsvillaService', ['$q', '$http', function($q, $http) {
+  services.service('craftsvillaService', ['$http','HOST', function($http,HOST) {
+
     return {
-      //apiPath: 'http://frontendapi-1576082100.ap-southeast-1.elb.amazonaws.com:9000/',
-      apiPath: 'https://api.myjson.com/bins/2tc8u',
-	    apiPath_2: 'https://api.myjson.com/bins/1lyle',
 
-      getProducts: function(json) {
-	      var deferred = $q.defer();
-	      $http({
-		      method: 'GET',
-		      url: this.apiPath,
-		      //data: json
-	      })
-	      .success(function (data) {
-		      deferred.resolve(data);
-	      })
-	      .error(function (err, status) {
-		      deferred.reject(err, status);
-	      });
-	      return deferred.promise;
-      },
-
-	    getProductById: function(id) {
-		    var deferred = $q.defer();
-		    $http({
-			    method: 'GET',
-			    url: this.apiPath_2,
-			    //params: { productId: id }
-		    })
-		    .success(function (data) {
-			    deferred.resolve(data);
-		    })
-		    .error(function (err, status) {
-			    deferred.reject(err, status);
-		    });
-
-		    return deferred.promise;
-	    }
+      getProducts: getProducts,
+      getProductById: getProductById
+      //createOffer: createOffer,
+      //editOffer: editOffer,
+      //deactivateOffer: deactivateOffer,
+      //activateOffer: activateOffer,
+      //removeOfferUser: removeOfferUser,
+      //editLimitUser: editLimitUser,
+      //addOfferUser: addOfferUser,
+      //removeOffer: removeOffer,
+      //addApology: addApology,
+      //getApologyOffer: getApologyOffer,
+      //getPendingApology: getPendingApology,
+      //getApprovedApology: getApprovedApology,
+      //approveApology: approveApology,
+      //disApproveApology: disApproveApology,
+      //createApologyRequest: createApologyRequest,
+      //sendApologySMS: sendApologySMS
     };
+
+    //////////////////////////////////////////
+
+    function getProducts() {
+      return $http.get(HOST + '2tc8u');
+    }
+
+    function getProductById() {
+      return $http.get(HOST + '1lyle');
+    }
+
+    function getProductPost (id, xyz) {
+      return $http.post(HOST + '1lyle', {
+
+      });
+    }
+
+
+
   }]);
 });
