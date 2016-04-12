@@ -457,6 +457,7 @@ MEDIA QUERI
     .select-style { max-width: 100%; }
     /* Bootstrap vertical tabs start */
     .tabs-left > li > a { padding: 20px; }
+    ul[data-payment-mobile].tabs-left>li { width: 100%; }
     .tabs-left>li.active { border-right: solid 1px #ededed !important; }
     .tabs-left>li.active>a, .tabs-left>li.active>a:hover { padding: 20px 20px 8px 20px; }
     /* Bootstrap vertical tabs end */
