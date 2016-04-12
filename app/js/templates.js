@@ -1250,7 +1250,7 @@ define(['angular', 'app'], function(angular, app) { app.run(['$templateCache', f
     "\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t<form>\n" +
     "\t\t\t\t\t\t<h4>HAVE AN ACCOUNT? SIGN IN</h4>\n" +
-    "\t\t\t\t\t\t<div class=\"existingUser\">\n" +
+    "\t\t\t\t\t\t<div class=\"existingUser\" ng-hide=\"guestUser\">\n" +
     "\t\t\t\t\t\t\t<fieldset class=\"form-group error\">\n" +
     "\t\t\t\t\t\t\t\t<label>Email</label>\n" +
     "\t\t\t\t\t\t\t\t<input type=\"email\" class=\"form-control\" placeholder=\"Email\">\n" +
@@ -1261,7 +1261,7 @@ define(['angular', 'app'], function(angular, app) { app.run(['$templateCache', f
     "\t\t\t\t\t\t\t\t<input type=\"password\" class=\"form-control\" placeholder=\"Password\">\n" +
     "\t\t\t\t\t\t\t</fieldset>\n" +
     "\t\t\t\t\t\t\t<fieldset class=\"form-group\">\n" +
-    "\t\t\t\t\t\t\t\t<a role=\"ForgotPassword\" href=\"#\">Forgot password?</a>\n" +
+    "\t\t\t\t\t\t\t\t<a role=\"ForgotPassword\" href=\"javascript:void(0)\" ng-click=\"forgotPwd()\">Forgot password?</a>\n" +
     "\t\t\t\t\t\t\t\t<div class=\"container-fluid ForgotPasswordContainer hide\">\n" +
     "\t\t\t\t\t\t\t\t\t<div class=\"FPcontainer\">\n" +
     "\t\t\t\t\t\t\t\t\t\t<span role=\"close\"><a href=\"#\"><img src=\"images/delete-icon.png\" alt=\"\" title=\"\"></a></span>\n" +
@@ -1276,17 +1276,17 @@ define(['angular', 'app'], function(angular, app) { app.run(['$templateCache', f
     "\t\t\t\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t\t\t</fieldset>\n" +
-    "\t\t\t\t\t\t\t<div class=\"BtnContainer col-xs-12 nopadding\"><input class=\"btn newBtn\" type=\"submit\" value=\"LOGIN\"></div>\n" +
+    "\t\t\t\t\t\t\t<div class=\"BtnContainer col-xs-12 nopadding\"><button class=\"btn newBtn\" ng-click=\"changeLogin()\">LOGIN</button></div>\n" +
     "\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t<div class=\"guestUser col-xs-12 nopadding hide\">\n" +
+    "\t\t\t\t\t\t<div class=\"guestUser col-xs-12 nopadding\" ng-show=\"guestUser\" >\n" +
     "\t\t\t\t\t\t\t<fieldset class=\"form-group\">\n" +
     "\t\t\t\t\t\t\t\t<label>Email</label>\n" +
     "\t\t\t\t\t\t\t\t<input type=\"email\" class=\"form-control\" placeholder=\"Email\">\n" +
     "\t\t\t\t\t\t\t</fieldset>\n" +
     "\t\t\t\t\t\t\t<div class=\"BtnContainer col-xs-12 nopadding\">\n" +
-    "\t\t\t\t\t\t\t\t<input class=\"btn newBtn\" type=\"submit\" value=\"GUEST CHECKOUT\">\n" +
+    "\t\t\t\t\t\t\t\t<button class=\"btn newBtn\" ng-click=\"changeGuestCheckout()\">GUEST CHECKOUT </button>\n" +
     "\t\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t\t<p>Have an account? <span><a class=\"rougeColor\" href=\"#\">Login Here</a></span></p>\n" +
+    "\t\t\t\t\t\t\t<p>Have an account? <span><a class=\"rougeColor\" href=\"javascript:void(0)\" ng-click=\"loginHere()\">Login Here</a></span></p>\n" +
     "\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t</form>\n" +
     "\t\t\t\t</div>\n" +
@@ -1295,12 +1295,12 @@ define(['angular', 'app'], function(angular, app) { app.run(['$templateCache', f
     "\t\t\t<div class=\"col-xs-12 col-sm-6 socialMediaContainer hidden-xs\">\n" +
     "\t\t\t\t<div class=\"col-xs-12 col-sm-10 pull-right\">\n" +
     "\t\t\t\t\t<div class=\"col-xs-12 nopadding socialMedia\">\n" +
-    "\t\t\t\t\t\t<a class=\"signup-fb\" href=\"#\"><small><img src=\"images/facebook_alt.png\" width=\"8\" height=\"17\" alt=\"\" title=\"\"></small><span>Log In with Facebook</span></a>\n" +
-    "\t\t\t\t\t\t<a class=\"signup-g\" href=\"#\"><small><img src=\"images/googlw_Plus.png\" width=\"26\" height=\"16\" alt=\"\" title=\"\"></small><span>Log In with Google</span></a>\n" +
+    "\t\t\t\t\t\t<a class=\"signup-fb\" href=\"javascript:void(0)\" ng-click=\"signupFB()\"><small><img src=\"images/facebook_alt.png\" width=\"8\" height=\"17\" alt=\"\" title=\"\"></small><span>Log In with Facebook</span></a>\n" +
+    "\t\t\t\t\t\t<a class=\"signup-g\" href=\"javascript:void(0)\" ng-click=\"signupGgle()\"><small><img src=\"images/googlw_Plus.png\" width=\"26\" height=\"16\" alt=\"\" title=\"\"></small><span>Log In with Google</span></a>\n" +
     "\t\t\t\t\t\t<div class=\"col-xs-12 nopadding guest\">\n" +
     "\t\t\t\t\t\t\t<h4>CHECKOUT AS A GUEST</h4>\n" +
     "\t\t\t\t\t\t\t<p>New to craftsvilla? Use our quick and secure method.</p>\n" +
-    "\t\t\t\t\t\t\t<div class=\"BtnContainer col-xs-12 nopadding\"><input class=\"btn guestBtn\" type=\"submit\" value=\"CONTINUE AS GUEST\"></div>\n" +
+    "\t\t\t\t\t\t\t<div class=\"BtnContainer col-xs-12 nopadding\" ng-hide=\"guestUser\"><button class=\"btn guestBtn\" ng-click=\"changeGuest()\">CONTINUE AS GUEST</button></div>\n" +
     "\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t</div>\n" +
     "\t\t\t\t</div>\n" +
