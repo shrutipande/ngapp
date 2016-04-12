@@ -4,11 +4,14 @@
  */
 define([
     './templates',
-     './controllers/cart-ctrl',
-     './controllers/login-ctrl',
-    './controllers/products-ctrl',
-		'./controllers/ctrl.product',
-    './directives/craftsvilla-directive',
+    './controllers/checkout-cart-ctrl',
+    './controllers/empty-cart-ctrl',
+    './controllers/login-ctrl',
+    './controllers/payment-ctrl',
+    './controllers/payment-error-ctrl',
+  './controllers/payment-success-ctrl',
+  './controllers/shipping-ctrl',
+     './directives/craftsvilla-directive',
     './services/craftsvilla-service',
     './filters/craftsvilla-filter',
     './animations/craftsvilla-animation'

@@ -1,4 +1,18 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
+<link href="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
 
+<body>
 <div data-overlay class="hide">&nbsp;</div>
 <!--// Header -->
 <div role-header class="container-fluid nopadding">
@@ -48,16 +62,14 @@
 	<div class="col-xs-12 col-sm-6 socialMediaContainer">
 		<div class="row">
 			<div class="col-xs-6 nopadding socialMedia">
-				<a class="signup-fb" href="#"><small><img src="images/facebook_alt.png" alt="" title=""></small><span>Log In with Facebook</span></a>
+				<a class="signup-fb" href="#"><small><img src="images/facebook_alt.png" width="8" height="17" alt="" title=""></small><span>Log In with Facebook</span></a>
 			</div>
 			<div class="col-xs-6 nopadding socialMedia">
-				<a class="signup-g" href="#"><small><img src="images/googlw_Plus.png" alt="" title=""></small><span>Log In with Google</span></a>
+				<a class="signup-g" href="#"><small><img src="images/googlw_Plus.png" width="26" height="16" alt="" title=""></small><span>Log In with Google</span></a>
 			</div>
 			<div class="col-xs-12 guest">
 				<h4>CONTINUE AS A GUEST</h4>
-				<div class="BtnContainer col-xs-12 nopadding">
-                    <button class="btn guestBtn" type="submit" ng-click="changeGuest()">CONTINUE AS GUEST</button>
-                </div>
+				<div class="BtnContainer col-xs-12 nopadding"><input class="btn guestBtn" type="submit" value="GUEST CHECKOUT"></div>
 			</div>
 		</div>
 	</div>
@@ -73,7 +85,7 @@
 					</div>
 					<form>
 						<h4>HAVE AN ACCOUNT? SIGN IN</h4>
-						<div class="existingUser" ng-hide="guestUser">
+						<div class="existingUser">
 							<fieldset class="form-group error">
 								<label>Email</label>
 								<input type="email" class="form-control" placeholder="Email">
@@ -99,17 +111,15 @@
 									</div>
 								</div>
 							</fieldset>
-							<div class="BtnContainer col-xs-12 nopadding"><input class="btn newBtn button-fixed" type="submit" value="LOGIN"></div>
+							<div class="BtnContainer col-xs-12 nopadding"><input class="btn newBtn" type="submit" value="LOGIN"></div>
 						</div>
-						<div class="guestUser col-xs-12 nopadding" ng-show="guestUser">
+						<div class="guestUser col-xs-12 nopadding hide">
 							<fieldset class="form-group">
 								<label>Email</label>
 								<input type="email" class="form-control" placeholder="Email">
 							</fieldset>
 							<div class="BtnContainer col-xs-12 nopadding">
-                                <button class="btn guestBtn" type="submit" ng-click="changeGuest()">CONTINUE AS GUEST</button>
-
-                                <!--<input class="btn newBtn" type="submit" value="CONTINUE AS GUEST">-->
+								<input class="btn newBtn" type="submit" value="GUEST CHECKOUT">
 							</div>
 							<p>Have an account? <span><a class="rougeColor" href="#">Login Here</a></span></p>
 						</div>
@@ -120,14 +130,12 @@
 			<div class="col-xs-12 col-sm-6 socialMediaContainer hidden-xs">
 				<div class="col-xs-12 col-sm-10 pull-right">
 					<div class="col-xs-12 nopadding socialMedia">
-						<a class="signup-fb" href="#"><small><img src="images/facebook_alt.png" alt="" title=""></small><span>Log In with Facebook</span></a>
-						<a class="signup-g" href="#"><small><img src="images/googlw_Plus.png" alt="" title=""></small><span>Log In with Google</span></a>
+						<a class="signup-fb" href="#"><small><img src="images/facebook_alt.png" width="8" height="17" alt="" title=""></small><span>Log In with Facebook</span></a>
+						<a class="signup-g" href="#"><small><img src="images/googlw_Plus.png" width="26" height="16" alt="" title=""></small><span>Log In with Google</span></a>
 						<div class="col-xs-12 nopadding guest">
 							<h4>CHECKOUT AS A GUEST</h4>
 							<p>New to craftsvilla? Use our quick and secure method.</p>
-							<div class="BtnContainer col-xs-12 nopadding">
-                                <button class="btn guestBtn" type="submit" ng-click="changeGuest()">CONTINUE AS GUEST</button>
-                                <!--<input class="btn guestBtn" type="submit" value="CONTINUE AS GUEST"></div>-->
+							<div class="BtnContainer col-xs-12 nopadding"><input class="btn guestBtn" type="submit" value="CONTINUE AS GUEST"></div>
 						</div>
 					</div>
 				</div>
@@ -177,5 +185,9 @@
 </div>
 <!--// Footer -->
 <!--// Jquery -->
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>-->
-<!--<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

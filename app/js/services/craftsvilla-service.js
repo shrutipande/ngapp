@@ -6,7 +6,8 @@ define(['./index'], function (services) {
     return {
 
       getProducts: getProducts,
-      getProductById: getProductById
+      getProductById: getProductById,
+      postQuote: postQuote
       //createOffer: createOffer,
       //editOffer: editOffer,
       //deactivateOffer: deactivateOffer,
@@ -38,6 +39,13 @@ define(['./index'], function (services) {
     function getProductPost (id, xyz) {
       return $http.post(HOST + '1lyle', {
 
+      });
+    }
+
+    function postQuote (customerId, quoteId) {
+      return $http.post('https://securelocal.craftsvilla.com/checkoutService/index/loadQuote', {
+        customerId: customerId,
+        quoteId: quoteId
       });
     }
 

@@ -8,45 +8,49 @@ define(['./app'], function (app) {
     $locationProvider.html5Mode(true);
 
     $stateProvider
-        .state('products', {
-          url: '/products',
-          templateUrl: 'partials/products.html',
-          controller: 'productsCtrl',
-          title: 'Home'
+        .state('login', {
+          url: "/login",
+          templateUrl: 'partials/login.html',
+          controller: 'loginCtrl',
+          title: 'login'
         })
-
-		    .state('productById', {
-			    url: '/products/:id',
-			    templateUrl: 'partials/product.html',
-			    controller: 'ctrl.product',
-			    title: 'Product Display'
-		    })
-
-        .state('cart', {
-          url: "/cart",
-          templateUrl: 'partials/cart.html',
-          controller: 'cartCtrl',
-          title: 'Cart'
+        .state('shipping', {
+          url: "/shipping",
+          templateUrl: 'partials/shipping.html',
+          controller: 'shippingCtrl',
+          title: 'shipping'
         })
-    .state('login', {
-      url: "/login",
-      templateUrl: 'partials/login.html',
-      controller: 'loginCtrl',
-      title: 'login'
-    })
-    .state('shipping', {
-      url: "/shipping",
-      templateUrl: 'partials/shipping.html',
-      //controller: 'cartCtrl',
-      title: 'shipping'
-    })
-    .state('payments', {
-      url: "/payments",
-      templateUrl: 'partials/payments.html',
-      //controller: 'cartCtrl',
-      title: 'Cart'
-    });
-    $urlRouterProvider.otherwise("/products");
+        .state('payments', {
+          url: "/payments",
+          templateUrl: 'partials/payments.html',
+          controller: 'paymentCtrl',
+          title: 'payments'
+        })
+        .state('payments-error', {
+          url: "/payments-error",
+          templateUrl: 'partials/payment-error.html',
+          controller: 'paymentErrorCtrl',
+          title: 'payments-error'
+        })
+        .state('payments-success', {
+          url: "/payments-success",
+          templateUrl: 'partials/payment-success.html',
+          controller: 'paymentSuccessCtrl',
+          title: 'payments-success'
+        })
+        .state('checkout', {
+          url: "/checkout",
+          templateUrl: 'partials/checkout-cart.html',
+          controller: 'checkoutCartCtrl',
+          title: 'checkout'
+        })
+        .state('empty-cart', {
+          url: "/empty-cart",
+          templateUrl: 'partials/empty-cart.html',
+          controller: 'emptyCartCtrl',
+          title: 'Empty cart'
+        });
+    $urlRouterProvider.otherwise("/login");
 
   }]);
 });
