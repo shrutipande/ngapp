@@ -70,8 +70,11 @@ a.signup-fb { background: #4962ba none repeat scroll 0 0; margin-bottom: 7px; }
 
 .signinForm { border-right: solid 1px #d8d8d8;}
 .signinForm .form-control { border-radius: 0; height: 45px; padding: 4px 15px 6px 15px; color: #9b9b9b; }
-.signinForm .error input { border: solid 1px #ff0c00; }
-.signinForm .error span { color: #ff0c00; display: block; }
+
+.error input { border: solid 1px #ff0c00 !important; }
+.error span, .error p { color: #ff0c00; display: block; }
+
+
 .signinForm h4, .socialMediaContainer h4 { font-weight: 400; font-size: 16px; color: #747474; letter-spacing: 1.7px; }
 a[role="ForgotPassword"] { color: #981937; }
 a[role="ForgotPassword"]:hover { text-decoration: none; }
@@ -120,7 +123,7 @@ h4[role="headding"] a span { display: none; }
 .customer-address .checkbox label { line-height: 22px; font-weight: 400; font-size: 13px; }
 
 .btn-newStyle { border-radius: 0; background: #d2d2d2; color: #fff; font-weight: 700; width: 100%; font-size: 16px; padding: 10px 0px; margin-top: 10px; }
-.btn-newStyle:hover { color: #ffffff; }
+.btn-newStyle:hover, .btn-newStyle:focus { color: #ffffff !important; }
 .outline-btn { border: solid 1px #981937; color: #981937; font-weight: 700; border-radius: 2px; padding: 10px 15px; margin-right: 15px; }
 .pincode { width: 30%; }
 .Width60 { max-width: 435px; width: 100%; }
