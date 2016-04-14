@@ -195,22 +195,21 @@
 										<fieldset class="form-group" ng-class="{ 'error' : creditForm.cardName.$invalid && !creditForm.cardName.$pristine }">
 											<label>Name on Card</label>
 											<input type="text" placeholder="Name on Card" class="form-control" ng-model="creditForm.cardName" required>
-											<p ng-show="creditForm.cardName.$invalid">Please Enter Card Name</p>
 										</fieldset>
 									</div>
 									<div class="col-xs-12 nopadding">
 										<div class="col-xs-7 valid-upto">
-											<fieldset class="form-group" ng-class="{ 'error' : creditForm.cardMonth.$invalid && !creditForm.cardMonth.$pristine }">
+											<fieldset class="form-group" ng-class="{ 'error' : (!creditForm.cardM.$valid && !creditForm.cardM.$pristine) || (!creditForm.cardY.$valid && !creditForm.cardY.$pristine) }">
 												<label>Valid Upto</label>
-												<input type="number" placeholder="MM" maxlength="2" class="form-control pull-left" ng-model="creditForm.cardMonth">
+												<input ng-model="creditForm.cardMonth" cc-exp-month class="form-control pull-left" placeholder="MM"  name="cardM"/>
 												<span role="division">/</span>
-												<input type="number" placeholder="YY" maxlength="4" class="form-control pull-right" ng-model="creditForm.cardYear">
+  											<input ng-model="creditForm.cardYear" cc-exp-year class="form-control pull-right" placeholder="YY" name="cardY"/>
 											</fieldset>
 										</div>
 										<div class="col-xs-5 cvv-code">
-											<fieldset class="form-group">
+											<fieldset class="form-group" ng-class="{'error' : !creditForm.cardCvv.$valid && !creditForm.cardCvv.$pristine}">
 												<label>CVV Code</label>
-												<input maxlength="3" type="text" class="form-control" ng-model="creditForm.cardCvv">
+												<input type="text" class="form-control" id="cvc" cc-cvc cc-type="creditForm.cardNumber.$ccType" name="cardCvv" ng-model="card.cardCvv">
 											</fieldset>
 										</div>
 									</div>
