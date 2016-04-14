@@ -155,111 +155,93 @@
 					<div class="col-xs-12 col-sm-3 nopadding payment-list"> <!-- required for floating -->
 					    <!-- Nav tabs -->
 						<ul class="nav nav-tabs tabs-left">
-							<li>
-								<a href="#cashondelivery" data-toggle="tab">Cash on Delivery</a>
-								<div class="col-xs-12 cashondelivery hide">
-									<p>Please keep a total of Rs 3240 to pay on delivery </p>
-								</div>
+							<li ng-repeat="item in paymentMethods" ng-class="{ active: changeName == '{{item.method}}' }">
+								<a href="javascript:void(0)" data-toggle="tab" ng-click="changeSlide(item.method)">{{ item.method }}</a>
 							</li>
-							<li><a href="#CreditCard" data-toggle="tab">Credit Card</a></li>
-							<li><a href="#DebitCard" data-toggle="tab">Debit Card</a></li>
-							<li class="active"><a href="#NetBanking" data-toggle="tab">Net Banking</a></li>
-							<li><a href="#PayUmoney" data-toggle="tab">Pay U Money</a></li>
 						</ul>
 					</div>
-
 					<!-- Tab panes -->
 					<div class="tab-content col-xs-9 col-sm-9">
-						<div class="tab-pane" id="cashondelivery">
-							<div class="col-xs-12 cashondelivery">
+						<div class="tab-pane" id="cashondelivery" ng-class="{ active: changeName == '{{item.method}}' }" ng-repeat="item in paymentMethods">
+							<!-- show on cod -->
+							<div class="col-xs-12 cashondelivery" ng-if = "item.method == 'Cash On Delivery'">
 								<h3>Pay Using Cash on Delivery</h3>
 								<p>Please keep a total of Rs 3240 to pay on delivery </p>
 								<div class="col-xs-12 col-sm-7 nopadding">
-									<input type="button" value="PLACE ORDER" class="btn btn-newStyle bg-green">
+									<input type="button" value="PLACE ORDER" class="btn btn-newStyle bg-green" ng-click="cashOn()">
 								</div>
 							</div>
-						</div>
-						<div class="tab-pane" id="CreditCard">
-							<div class="col-xs-12 col-sm-8 creditcard">
-								<div class="col-xs-12 nopadding">
-									<fieldset class="form-group">
-										<label>Credit Card Number</label>
-										<input type="text" placeholder="Credit Card Number" class="form-control">
-									</fieldset>
-								</div>
-								<div class="col-xs-12 nopadding">
-									<fieldset class="form-group">
-										<label>Name on Card</label>
-										<input type="text" placeholder="Name on Card" class="form-control">
-									</fieldset>
-								</div>
-								<div class="col-xs-12 nopadding">
-									<div class="col-xs-7 valid-upto">
-										<fieldset class="form-group">
-											<label>Valid Upto</label>
-											<input type="text" placeholder="MM" maxlength="2" class="form-control pull-left">
-											<span role="division">/</span>
-											<input type="text" placeholder="YY" maxlength="4" class="form-control pull-right">
+							<!-- show on creditcard -->
+							<div class="col-xs-12 col-sm-8 creditcard" ng-if = "item.method == 'Credit card'">
+								<form name="creditForm" ng-submit="submitCreditForm()" novalidate >
+									<div class="col-xs-12 nopadding">
+										<fieldset class="form-group" ng-class="{ 'error' : creditForm.cardNumber.$invalid && !creditForm.cardNumber.$pristine }">
+											<label>Credit Card Number</label>
+											<input name="cardNumber" type="number" placeholder="Credit Card Number" class="form-control"  ng-minlength = "9" ng-model="credit.cardNumber" required>
+											<p ng-show="creditForm.cardNumber.$error.minlength">Please Enter Valid Credit Card Number</p>
 										</fieldset>
 									</div>
-									<div class="col-xs-5 cvv-code">
-										<fieldset class="form-group">
-											<label>CVV Code</label>
-											<input maxlength="3" type="text" class="form-control">
+									<div class="col-xs-12 nopadding">
+										<fieldset class="form-group" ng-class="{ 'error' : creditForm.cardName.$invalid && !creditForm.cardName.$pristine }">
+											<label>Name on Card</label>
+											<input type="text" placeholder="Name on Card" class="form-control" ng-model="creditForm.cardName" required>
+											<p ng-show="creditForm.cardName.$invalid">Please Enter Card Name</p>
 										</fieldset>
 									</div>
-								</div>
-								<div class="col-xs-12 nopadding">
-									<a class="btn btn-newStyle bg-green" href="#">PAY <span><i>&#x20B9;</i>3240</span> SECURELY</a>
-								</div>
+									<div class="col-xs-12 nopadding">
+										<div class="col-xs-7 valid-upto">
+											<fieldset class="form-group" ng-class="{ 'error' : creditForm.cardMonth.$invalid && !creditForm.cardMonth.$pristine }">
+												<label>Valid Upto</label>
+												<input type="number" placeholder="MM" maxlength="2" class="form-control pull-left" ng-model="creditForm.cardMonth">
+												<span role="division">/</span>
+												<input type="number" placeholder="YY" maxlength="4" class="form-control pull-right" ng-model="creditForm.cardYear">
+											</fieldset>
+										</div>
+										<div class="col-xs-5 cvv-code">
+											<fieldset class="form-group">
+												<label>CVV Code</label>
+												<input maxlength="3" type="text" class="form-control" ng-model="creditForm.cardCvv">
+											</fieldset>
+										</div>
+									</div>
+									<div class="col-xs-12 nopadding">
+										<button type="submit" class="btn btn-newStyle bg-green" ng-disabled="submitCreditForm.$invalid">PAY <span><i>&#x20B9;</i>3240</span> SECURELY</button>
+									</div>
+								</form>
 							</div>
-						</div>
-						<div class="tab-pane" id="DebitCard">Debit Card</div>
-						<div class="tab-pane active" id="NetBanking">
-							<div class="col-xs-12 NetBanking">
+							<!-- show on Debit card -->
+							<div class="col-xs-12 DebitCard" ng-if = "item.method == 'Debit Card'">
+								<form name="DebitCardForm" ng-submit="submitCreditForm()" novalidate >
+									<label>Debit Card Form</label>
+								</form>
+							</div>
+							<!-- show on Net Banking -->
+							<div class="col-xs-12 NetBanking" ng-if = "item.method == 'Net Banking'">
 								<ul role="nasted-list">
-									<li>
-										<input id="icici" type="radio" name="gender" value="male" checked>
-										<label for="icici"><span></span><span><img src="images/Bitmap.png" title="" alt=""></span></label>
+									<li ng-repeat = "bank in item.content.priority">
+										<input id="{{bank.bank_code}}" type="radio" name="bank" value="{{bank.bank_name}}">
+										<label for="{{bank.bank_code}}"><span></span><span><img ng-src="{{bank.logo_url}}" title="" alt=""></span></label>
 									</li>
-									<li>
-										<input id="axis" type="radio" name="gender" value="male" checked>
-										<label for="axis"><span></span><span><img src="images/Bitmap.png" title="" alt=""></span></label>
-									</li>
-									<li>
-										<input id="sbi" type="radio" name="gender" value="male" checked>
-										<label for="sbi"><span></span><span><img src="images/Bitmap.png" title="" alt=""></span></label>
-									</li>
-									<li>
-										<input id="hdfc" type="radio" name="gender" value="male" checked>
-										<label for="hdfc"><span></span><span><img src="images/Bitmap.png" title="" alt=""></span></label>
-									</li>
-									<li>
-										<input id="city" type="radio" name="gender" value="male" checked>
-										<label for="city"><span></span><span><img src="images/Bitmap.png" title="" alt=""></span></label>
-									</li>
-									<li>
-										<input id="idbi" type="radio" name="gender" value="male" checked>
-										<label for="idbi"><span></span><span><img src="images/Bitmap.png" title="" alt=""></span></label>
-									</li>
+
 								</ul>
 								<div class="col-xs-12 nopadding">
 									<span class="pull-left or">OR</span>
 									<div class="select-style">
-										<select>
-											<option value="volvo">Volvo</option>
-											<option value="saab">Saab</option>
-											<option value="mercedes">Mercedes</option>
-											<option value="audi">Audi</option>
-										</select>
+										<select ng-model="selectedItem" ng-options="item as item.bank_name for item in item.content.others"></select>
 									</div>
 								</div>
 								<div class="col-xs-12 col-sm-8 nopadding">
-									<a class="btn btn-newStyle bg-green" href="#">PAY <span><i>&#x20B9;</i>3240</span> SECURELY</a>
+									<a class="btn btn-newStyle bg-green" href="javascript:void(0)" ng-click="netBanking()">PAY <span><i>&#x20B9;</i>3240</span> SECURELY</a>
 								</div>
 							</div>
+							<!-- pay U Money -->
+							<div class="col-xs-12 PayUMoney" ng-if = "item.method == 'PayU Money'">
+								<form name="DebitCardForm" ng-submit="submitCreditForm()" novalidate >
+									<label>PayU Money</label>
+								</form>
+							</div>
+
 						</div>
-						<div class="tab-pane" id="PayUmoney">Pay U Money</div>
 					</div>
 				</div>
 			</div>
@@ -273,119 +255,88 @@
 						<div class="col-xs-12 nopadding payment-list"> <!-- required for floating -->
 						    <!-- Nav tabs -->
 							<ul data-payment-mobile class="nav nav-tabs tabs-left">
-								<li class="active">
-									<a class="m-tab" href="#">Cash on Delivery</a>
-									<div class="col-xs-12 cashondelivery">
-										<p>Please keep a total of Rs 3240 to pay on delivery </p>
-									</div>
-								</li>
-								<li>
-									<a href="#">Credit Card</a>
-									<div class="col-xs-12 creditcard">
-										<div class="col-xs-12 nopadding">
-											<fieldset class="form-group">
-												<label>Credit Card Number</label>
-												<input type="text" placeholder="Credit Card Number" class="form-control">
-											</fieldset>
-										</div>
-										<div class="col-xs-12 nopadding">
-											<fieldset class="form-group">
-												<label>Name on Card</label>
-												<input type="text" placeholder="Name on Card" class="form-control">
-											</fieldset>
-										</div>
-										<div class="col-xs-12 nopadding">
-											<div class="col-xs-12 valid-upto">
-												<fieldset class="form-group">
-													<label>Valid Upto</label>
-													<input type="text" placeholder="MM" maxlength="2" class="form-control pull-left">
-													<span role="division">/</span>
-													<input type="text" placeholder="YY" maxlength="4" class="form-control pull-right">
-												</fieldset>
-											</div>
-											<div class="col-xs-12 cvv-code">
-												<fieldset class="form-group">
-													<label>CVV Code</label>
-													<input maxlength="3" type="text" class="form-control">
-												</fieldset>
+								<li ng-repeat="item in paymentMethods" ng-class="{ active: changeName == '{{item.method}}' }">
+									<a href="javascript:void(0)" data-toggle="tab" ng-click="changeSlide(item.method)">{{ item.method }}</a>
+										<!-- show on cod -->
+										<div class="col-xs-12 cashondelivery" ng-if = "item.method == 'Cash On Delivery'">
+											<h3>Pay Using Cash on Delivery</h3>
+											<p>Please keep a total of Rs 3240 to pay on delivery </p>
+											<div class="col-xs-12 col-sm-7 nopadding">
+												<input type="button" value="PLACE ORDER" class="btn btn-newStyle bg-green" ng-click="cashOn()">
 											</div>
 										</div>
-									</div>
-								</li>
-								<li>
-									<a href="#">Debit Card</a>
-									<div class="col-xs-12 NetBanking">
-										<ul role="nasted-list">
-											<li>
-												<input id="icici1" type="radio" name="gender" value="male" checked>
-												<label for="icici1"><span></span><span><img src="images/Bitmap.png" title="" alt=""></span></label>
-											</li>
-											<li>
-												<input id="axis1" type="radio" name="gender" value="male" checked>
-												<label for="axis1"><span></span><span><img src="images/Bitmap.png" title="" alt=""></span></label>
-											</li>
-											<li>
-												<input id="sbi1" type="radio" name="gender" value="male" checked>
-												<label for="sbi1"><span></span><span><img src="images/Bitmap.png" title="" alt=""></span></label>
-											</li>
-											<li>
-												<input id="hdfc1" type="radio" name="gender" value="male" checked>
-												<label for="hdfc1"><span></span><span><img src="images/Bitmap.png" title="" alt=""></span></label>
-											</li>
-											<li>
-												<input id="city1" type="radio" name="gender" value="male" checked>
-												<label for="city1"><span></span><span><img src="images/Bitmap.png" title="" alt=""></span></label>
-											</li>
-											<li>
-												<input id="idbi1" type="radio" name="gender" value="male" checked>
-												<label for="idbi1"><span></span><span><img src="images/Bitmap.png" title="" alt=""></span></label>
-											</li>
-										</ul>
-									</div>
-								</li>
-								<li>
-									<a href="#">Net Banking</a>
-									<div class="col-xs-12 NetBanking">
-										<ul role="nasted-list">
-											<li>
-												<input id="icici2" type="radio" name="gender" value="male" checked>
-												<label for="icici2"><span></span><span><img src="images/Bitmap.png" title="" alt=""></span></label>
-											</li>
-											<li>
-												<input id="axis2" type="radio" name="gender" value="male" checked>
-												<label for="axis2"><span></span><span><img src="images/Bitmap.png" title="" alt=""></span></label>
-											</li>
-											<li>
-												<input id="sbi2" type="radio" name="gender" value="male" checked>
-												<label for="sbi2"><span></span><span><img src="images/Bitmap.png" title="" alt=""></span></label>
-											</li>
-											<li>
-												<input id="hdfc2" type="radio" name="gender" value="male" checked>
-												<label for="hdfc2"><span></span><span><img src="images/Bitmap.png" title="" alt=""></span></label>
-											</li>
-											<li>
-												<input id="city2" type="radio" name="gender" value="male" checked>
-												<label for="city2"><span></span><span><img src="images/Bitmap.png" title="" alt=""></span></label>
-											</li>
-											<li>
-												<input id="idbi2" type="radio" name="gender" value="male" checked>
-												<label for="idbi2"><span></span><span><img src="images/Bitmap.png" title="" alt=""></span></label>
-											</li>
-										</ul>
-										<div class="col-xs-12 nopadding">
-											<span class="pull-left or">OR</span>
-											<div class="select-style">
-												<select>
-													<option value="volvo">Volvo</option>
-													<option value="saab">Saab</option>
-													<option value="mercedes">Mercedes</option>
-													<option value="audi">Audi</option>
-												</select>
+										<!-- show on creditcard -->
+										<div class="col-xs-12 col-sm-8 creditcard" ng-if = "item.method == 'Credit card'">
+											<form name="creditForm" ng-submit="submitCreditForm()" novalidate >
+												<div class="col-xs-12 nopadding">
+													<fieldset class="form-group" ng-class="{ 'error' : creditForm.cardNumber.$invalid && !creditForm.cardNumber.$pristine }">
+														<label>Credit Card Number</label>
+														<input name="cardNumber" type="number" placeholder="Credit Card Number" class="form-control"  ng-minlength = "9" ng-model="credit.cardNumber" required>
+														<p ng-show="creditForm.cardNumber.$error.minlength">Please Enter Valid Credit Card Number</p>
+													</fieldset>
+												</div>
+												<div class="col-xs-12 nopadding">
+													<fieldset class="form-group" ng-class="{ 'error' : creditForm.cardName.$invalid && !creditForm.cardName.$pristine }">
+														<label>Name on Card</label>
+														<input type="text" placeholder="Name on Card" class="form-control" ng-model="creditForm.cardName" required>
+														<p ng-show="creditForm.cardName.$invalid">Please Enter Card Name</p>
+													</fieldset>
+												</div>
+												<div class="col-xs-12 nopadding">
+													<div class="col-xs-7 valid-upto">
+														<fieldset class="form-group" ng-class="{ 'error' : creditForm.cardMonth.$invalid && !creditForm.cardMonth.$pristine }">
+															<label>Valid Upto</label>
+															<input type="number" placeholder="MM" maxlength="2" class="form-control pull-left" ng-model="creditForm.cardMonth">
+															<span role="division">/</span>
+															<input type="number" placeholder="YY" maxlength="4" class="form-control pull-right" ng-model="creditForm.cardYear">
+														</fieldset>
+													</div>
+													<div class="col-xs-5 cvv-code">
+														<fieldset class="form-group">
+															<label>CVV Code</label>
+															<input maxlength="3" type="text" class="form-control" ng-model="creditForm.cardCvv">
+														</fieldset>
+													</div>
+												</div>
+												<div class="col-xs-12 nopadding">
+													<button type="submit" class="btn btn-newStyle bg-green" ng-disabled="submitCreditForm.$invalid">PAY <span><i>&#x20B9;</i>3240</span> SECURELY</button>
+												</div>
+											</form>
+										</div>
+										<!-- show on Debit card -->
+										<div class="col-xs-12 DebitCard" ng-if = "item.method == 'Debit Card'">
+											<form name="DebitCardForm" ng-submit="submitCreditForm()" novalidate >
+												<label>Debit Card Form</label>
+											</form>
+										</div>
+										<!-- show on Net Banking -->
+										<div class="col-xs-12 NetBanking" ng-if = "item.method == 'Net Banking'">
+											<ul role="nasted-list">
+												<li ng-repeat = "bank in item.content.priority">
+													<input id="{{bank.bank_code}}" type="radio" name="bank" value="{{bank.bank_name}}">
+													<label for="{{bank.bank_code}}"><span></span><span><img ng-src="{{bank.logo_url}}" title="" alt=""></span></label>
+												</li>
+
+											</ul>
+											<div class="col-xs-12 nopadding">
+												<span class="pull-left or">OR</span>
+												<div class="select-style">
+													<select ng-model="selectedItem">
+														<option ng-repeat="bank as bank in item.content.priority">{{bank}}</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-xs-12 col-sm-8 nopadding">
+												<a class="btn btn-newStyle bg-green" href="javascript:void(0)" ng-click="netBanking()">PAY <span><i>&#x20B9;</i>3240</span> SECURELY</a>
 											</div>
 										</div>
-									</div>
+										<!-- pay U Money -->
+										<div class="col-xs-12 PayUMoney" ng-if = "item.method == 'PayU Money'">
+											<form name="DebitCardForm" ng-submit="submitCreditForm()" novalidate >
+												<label>PayU Money</label>
+											</form>
+										</div>
 								</li>
-								<li><a href="#">Pay U Money</a></li>
 							</ul>
 						</div>
 					</div>
