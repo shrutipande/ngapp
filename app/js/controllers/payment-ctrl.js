@@ -2,7 +2,7 @@ define(['./index'], function (controllers) {
     'use strict';
     controllers.controller('paymentCtrl', ['$scope', 'craftsvillaService', function ($scope,craftsvillaService) {
 			window.scope = $scope;
-
+			$scope.credit = {};
 			// Repeat
 
 			// Tabs
@@ -18,18 +18,29 @@ define(['./index'], function (controllers) {
 			}
 			// Credit Card Pay
 			$scope.submitCreditForm = function() {
-				alert("Credit Card");
-				if ($scope.creditForm.$valid) {
-					console.log($scope.creditForm);
-				}
+				craftsvillaService.placeOrder({
+					"pg":"CC",
+					"bankcode":"VISA",
+					"ccnum": $scope.credit.cardNumber,
+					"ccname": $scope.credit.cardName,
+					"ccvv": $scope.credit.cardCvv,
+					"ccexpmon":$scope.credit.cardMonth,
+					"ccexpyr": $scope.credit.cardYear
+				})
+				.success(function(data){
+					console.log(data);
+				})
+				.error(function(err){
+					console.log(err);
+				})
 			}
 			// Debit Card
 			$scope.debitCard = function() {
-				alert("debit Card");
+				$scope.pg = 'DC';
 			}
 			// Net Banking
 			$scope.netBanking = function() {
-				alert("Net Banking");
+				$scope.pg = 'NB';
 			}
 			// Pay U Money
 			$scope.payUbtn = function() {

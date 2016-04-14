@@ -194,27 +194,27 @@
 									<div class="col-xs-12 nopadding">
 										<fieldset class="form-group" ng-class="{ 'error' : creditForm.cardName.$invalid && !creditForm.cardName.$pristine }">
 											<label>Name on Card</label>
-											<input type="text" placeholder="Name on Card" class="form-control" ng-model="creditForm.cardName" required>
+											<input type="text" placeholder="Name on Card" class="form-control" ng-model="credit.cardName" required>
 										</fieldset>
 									</div>
 									<div class="col-xs-12 nopadding">
 										<div class="col-xs-7 valid-upto">
 											<fieldset class="form-group" ng-class="{ 'error' : (!creditForm.cardM.$valid && !creditForm.cardM.$pristine) || (!creditForm.cardY.$valid && !creditForm.cardY.$pristine) }">
 												<label>Valid Upto</label>
-												<input ng-model="creditForm.cardMonth" cc-exp-month class="form-control pull-left" placeholder="MM"  name="cardM"/>
+												<input ng-model="credit.cardMonth" cc-exp-month class="form-control pull-left" placeholder="MM"  name="cardM"/>
 												<span role="division">/</span>
-  											<input ng-model="creditForm.cardYear" cc-exp-year class="form-control pull-right" placeholder="YY" name="cardY"/>
+  											<input ng-model="credit.cardYear" cc-exp-year class="form-control pull-right" placeholder="YY" name="cardY"/>
 											</fieldset>
 										</div>
 										<div class="col-xs-5 cvv-code">
 											<fieldset class="form-group" ng-class="{'error' : !creditForm.cardCvv.$valid && !creditForm.cardCvv.$pristine}">
 												<label>CVV Code</label>
-												<input type="text" class="form-control" id="cvc" cc-cvc cc-type="creditForm.cardNumber.$ccType" name="cardCvv" ng-model="card.cardCvv">
+												<input type="text" class="form-control" id="cvc" cc-cvc cc-type="creditForm.cardNumber.$ccType" name="cardCvv" ng-model="credit.cardCvv">
 											</fieldset>
 										</div>
 									</div>
 									<div class="col-xs-12 nopadding">
-										<button type="submit" class="btn btn-newStyle bg-green" ng-disabled="submitCreditForm.$invalid">PAY <span><i>&#x20B9;</i>3240</span> SECURELY</button>
+										<button type="submit" class="btn btn-newStyle bg-green" ng-disabled="creditForm.$invalid">PAY <span><i>&#x20B9;</i>3240</span> SECURELY</button>
 									</div>
 								</form>
 							</div>
@@ -265,7 +265,7 @@
 						    <!-- Nav tabs -->
 							<ul data-payment-mobile class="nav nav-tabs tabs-left">
 								<li ng-repeat="item in paymentMethods" ng-class="{ active: changeName == '{{item.method}}' }">
-									<a href="javascript:void(0)" data-toggle="tab" ng-click="changeSlide(item.method)">{{ item.method }}</a>
+									<a href="javascript:void(0)" data-toggle="tab" ng-click="changeSlide(item)">{{ item.method }}</a>
 										<!-- show on cod -->
 										<div class="col-xs-12 cashondelivery" ng-if = "item.method == 'Cash On Delivery'">
 											<h3>Pay Using Cash on Delivery</h3>

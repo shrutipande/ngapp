@@ -25,7 +25,8 @@ define(['./index'], function (services) {
       getRegister : getRegister,
       forgotPassword : forgotPassword,
       getLogout : getLogout,
-      getPaymentMethods : getPaymentMethods
+      getPaymentMethods : getPaymentMethods,
+      placeOrder: placeOrder
     };
 
     //////////////////////////////////////////
@@ -213,6 +214,15 @@ define(['./index'], function (services) {
         customerId: customerId,
         quoteId: quoteId
       });
+    }
+
+    // Place order (Prepaid)
+    function placeOrder(json) {
+      return $http({
+        method: 'POST',
+        url: 'http://dev7.craftsvilla.com/checkoutService/index/placeOrderPrepaid',
+        data: json
+      })
     }
 
   }]);
