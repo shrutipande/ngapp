@@ -1,6 +1,7 @@
 define(['./index'], function (controllers) {
     'use strict';
     controllers.controller('paymentCtrl', ['$scope', 'craftsvillaService', function ($scope,craftsvillaService) {
+			window.scope = $scope;
 
 			// Repeat
 

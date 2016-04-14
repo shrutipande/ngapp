@@ -173,12 +173,22 @@
 							</div>
 							<!-- show on creditcard -->
 							<div class="col-xs-12 col-sm-8 creditcard" ng-if = "item.method == 'Credit card'">
-								<form name="creditForm" ng-submit="submitCreditForm()" novalidate >
+								<form name="creditForm" ng-submit="submitCreditForm()" novalidate>
 									<div class="col-xs-12 nopadding">
 										<fieldset class="form-group" ng-class="{ 'error' : creditForm.cardNumber.$invalid && !creditForm.cardNumber.$pristine }">
 											<label>Credit Card Number</label>
-											<input name="cardNumber" type="number" placeholder="Credit Card Number" class="form-control"  ng-minlength = "9" ng-model="credit.cardNumber" required>
-											<p ng-show="creditForm.cardNumber.$error.minlength">Please Enter Valid Credit Card Number</p>
+											<input
+												class="form-control"
+									      type="text"
+									      name="cardNumber"
+									      ng-model="credit.cardNumber"
+									      required
+									      cc-number
+												cc-format
+												cc-type="cardType"
+									      placeholder="Card Number" >
+											<p ng-show="creditForm.cardNumber.$invalid && !creditForm.cardNumber.$pristine">Invalid Credit Card</p>
+											<span class="card-type">{{creditForm.cardNumber.$ccType || ''}}</span>
 										</fieldset>
 									</div>
 									<div class="col-xs-12 nopadding">

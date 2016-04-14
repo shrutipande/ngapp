@@ -2,6 +2,8 @@ define([
   'angular',
   'angular-sanitize',
   'angular-ui-router',
+  'angular-credit-cards',
+
   'config',
   './controllers/index',
   './directives/index',
@@ -19,6 +21,7 @@ define([
     'app.directives',
     'app.animations',
     'ngSanitize',
-    'ui.router'
+    'ui.router',
+    'credit-cards'
   ]);
 });
