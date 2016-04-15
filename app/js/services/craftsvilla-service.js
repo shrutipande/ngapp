@@ -26,7 +26,8 @@ define(['./index'], function (services) {
       forgotPassword : forgotPassword,
       getLogout : getLogout,
       getPaymentMethods : getPaymentMethods,
-      placeOrder: placeOrder
+      placeOrder: placeOrder,
+      paymentRedirect: paymentRedirect
     };
 
     //////////////////////////////////////////
@@ -221,6 +222,14 @@ define(['./index'], function (services) {
       return $http({
         method: 'POST',
         url: 'http://dev7.craftsvilla.com/checkoutService/index/placeOrderPrepaid',
+        data: json
+      })
+    }
+
+    function paymentRedirect(url, json) {
+      return $http({
+        method: 'POST',
+        url: url,
         data: json
       })
     }

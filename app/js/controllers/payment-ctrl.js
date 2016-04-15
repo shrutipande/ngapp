@@ -28,7 +28,35 @@ define(['./index'], function (controllers) {
 					"ccexpyr": $scope.credit.cardYear
 				})
 				.success(function(data){
+
 					console.log(data);
+					return;
+
+					var form = document.createElement("form");
+			    form.setAttribute("method", 'POST');
+			    form.setAttribute("action", data.url);
+
+			    for(var key in data.parameter) {
+		        if(data.parameter.hasOwnProperty(key)) {
+	            var hiddenField = document.createElement("input");
+	            hiddenField.setAttribute("type", "hidden");
+	            hiddenField.setAttribute("name", key);
+	            hiddenField.setAttribute("value", data.parameter[key]);
+
+	            form.appendChild(hiddenField);
+		         }
+			    }
+
+					document.body.appendChild(form);
+    			form.submit();
+
+					// craftsvillaService.paymentRedirect(payUData.url, payUData.parameter)
+					// .success(function(data) {
+					//
+					// })
+					// .error(function(err){
+					// 	console.log(err);
+					// })
 				})
 				.error(function(err){
 					console.log(err);
