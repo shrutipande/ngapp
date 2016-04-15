@@ -7,8 +7,6 @@ define(['./index'], function (services) {
       getCartData: getCartData,
       getApplyCoupon : getApplyCoupon,
       getRemoveCoupon: getRemoveCoupon,
-     // getProducts: getProducts,
-     // getProductById: getProductById,
       loadQuote: loadQuote,
       updateQty: updateQty,
       addToQuote: addToQuote,

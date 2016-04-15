@@ -23,7 +23,5 @@ define(['angular'], function (angular) {
         // $httpProvider.defaults.headers.common = {};
         $httpProvider.defaults.headers.post = {};
         $httpProvider.defaults.headers.get = {};
-        $httpProvider.defaults.headers.put = {};
-        $httpProvider.defaults.headers.patch = {};
       }])
 });
