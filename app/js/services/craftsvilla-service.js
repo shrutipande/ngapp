@@ -4,9 +4,11 @@ define(['./index'], function (services) {
   services.service('craftsvillaService', ['$http','HOST', function($http,HOST) {
 
     return {
-
-
-      postQuote: postQuote,
+      getCartData: getCartData,
+      getApplyCoupon : getApplyCoupon,
+      getRemoveCoupon: getRemoveCoupon,
+      getProducts: getProducts,
+      getProductById: getProductById,
       loadQuote: loadQuote,
       updateQty: updateQty,
       addToQuote: addToQuote,
@@ -26,81 +28,88 @@ define(['./index'], function (services) {
       forgotPassword : forgotPassword,
       getLogout : getLogout,
       getPaymentMethods : getPaymentMethods,
-      placeOrder: placeOrder
+      continueAsGuest : continueAsGuest,
+      loadFinalQuote : loadFinalQuote
     };
 
     //////////////////////////////////////////
 
-  //cart page
 
-    function loadQuote(customerId, quoteId) {
-      return $http.post('https://securelocal.craftsvilla.com/checkoutService/index/loadQuote',
-      {
-        "customerId": customerId,
-        "quoteId": quoteId
-      }
-      );
+    function getCartData(){
+      return $http.get('https://api.myjson.com/bins/u3o4');
+      //https://api.myjson.com/bins/36aj8
     }
 
-    function updateQty(productId, quoteId, productQty) {
-      return $http.post('https://securelocal.craftsvilla.com/checkoutService/index/updateQty', {
+    function getApplyCoupon(c) {
+      return $http.get( 'https://api.myjson.com/bins/3md8k');
+      //https://api.myjson.com/bins/22n2c
+      //https://api.myjson.com/bins/3md8k
+    }
+
+    function getRemoveCoupon(c) {
+      return $http.get( 'https://api.myjson.com/bins/2wv10');
+
+    }
+
+    //demo apis ends here
+
+    function loadQuote() {
+      alert("hi")
+      return $http.get( HOST + 'checkoutService/index/loadQuote');
+    }
+
+    function updateQty(productId, productQty) {
+      return $http.post( HOST + 'checkoutService/index/updateQty', {
         "productId": productId,
-        "quoteId": quoteId,
         "productQty": productQty
       });
     }
 
       //remove items
-    function removeQuoteItems(productIdArrayObj, quoteId) {
-      return $http.post('https://securelocal.craftsvilla.com/checkoutService/index/removeQuoteItems', {
-        "productIds":productIdArrayObj,
-        "quoteId": quoteId
+    function removeQuoteItems(productIdArrayObj) {
+      return $http.post( HOST + 'checkoutService/index/removeQuoteItems', {
+        "productIds":productIdArrayObj
       });
     }
 
-    function addNoteToSeller(productId, quoteId, comment) {
-      return $http.post('https://securelocal.craftsvilla.com/checkoutService/index/addNoteToSeller', {
+    function addNoteToSeller(productId, comment) {
+      return $http.post( HOST + 'checkoutService/index/addNoteToSeller', {
         "productId": productId,
-        "quoteId": quoteId,
         "comment": comment
       });
     }
 
-    function updateNoteToSeller(productId, quoteId, comment) {
-      return $http.post('https://securelocal.craftsvilla.com/checkoutService/index/updateNoteToSeller', {
+
+    function updateNoteToSeller(productId, comment) {
+      return $http.post( HOST + 'checkoutService/index/updateNoteToSeller', {
         "productId": productId,
-        "quoteId": quoteId,
         "comment": comment
       });
     }
 
-    function removeNoteToSeller(productId, quoteId) {
-      return $http.post('https://securelocal.craftsvilla.com/checkoutService/index/removeNoteToSeller', {
-        "productId": productId,
-        "quoteId": quoteId
+    function removeNoteToSeller(productId) {
+      return $http.post( HOST + 'checkoutService/index/removeNoteToSeller', {
+        "productId": productId
       });
     }
 
-    function applyCoupon(couponCode, quoteId) {
-      return $http.post('https://securelocal.craftsvilla.com/checkoutService/index/applyCoupon', {
-        "couponCode": couponCode,
-        "quoteId": quoteId
+    function applyCoupon(couponCode) {
+      return $http.post( HOST + 'checkoutService/index/applyCoupon', {
+        "couponCode": couponCode
       });
     }
 
-    function removeCoupon(couponCode, quoteId) {
-      return $http.post('https://securelocal.craftsvilla.com/checkoutService/index/removeCoupon', {
-        "couponCode": couponCode,
-        "quoteId": quoteId
+    function removeCoupon(couponCode) {
+      return $http.post( HOST + 'checkoutService/index/removeCoupon', {
+        "couponCode": couponCode
       });
     }
 
       // undo remove from cart
-    function addToQuote(productId, qty, quoteId) {
-      return $http.post('https://securelocal.craftsvilla.com/checkoutService/index/addToQuote', {
+    function addToQuote(productId, qty) {
+      return $http.post( HOST + 'checkoutService/index/addToQuote', {
         "productId": productId,
-        "qty": qty,
-        "quoteId": quoteId
+        "qty": qty
       });
     }
 
@@ -109,14 +118,14 @@ define(['./index'], function (services) {
   //login page
 
     function getLogin(emailId, password) {
-      return $http.post('https://securelocal.craftsvilla.com/checkoutService/index/getLogin', {
+      return $http.post( HOST + 'checkoutService/index/getLogin', {
         "emailId": emailId,
         "password": password
       });
     }
 
     function forgotPassword(emailId) {
-      return $http.post('https://securelocal.craftsvilla.com/checkoutService/index/forgotPassword', {
+      return $http.post( HOST + 'checkoutService/index/forgotPassword', {
         "emailId" : emailId
       });
     }
@@ -127,7 +136,7 @@ define(['./index'], function (services) {
   //register page
 
     function getRegister(firstName, lastName, emailId, phoneNo, password) {
-      return $http.post('https://securelocal.craftsvilla.com/checkoutService/index/getRegister', {
+      return $http.post( HOST + 'checkoutService/index/getRegister', {
         "firstName" : firstName,
         "lastName" : lastName,
         "emailId" : emailId,
@@ -140,33 +149,44 @@ define(['./index'], function (services) {
 
   //logout
 
-    function getLogout(customerId) {
-      return $http.post('https://securelocal.craftsvilla.com/checkoutService/index/getLogout', {
-        "customerId" : customerId
-      });
+    function getLogout() {
+      return $http.get( HOST + 'checkoutService/index/getLogout');
     }
 
   //logout ends
 
+  //continue as guest
+    function continueAsGuest(emailId) {
+      return $http.post( HOST + 'checkoutService/index/continueAsGuest', {
+        "customerEmail" : emailId
+      });
+    }
+  //continue as guest ends
+
+  //final quote
+    function loadFinalQuote() {
+      return $http.get( HOST + 'checkoutService/index/loadFinalQuote');
+    }
+  //final quote ends
+
+
+
 
   //shipping page
 
-    function getAddress(customerId) {
-      return $http.post('https://securelocal.craftsvilla.com/checkoutService/index/getAddress', {
-        "customerId": customerId
-      });
+    function getAddress() {
+      return $http.get( HOST + 'checkoutService/index/getAddress');
     }
 
     function assignAddressToQuote(billingId, shippingId) {
-      return $http.post('http://dev7.craftsvilla.com/checkoutService/index/assignAddressToQuote', {
+      return $http.post( HOST + 'checkoutService/index/assignAddressToQuote', {
         "billingId": billingId,
         "shippingId": shippingId
       });
     }
 
-    function updateAddress(customerId, name, address1, address2, city, state, pincode, country, phoneNo, isBillingAddress, addressId) {
-      return $http.post('https://securelocal.craftsvilla.com/checkoutService/index/updateAddress', {
-        "customerId" : customerId,
+    function updateAddress(name, address1, address2, city, state, pincode, country, phoneNo, isBillingAddress, addressId) {
+      return $http.post( HOST + 'checkoutService/index/updateAddress', {
         "name" : name,
         "address1" : address1,
         "address2" : address2,
@@ -181,12 +201,11 @@ define(['./index'], function (services) {
     }
 
     function getCountry() {
-      return $http.get('https://securelocal.craftsvilla.com/checkoutService/index/getCountry');
+      return $http.get( HOST + 'checkoutService/index/getCountry');
     }
 
-    function addAddress(customerId, name, address1, address2, city, state, pincode, country, phoneNo, isBillingAddress) {
-      return $http.post('https://securelocal.craftsvilla.com/checkoutService/index/addAddress', {
-        "customerId" : customerId,
+    function addAddress(name, address1, address2, city, state, pincode, country, phoneNo, isBillingAddress) {
+      return $http.post( HOST + 'checkoutService/index/addAddress', {
         "name" : name,
         "address1" : address1,
         "address2" : address2,
@@ -209,21 +228,6 @@ define(['./index'], function (services) {
 
   //payment methods ends
 
-    function postQuote (customerId, quoteId) {
-      return $http.post('http://local.craftsvilla.com/checkoutService/index/loadQuote', {
-        customerId: customerId,
-        quoteId: quoteId
-      });
-    }
-
-    // Place order (Prepaid)
-    function placeOrder(json) {
-      return $http({
-        method: 'POST',
-        url: 'http://dev7.craftsvilla.com/checkoutService/index/placeOrderPrepaid',
-        data: json
-      })
-    }
 
   }]);
 });
