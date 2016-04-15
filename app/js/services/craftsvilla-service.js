@@ -4,11 +4,12 @@ define(['./index'], function (services) {
   services.service('craftsvillaService', ['$http','HOST', function($http,HOST) {
 
     return {
-      getCartData: getCartData,
-      getApplyCoupon : getApplyCoupon,
-      getRemoveCoupon: getRemoveCoupon,
-      getProducts: getProducts,
-      getProductById: getProductById,
+      //getCartData: getCartData,
+      //getApplyCoupon : getApplyCoupon,
+      //getRemoveCoupon: getRemoveCoupon,
+      //getProducts: getProducts,
+      //getProductById: getProductById,
+      loginCheck : loginCheck,
       loadQuote: loadQuote,
       updateQty: updateQty,
       addToQuote: addToQuote,
@@ -35,7 +36,7 @@ define(['./index'], function (services) {
     //////////////////////////////////////////
 
 
-    function getCartData(){
+    /*function getCartData(){
       return $http.get('https://api.myjson.com/bins/u3o4');
       //https://api.myjson.com/bins/36aj8
     }
@@ -49,12 +50,15 @@ define(['./index'], function (services) {
     function getRemoveCoupon(c) {
       return $http.get( 'https://api.myjson.com/bins/2wv10');
 
-    }
+    }*/
 
     //demo apis ends here
+    function loginCheck () {
+      return $http.get( HOST + 'checkoutService/index/loginCheck');
+    }
 
     function loadQuote() {
-      alert("hi")
+      //alert("hi")
       return $http.get( HOST + 'checkoutService/index/loadQuote');
     }
 
@@ -94,12 +98,14 @@ define(['./index'], function (services) {
     }
 
     function applyCoupon(couponCode) {
+      console.log(couponCode);
       return $http.post( HOST + 'checkoutService/index/applyCoupon', {
-        "couponCode": couponCode
+        "couponCode" : couponCode
       });
     }
 
     function removeCoupon(couponCode) {
+      console.log(couponCode);
       return $http.post( HOST + 'checkoutService/index/removeCoupon', {
         "couponCode": couponCode
       });
@@ -227,6 +233,8 @@ define(['./index'], function (services) {
     }
 
   //payment methods ends
+
+
 
 
   }]);

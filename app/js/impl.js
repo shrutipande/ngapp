@@ -11,7 +11,7 @@ define([
     './controllers/payment-error-ctrl',
     './controllers/payment-success-ctrl',
     './controllers/shipping-ctrl',
-    './controllers/test-ctrl',
+    // './controllers/test-ctrl',
     './directives/craftsvilla-directive',
     './services/craftsvilla-service',
     './filters/craftsvilla-filter',
