@@ -69,8 +69,8 @@ a.signup-fb { background: #4962ba none repeat scroll 0 0; }
 
 .signinForm { border-right: solid 1px #d8d8d8;}
 .signinForm .form-control { border-radius: 0; height: 45px; padding: 4px 15px 6px 15px; color: #9b9b9b; }
-.signinForm .error input { border: solid 1px #ff0c00; }
-.signinForm .error span { color: #ff0c00; display: block; }
+ .error input { border: solid 1px #ff0c00; }
+ .error span { color: #ff0c00; display: block; }
 .signinForm h4, .socialMediaContainer h4 { font-weight: 700; font-size: 16px; color: #747474; }
 a[role="ForgotPassword"] { color: #981937; }
 a[role="ForgotPassword"]:hover { text-decoration: none; }
@@ -298,3 +298,16 @@ ul.choose-payment .not-eligible { position: inherit; left: 0; padding: 0; top: 3
 .or { margin: 0 15px 15px 0; }
 span[role="division"] { margin-left: 5%; }
 }
+
+
+.addressEditContainer .close-edit{float: right;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    background-color:#3C3B3B;
+    color: #fff;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-right: 10px;
+    text-align: center;
+    font-weight: bold;}

@@ -4,51 +4,229 @@ define(['./index'], function (services) {
   services.service('craftsvillaService', ['$http','HOST', function($http,HOST) {
 
     return {
-
-      getProducts: getProducts,
-      getProductById: getProductById,
-      postQuote: postQuote
-      //createOffer: createOffer,
-      //editOffer: editOffer,
-      //deactivateOffer: deactivateOffer,
-      //activateOffer: activateOffer,
-      //removeOfferUser: removeOfferUser,
-      //editLimitUser: editLimitUser,
-      //addOfferUser: addOfferUser,
-      //removeOffer: removeOffer,
-      //addApology: addApology,
-      //getApologyOffer: getApologyOffer,
-      //getPendingApology: getPendingApology,
-      //getApprovedApology: getApprovedApology,
-      //approveApology: approveApology,
-      //disApproveApology: disApproveApology,
-      //createApologyRequest: createApologyRequest,
-      //sendApologySMS: sendApologySMS
+      getCartData: getCartData,
+      getApplyCoupon : getApplyCoupon,
+      getRemoveCoupon: getRemoveCoupon,
+     // getProducts: getProducts,
+     // getProductById: getProductById,
+      loadQuote: loadQuote,
+      updateQty: updateQty,
+      addToQuote: addToQuote,
+      removeQuoteItems: removeQuoteItems,
+      addNoteToSeller: addNoteToSeller,
+      updateNoteToSeller: updateNoteToSeller,
+      removeNoteToSeller: removeNoteToSeller,
+      applyCoupon: applyCoupon,
+      removeCoupon: removeCoupon,
+      getAddress : getAddress,
+      getCountry : getCountry,
+      addAddress : addAddress,
+      assignAddressToQuote : assignAddressToQuote,
+      updateAddress : updateAddress,
+      getLogin : getLogin,
+      getRegister : getRegister,
+      forgotPassword : forgotPassword,
+      getLogout : getLogout,
+      getPaymentMethods : getPaymentMethods,
+      continueAsGuest : continueAsGuest,
+      loadFinalQuote : loadFinalQuote
     };
 
     //////////////////////////////////////////
 
-    function getProducts() {
-      return $http.get(HOST + '2tc8u');
+
+    function getCartData(){
+      return $http.get('https://api.myjson.com/bins/u3o4');
+      //https://api.myjson.com/bins/36aj8
     }
 
-    function getProductById() {
-      return $http.get(HOST + '1lyle');
+    function getApplyCoupon(c) {
+      return $http.get( 'https://api.myjson.com/bins/3md8k');
+      //https://api.myjson.com/bins/22n2c
+      //https://api.myjson.com/bins/3md8k
     }
 
-    function getProductPost (id, xyz) {
-      return $http.post(HOST + '1lyle', {
+    function getRemoveCoupon(c) {
+      return $http.get( 'https://api.myjson.com/bins/2wv10');
 
+    }
+
+    //demo apis ends here
+
+    function loadQuote() {
+      alert("hi")
+      return $http.get( HOST + 'checkoutService/index/loadQuote');
+    }
+
+    function updateQty(productId, productQty) {
+      return $http.post( HOST + 'checkoutService/index/updateQty', {
+        "productId": productId,
+        "productQty": productQty
       });
     }
 
-    function postQuote (customerId, quoteId) {
-      return $http.post('https://securelocal.craftsvilla.com/checkoutService/index/loadQuote', {
-        customerId: customerId,
-        quoteId: quoteId
+      //remove items
+    function removeQuoteItems(productIdArrayObj) {
+      return $http.post( HOST + 'checkoutService/index/removeQuoteItems', {
+        "productIds":productIdArrayObj
       });
     }
 
+    function addNoteToSeller(productId, comment) {
+      return $http.post( HOST + 'checkoutService/index/addNoteToSeller', {
+        "productId": productId,
+        "comment": comment
+      });
+    }
+
+
+    function updateNoteToSeller(productId, comment) {
+      return $http.post( HOST + 'checkoutService/index/updateNoteToSeller', {
+        "productId": productId,
+        "comment": comment
+      });
+    }
+
+    function removeNoteToSeller(productId) {
+      return $http.post( HOST + 'checkoutService/index/removeNoteToSeller', {
+        "productId": productId
+      });
+    }
+
+    function applyCoupon(couponCode) {
+      return $http.post( HOST + 'checkoutService/index/applyCoupon', {
+        "couponCode": couponCode
+      });
+    }
+
+    function removeCoupon(couponCode) {
+      return $http.post( HOST + 'checkoutService/index/removeCoupon', {
+        "couponCode": couponCode
+      });
+    }
+
+      // undo remove from cart
+    function addToQuote(productId, qty) {
+      return $http.post( HOST + 'checkoutService/index/addToQuote', {
+        "productId": productId,
+        "qty": qty
+      });
+    }
+
+  //cart page ends
+
+  //login page
+
+    function getLogin(emailId, password) {
+      return $http.post( HOST + 'checkoutService/index/getLogin', {
+        "emailId": emailId,
+        "password": password
+      });
+    }
+
+    function forgotPassword(emailId) {
+      return $http.post( HOST + 'checkoutService/index/forgotPassword', {
+        "emailId" : emailId
+      });
+    }
+
+  //login page ends
+
+
+  //register page
+
+    function getRegister(firstName, lastName, emailId, phoneNo, password) {
+      return $http.post( HOST + 'checkoutService/index/getRegister', {
+        "firstName" : firstName,
+        "lastName" : lastName,
+        "emailId" : emailId,
+        "phoneNo" : phoneNo,
+        "password" : password
+      });
+    }
+
+  //register page ends
+
+  //logout
+
+    function getLogout() {
+      return $http.get( HOST + 'checkoutService/index/getLogout');
+    }
+
+  //logout ends
+
+  //continue as guest
+    function continueAsGuest(emailId) {
+      return $http.post( HOST + 'checkoutService/index/continueAsGuest', {
+        "customerEmail" : emailId
+      });
+    }
+  //continue as guest ends
+
+  //final quote
+    function loadFinalQuote() {
+      return $http.get( HOST + 'checkoutService/index/loadFinalQuote');
+    }
+  //final quote ends
+
+
+
+
+  //shipping page
+
+    function getAddress() {
+      return $http.get( HOST + 'checkoutService/index/getAddress');
+    }
+
+    function assignAddressToQuote(billingId, shippingId) {
+      return $http.post( HOST + 'checkoutService/index/assignAddressToQuote', {
+        "billingId": billingId,
+        "shippingId": shippingId
+      });
+    }
+
+    function updateAddress(name, address1, address2, city, state, pincode, country, phoneNo, isBillingAddress, addressId) {
+      return $http.post( HOST + 'checkoutService/index/updateAddress', {
+        "name" : name,
+        "address1" : address1,
+        "address2" : address2,
+        "city" : city,
+        "state" : state,
+        "pincode" : pincode,
+        "country" : country,
+        "phoneNo" : phoneNo,
+        "isBillingAddress": isBillingAddress,
+        "addressId": addressId
+      });
+    }
+
+    function getCountry() {
+      return $http.get( HOST + 'checkoutService/index/getCountry');
+    }
+
+    function addAddress(name, address1, address2, city, state, pincode, country, phoneNo, isBillingAddress) {
+      return $http.post( HOST + 'checkoutService/index/addAddress', {
+        "name" : name,
+        "address1" : address1,
+        "address2" : address2,
+        "city" : city,
+        "state" : state,
+        "pincode" : pincode,
+        "country" : country,
+        "phoneNo" : phoneNo,
+        "isBillingAddress": isBillingAddress
+      });
+    }
+
+  //shipping page ends
+
+  //payment methods
+
+    function getPaymentMethods() {
+      return $http.get('https://api.myjson.com/bins/4yszk');
+    }
+
+  //payment methods ends
 
 
   }]);

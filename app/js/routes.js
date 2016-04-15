@@ -50,7 +50,8 @@ define(['./app'], function (app) {
           controller: 'emptyCartCtrl',
           title: 'Empty cart'
         });
-    $urlRouterProvider.otherwise("/login");
+         
+    $urlRouterProvider.otherwise("/shipping");
 
   }]);
 });

@@ -6,7 +6,7 @@ define(['angular'], function (angular) {
   return angular.module('app.config', [])
       .constant('VERSION', '0.0.1')
       //.constant('HOST', 'http://localhost:8000/api')
-      .constant('HOST', 'https://api.myjson.com/bins/')
+      .constant('HOST', 'http://dev7.craftsvilla.com/')
       //.constant('HOST', 'https://www.craftsvilla.com/api')
       .constant('ENVIRONMENT', 'development')
       .config(['$httpProvider', function ($httpProvider) {
@@ -19,5 +19,11 @@ define(['angular'], function (angular) {
         //$httpProvider.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
         //$httpProvider.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
         //$httpProvider.defaults.useXDomain = true;
+        // delete $httpProvider.defaults.headers.common['X-Requested-With'];
+        // $httpProvider.defaults.headers.common = {};
+        $httpProvider.defaults.headers.post = {};
+        $httpProvider.defaults.headers.get = {};
+        $httpProvider.defaults.headers.put = {};
+        $httpProvider.defaults.headers.patch = {};
       }])
 });
