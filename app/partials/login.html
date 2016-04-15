@@ -108,7 +108,7 @@
 								<form  name="sendPasswordForm" ng-submit="sendPassword()" novalidate>
 									<fieldset class="form-group" ng-class="{ 'error' : (sendPasswordForm.forgotEmail.$invalid && !sendPasswordForm.forgotEmail.$pristine)  || (sendPasswordForm.$submitted && sendPasswordForm.forgotEmail.$error.required)  }">
 										<input type="email" name="forgotEmail" class="form-control" placeholder="Enter email address" ng-model="userForgot.forgotEmail" required>
-										<span ng-message="sendPasswordForm.forgotEmail.$invalid && !sendPasswordForm.forgotEmail.$pristine" ng-show="sendPasswordForm.forgotEmail.$invalid && sendPasswordForm.forgotEmail.$touched"  class="error" >Email is either wrong or not registered with us.</span>
+										<span ng-message="sendPasswordForm.forgotEmail.$invalid && !sendPasswordForm.forgotEmail.$pristine" ng-show="sendPasswordForm.forgotEmail.$invalid && sendPasswordForm.forgotEmail.$touched"  class="error" >Please enter valid Email ID.</span>
 										<div ng-show="sendPasswordForm.$submitted">
                 						<span ng-show="sendPasswordForm.forgotEmail.$error.required" class="error">Please enter your email.</span>
                 					</div>
@@ -130,7 +130,7 @@
 							<fieldset class="form-group" ng-class="{ 'error' : (guestUserForm.guestEmail.$invalid && !guestUserForm.guestEmail.$pristine) || (guestUserForm.$submitted && guestUserForm.guestEmail.$error.required) }">
 								<label>Email</label>
 								<input type="email" name="guestEmail" class="form-control" placeholder="Enter email address" ng-model="guest.guestUserEmail" required>
-								<span ng-message="guestUserForm.guestEmail.$invalid && !guestUserForm.guestEmail.$pristine" ng-show="guestUserForm.guestEmail.$invalid && guestUserForm.guestEmail.$touched" class="error" >Email is either wrong or not registered with us.</span>
+								<span ng-message="guestUserForm.guestEmail.$invalid && !guestUserForm.guestEmail.$pristine" ng-show="guestUserForm.guestEmail.$invalid && guestUserForm.guestEmail.$touched" class="error" >Please enter valid Email ID.</span>
 								<div ng-show="guestUserForm.$submitted">
                 <span ng-show="guestUserForm.guestEmail.$error.required" class="error">Tell us your email.</span>
               </div>

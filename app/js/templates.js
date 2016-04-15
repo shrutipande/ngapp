@@ -1287,7 +1287,7 @@ define(['angular', 'app'], function(angular, app) { app.run(['$templateCache', f
     "\t\t\t\t\t\t\t\t<form  name=\"sendPasswordForm\" ng-submit=\"sendPassword()\" novalidate>\n" +
     "\t\t\t\t\t\t\t\t\t<fieldset class=\"form-group\" ng-class=\"{ 'error' : (sendPasswordForm.forgotEmail.$invalid && !sendPasswordForm.forgotEmail.$pristine)  || (sendPasswordForm.$submitted && sendPasswordForm.forgotEmail.$error.required)  }\">\n" +
     "\t\t\t\t\t\t\t\t\t\t<input type=\"email\" name=\"forgotEmail\" class=\"form-control\" placeholder=\"Enter email address\" ng-model=\"userForgot.forgotEmail\" required>\n" +
-    "\t\t\t\t\t\t\t\t\t\t<span ng-message=\"sendPasswordForm.forgotEmail.$invalid && !sendPasswordForm.forgotEmail.$pristine\" ng-show=\"sendPasswordForm.forgotEmail.$invalid && sendPasswordForm.forgotEmail.$touched\"  class=\"error\" >Email is either wrong or not registered with us.</span>\n" +
+    "\t\t\t\t\t\t\t\t\t\t<span ng-message=\"sendPasswordForm.forgotEmail.$invalid && !sendPasswordForm.forgotEmail.$pristine\" ng-show=\"sendPasswordForm.forgotEmail.$invalid && sendPasswordForm.forgotEmail.$touched\"  class=\"error\" >Please enter valid Email ID.</span>\n" +
     "\t\t\t\t\t\t\t\t\t\t<div ng-show=\"sendPasswordForm.$submitted\">\n" +
     "                \t\t\t\t\t\t<span ng-show=\"sendPasswordForm.forgotEmail.$error.required\" class=\"error\">Please enter your email.</span>\n" +
     "                \t\t\t\t\t</div>\n" +
@@ -1309,7 +1309,7 @@ define(['angular', 'app'], function(angular, app) { app.run(['$templateCache', f
     "\t\t\t\t\t\t\t<fieldset class=\"form-group\" ng-class=\"{ 'error' : (guestUserForm.guestEmail.$invalid && !guestUserForm.guestEmail.$pristine) || (guestUserForm.$submitted && guestUserForm.guestEmail.$error.required) }\">\n" +
     "\t\t\t\t\t\t\t\t<label>Email</label>\n" +
     "\t\t\t\t\t\t\t\t<input type=\"email\" name=\"guestEmail\" class=\"form-control\" placeholder=\"Enter email address\" ng-model=\"guest.guestUserEmail\" required>\n" +
-    "\t\t\t\t\t\t\t\t<span ng-message=\"guestUserForm.guestEmail.$invalid && !guestUserForm.guestEmail.$pristine\" ng-show=\"guestUserForm.guestEmail.$invalid && guestUserForm.guestEmail.$touched\" class=\"error\" >Email is either wrong or not registered with us.</span>\n" +
+    "\t\t\t\t\t\t\t\t<span ng-message=\"guestUserForm.guestEmail.$invalid && !guestUserForm.guestEmail.$pristine\" ng-show=\"guestUserForm.guestEmail.$invalid && guestUserForm.guestEmail.$touched\" class=\"error\" >Please enter valid Email ID.</span>\n" +
     "\t\t\t\t\t\t\t\t<div ng-show=\"guestUserForm.$submitted\">\n" +
     "                <span ng-show=\"guestUserForm.guestEmail.$error.required\" class=\"error\">Tell us your email.</span>\n" +
     "              </div>\n" +
