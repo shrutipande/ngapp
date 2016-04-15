@@ -28,6 +28,8 @@ define(['./index'], function (controllers) {
 					"ccexpyr": $scope.credit.cardYear
 				})
 				.success(function(data){
+					// console.log(data);
+					// return;
 					var form = document.createElement("form");
 			    form.setAttribute("method", 'POST');
 			    form.setAttribute("action", data.url);

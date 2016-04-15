@@ -220,9 +220,9 @@ define(['./index'], function (services) {
     // Place order (Prepaid)
     function placeOrder(json) {
       return $http({
-        method: 'POST',
+        method: 'GET',
         url: 'http://dev7.craftsvilla.com/checkoutService/index/placeOrderPrepaid',
-        data: json
+        params: json
       })
     }
 
