@@ -31,12 +31,12 @@ define(['angular'], function(angular) {
         .config([ '$authProvider', function($authProvider) {
 
             $authProvider.facebook({
-                clientId: '263834947290125',
+                clientId: '1696658660596971',
                 responseType: 'token'
             });
 
             $authProvider.google({
-                clientId: 'Google Client ID'
+                clientId: '-4rsq630ova71avmsph5ded5uvp3tac8t.apps.googleusercontent.com'
             });
 
         }]);
