@@ -205,7 +205,7 @@ define(['./index'], function (services) {
   //payment methods
 
     function getPaymentMethods() {
-      return $http.get('https://api.myjson.com/bins/4yszk');
+      return $http.get('http://dev7.craftsvilla.com/checkoutService/index/getPaymentMethods');
     }
 
   //payment methods ends
