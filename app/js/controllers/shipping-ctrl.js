@@ -45,8 +45,17 @@ define(['./index'], function (controllers) {
 		 	name: 'city14'
 		 }]
 
-
-		 $scope.editsubmitForm=function()
+		$scope.fetchCountries=function()
+		 	{	
+		 		$scope.currentCountries;
+		 		
+		 		craftsvillaService.getCountry()
+				.success(function(response){
+					console.log(response);
+					$scope.addresses = response.d;
+				})
+			}
+		$scope.editsubmitForm=function()
 		 	{	
 		 		//alert('submitForm');
 		 		
@@ -55,10 +64,50 @@ define(['./index'], function (controllers) {
 			{
 				craftsvillaService.getAddress()
 				.success(function(response){
-					console.log(response)
+					$scope.addresses = response.d;
+					$scope.shippingID = $scope.addresses[0].entity_id;
+					$scope.billingID = $scope.addresses[0].entity_id;
 				})
-			}	
-		$scope.viewaddress();	
+				.error(function(error){
+					console.log(error);
+					
+				});
+			}
+
+		$scope.shippadd=true;
+		$scope.billingAddress=true;
+		$scope.checkStatus=function(){
+			/*$scope.billingID =null;
+		angular.forEach($scope.addresses, function(value, key) {
+  this.push(key + ': ' + value);
+});*/
+
+			if ($scope.chkStatus) {
+				alert('checked:show');
+				$scope.showhideprop =false ;
+				$scope.shippadd=true;
+				$scope.billingAddress=true;
+				
+				}
+			else 
+				{
+				alert('unchecked: hide');
+				$scope.showhideprop =true;
+				$scope.shippadd=false;
+				$scope.billingAddress=false;
+				
+				}
+		};		
+			$scope.deliveryAddress=function(address){
+			console.log(address);
+			$scope.billingID = address.entity_id
+			craftsvillaService.assignAddressToQuote($scope.billingID, 2546)
+			.success(function(response){
+				console.log(response)
+			}
+			);
+			
+		}
 		 	
 		 $scope.addnewsubmit=function()
 		 	{	
@@ -109,38 +158,19 @@ define(['./index'], function (controllers) {
 			$scope.editAddPOP = true;
 		}
 
-		$scope.shippingEdit=function(){
-			console.log('Edit shipping Working');
+		$scope.shippingEdit=function(address){
+			console.log(address);
+			$scope.editAddr = angular.copy(address);
 			$scope.editAddPOP = false;
 			if ($scope.DeditAddress) {
 				console.log($scope.editAddr);
 			}
 
 		}
-		$scope.deliverAddress=function(){
-			console.log('Deliver to Address');
-			craftsvillaService.loadQuote(1234, 2546)
-			.success(function(response){
-				console.log(response)
-			});
-			//alert('Deliver to Address');
-		}
-		$scope.shippadd=true;
-		$scope.checkStatus=function(){
-			if ($scope.chkStatus) {
-				//alert('checked:show');
-				$scope.showhideprop =false ;
-				$scope.shippadd=true;
-				
-				}
-			else 
-				{
-				//alert('unchecked: hide');
-				$scope.showhideprop =true;
-				$scope.shippadd=false;
-				
-				}
-		};
+
+		
+
+
 		$scope.chkbill=true;
 		$scope.checkBilling=function(){
 
@@ -156,7 +186,10 @@ define(['./index'], function (controllers) {
 
 		$scope.chkStatus=true;
 		$scope.initshipping=function(){
+			$scope.viewaddress();	
+			$scope.fetchCountries();
 			
 		}
+		$scope.initshipping();
 	}]);
 });
