@@ -1253,24 +1253,28 @@ define(['angular', 'app'], function(angular, app) { app.run(['$templateCache', f
     "\t\t\t\t\t<div class=\"existingUser\" ng-hide=\"guestUser\">\n" +
     "\t\t\t\t\t\t<form name=\"userLoginForm\" ng-submit =\" loginCred()\" novalidate>\n" +
     "\t\t\t\t\t\t\t<fieldset class=\"form-group\" ng-class=\"{ 'error' : (userLoginForm.email.$invalid && !userLoginForm.email.$pristine) || (userLoginForm.$submitted && userLoginForm.email.$error.required)}\" >\n" +
+    "\n" +
     "\t\t\t\t\t\t\t\t<label>Email</label>\n" +
-    "\t\t\t\t\t\t\t\t<input type=\"email\" name=\"email\" class=\"form-control\" placeholder=\"email\"  ng-model=\"userLogin.email\" required>\n" +
-    "\t\t\t\t\t\t\t\t<span ng-show=\"userLoginForm.email.$invalid && !userLoginForm.email.$pristine\" class=\"error\" >Email is either wrong or not registered with us.</span>\n" +
-    "\t\t\t\t\t\t\t\t  <div ng-show=\"userLoginForm.$submitted || userLoginForm.email.$touched\" >\n" +
+    "\t\t\t\t\t\t\t\t\t<input type=\"email\" name=\"email\" class=\"form-control\" placeholder=\"Enter email address\"  ng-model=\"userLogin.email\" required>\n" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t<span ng-message=\"userLoginForm.email.$invalid && !userLoginForm.email.$pristine \" ng-show=\"userLoginForm.email.$invalid && userLoginForm.email.$touched\" class=\"error\" > Please enter valid email address.</span>\n" +
+    "\t\t\t\t\t\t\t\t  <div ng-show=\"userLoginForm.$submitted\" >\n" +
     "\t\t\t\t\t\t\t\t\t<span ng-show=\"userLoginForm.email.$error.required\" class=\"error\">Tell us your email.</span>\n" +
     "\t\t\t\t\t\t\t\t</div >\n" +
     "\t\t\t\t\t\t\t</fieldset>\n" +
     "\t\t\t\t\t\t\t<fieldset class=\"form-group \" ng-class=\"{'error': (userLoginForm.password.$invalid && !userLoginForm.password.$pristine) || (userLoginForm.$submitted && userLoginForm.password.$error.required)}\">\n" +
     "\t\t\t\t\t\t\t\t<label>Password</label>\n" +
     "\t\t\t\t\t\t\t\t<input type=\"password\" name =\"password\" class=\"form-control\" placeholder=\"password\"   ng-minlength=\"6\" ng-model=\"userLogin.password\" required>\n" +
-    "\t\t\t\t\t\t\t\t<span ng-show=\"userLoginForm.password.$error.minlength\" class=\"error\">Password needs to be minimum 6 characters.</span>\n" +
-    "\t\t\t\t\t\t\t\t <div ng-show=\"userLoginForm.$submitted || userLoginForm.password.$touched\" >\n" +
+    "\t\t\t\t\t\t\t\t<span ng-message=\"userLoginForm.password.$error.minlength &&  !userLoginForm.password.$pristine\" ng-show=\"userLoginForm.email.$invalid &&  userLoginForm.password.$touched\" class=\"error\">Password needs to be minimum 6 characters.</span>\n" +
+    "\t\t\t\t\t\t\t\t <div ng-show=\"userLoginForm.$submitted\" >\n" +
     "\t\t\t\t\t\t\t\t<span ng-show=\"userLoginForm.password.$error.required\" class=\"error\">Please enter password.</p>\n" +
     "\t\t\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t\t\t</fieldset>\n" +
+    "\t\t\t\t\t\t\t\t<div class=\"alert alert-warning rougeColor\" ng-show=\"invalidCred\">Invalid email ID or Password!</div>\n" +
     "\t\t\t\t\t\t\t<fieldset class=\"form-group\">\n" +
-    "\t\t\t\t\t\t\t\t<a role=\"ForgotPassword\" href=\"javascript:void(0)\" ng-click=\"forgotPwd()\">Forgot password?</a>\n" +
+    "\t\t\t\t\t\t\t\t<a role=\"ForgotPassword\"  href=\"javascript:void(0)\" ng-click=\"forgotPwd()\">Forgot password?</a>\n" +
     "\t\t\t\t\t\t\t</fieldset>\n" +
+    "\n" +
     "\t\t\t\t\t\t\t<div class=\"BtnContainer col-xs-12 nopadding\">\n" +
     "\t\t\t\t\t\t\t\t<button class=\"btn newBtn\" type=\"submit\"> LOGIN</button>\n" +
     "\t\t\t\t\t\t\t</div>\n" +
@@ -1282,11 +1286,11 @@ define(['angular', 'app'], function(angular, app) { app.run(['$templateCache', f
     "\t\t\t\t\t\t\t\t<p>Enter your email below and we’ll send you a new password by email.</p>\n" +
     "\t\t\t\t\t\t\t\t<form  name=\"sendPasswordForm\" ng-submit=\"sendPassword()\" novalidate>\n" +
     "\t\t\t\t\t\t\t\t\t<fieldset class=\"form-group\" ng-class=\"{ 'error' : (sendPasswordForm.forgotEmail.$invalid && !sendPasswordForm.forgotEmail.$pristine)  || (sendPasswordForm.$submitted && sendPasswordForm.forgotEmail.$error.required)  }\">\n" +
-    "\t\t\t\t\t\t\t\t\t\t<input type=\"email\" name=\"forgotEmail\" class=\"form-control\" placeholder=\"Email\" ng-model=\"userForgot.forgotEmail\" required>\n" +
-    "\t\t\t\t\t\t\t\t\t\t<span ng-show=\"sendPasswordForm.forgotEmail.$invalid && !sendPasswordForm.forgotEmail.$pristine\" class=\"error\" >Email is either wrong or not registered with us.</span>\n" +
-    "\t\t\t\t\t\t\t\t\t\t<!-- <div ng-show=\"sendPasswordForm.$submitted || sendPasswordForm.forgotEmail.$touched\">\n" +
-    "                \t\t\t\t\t\t<span ng-show=\"sendPasswordForm.sendPasswordForm.$error.required\" class=\"error\">Please enter your email.</span>\n" +
-    "                \t\t\t\t\t</div> -->\n" +
+    "\t\t\t\t\t\t\t\t\t\t<input type=\"email\" name=\"forgotEmail\" class=\"form-control\" placeholder=\"Enter email address\" ng-model=\"userForgot.forgotEmail\" required>\n" +
+    "\t\t\t\t\t\t\t\t\t\t<span ng-message=\"sendPasswordForm.forgotEmail.$invalid && !sendPasswordForm.forgotEmail.$pristine\" ng-show=\"sendPasswordForm.forgotEmail.$invalid && sendPasswordForm.forgotEmail.$touched\"  class=\"error\" >Email is either wrong or not registered with us.</span>\n" +
+    "\t\t\t\t\t\t\t\t\t\t<div ng-show=\"sendPasswordForm.$submitted\">\n" +
+    "                \t\t\t\t\t\t<span ng-show=\"sendPasswordForm.forgotEmail.$error.required\" class=\"error\">Please enter your email.</span>\n" +
+    "                \t\t\t\t\t</div>\n" +
     "\t\t\t\t\t\t\t\t\t\t<button type=\"submit\" class=\"btn sendBtn\">SEND PASSWORD </button>\n" +
     "\t\t\t\t\t\t\t\t\t</fieldset>\n" +
     "\t\t\t\t\t\t\t\t</form>\n" +
@@ -1304,16 +1308,16 @@ define(['angular', 'app'], function(angular, app) { app.run(['$templateCache', f
     "\t\t\t\t\t\t<form  name=\"guestUserForm\" ng-submit=\"changeGuestCheckout()\"  novalidate>\n" +
     "\t\t\t\t\t\t\t<fieldset class=\"form-group\" ng-class=\"{ 'error' : (guestUserForm.guestEmail.$invalid && !guestUserForm.guestEmail.$pristine) || (guestUserForm.$submitted && guestUserForm.guestEmail.$error.required) }\">\n" +
     "\t\t\t\t\t\t\t\t<label>Email</label>\n" +
-    "\t\t\t\t\t\t\t\t<input type=\"email\" name=\"guestEmail\" class=\"form-control\" placeholder=\"Email\" ng-model=\"guest.guestUserEmail\" required>\n" +
-    "\t\t\t\t\t\t\t\t<span ng-show=\"guestUserForm.guestEmail.$invalid && !guestUserForm.guestEmail.$pristine\" class=\"error\" >Email is either wrong or not registered with us.</span>\n" +
-    "\t\t\t\t\t\t\t\t<div ng-show=\"guestUserForm.$submitted || guestUserForm.guestEmail.$touched\">\n" +
+    "\t\t\t\t\t\t\t\t<input type=\"email\" name=\"guestEmail\" class=\"form-control\" placeholder=\"Enter email address\" ng-model=\"guest.guestUserEmail\" required>\n" +
+    "\t\t\t\t\t\t\t\t<span ng-message=\"guestUserForm.guestEmail.$invalid && !guestUserForm.guestEmail.$pristine\" ng-show=\"guestUserForm.guestEmail.$invalid && guestUserForm.guestEmail.$touched\" class=\"error\" >Email is either wrong or not registered with us.</span>\n" +
+    "\t\t\t\t\t\t\t\t<div ng-show=\"guestUserForm.$submitted\">\n" +
     "                <span ng-show=\"guestUserForm.guestEmail.$error.required\" class=\"error\">Tell us your email.</span>\n" +
     "              </div>\n" +
     "\t\t\t\t\t\t\t</fieldset>\n" +
     "\t\t\t\t\t\t\t<div class=\"BtnContainer col-xs-12 nopadding\">\n" +
     "\t\t\t\t\t\t\t\t<button type=\"submit\" class=\"btn newBtn\" >GUEST CHECKOUT </button>\n" +
     "\t\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t\t<p>Have an account? <span><a class=\"rougeColor\" href=\"javascript:void(0)\" ng-click=\"loginHere()\">Login Here</a></span></p>\n" +
+    "\t\t\t\t\t\t\t<p>Have an account? <span><a role=\"ForgotPassword\" href=\"javascript:void(0)\" ng-click=\"loginHere()\">Login Here</a></span></p>\n" +
     "\t\t\t\t\t\t</form>\n" +
     "\t\t\t\t\t</div>\n" +
     "\t\t\t\t</div>\n" +

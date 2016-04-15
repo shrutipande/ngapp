@@ -21,6 +21,6 @@ define([
     'app.animations',
     'ngSanitize',
     'ui.router'
-    //'ng-animate'
+    //ng-animate'
   ]);
 });

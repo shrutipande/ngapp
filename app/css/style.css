@@ -73,7 +73,7 @@ a.signup-fb { background: #4962ba none repeat scroll 0 0; }
  .error input { border: solid 1px #ff0c00; }
 .error span { color: #ff0c00; display: block; }
 .signinForm h4, .socialMediaContainer h4 { font-weight: 700; font-size: 16px; color: #747474; }
-a[role="ForgotPassword"] { color: #981937; }
+a[role="ForgotPassword"] { color: #981937 !important; }
 a[role="ForgotPassword"]:hover { text-decoration: none; }
 .newBtn { /*width: 215px;*/ width: 100%;  border-radius: 0; background: #6da40e; color: #ffffff; font-weight: 700; padding: 12px 20px; font-size: 16px; margin-bottom: 15px; }
 .newBtn:hover, .newBtn:focus { color: #ffffff; }

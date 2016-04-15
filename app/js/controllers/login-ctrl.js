@@ -4,6 +4,7 @@ define(['./index'], function (controllers) {
 	$scope.guestUser = false;
 	$scope.forgotPasswd = false;
 	$scope.sendPasswd= false;
+	$scope.invalidCred=false;
 	$scope.userForgot ={};
 	$scope.userLogin={};
 	$scope.changeGuest = function() {
@@ -30,6 +31,7 @@ define(['./index'], function (controllers) {
 			})
 		}
 	};
+
 	$scope.signupFB = function() {
 		console.log("sign up FB");
 	};
@@ -55,7 +57,7 @@ define(['./index'], function (controllers) {
 			.success(function (response) {
 				if(response.s==0 )
 				{
-					alert("Invalid email ID or Password!");
+						$scope.invalidCred=true;
 				}
 				else{
 					$state.go('shipping');
