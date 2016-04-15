@@ -9,7 +9,8 @@ require.config({
         'domReady': '../bower_components/requirejs-domready/domReady',
         'angular': '../bower_components/angular/angular.min',
         'angular-sanitize' : '../bower_components/angular-sanitize/angular-sanitize.min',
-        'angular-ui-router' : '../bower_components/angular-ui-router/release/angular-ui-router.min'
+        'angular-ui-router' : '../bower_components/angular-ui-router/release/angular-ui-router.min',
+        'angular-animate' : '../bower_components/angular-animate/angular-animate.min'
     },
 
     shim: {
@@ -20,6 +21,9 @@ require.config({
             deps: ['angular']
         },
         'angular-ui-router': {
+            deps: ['angular']
+        },
+         'angular-animate': {
             deps: ['angular']
         }
     }

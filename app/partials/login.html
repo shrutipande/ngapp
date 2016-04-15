@@ -1,5 +1,5 @@
 
-<div data-overlay class="hide">&nbsp;</div>
+<div data-overlay ng-show="forgotPasswd || sendPasswd" >&nbsp;</div>
 <!--// Header -->
 <div role-header class="container-fluid nopadding">
 	<div role-nav class="container">
@@ -22,7 +22,7 @@
 <!--// Content -->
 <div class="container-fluid nopadding">
 	<div class="container">
-		<!--// login Flow Start -->
+	<!--// login Flow Start -->
 		<div class="loginProcessContainer container-fluid">
 			<div role="loginFlow" class="col-xs-12 nopadding">
 				<div class="circleBox LoginIcon rougeBack">
@@ -48,80 +48,109 @@
 	<div class="col-xs-12 col-sm-6 socialMediaContainer">
 		<div class="row">
 			<div class="col-xs-6 nopadding socialMedia">
-				<a class="signup-fb" href="#"><small><img src="images/facebook_alt.png" width="8" height="17" alt="" title=""></small><span>Log In with Facebook</span></a>
+				<a class="signup-fb"  href="javascript:void(0)" ng-click="signupFB()"><small><img src="images/facebook_alt.png" width="8" height="17" alt="" title=""></small><span class="cart-s-m">Log In with Facebook</span></a>
 			</div>
 			<div class="col-xs-6 nopadding socialMedia">
-				<a class="signup-g" href="#"><small><img src="images/googlw_Plus.png" width="26" height="16" alt="" title=""></small><span>Log In with Google</span></a>
+				<a class="signup-g" href="javascript:void(0)" ng-click="signupGgle()"><small><img src="images/googlw_Plus.png" width="26" height="16" alt="" title=""></small><span class="cart-s-m">Log In with Google</span></a>
 			</div>
-			<div class="col-xs-12 guest">
+			<div class="col-xs-12 guest" ng-hide="guestUser">
 				<h4>CONTINUE AS A GUEST</h4>
-				<div class="BtnContainer col-xs-12 nopadding"><input class="btn guestBtn" type="submit" value="GUEST CHECKOUT"></div>
+				<div class="BtnContainer col-xs-12 nopadding"><input class="btn guestBtn" type="submit" ng-click="changeGuest()" value="GUEST CHECKOUT"></div>
 			</div>
+
 		</div>
 	</div>
 </div>
 <div class="container-fluid nopadding">
-	<div class="container m-padding">
-		<!--// login Container Start -->
+<div class="container m-padding">
+	<!--// login Container Start -->
 		<div class="col-xs-12 loginContainer">
-			<div class="col-xs-12 col-sm-6 signinForm">
+			<div class="col-xs-12 col-sm-6 " ng-class="{ 'signinForm' : !guestUser }">
 				<div class="col-xs-12 col-sm-10">
 					<div class="mobile-seperator visible-xs">
 						<span class="Mseperator">OR</span>
 					</div>
-					<form>
-						<h4>HAVE AN ACCOUNT? SIGN IN</h4>
-						<div class="existingUser" ng-hide="guestUser">
-							<fieldset class="form-group error">
+					<h4>HAVE AN ACCOUNT? SIGN IN</h4>
+					<div class="existingUser" ng-hide="guestUser">
+						<form name="userLoginForm" ng-submit =" loginCred()" novalidate>
+							<fieldset class="form-group" ng-class="{ 'error' : (userLoginForm.email.$invalid && !userLoginForm.email.$pristine) || (userLoginForm.$submitted && userLoginForm.email.$error.required)}" >
 								<label>Email</label>
-								<input type="email" class="form-control" placeholder="Email">
-								<span>Email is either wrong or not registered with us.</span>
+								<input type="email" name="email" class="form-control" placeholder="email"  ng-model="userLogin.email" required>
+								<span ng-show="userLoginForm.email.$invalid && !userLoginForm.email.$pristine" class="error" >Email is either wrong or not registered with us.</span>
+								  <div ng-show="userLoginForm.$submitted || userLoginForm.email.$touched" >
+									<span ng-show="userLoginForm.email.$error.required" class="error">Tell us your email.</span>
+								</div >
 							</fieldset>
-							<fieldset class="form-group">
+							<fieldset class="form-group " ng-class="{'error': (userLoginForm.password.$invalid && !userLoginForm.password.$pristine) || (userLoginForm.$submitted && userLoginForm.password.$error.required)}">
 								<label>Password</label>
-								<input type="password" class="form-control" placeholder="Password">
+								<input type="password" name ="password" class="form-control" placeholder="password"   ng-minlength="6" ng-model="userLogin.password" required>
+								<span ng-show="userLoginForm.password.$error.minlength" class="error">Password needs to be minimum 6 characters.</span>
+								 <div ng-show="userLoginForm.$submitted || userLoginForm.password.$touched" >
+								<span ng-show="userLoginForm.password.$error.required" class="error">Please enter password.</p>
+								</div>
 							</fieldset>
 							<fieldset class="form-group">
 								<a role="ForgotPassword" href="javascript:void(0)" ng-click="forgotPwd()">Forgot password?</a>
-								<div class="container-fluid ForgotPasswordContainer hide">
-									<div class="FPcontainer">
-										<span role="close"><a href="#"><img src="images/delete-icon.png" alt="" title=""></a></span>
-										<h3>FORGOT PASSWORD?</h3>
-										<p>Enter your email below and we’ll send you a new password by email.</p>
-										<form>
-											<fieldset class="form-group">
-												<input type="email" class="form-control" placeholder="Email">
-												<input type="submit" class="btn sendBtn" value="SEND PASSWORD">
-											</fieldset>
-										</form>
-									</div>
-								</div>
-							</fieldset>
-							<div class="BtnContainer col-xs-12 nopadding"><button class="btn newBtn" ng-click="changeLogin()">LOGIN</button></div>
-						</div>
-						<div class="guestUser col-xs-12 nopadding" ng-show="guestUser" >
-							<fieldset class="form-group">
-								<label>Email</label>
-								<input type="email" class="form-control" placeholder="Email">
 							</fieldset>
 							<div class="BtnContainer col-xs-12 nopadding">
-								<button class="btn newBtn" ng-click="changeGuestCheckout()">GUEST CHECKOUT </button>
+								<button class="btn newBtn" type="submit"> LOGIN</button>
+							</div>
+						</form>
+						<div class="container-fluid ForgotPasswordContainer"  ng-show="forgotPasswd">
+							<div class="FPcontainer">
+								<span role="close" ng-show="forgotPasswd" ng-click="forgtPwdClose()"><a href="#"><img src="images/delete-icon.png" alt="" title=""></a></span>
+								<h3>FORGOT PASSWORD?</h3>
+								<p>Enter your email below and we’ll send you a new password by email.</p>
+								<form  name="sendPasswordForm" ng-submit="sendPassword()" novalidate>
+									<fieldset class="form-group" ng-class="{ 'error' : (sendPasswordForm.forgotEmail.$invalid && !sendPasswordForm.forgotEmail.$pristine)  || (sendPasswordForm.$submitted && sendPasswordForm.forgotEmail.$error.required)  }">
+										<input type="email" name="forgotEmail" class="form-control" placeholder="Email" ng-model="userForgot.forgotEmail" required>
+										<span ng-show="sendPasswordForm.forgotEmail.$invalid && !sendPasswordForm.forgotEmail.$pristine" class="error" >Email is either wrong or not registered with us.</span>
+										<!-- <div ng-show="sendPasswordForm.$submitted || sendPasswordForm.forgotEmail.$touched">
+                						<span ng-show="sendPasswordForm.sendPasswordForm.$error.required" class="error">Please enter your email.</span>
+                					</div> -->
+										<button type="submit" class="btn sendBtn">SEND PASSWORD </button>
+									</fieldset>
+								</form>
+							</div>
+						</div>
+						<div class="container-fluid ForgotPasswordContainer"  ng-show="sendPasswd">
+							<div class="SPcontainer">
+								<span role="close" ng-show="sendPasswd" ng-click="sendPwdClose()"><a href="#"><img src="images/delete-icon.png" alt="" title=""></a></span>
+								<h3>PASSWORD SENT</h3>
+								<p>Password has been sent to your email address.</p>
+							</div>
+						</div>
+					</div>
+					<div class="guestUser col-xs-12 nopadding" ng-show="guestUser" >
+						<form  name="guestUserForm" ng-submit="changeGuestCheckout()"  novalidate>
+							<fieldset class="form-group" ng-class="{ 'error' : (guestUserForm.guestEmail.$invalid && !guestUserForm.guestEmail.$pristine) || (guestUserForm.$submitted && guestUserForm.guestEmail.$error.required) }">
+								<label>Email</label>
+								<input type="email" name="guestEmail" class="form-control" placeholder="Email" ng-model="guest.guestUserEmail" required>
+								<span ng-show="guestUserForm.guestEmail.$invalid && !guestUserForm.guestEmail.$pristine" class="error" >Email is either wrong or not registered with us.</span>
+								<div ng-show="guestUserForm.$submitted || guestUserForm.guestEmail.$touched">
+                <span ng-show="guestUserForm.guestEmail.$error.required" class="error">Tell us your email.</span>
+              </div>
+							</fieldset>
+							<div class="BtnContainer col-xs-12 nopadding">
+								<button type="submit" class="btn newBtn" >GUEST CHECKOUT </button>
 							</div>
 							<p>Have an account? <span><a class="rougeColor" href="javascript:void(0)" ng-click="loginHere()">Login Here</a></span></p>
-						</div>
-					</form>
+						</form>
+					</div>
 				</div>
-				<span class="seperator hidden-xs">OR</span>
+				<span class="seperator hidden-xs" ng-hide="guestUser">OR</span>
 			</div>
-			<div class="col-xs-12 col-sm-6 socialMediaContainer hidden-xs">
+			<div class="col-xs-12 col-sm-6 socialMediaContainer hidden-xs" ng-hide="guestUser">
 				<div class="col-xs-12 col-sm-10 pull-right">
 					<div class="col-xs-12 nopadding socialMedia">
-						<a class="signup-fb" href="javascript:void(0)" ng-click="signupFB()"><small><img src="images/facebook_alt.png" width="8" height="17" alt="" title=""></small><span>Log In with Facebook</span></a>
-						<a class="signup-g" href="javascript:void(0)" ng-click="signupGgle()"><small><img src="images/googlw_Plus.png" width="26" height="16" alt="" title=""></small><span>Log In with Google</span></a>
+						<a class="signup-fb" href="javascript:void(0)" ng-click="signupFB()"><small><img src="images/facebook_alt.png" width="8" height="17" alt="" title=""></small><span class="cart-s-m">Log In with Facebook</span></a>
+						<a class="signup-g" href="javascript:void(0)" ng-click="signupGgle()"><small><img src="images/googlw_Plus.png" width="26" height="16" alt="" title=""></small><span class="cart-s-m">Log In with Google</span></a>
 						<div class="col-xs-12 nopadding guest">
 							<h4>CHECKOUT AS A GUEST</h4>
 							<p>New to craftsvilla? Use our quick and secure method.</p>
-							<div class="BtnContainer col-xs-12 nopadding" ng-hide="guestUser"><button class="btn guestBtn" ng-click="changeGuest()">CONTINUE AS GUEST</button></div>
+							<div class="BtnContainer col-xs-12 nopadding" ng-hide="guestUser">
+								<button class="btn guestBtn" ng-click="changeGuest()">CONTINUE AS GUEST</button>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -136,36 +165,35 @@
 <div role="footer" class="container-fluid hidden-xs">
 	<div class="container">
 		<section class="col-xs-12 m-padding">
-		  <ul class="footer-col col-xs-12 col-sm-3 m-padding">
-		    <li class="FooterHeader">SUPPORT</li>
-		    <li><span class="ln-hgt-15">For Help, send email to </span>
-		      <a href="mailto:customercare@craftsvilla.com"><span class="rouge ln-hgt-15">customercare@craftsvilla.com</span></a>
-		    </li>
-		  </ul>
-
-		  <ul class="footer-col col-xs-12 col-sm-3 m-padding">
-		    <li class="FooterHeader"> PAYMENT OPTIONS </li>
-		    <li><img src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/Visa_1.png"> <img src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/Visa_2.png"> <img src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/Visa_3.png"></li>
-		  </ul>
-
-		  <ul class="footer-col col-xs-12 col-sm-3 m-padding">
-		    <li class="FooterHeader">STAY CONNECTED</li>
-		    <li>
-		      <a target="_blank" href="http://www.facebook.com/craftsvilla"><img src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/FB.png"></a>
-		      <a target="_blank" href="https://twitter.com/craftsvilla"><img src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/Twitter.png" class="p-l-5"></a>
-		      <a target="_blank" href="https://plus.google.com/117677147285924975963"><!-- <img class="p-l-5" src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/g-plus.png"> --></a>
-		      <a target="_blank" href="https://www.pinterest.com/craftsvilla/">
-		        <img src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/pin.png" class="p-l-5">
-		      </a>
-		    </li>
-		  </ul>
-		  <ul class="footer-col col-xs-12 col-sm-3 m-padding">
-		    <li class="FooterHeader">DOWNLOAD OUR APP</li>
-		    <li><a target="_blank" href="https://play.google.com/store/apps/details?id=com.craftsvilla.app&amp;hl=en">
-		      <img src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/Googleplay.png">
-		      </a>
-		    </li>
-		  </ul>
+			<ul class="footer-col col-xs-12 col-sm-3 m-padding">
+				<li class="FooterHeader">SUPPORT</li>
+				<li><span class="ln-hgt-15">For Help, send email to </span>
+					<a href="mailto:customercare@craftsvilla.com"><span class="rouge ln-hgt-15">customercare@craftsvilla.com</span></a>
+				</li>
+			</ul>
+			<ul class="footer-col col-xs-12 col-sm-3 m-padding">
+				<li class="FooterHeader"> PAYMENT OPTIONS </li>
+				<li><img src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/Visa_1.png"> <img src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/Visa_2.png"> <img src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/Visa_3.png"></li>
+			</ul>
+			<ul class="footer-col col-xs-12 col-sm-3 m-padding">
+				<li class="FooterHeader">STAY CONNECTED</li>
+				<li>
+					<a target="_blank" href="http://www.facebook.com/craftsvilla"><img src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/FB.png"></a>
+					<a target="_blank" href="https://twitter.com/craftsvilla"><img src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/Twitter.png" class="p-l-5"></a>
+					<a target="_blank" href="https://plus.google.com/117677147285924975963"><!-- <img class="p-l-5" src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/g-plus.png"> --></a>
+					<a target="_blank" href="https://www.pinterest.com/craftsvilla/">
+						<img src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/pin.png" class="p-l-5">
+					</a>
+				</li>
+			</ul>
+			<ul class="footer-col col-xs-12 col-sm-3 m-padding">
+				<li class="FooterHeader">DOWNLOAD OUR APP</li>
+				<li>
+					<a target="_blank" href="https://play.google.com/store/apps/details?id=com.craftsvilla.app&amp;hl=en">
+						<img src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/Googleplay.png">
+					</a>
+				</li>
+			</ul>
 		</section>
 	</div>
 </div>

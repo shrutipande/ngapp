@@ -62,6 +62,7 @@ div[role="loginFlow"] { position: relative; height: 100%; }
 .socialMedia a img { margin-right: 10px; }
 .socialMedia a:hover { text-decoration: none; }
 .socialMedia p { color: #747474; }
+.socialMedia a .cart-s-m{color:#ffffff;}
 .guestBtn { /*width: 215px;*/ width: 100%;  border-radius: 0; background: #f5f3e8; border: solid 1px #e4d2be; color: #981937; font-weight: 700; padding: 12px 20px; font-size: 16px; margin: 15px 0px; }
 .guest { margin: 15px 0px; }
 a.signup-g { background: #ba3b39 none repeat scroll 0 0; margin-bottom: 0px; }
@@ -69,8 +70,8 @@ a.signup-fb { background: #4962ba none repeat scroll 0 0; }
 
 .signinForm { border-right: solid 1px #d8d8d8;}
 .signinForm .form-control { border-radius: 0; height: 45px; padding: 4px 15px 6px 15px; color: #9b9b9b; }
-.signinForm .error input { border: solid 1px #ff0c00; }
-.signinForm .error span { color: #ff0c00; display: block; }
+ .error input { border: solid 1px #ff0c00; }
+.error span { color: #ff0c00; display: block; }
 .signinForm h4, .socialMediaContainer h4 { font-weight: 700; font-size: 16px; color: #747474; }
 a[role="ForgotPassword"] { color: #981937; }
 a[role="ForgotPassword"]:hover { text-decoration: none; }
@@ -86,12 +87,16 @@ a[role="ForgotPassword"]:hover { text-decoration: none; }
 
 .ForgotPasswordContainer { position: fixed; left: 0; top: 0;  width: 100%; height: 100%; z-index: 600; }
 div[data-overlay] { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 100; }
-.FPcontainer { max-width: 567px; width: 100%; height: 270px; border-radius: 2px; background: #ffffff; position: fixed; left: 0; right: 0; top: 0; bottom: 0; margin: auto; padding: 15px; }
+.FPcontainer,.SPcontainer { max-width: 567px; width: 100%; border-radius: 2px; background: #ffffff; position: fixed; left: 0; right: 0; top: 0; bottom: 0; margin: auto; padding: 15px; }
+.FPcontainer{ height: 270px; }
+.SPcontainer{ height: 128px; }
 span[role="close"] { display: block; text-align: right; float: left; width: 100%; }
 span[role="close"] a { display: block; width: 15px; height: 15px; float: right; }
 span[role="close"] a:focus { outline: none; }
 span[role="close"] a img { margin: -11px 0 0 0; }
-.FPcontainer h3 { margin: 20px 0px 15px 0px; width: 100%; font-size: 16px; font-weight: 700; color: #4c4c4c; }
+.FPcontainer h3, .SPcontainer h3 { margin: 20px 0px 15px 0px; width: 100%; font-size: 16px; font-weight: 700; }
+.SPcontainer h3 {color: #4c4c4c; }
+.SPcontainer h3 {color: #6da40e;}
 .FPcontainer p { padding: 0px; margin-bottom: 20px; }
 .FPcontainer input { width: 60%; margin-bottom: 15px; }
 .FPcontainer .sendBtn { padding: 15px 25px; background: #9a1938; color: #ffffff; font-weight: 700; font-size: 16px; border-radius: 0; width: 200px; margin: 0px; }
@@ -276,6 +281,7 @@ img[role="back"] { display: block; float: left; margin-right: 6px; margin-top: 8
 
 .socialMedia { padding: 15px ; }
 .socialMedia a { font-size: 12px; padding: 10px 0px 12px; margin: 0px; }
+.socialMedia a .cart-s-m{color:#ffffff;}
 .guestBtn { margin: 0px; }
 .guest { margin: 0 0 15px 0; }
 .socialMediaContainer { background: #f0f0f0; }

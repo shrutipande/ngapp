@@ -312,7 +312,7 @@ define(['angular', 'app'], function(angular, app) { app.run(['$templateCache', f
     "        <div class=\"col-xs-12 nopadding left-panel\">\n" +
     "\n" +
     "            <div class=\"cart-items-card\">\n" +
-    "                 <div class=\"cart-details-close\"><img src=\"images/delete-icon.png\" width:'100%'></div>\n" +
+    "                 <div class=\"cart-details-close\"><img src=\"images/delete-icon.png\" width='100%'></div>\n" +
     "                <div class=\"cart-items-cont\">\n" +
     "                    <div class=\"cart-img-cont\">\n" +
     "                        <img src=\"http://img1.craftsvilla.com/thumb/166x166/C/V/CV-MKATA38861136840--KATARIA_SILK_HOUSE_PVT_LTD-Craftsvilla_1.jpg\">\n" +
@@ -348,7 +348,7 @@ define(['angular', 'app'], function(angular, app) { app.run(['$templateCache', f
     "\n" +
     "\n" +
     "  <div class=\"cart-items-card t-m-10\">\n" +
-    "                 <div class=\"cart-details-close\"><img src=\"images/delete-icon.png\" width:'100%'></div>\n" +
+    "                 <div class=\"cart-details-close\"><img src=\"images/delete-icon.png\" width='100%'></div>\n" +
     "                <div class=\"cart-items-cont\">\n" +
     "                    <div class=\"cart-img-cont\">\n" +
     "                        <img src=\"http://img1.craftsvilla.com/thumb/166x166/C/V/CV-MKATA38861136840--KATARIA_SILK_HOUSE_PVT_LTD-Craftsvilla_1.jpg\">\n" +
@@ -384,7 +384,7 @@ define(['angular', 'app'], function(angular, app) { app.run(['$templateCache', f
     "  <div class=\"col-xs-6 nopadding red t-m-10\">Items without cash on delivery</div>\n" +
     "  <div class=\"col-xs-6 nopadding clrrouge t-m-10 text-right \">Remove All</div>\n" +
     "          <div class=\"cart-items-card t-m-10\">\n" +
-    "                 <div class=\"cart-details-close\"><img src=\"images/delete-icon.png\" width:'100%'></div>\n" +
+    "                 <div class=\"cart-details-close\"><img src=\"images/delete-icon.png\" width='100%'></div>\n" +
     "                <div class=\"cart-items-cont\">\n" +
     "                    <div class=\"cart-img-cont\">\n" +
     "                        <img src=\"http://img1.craftsvilla.com/thumb/166x166/C/V/CV-MRISE17939320530--Rise_N_Shine-Craftsvilla_1.jpg\">\n" +
@@ -429,7 +429,7 @@ define(['angular', 'app'], function(angular, app) { app.run(['$templateCache', f
     "      </div> <!-- cart-items-card ends -->\n" +
     "\n" +
     "       <div class=\"cart-items-card t-m-10\">\n" +
-    "                 <div class=\"cart-details-close\"><img src=\"images/delete-icon.png\" width:'100%'></div>\n" +
+    "                 <div class=\"cart-details-close\"><img src=\"images/delete-icon.png\" width='100%'></div>\n" +
     "                <div class=\"cart-items-cont\">\n" +
     "                    <div class=\"cart-img-cont\">\n" +
     "                        <img src=\"http://img1.craftsvilla.com/thumb/166x166/C/V/CV-MRISE17939320530--Rise_N_Shine-Craftsvilla_1.jpg\">\n" +
@@ -476,7 +476,7 @@ define(['angular', 'app'], function(angular, app) { app.run(['$templateCache', f
     "      </div> <!-- cart-items-card ends -->\n" +
     "\n" +
     "        <div class=\"cart-items-card t-m-10\">\n" +
-    "                 <div class=\"cart-details-close\"><img src=\"images/delete-icon.png\" width:'100%'></div>\n" +
+    "                 <div class=\"cart-details-close\"><img src=\"images/delete-icon.png\" width='100%'></div>\n" +
     "                <div class=\"cart-items-cont\">\n" +
     "                    <div class=\"cart-img-cont\">\n" +
     "                        <img src=\"http://img1.craftsvilla.com/thumb/166x166/C/V/CV-MRISE17939320530--Rise_N_Shine-Craftsvilla_1.jpg\">\n" +
@@ -1178,7 +1178,7 @@ define(['angular', 'app'], function(angular, app) { app.run(['$templateCache', f
 
   $templateCache.put('partials/login.html',
     "\n" +
-    "<div data-overlay class=\"hide\">&nbsp;</div>\n" +
+    "<div data-overlay ng-show=\"forgotPasswd || sendPasswd\" >&nbsp;</div>\n" +
     "<!--// Header -->\n" +
     "<div role-header class=\"container-fluid nopadding\">\n" +
     "\t<div role-nav class=\"container\">\n" +
@@ -1201,7 +1201,7 @@ define(['angular', 'app'], function(angular, app) { app.run(['$templateCache', f
     "<!--// Content -->\n" +
     "<div class=\"container-fluid nopadding\">\n" +
     "\t<div class=\"container\">\n" +
-    "\t\t<!--// login Flow Start -->\n" +
+    "\t<!--// login Flow Start -->\n" +
     "\t\t<div class=\"loginProcessContainer container-fluid\">\n" +
     "\t\t\t<div role=\"loginFlow\" class=\"col-xs-12 nopadding\">\n" +
     "\t\t\t\t<div class=\"circleBox LoginIcon rougeBack\">\n" +
@@ -1227,80 +1227,109 @@ define(['angular', 'app'], function(angular, app) { app.run(['$templateCache', f
     "\t<div class=\"col-xs-12 col-sm-6 socialMediaContainer\">\n" +
     "\t\t<div class=\"row\">\n" +
     "\t\t\t<div class=\"col-xs-6 nopadding socialMedia\">\n" +
-    "\t\t\t\t<a class=\"signup-fb\" href=\"#\"><small><img src=\"images/facebook_alt.png\" width=\"8\" height=\"17\" alt=\"\" title=\"\"></small><span>Log In with Facebook</span></a>\n" +
+    "\t\t\t\t<a class=\"signup-fb\"  href=\"javascript:void(0)\" ng-click=\"signupFB()\"><small><img src=\"images/facebook_alt.png\" width=\"8\" height=\"17\" alt=\"\" title=\"\"></small><span class=\"cart-s-m\">Log In with Facebook</span></a>\n" +
     "\t\t\t</div>\n" +
     "\t\t\t<div class=\"col-xs-6 nopadding socialMedia\">\n" +
-    "\t\t\t\t<a class=\"signup-g\" href=\"#\"><small><img src=\"images/googlw_Plus.png\" width=\"26\" height=\"16\" alt=\"\" title=\"\"></small><span>Log In with Google</span></a>\n" +
+    "\t\t\t\t<a class=\"signup-g\" href=\"javascript:void(0)\" ng-click=\"signupGgle()\"><small><img src=\"images/googlw_Plus.png\" width=\"26\" height=\"16\" alt=\"\" title=\"\"></small><span class=\"cart-s-m\">Log In with Google</span></a>\n" +
     "\t\t\t</div>\n" +
-    "\t\t\t<div class=\"col-xs-12 guest\">\n" +
+    "\t\t\t<div class=\"col-xs-12 guest\" ng-hide=\"guestUser\">\n" +
     "\t\t\t\t<h4>CONTINUE AS A GUEST</h4>\n" +
-    "\t\t\t\t<div class=\"BtnContainer col-xs-12 nopadding\"><input class=\"btn guestBtn\" type=\"submit\" value=\"GUEST CHECKOUT\"></div>\n" +
+    "\t\t\t\t<div class=\"BtnContainer col-xs-12 nopadding\"><input class=\"btn guestBtn\" type=\"submit\" ng-click=\"changeGuest()\" value=\"GUEST CHECKOUT\"></div>\n" +
     "\t\t\t</div>\n" +
+    "\n" +
     "\t\t</div>\n" +
     "\t</div>\n" +
     "</div>\n" +
     "<div class=\"container-fluid nopadding\">\n" +
-    "\t<div class=\"container m-padding\">\n" +
-    "\t\t<!--// login Container Start -->\n" +
+    "<div class=\"container m-padding\">\n" +
+    "\t<!--// login Container Start -->\n" +
     "\t\t<div class=\"col-xs-12 loginContainer\">\n" +
-    "\t\t\t<div class=\"col-xs-12 col-sm-6 signinForm\">\n" +
+    "\t\t\t<div class=\"col-xs-12 col-sm-6 \" ng-class=\"{ 'signinForm' : !guestUser }\">\n" +
     "\t\t\t\t<div class=\"col-xs-12 col-sm-10\">\n" +
     "\t\t\t\t\t<div class=\"mobile-seperator visible-xs\">\n" +
     "\t\t\t\t\t\t<span class=\"Mseperator\">OR</span>\n" +
     "\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t<form>\n" +
-    "\t\t\t\t\t\t<h4>HAVE AN ACCOUNT? SIGN IN</h4>\n" +
-    "\t\t\t\t\t\t<div class=\"existingUser\" ng-hide=\"guestUser\">\n" +
-    "\t\t\t\t\t\t\t<fieldset class=\"form-group error\">\n" +
+    "\t\t\t\t\t<h4>HAVE AN ACCOUNT? SIGN IN</h4>\n" +
+    "\t\t\t\t\t<div class=\"existingUser\" ng-hide=\"guestUser\">\n" +
+    "\t\t\t\t\t\t<form name=\"userLoginForm\" ng-submit =\" loginCred()\" novalidate>\n" +
+    "\t\t\t\t\t\t\t<fieldset class=\"form-group\" ng-class=\"{ 'error' : (userLoginForm.email.$invalid && !userLoginForm.email.$pristine) || (userLoginForm.$submitted && userLoginForm.email.$error.required)}\" >\n" +
     "\t\t\t\t\t\t\t\t<label>Email</label>\n" +
-    "\t\t\t\t\t\t\t\t<input type=\"email\" class=\"form-control\" placeholder=\"Email\">\n" +
-    "\t\t\t\t\t\t\t\t<span>Email is either wrong or not registered with us.</span>\n" +
+    "\t\t\t\t\t\t\t\t<input type=\"email\" name=\"email\" class=\"form-control\" placeholder=\"email\"  ng-model=\"userLogin.email\" required>\n" +
+    "\t\t\t\t\t\t\t\t<span ng-show=\"userLoginForm.email.$invalid && !userLoginForm.email.$pristine\" class=\"error\" >Email is either wrong or not registered with us.</span>\n" +
+    "\t\t\t\t\t\t\t\t  <div ng-show=\"userLoginForm.$submitted || userLoginForm.email.$touched\" >\n" +
+    "\t\t\t\t\t\t\t\t\t<span ng-show=\"userLoginForm.email.$error.required\" class=\"error\">Tell us your email.</span>\n" +
+    "\t\t\t\t\t\t\t\t</div >\n" +
     "\t\t\t\t\t\t\t</fieldset>\n" +
-    "\t\t\t\t\t\t\t<fieldset class=\"form-group\">\n" +
+    "\t\t\t\t\t\t\t<fieldset class=\"form-group \" ng-class=\"{'error': (userLoginForm.password.$invalid && !userLoginForm.password.$pristine) || (userLoginForm.$submitted && userLoginForm.password.$error.required)}\">\n" +
     "\t\t\t\t\t\t\t\t<label>Password</label>\n" +
-    "\t\t\t\t\t\t\t\t<input type=\"password\" class=\"form-control\" placeholder=\"Password\">\n" +
+    "\t\t\t\t\t\t\t\t<input type=\"password\" name =\"password\" class=\"form-control\" placeholder=\"password\"   ng-minlength=\"6\" ng-model=\"userLogin.password\" required>\n" +
+    "\t\t\t\t\t\t\t\t<span ng-show=\"userLoginForm.password.$error.minlength\" class=\"error\">Password needs to be minimum 6 characters.</span>\n" +
+    "\t\t\t\t\t\t\t\t <div ng-show=\"userLoginForm.$submitted || userLoginForm.password.$touched\" >\n" +
+    "\t\t\t\t\t\t\t\t<span ng-show=\"userLoginForm.password.$error.required\" class=\"error\">Please enter password.</p>\n" +
+    "\t\t\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t\t\t</fieldset>\n" +
     "\t\t\t\t\t\t\t<fieldset class=\"form-group\">\n" +
     "\t\t\t\t\t\t\t\t<a role=\"ForgotPassword\" href=\"javascript:void(0)\" ng-click=\"forgotPwd()\">Forgot password?</a>\n" +
-    "\t\t\t\t\t\t\t\t<div class=\"container-fluid ForgotPasswordContainer hide\">\n" +
-    "\t\t\t\t\t\t\t\t\t<div class=\"FPcontainer\">\n" +
-    "\t\t\t\t\t\t\t\t\t\t<span role=\"close\"><a href=\"#\"><img src=\"images/delete-icon.png\" alt=\"\" title=\"\"></a></span>\n" +
-    "\t\t\t\t\t\t\t\t\t\t<h3>FORGOT PASSWORD?</h3>\n" +
-    "\t\t\t\t\t\t\t\t\t\t<p>Enter your email below and we’ll send you a new password by email.</p>\n" +
-    "\t\t\t\t\t\t\t\t\t\t<form>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t<fieldset class=\"form-group\">\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"email\" class=\"form-control\" placeholder=\"Email\">\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"submit\" class=\"btn sendBtn\" value=\"SEND PASSWORD\">\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t</fieldset>\n" +
-    "\t\t\t\t\t\t\t\t\t\t</form>\n" +
-    "\t\t\t\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t\t</fieldset>\n" +
-    "\t\t\t\t\t\t\t<div class=\"BtnContainer col-xs-12 nopadding\"><button class=\"btn newBtn\" ng-click=\"changeLogin()\">LOGIN</button></div>\n" +
-    "\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t<div class=\"guestUser col-xs-12 nopadding\" ng-show=\"guestUser\" >\n" +
-    "\t\t\t\t\t\t\t<fieldset class=\"form-group\">\n" +
-    "\t\t\t\t\t\t\t\t<label>Email</label>\n" +
-    "\t\t\t\t\t\t\t\t<input type=\"email\" class=\"form-control\" placeholder=\"Email\">\n" +
     "\t\t\t\t\t\t\t</fieldset>\n" +
     "\t\t\t\t\t\t\t<div class=\"BtnContainer col-xs-12 nopadding\">\n" +
-    "\t\t\t\t\t\t\t\t<button class=\"btn newBtn\" ng-click=\"changeGuestCheckout()\">GUEST CHECKOUT </button>\n" +
+    "\t\t\t\t\t\t\t\t<button class=\"btn newBtn\" type=\"submit\"> LOGIN</button>\n" +
+    "\t\t\t\t\t\t\t</div>\n" +
+    "\t\t\t\t\t\t</form>\n" +
+    "\t\t\t\t\t\t<div class=\"container-fluid ForgotPasswordContainer\"  ng-show=\"forgotPasswd\">\n" +
+    "\t\t\t\t\t\t\t<div class=\"FPcontainer\">\n" +
+    "\t\t\t\t\t\t\t\t<span role=\"close\" ng-show=\"forgotPasswd\" ng-click=\"forgtPwdClose()\"><a href=\"#\"><img src=\"images/delete-icon.png\" alt=\"\" title=\"\"></a></span>\n" +
+    "\t\t\t\t\t\t\t\t<h3>FORGOT PASSWORD?</h3>\n" +
+    "\t\t\t\t\t\t\t\t<p>Enter your email below and we’ll send you a new password by email.</p>\n" +
+    "\t\t\t\t\t\t\t\t<form  name=\"sendPasswordForm\" ng-submit=\"sendPassword()\" novalidate>\n" +
+    "\t\t\t\t\t\t\t\t\t<fieldset class=\"form-group\" ng-class=\"{ 'error' : (sendPasswordForm.forgotEmail.$invalid && !sendPasswordForm.forgotEmail.$pristine)  || (sendPasswordForm.$submitted && sendPasswordForm.forgotEmail.$error.required)  }\">\n" +
+    "\t\t\t\t\t\t\t\t\t\t<input type=\"email\" name=\"forgotEmail\" class=\"form-control\" placeholder=\"Email\" ng-model=\"userForgot.forgotEmail\" required>\n" +
+    "\t\t\t\t\t\t\t\t\t\t<span ng-show=\"sendPasswordForm.forgotEmail.$invalid && !sendPasswordForm.forgotEmail.$pristine\" class=\"error\" >Email is either wrong or not registered with us.</span>\n" +
+    "\t\t\t\t\t\t\t\t\t\t<!-- <div ng-show=\"sendPasswordForm.$submitted || sendPasswordForm.forgotEmail.$touched\">\n" +
+    "                \t\t\t\t\t\t<span ng-show=\"sendPasswordForm.sendPasswordForm.$error.required\" class=\"error\">Please enter your email.</span>\n" +
+    "                \t\t\t\t\t</div> -->\n" +
+    "\t\t\t\t\t\t\t\t\t\t<button type=\"submit\" class=\"btn sendBtn\">SEND PASSWORD </button>\n" +
+    "\t\t\t\t\t\t\t\t\t</fieldset>\n" +
+    "\t\t\t\t\t\t\t\t</form>\n" +
+    "\t\t\t\t\t\t\t</div>\n" +
+    "\t\t\t\t\t\t</div>\n" +
+    "\t\t\t\t\t\t<div class=\"container-fluid ForgotPasswordContainer\"  ng-show=\"sendPasswd\">\n" +
+    "\t\t\t\t\t\t\t<div class=\"SPcontainer\">\n" +
+    "\t\t\t\t\t\t\t\t<span role=\"close\" ng-show=\"sendPasswd\" ng-click=\"sendPwdClose()\"><a href=\"#\"><img src=\"images/delete-icon.png\" alt=\"\" title=\"\"></a></span>\n" +
+    "\t\t\t\t\t\t\t\t<h3>PASSWORD SENT</h3>\n" +
+    "\t\t\t\t\t\t\t\t<p>Password has been sent to your email address.</p>\n" +
+    "\t\t\t\t\t\t\t</div>\n" +
+    "\t\t\t\t\t\t</div>\n" +
+    "\t\t\t\t\t</div>\n" +
+    "\t\t\t\t\t<div class=\"guestUser col-xs-12 nopadding\" ng-show=\"guestUser\" >\n" +
+    "\t\t\t\t\t\t<form  name=\"guestUserForm\" ng-submit=\"changeGuestCheckout()\"  novalidate>\n" +
+    "\t\t\t\t\t\t\t<fieldset class=\"form-group\" ng-class=\"{ 'error' : (guestUserForm.guestEmail.$invalid && !guestUserForm.guestEmail.$pristine) || (guestUserForm.$submitted && guestUserForm.guestEmail.$error.required) }\">\n" +
+    "\t\t\t\t\t\t\t\t<label>Email</label>\n" +
+    "\t\t\t\t\t\t\t\t<input type=\"email\" name=\"guestEmail\" class=\"form-control\" placeholder=\"Email\" ng-model=\"guest.guestUserEmail\" required>\n" +
+    "\t\t\t\t\t\t\t\t<span ng-show=\"guestUserForm.guestEmail.$invalid && !guestUserForm.guestEmail.$pristine\" class=\"error\" >Email is either wrong or not registered with us.</span>\n" +
+    "\t\t\t\t\t\t\t\t<div ng-show=\"guestUserForm.$submitted || guestUserForm.guestEmail.$touched\">\n" +
+    "                <span ng-show=\"guestUserForm.guestEmail.$error.required\" class=\"error\">Tell us your email.</span>\n" +
+    "              </div>\n" +
+    "\t\t\t\t\t\t\t</fieldset>\n" +
+    "\t\t\t\t\t\t\t<div class=\"BtnContainer col-xs-12 nopadding\">\n" +
+    "\t\t\t\t\t\t\t\t<button type=\"submit\" class=\"btn newBtn\" >GUEST CHECKOUT </button>\n" +
     "\t\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t\t\t<p>Have an account? <span><a class=\"rougeColor\" href=\"javascript:void(0)\" ng-click=\"loginHere()\">Login Here</a></span></p>\n" +
-    "\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t</form>\n" +
+    "\t\t\t\t\t\t</form>\n" +
+    "\t\t\t\t\t</div>\n" +
     "\t\t\t\t</div>\n" +
-    "\t\t\t\t<span class=\"seperator hidden-xs\">OR</span>\n" +
+    "\t\t\t\t<span class=\"seperator hidden-xs\" ng-hide=\"guestUser\">OR</span>\n" +
     "\t\t\t</div>\n" +
-    "\t\t\t<div class=\"col-xs-12 col-sm-6 socialMediaContainer hidden-xs\">\n" +
+    "\t\t\t<div class=\"col-xs-12 col-sm-6 socialMediaContainer hidden-xs\" ng-hide=\"guestUser\">\n" +
     "\t\t\t\t<div class=\"col-xs-12 col-sm-10 pull-right\">\n" +
     "\t\t\t\t\t<div class=\"col-xs-12 nopadding socialMedia\">\n" +
-    "\t\t\t\t\t\t<a class=\"signup-fb\" href=\"javascript:void(0)\" ng-click=\"signupFB()\"><small><img src=\"images/facebook_alt.png\" width=\"8\" height=\"17\" alt=\"\" title=\"\"></small><span>Log In with Facebook</span></a>\n" +
-    "\t\t\t\t\t\t<a class=\"signup-g\" href=\"javascript:void(0)\" ng-click=\"signupGgle()\"><small><img src=\"images/googlw_Plus.png\" width=\"26\" height=\"16\" alt=\"\" title=\"\"></small><span>Log In with Google</span></a>\n" +
+    "\t\t\t\t\t\t<a class=\"signup-fb\" href=\"javascript:void(0)\" ng-click=\"signupFB()\"><small><img src=\"images/facebook_alt.png\" width=\"8\" height=\"17\" alt=\"\" title=\"\"></small><span class=\"cart-s-m\">Log In with Facebook</span></a>\n" +
+    "\t\t\t\t\t\t<a class=\"signup-g\" href=\"javascript:void(0)\" ng-click=\"signupGgle()\"><small><img src=\"images/googlw_Plus.png\" width=\"26\" height=\"16\" alt=\"\" title=\"\"></small><span class=\"cart-s-m\">Log In with Google</span></a>\n" +
     "\t\t\t\t\t\t<div class=\"col-xs-12 nopadding guest\">\n" +
     "\t\t\t\t\t\t\t<h4>CHECKOUT AS A GUEST</h4>\n" +
     "\t\t\t\t\t\t\t<p>New to craftsvilla? Use our quick and secure method.</p>\n" +
-    "\t\t\t\t\t\t\t<div class=\"BtnContainer col-xs-12 nopadding\" ng-hide=\"guestUser\"><button class=\"btn guestBtn\" ng-click=\"changeGuest()\">CONTINUE AS GUEST</button></div>\n" +
+    "\t\t\t\t\t\t\t<div class=\"BtnContainer col-xs-12 nopadding\" ng-hide=\"guestUser\">\n" +
+    "\t\t\t\t\t\t\t\t<button class=\"btn guestBtn\" ng-click=\"changeGuest()\">CONTINUE AS GUEST</button>\n" +
+    "\t\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t</div>\n" +
     "\t\t\t\t</div>\n" +
@@ -1315,36 +1344,35 @@ define(['angular', 'app'], function(angular, app) { app.run(['$templateCache', f
     "<div role=\"footer\" class=\"container-fluid hidden-xs\">\n" +
     "\t<div class=\"container\">\n" +
     "\t\t<section class=\"col-xs-12 m-padding\">\n" +
-    "\t\t  <ul class=\"footer-col col-xs-12 col-sm-3 m-padding\">\n" +
-    "\t\t    <li class=\"FooterHeader\">SUPPORT</li>\n" +
-    "\t\t    <li><span class=\"ln-hgt-15\">For Help, send email to </span>\n" +
-    "\t\t      <a href=\"mailto:customercare@craftsvilla.com\"><span class=\"rouge ln-hgt-15\">customercare@craftsvilla.com</span></a>\n" +
-    "\t\t    </li>\n" +
-    "\t\t  </ul>\n" +
-    "\n" +
-    "\t\t  <ul class=\"footer-col col-xs-12 col-sm-3 m-padding\">\n" +
-    "\t\t    <li class=\"FooterHeader\"> PAYMENT OPTIONS </li>\n" +
-    "\t\t    <li><img src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/Visa_1.png\"> <img src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/Visa_2.png\"> <img src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/Visa_3.png\"></li>\n" +
-    "\t\t  </ul>\n" +
-    "\n" +
-    "\t\t  <ul class=\"footer-col col-xs-12 col-sm-3 m-padding\">\n" +
-    "\t\t    <li class=\"FooterHeader\">STAY CONNECTED</li>\n" +
-    "\t\t    <li>\n" +
-    "\t\t      <a target=\"_blank\" href=\"http://www.facebook.com/craftsvilla\"><img src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/FB.png\"></a>\n" +
-    "\t\t      <a target=\"_blank\" href=\"https://twitter.com/craftsvilla\"><img src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/Twitter.png\" class=\"p-l-5\"></a>\n" +
-    "\t\t      <a target=\"_blank\" href=\"https://plus.google.com/117677147285924975963\"><!-- <img class=\"p-l-5\" src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/g-plus.png\"> --></a>\n" +
-    "\t\t      <a target=\"_blank\" href=\"https://www.pinterest.com/craftsvilla/\">\n" +
-    "\t\t        <img src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/pin.png\" class=\"p-l-5\">\n" +
-    "\t\t      </a>\n" +
-    "\t\t    </li>\n" +
-    "\t\t  </ul>\n" +
-    "\t\t  <ul class=\"footer-col col-xs-12 col-sm-3 m-padding\">\n" +
-    "\t\t    <li class=\"FooterHeader\">DOWNLOAD OUR APP</li>\n" +
-    "\t\t    <li><a target=\"_blank\" href=\"https://play.google.com/store/apps/details?id=com.craftsvilla.app&amp;hl=en\">\n" +
-    "\t\t      <img src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/Googleplay.png\">\n" +
-    "\t\t      </a>\n" +
-    "\t\t    </li>\n" +
-    "\t\t  </ul>\n" +
+    "\t\t\t<ul class=\"footer-col col-xs-12 col-sm-3 m-padding\">\n" +
+    "\t\t\t\t<li class=\"FooterHeader\">SUPPORT</li>\n" +
+    "\t\t\t\t<li><span class=\"ln-hgt-15\">For Help, send email to </span>\n" +
+    "\t\t\t\t\t<a href=\"mailto:customercare@craftsvilla.com\"><span class=\"rouge ln-hgt-15\">customercare@craftsvilla.com</span></a>\n" +
+    "\t\t\t\t</li>\n" +
+    "\t\t\t</ul>\n" +
+    "\t\t\t<ul class=\"footer-col col-xs-12 col-sm-3 m-padding\">\n" +
+    "\t\t\t\t<li class=\"FooterHeader\"> PAYMENT OPTIONS </li>\n" +
+    "\t\t\t\t<li><img src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/Visa_1.png\"> <img src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/Visa_2.png\"> <img src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/Visa_3.png\"></li>\n" +
+    "\t\t\t</ul>\n" +
+    "\t\t\t<ul class=\"footer-col col-xs-12 col-sm-3 m-padding\">\n" +
+    "\t\t\t\t<li class=\"FooterHeader\">STAY CONNECTED</li>\n" +
+    "\t\t\t\t<li>\n" +
+    "\t\t\t\t\t<a target=\"_blank\" href=\"http://www.facebook.com/craftsvilla\"><img src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/FB.png\"></a>\n" +
+    "\t\t\t\t\t<a target=\"_blank\" href=\"https://twitter.com/craftsvilla\"><img src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/Twitter.png\" class=\"p-l-5\"></a>\n" +
+    "\t\t\t\t\t<a target=\"_blank\" href=\"https://plus.google.com/117677147285924975963\"><!-- <img class=\"p-l-5\" src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/g-plus.png\"> --></a>\n" +
+    "\t\t\t\t\t<a target=\"_blank\" href=\"https://www.pinterest.com/craftsvilla/\">\n" +
+    "\t\t\t\t\t\t<img src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/pin.png\" class=\"p-l-5\">\n" +
+    "\t\t\t\t\t</a>\n" +
+    "\t\t\t\t</li>\n" +
+    "\t\t\t</ul>\n" +
+    "\t\t\t<ul class=\"footer-col col-xs-12 col-sm-3 m-padding\">\n" +
+    "\t\t\t\t<li class=\"FooterHeader\">DOWNLOAD OUR APP</li>\n" +
+    "\t\t\t\t<li>\n" +
+    "\t\t\t\t\t<a target=\"_blank\" href=\"https://play.google.com/store/apps/details?id=com.craftsvilla.app&amp;hl=en\">\n" +
+    "\t\t\t\t\t\t<img src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/Googleplay.png\">\n" +
+    "\t\t\t\t\t</a>\n" +
+    "\t\t\t\t</li>\n" +
+    "\t\t\t</ul>\n" +
     "\t\t</section>\n" +
     "\t</div>\n" +
     "</div>\n"
