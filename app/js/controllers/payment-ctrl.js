@@ -1,13 +1,18 @@
 define(['./index'], function (controllers) {
     'use strict';
-    controllers.controller('paymentCtrl', ['$scope', 'craftsvillaService', function ($scope,craftsvillaService) {
+    controllers.controller('paymentCtrl', ['$scope', 'craftsvillaService', 'IMGHOST','PRODUCTURL', function ($scope,craftsvillaService,IMGHOST,PRODUCTURL) {
 			window.scope = $scope;
 			$scope.credit = {};
+			$scope.imgHost = IMGHOST;
+			$scope.prdctUrl = PRODUCTURL;
 			// Repeat
 
 			// Tabs
     	 	$scope.changeName = 'Cash On Delivery';
     	 	$scope.paymentMethods = [];
+    	 	$scope.finalQuoteData = null;
+    	 	$scope.shippingAdressData = null;
+    	 	$scope.shippingAmountData = null;
 			$scope.changeSlide = function(value) {
 				$scope.changeName = value;
 				console.log($scope.changeName);
@@ -99,13 +104,26 @@ define(['./index'], function (controllers) {
 				})
 			}
 
+			$scope.finalQuoteDetails = function() {
+				craftsvillaService.loadFinalQuote()
+				.success(function(response) {
+					console.log(response);
+					$scope.finalQuoteData = response.d.product_list;
+					$scope.shippingAdressData = response.d.shippingAddress;
+					$scope.shippingAmountData = response.d;
+				});
+			}
+
 			$scope.initPayment = function() {
 				console.log("initializing Payment");
 				$scope.getPayments();
 				$scope.getOrderproducts();
+				$scope.finalQuoteDetails();
 			}
 
 			$scope.initPayment();
+
+
 
     }]);
 });
