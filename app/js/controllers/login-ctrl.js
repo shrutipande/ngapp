@@ -4,22 +4,25 @@ define(['./index'], function (controllers) {
 	$scope.guestUser = false;
 	$scope.forgotPasswd = false;
 	$scope.sendPasswd= false;
-$scope.userForgot ={};
-$scope.userLogin={};
+	$scope.userForgot ={};
+	$scope.userLogin={};
 	$scope.changeGuest = function() {
 		console.log("click on continue as guest");
 		$scope.guestUser = true;
 	};
 	$scope.changeGuestCheckout = function() {
-		console.log("click on  guest checkout");
-		if ($scope.guestUserForm.$valid && $scope.userLogin.guestEmail) {
-			console.log($scope.guest);
-			var emailId = $scope.userLogin.guestEmail;
+
+		if ($scope.guestUserForm.$valid ) {
+			var emailId = $scope.guest.guestUserEmail;
 			craftsvillaService.continueAsGuest(emailId)
 			.success(function (response) {
-				console.log('GuestCheckout');
-				console.log(response);
+				if(response.s==0 )
+				{
+					alert("Invalid email ID or Password!");
+				}
+				else{
 				$state.go('shipping');
+				}
 			})
 			.error(function (err) {
 				console.log('error');
@@ -34,40 +37,29 @@ $scope.userLogin={};
 		console.log("sign up Google");
 	};
 	$scope.loginHere = function() {
-		console.log("click on Login Here");
 		$scope.guestUser = false;
 	};
 	$scope.forgotPwd = function() {
-		console.log("click on Forgot Password");
 		$scope.forgotPasswd = true;
 	};
 
 	$scope.forgtPwdClose = function() {
-		console.log("click on Forgot Password Close Button");
 		$scope.forgotPasswd = false;
 	};
 
-		$scope.submitForm = function() {
-					console.log($scope.userLoginForm);
-
-			alert($scope.userForm.$valid)
-			if ($scope.userForm.$valid) {
-				console.log($scope.user);
-
-			}
-		};
-
 	$scope.loginCred = function() {
-		console.log($scope.userLoginForm);
 		if ($scope.userLoginForm.$valid) {
-			console.log($scope.userLogin);
 			var emailId = $scope.userLogin.email;
 			var password = $scope.userLogin.password;
 			craftsvillaService.getLogin(emailId, password)
 			.success(function (response) {
-				console.log('test login');
-				console.log(response);
-				$state.go('shipping');
+				if(response.s==0 )
+				{
+					alert("Invalid email ID or Password!");
+				}
+				else{
+					$state.go('shipping');
+				}
 			})
 			.error(function (err) {
 				console.log('error');
@@ -78,11 +70,9 @@ $scope.userLogin={};
 	$scope.sendPassword = function() {
 
 		if ($scope.sendPasswordForm.$valid ) {
-			console.log($scope.userForgot);
-			var emailId = $scope.sendPasswordForm.forgotEmail;
+			var emailId = $scope.userForgot.forgotEmail;
 			craftsvillaService.forgotPassword(emailId)
 			.success(function (response) {
-				console.log("click on Send Password");
 				$scope.sendPasswd=true;
 				$scope.forgotPasswd = false;
 
@@ -94,8 +84,7 @@ $scope.userLogin={};
 		}
 	};
 	$scope.sendPwdClose = function() {
-		console.log("click on Forgot Password Close Button");
-		$scope.sendPasswd = false;
+			$scope.sendPasswd = false;
 	};
 	$scope.initLogin = function() {
 		console.log("Login Initialised");

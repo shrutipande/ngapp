@@ -2,7 +2,7 @@ define([
   'angular',
   'angular-sanitize',
   'angular-ui-router',
-  'angular-animate',
+  //'angular-animate',
   'config',
   './controllers/index',
   './directives/index',
@@ -20,7 +20,7 @@ define([
     'app.directives',
     'app.animations',
     'ngSanitize',
-    'ui.router',
-    'ng-animate'
+    'ui.router'
+    //'ng-animate'
   ]);
 });
