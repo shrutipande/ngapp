@@ -4,7 +4,6 @@ define(['./index'], function (services) {
   services.service('craftsvillaService', ['$http','HOST', function($http,HOST) {
 
     return {
-      getCartData: getCartData,
       loginCheck : loginCheck,
       // getCartData: getCartData,
       // getApplyCoupon : getApplyCoupon,
@@ -73,9 +72,9 @@ define(['./index'], function (services) {
     }
 
       //remove items
-    function removeQuoteItems(productIdArrayObj) {
+    function removeQuoteItems(productIds) {
       return $http.post( HOST + 'checkoutService/index/removeQuoteItems', {
-        "productIds":productIdArrayObj
+        "productIds": productIds
       });
     }
 

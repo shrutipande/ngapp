@@ -3,6 +3,7 @@ body {
     letter-spacing: 0.2px;
     font-size: 14px;
     background: #f7f7f7;
+    padding-top: 0px !important;
 }
 .nopadding { padding: 0px; }
 .padding-right-0 { padding-right: 0px !important; }
@@ -344,20 +345,23 @@ div[check-out] .right-panel .coupon-cont-form{float:left; width:100%;margin: 10p
 .coupon-cont-form .red-border{border:1px solid #ec2024 !important; border-right:none !important;}
 div[check-out] .check-out-msg{float:left; margin-bottom:10px;padding:5px 15px 6px 15px; border: solid 1px #c6d9e2; background-color: #eef7fc; font-size: 14px; color: #347c9e;}
 div[check-out] .check-out-msg-txt{display:inline-block;}
-div[check-out] .check-out-msg-btn{display:inline-block; margin: 0 0 0 5px; color: #981937; text-align: center; text-transform: uppercase; font-weight:bold; }
+div[check-out] .check-out-msg-btn{display:inline-block; margin: 0 0 0 5px; color: #981937; text-align: center; text-transform: uppercase; font-weight:bold; cursor: pointer;}
 
 div[check-out] .left-panel .cart-items-card{float:left; width:100%;  border-radius: 2px;  margin-bottom:9px; background-color: #ffffff; border: solid 1px #ebebeb;}
-div[check-out] .left-panel .cart-items-card .cart-items-cont{float:left; width:96%; padding: 20px 0 0 18px;}
+div[check-out] .left-panel .cart-items-card .cart-items-cont{float:left; width:96%; padding: 20px 0 20px 18px;}
 div[check-out] .left-panel .cart-items-card .cart-details-close{float:right; width: 2%;   height: 15px; margin:10px 15px 0 0; font-size:20px;}
 div[check-out] .left-panel .cart-items-card .cart-seller-cont{float: left;  padding:0 14px;  width: 97%;  margin: 6px 0 0 5px;}
 .cart-seller-cont .open-cont{float:left; width: 100%; padding:10px 0 10px 0;}
 .open-cont p{font-size: 14px; margin:0; color: #4a4a4a;}
 .chck-caret{color:#7a7a7a; margin-left: 4px !important;}
+.cart-seller-cont .buttons {
+    cursor: pointer;
+}
 
 .seller-texta{width:100%;font-size: 12px; border:1px solid #ebebeb; padding:5px 10px;}
 div[check-out]   .out-o-stk{color:#9b9b9b;}
 .cart-details-cont .c-itm-name{ font-size: 14px; color: #3b3b3b;}
-.cart-items-cont .cart-img-cont{float:left; margin-top:6px; width:20%; height: 170px; border-radius: 2px; background-color: #ffffff; border: solid 1px #ebebeb;}
+.cart-items-cont .cart-img-cont{float:left; margin-top:6px; width:20%; height: auto; border-radius: 2px; background-color: #ffffff; border: solid 1px #ebebeb;}
 .cart-items-cont .cart-details-cont{float:left; margin-top:8px; margin-left:31px; width:75%;}
 
 .cart-details-cont .c-itm-price{margin-top:20px; font-size: 16px; font-weight:bold; line-height: 1.2;  color: #4c4c4c;}
@@ -378,7 +382,9 @@ div[check-out] .right-panel .coupon-cont, .order-cont{border-radius: 2px;   back
 .order-cont  .o-right-cont .ord-amt{float:right; width:auto; margin-bottom: 10px;}
 .total{color:#000000;}
 .procd-to-checkout{padding:16px 0; margin-bottom:15px; height: 50px; background-color: #6da40e;font-size: 16px;  line-height: 1.1;  color: #ffffff; font-weight: bold; text-transform: uppercase; text-align: center; }
-
+.procd-to-checkout:hover {
+    color: #fff;
+}
 div[check-out] .left-panel .c-continue-shpng{float:left; padding:16px 0; height: 50px; font-size: 16px; line-height: 1.1; color: #971937;}
 div[check-out] .left-panel .c-continue-shpng .c-arrw{margin-right:5px; margin-bottom:1px; height:auto; width:16px;}
 div[check-out] .left-panel .order-total{float:right; padding:15px;  height: 50px; border-radius: 2px; background-color: #ffffff;  background-color: var(--white-four);  border: solid 1px #ebebeb;  font-size: 14px;
@@ -558,8 +564,8 @@ span[role="division"] { margin-left: 5%; }
     div[check-out] .m-right-20{margin-right: 20px;}
     div[check-out] .header {padding-top:26px; }
     div[check-out] .left-panel{width:67%;}
-    div[check-out] .right-panel {margin-left:2%; width:31%;}
-    .open-cont .buttons{float:left; padding:5px 0;width: 134px;   height: 30px; border-radius: 2px; font-size: 14px;  font-weight:bold;  line-height: 1.4;  color: #981937; text-align: center; text-transform: uppercase;}
+    div[check-out] .right-panel {margin-left:2%; width:31%; margin-top: 39px;}
+    .open-cont .buttons{float:left; padding:5px 0;width: 134px;   height: 30px; border-radius: 2px; font-size: 14px;  font-weight:bold;  line-height: 1.4;  color: #981937; text-align: center; text-transform: uppercase;background-color: #fff;}
     .open-cont .b-border{ border-radius: 2px; border: solid 1px #dec6cc;}
 
 
