@@ -19,28 +19,27 @@ define(['angular'], function(angular) {
             // $httpProvider.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
             // $httpProvider.defaults.useXDomain = true;
             $httpProvider.defaults.withCredentials = true;
-            // $httpProvider.defaults.headers.common = {};
+            $httpProvider.defaults.headers.common = {};
             $httpProvider.defaults.headers.post = {};
-            // $httpProvider.defaults.headers.put = {};
-            // $httpProvider.defaults.headers.patch = {};
+            $httpProvider.defaults.headers.put = {};
+            $httpProvider.defaults.headers.patch = {};
 
             delete $httpProvider.defaults.headers.common['X-Requested-With'];
         }])
         .config(['$authProvider', function($authProvider) {
-          $authProvider.baseUrl = 'http://dev7.craftsvilla.com';
+            $authProvider.baseUrl = 'http://dev7.craftsvilla.com';
 
-// $authProvider.httpInterceptor = function() { return true; },
+            // $authProvider.httpInterceptor = function() { return true; },
 
             $authProvider.facebook({
                 clientId: '1696658660596971',
                 responseType: 'token',
-                 url: '/checkoutService/index/socialLogin',
+                url: '/checkoutService/index/socialLogin',
             });
 
             $authProvider.google({
                 clientId: '34235241642-4rsq630ova71avmsph5ded5uvp3tac8t.apps.googleusercontent.com',
-                                url: '/checkoutService/index/socialLogin',
+                url: '/checkoutService/index/socialLogin',
             });
-
         }]);
 });
