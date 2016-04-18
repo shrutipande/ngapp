@@ -1,8 +1,8 @@
 /*global define */
 
-define(['angular'], function (angular) {
-  'use strict';
-
+define(['angular'], function(angular) {
+    'use strict';
+    
   return angular.module('app.config', [])
       .constant('VERSION', '0.0.1')
       //.constant('HOST', 'http://localhost:8000/api')
@@ -25,5 +25,19 @@ define(['angular'], function (angular) {
       $httpProvider.defaults.headers.post = {};
       $httpProvider.defaults.headers.put = {};
       $httpProvider.defaults.headers.patch = {};
+
+      delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    }])
+    .config([ '$authProvider', function($authProvider) {
+
+        $authProvider.facebook({
+            clientId: '1696658660596971',
+            responseType: 'token'
+        });
+
+        $authProvider.google({
+            clientId: '34235241642-4rsq630ova71avmsph5ded5uvp3tac8t.apps.googleusercontent.com'
+        });
+
     }]);
 });

@@ -10,6 +10,8 @@
         "angular-sanitize": "1.2.x",
         "angular-mocks": "~1.2.x",
         "requirejs": null,
-        "requirejs-domready": null
+        "requirejs-domready": null,
+        "angular-credit-cards": "^2.4.3",
+        "satellizer": "^0.14.0"
     }
 }
