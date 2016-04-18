@@ -65,48 +65,34 @@
 				<div class="col-xs-12 nopadding r-bg hidden-xs">
 					<div role="items" class="col-xs-12">
 						<div class="col-xs-8 nopadding">
-							<h5>2 ITEMS <span><a href="#">View Details</a></span></h5>
+							<h5>{{shippingAmountData.total_items}} ITEMS <span><a href="#">View Details</a></span></h5>
 						</div>
-						<div class="col-xs-4 nopadding text-right"><span class="total-amount">&#8377; 3,240</span></div>
+						<div class="col-xs-4 nopadding text-right"><span class="total-amount">&#8377; {{shippingAdressData.grand_total}}</span></div>
 					</div>
 					<!--// -->
-					<div class="col-xs-12 items-list">
+					<div class="col-xs-12 items-list" ng-repeat = "quotedata in finalQuoteData">
 						<div class="media">
 							<div class="media-left">
-								<a href="#">
-									<img class="media-object" src="http://dummyimage.com/100x100/dedede/0011ff" alt="" title="">
+								<a href="{{prdctUrl + quotedata.product_id}}">
+									<img class="media-object" src=" {{imgHost + quotedata.product_image}}" alt=""  width="100px" height="100px" title="">
 								</a>
 							</div>
 							<div class="media-body">
-								<h4 class="media-heading">Latest Designer Black And White Long Sleeve Straight Suit</h4>
-								<p>Quantity: <span>1</span></p>
-								<h4 class="items-price">&#8377; 1,800</h4>
+								<h4 class="media-heading">{{quotedata.product_name}}</h4>
+								<p>Quantity: <span>{{quotedata.product_qty}}</span></p>
+								<h4 class="items-price">&#8377; {{quotedata.product_price | number : 2}}</h4>
 							</div>
 						</div>
 					</div>
 					<!--// -->
-					<div class="col-xs-12 items-list">
-						<div class="media">
-							<div class="media-left">
-								<a href="#">
-									<img class="media-object" src="http://dummyimage.com/100x100/dedede/0011ff" alt="" title="">
-								</a>
-							</div>
-							<div class="media-body">
-								<h4 class="media-heading">Latest Designer Black And White Long Sleeve Straight Suit</h4>
-								<p>Quantity: <span>1</span></p>
-								<h4 class="items-price">&#8377; 1,800</h4>
-							</div>
-						</div>
-					</div>
 					<!--// Shipping Details -->
 					<div class="col-xs-12 items-list">
 						<div class="col-xs-12 nopadding shipping-details">
 							<h5>SHIPPING DETAILS</h5>
 							<p>
-								<span>Shruti Kartikey</span>
-								<span class="normal">G-1502, Craftsvilla, Lotus Business Park, Goregaon East, Mumbai, Maharashtra - 400056</span>
-								<span class="normal">+91 7738233261</span>
+								<span>{{shippingAdressData.firstname + ' ' + shippingAdressData.lastname}}</span>
+								<span class="normal">{{shippingAdressData.street +','+shippingAdressData.city +','+ shippingAdressData.region +','+ shippingAdressData.postcode}}</span>
+								<span class="normal">{{shippingAdressData.telephone}}</span>
 							</p>
 						</div>
 					</div>
@@ -122,7 +108,7 @@
 									<p>Sub Total</p>
 								</div>
 								<div class="col-xs-4 nopadding text-right">
-									<p>&#8377; 3,600</p>
+									<p>&#8377; {{shippingAmountData.sub_total | number : 2 }}</p>
 								</div>
 							</div>
 							<div class="col-xs-12 nopadding">
@@ -130,7 +116,7 @@
 									<p>Coupon Applied (CRAFTSLOVE)</p>
 								</div>
 								<div class="col-xs-4 nopadding text-right">
-									<p>- &#8377; 360</p>
+									<p>- &#8377; {{shippingAdressData.discount_amount | number : 2}}</p>
 								</div>
 							</div>
 							<div class="col-xs-12 nopadding">
@@ -138,12 +124,12 @@
 									<p>Shipping</p>
 								</div>
 								<div class="col-xs-4 nopadding text-right">
-									<p>&#8377; 0</p>
+									<p>&#8377; {{shippingAdressData.shipping_amount | number : 2}}</p>
 								</div>
 							</div>
 						</div>
 						<div class="col-xs-12 nopadding">
-							<h5>Total Payable <span class="pull-right">&#8377; 3,240</span></h5>
+							<h5>Total Payable <span class="pull-right">&#8377; {{shippingAdressData.grand_total | number : 2}}</span></h5>
 						</div>
 					</div>
 
