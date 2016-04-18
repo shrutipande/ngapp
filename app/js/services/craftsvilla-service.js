@@ -5,6 +5,11 @@ define(['./index'], function (services) {
 
     return {
       loginCheck : loginCheck,
+      // getCartData: getCartData,
+      // getApplyCoupon : getApplyCoupon,
+      // getRemoveCoupon: getRemoveCoupon,
+      // getProducts: getProducts,
+      // getProductById: getProductById,
       loadQuote: loadQuote,
       updateQty: updateQty,
       addToQuote: addToQuote,
@@ -24,8 +29,11 @@ define(['./index'], function (services) {
       forgotPassword : forgotPassword,
       getLogout : getLogout,
       getPaymentMethods : getPaymentMethods,
+      placeOrder: placeOrder,
+      paymentRedirect: paymentRedirect,
       continueAsGuest : continueAsGuest,
-      loadFinalQuote : loadFinalQuote
+      loadFinalQuote : loadFinalQuote,
+      placeOrderCOD: placeOrderCOD
     };
 
     //////////////////////////////////////////
@@ -223,13 +231,39 @@ define(['./index'], function (services) {
   //payment methods
 
     function getPaymentMethods() {
-      return $http.get('https://api.myjson.com/bins/4yszk');
+      return $http.get(HOST + 'checkoutService/index/getPaymentMethods');
     }
 
   //payment methods ends
 
+    function postQuote (customerId, quoteId) {
+      return $http.post(HOST + 'checkoutService/index/loadQuote', {
+        customerId: customerId,
+        quoteId: quoteId
+      });
+    }
+    // Place order (Prepaid)
+    function placeOrder(json) {
+      return $http({
+        method: 'GET',
+        url: HOST + 'checkoutService/index/placeOrderPrepaid',
+        params: json
+      });
+    }
 
+    function paymentRedirect(url, json) {
+      return $http({
+        method: 'POST',
+        url: url,
+        data: json
+      });
+    }
 
-
+    function placeOrderCOD() {
+      return $http({
+        method: 'POST',
+        url: HOST + 'checkoutService/index/placeOrderCOD'
+      });
+    }
   }]);
 });

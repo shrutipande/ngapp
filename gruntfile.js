@@ -85,6 +85,6 @@ module.exports = function(grunt) {
     grunt.registerTask('prod', ['sass', 'ngtemplates', 'requirejs', 'imagemin']);
 
     // Dev mode tasks
-    grunt.registerTask('default', ['sass', 'ngtemplates', 'requirejs','watch']);
+    grunt.registerTask('default', ['sass', 'ngtemplates', 'requirejs', 'watch']);
 
 };
