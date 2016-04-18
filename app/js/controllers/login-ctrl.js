@@ -1,12 +1,13 @@
 define(['./index'], function (controllers) {
 	'use strict';
-	controllers.controller('loginCtrl', ['$scope', '$state' ,'craftsvillaService', function ($scope, $state, craftsvillaService) {
+	controllers.controller('loginCtrl', ['$scope', '$state', '$auth', 'craftsvillaService', function ($scope, $state,$auth,craftsvillaService) {
 	$scope.guestUser = false;
 	$scope.forgotPasswd = false;
 	$scope.sendPasswd= false;
 	$scope.invalidCred=false;
 	$scope.userForgot ={};
 	$scope.userLogin={};
+
 	$scope.changeGuest = function() {
 		console.log("click on continue as guest");
 		$scope.guestUser = true;
@@ -133,8 +134,15 @@ define(['./index'], function (controllers) {
 		console.log("Login Initialised");
 	};
 	$scope.authenticate = function(provider) {
-    	$auth.authenticate(provider);
-    };
+		$auth.authenticate(provider)
+			.then(function(data) {
+				console.log(data);
+			})
+			.catch(function(error) {
+				console.log(error);
+			});
+	};
+
 	$scope.initLogin();
 
 	}]);

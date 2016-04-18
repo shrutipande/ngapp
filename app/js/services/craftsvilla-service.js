@@ -4,8 +4,8 @@ define(['./index'], function (services) {
   services.service('craftsvillaService', ['$http','HOST', function($http,HOST) {
 
     return {
-      loginCheck : loginCheck,
       // getCartData: getCartData,
+      loginCheck : loginCheck,
       // getApplyCoupon : getApplyCoupon,
       // getRemoveCoupon: getRemoveCoupon,
       // getProducts: getProducts,
@@ -33,7 +33,8 @@ define(['./index'], function (services) {
       paymentRedirect: paymentRedirect,
       continueAsGuest : continueAsGuest,
       loadFinalQuote : loadFinalQuote,
-      placeOrderCOD: placeOrderCOD
+      placeOrderCOD: placeOrderCOD,
+      getSuccessData:getSuccessData
     };
 
     //////////////////////////////////////////
@@ -183,7 +184,8 @@ define(['./index'], function (services) {
   //shipping page
 
     function getAddress() {
-      return $http.get( HOST + 'checkoutService/index/getAddress');
+       return $http.get( HOST + 'checkoutService/index/getAddress');
+       //return $http.get('https://api.myjson.com/bins/yjgw');
     }
 
     function assignAddressToQuote(billingId, shippingId) {
@@ -250,6 +252,16 @@ define(['./index'], function (services) {
         params: json
       });
     }
+
+  //final quote
+    function getSuccessData() {
+      return $http.get( HOST + 'checkoutService/index/loadFinalQuote');
+     //return $http.get( 'https://api.myjson.com/bins/3wu38');
+
+
+
+    }
+
 
     function paymentRedirect(url, json) {
       return $http({

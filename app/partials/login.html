@@ -47,10 +47,10 @@
 	<div class="col-xs-12 col-sm-6 socialMediaContainer">
 		<div class="row">
 			<div class="col-xs-6 nopadding socialMedia">
-				<a class="signup-fb"  href="javascript:void(0)" ng-click="signupFB()"><small><img src="images/facebook_alt.png" width="8" height="17" alt="" title=""></small><span class="cart-s-m">Log In with Facebook</span></a>
+				<a class="signup-fb"  href="javascript:void(0)" ng-click="authenticate('facebook')"><small><img src="images/facebook_alt.png" width="8" height="17" alt="" title=""></small><span class="cart-s-m">Log In with Facebook</span></a>
 			</div>
 			<div class="col-xs-6 nopadding socialMedia">
-				<a class="signup-g" href="javascript:void(0)" ng-click="signupGgle()"><small><img src="images/googlw_Plus.png" width="26" height="16" alt="" title=""></small><span class="cart-s-m">Log In with Google</span></a>
+				<a class="signup-g" href="javascript:void(0)" ng-click="authenticate('google')"><small><img src="images/googlw_Plus.png" width="26" height="16" alt="" title=""></small><span class="cart-s-m">Log In with Google</span></a>
 			</div>
 			<div class="col-xs-12 guest" ng-hide="guestUser">
 				<h4>CONTINUE AS A GUEST</h4>
@@ -145,8 +145,8 @@
 			<div class="col-xs-12 col-sm-6 socialMediaContainer hidden-xs" ng-hide="guestUser">
 				<div class="col-xs-12 col-sm-10 pull-right">
 					<div class="col-xs-12 nopadding socialMedia">
-						<a class="signup-fb" href="javascript:void(0)" ng-click="signupFB()"><small><img src="images/facebook_alt.png" width="8" height="17" alt="" title=""></small><span class="cart-s-m">Log In with Facebook</span></a>
-						<a class="signup-g" href="javascript:void(0)" ng-click="signupGgle()"><small><img src="images/googlw_Plus.png" width="26" height="16" alt="" title=""></small><span class="cart-s-m">Log In with Google</span></a>
+						<a class="signup-fb" href="javascript:void(0)" ng-click="authenticate('facebook')"><small><img src="images/facebook_alt.png" width="8" height="17" alt="" title=""></small><span class="cart-s-m">Log In with Facebook</span></a>
+						<a class="signup-g" href="javascript:void(0)" ng-click="authenticate('google')"><small><img src="images/googlw_Plus.png" width="26" height="16" alt="" title=""></small><span class="cart-s-m">Log In with Google</span></a>
 						<div class="col-xs-12 nopadding guest">
 							<h4>CHECKOUT AS A GUEST</h4>
 							<p>New to craftsvilla? Use our quick and secure method.</p>
@@ -199,4 +199,4 @@
 		</section>
 	</div>
 </div>
-\
+
