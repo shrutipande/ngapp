@@ -579,3 +579,9 @@ span[role="division"] { margin-left: 5%; }
 .width-auto{
     width:auto;
 }
+.card-type {
+     position: absolute;
+     right: 10px;
+     top: 35px;
+     color: #aaa;
+ }
