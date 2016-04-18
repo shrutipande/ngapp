@@ -19,5 +19,9 @@ define(['angular'], function (angular) {
         //$httpProvider.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
         //$httpProvider.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
         //$httpProvider.defaults.useXDomain = true;
+        $httpProvider.defaults.headers.common = {};
+        $httpProvider.defaults.headers.post = {};
+        $httpProvider.defaults.headers.put = {};
+        $httpProvider.defaults.headers.patch = {};
       }])
 });
