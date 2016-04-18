@@ -19,28 +19,18 @@ define(['angular'], function(angular) {
             // $httpProvider.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
             // $httpProvider.defaults.useXDomain = true;
             $httpProvider.defaults.withCredentials = true;
-            // $httpProvider.defaults.headers.common = {};
+            $httpProvider.defaults.headers.common = {};
             $httpProvider.defaults.headers.post = {};
-            // $httpProvider.defaults.headers.put = {};
-            // $httpProvider.defaults.headers.patch = {};
+            $httpProvider.defaults.headers.put = {};
+            $httpProvider.defaults.headers.patch = {};
 
             delete $httpProvider.defaults.headers.common['X-Requested-With'];
         }])
         .config(['$authProvider', 'HOST', function($authProvider, HOST) {
             $authProvider.baseUrl = 'http://dev7.craftsvilla.com';
             $authProvider.withCredentials = true;
-            $authProvider.tokenRoot = null;
-            $authProvider.baseUrl = '/';
-            $authProvider.loginUrl = '/auth/login';
-            $authProvider.signupUrl = '/auth/signup';
-            $authProvider.unlinkUrl = '/auth/unlink/';
-            $authProvider.tokenName = 'token';
-            $authProvider.tokenPrefix = 'satellizer';
-            $authProvider.authHeader = 'Authorization';
-            $authProvider.authToken = 'Bearer';
-            $authProvider.storageType = 'localStorage';
 
-            $authProvider.httpInterceptor = function() { return true; },
+            // $authProvider.httpInterceptor = function() { return true; },
 
             $authProvider.facebook({
                 clientId: '1696658660596971',
