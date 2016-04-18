@@ -4,8 +4,8 @@ define(['./index'], function (services) {
   services.service('craftsvillaService', ['$http','HOST', function($http,HOST) {
 
     return {
-      loginCheck : loginCheck,
       // getCartData: getCartData,
+      loginCheck : loginCheck,
       // getApplyCoupon : getApplyCoupon,
       // getRemoveCoupon: getRemoveCoupon,
       // getProducts: getProducts,
