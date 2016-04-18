@@ -74,13 +74,13 @@
 						<div class="media">
 							<div class="media-left">
 								<a href="{{prdctUrl + quotedata.product_id}}">
-									<img class="media-object" src=" {{imgHost + quotedata.product_image}}" alt="" title="">
+									<img class="media-object" src=" {{imgHost + quotedata.product_image}}" alt="" width="100px" height="100px" title="">
 								</a>
 							</div>
 							<div class="media-body">
 								<h4 class="media-heading">{{quotedata.product_name}}</h4>
 								<p>Quantity: <span>{{quotedata.product_qty}}</span></p>
-								<h4 class="items-price">&#8377; {{quotedata.product_price}}</h4>
+								<h4 class="items-price">&#8377; {{quotedata.product_price | number : 2}}</h4>
 							</div>
 						</div>
 					</div>
@@ -108,7 +108,7 @@
 									<p>Sub Total</p>
 								</div>
 								<div class="col-xs-4 nopadding text-right">
-									<p>&#8377; {{shippingAmountData.sub_total }}</p>
+									<p>&#8377; {{shippingAmountData.sub_total | number : 2 }}</p>
 								</div>
 							</div>
 							<div class="col-xs-12 nopadding">
@@ -116,7 +116,7 @@
 									<p>Coupon Applied (CRAFTSLOVE)</p>
 								</div>
 								<div class="col-xs-4 nopadding text-right">
-									<p>- &#8377; {{shippingAdressData.discount_amount}}</p>
+									<p>- &#8377; {{shippingAdressData.discount_amount | number : 2}}</p>
 								</div>
 							</div>
 							<div class="col-xs-12 nopadding">
@@ -124,12 +124,12 @@
 									<p>Shipping</p>
 								</div>
 								<div class="col-xs-4 nopadding text-right">
-									<p>&#8377; {{shippingAdressData.shipping_amount}}</p>
+									<p>&#8377; {{shippingAdressData.shipping_amount | number : 2}}</p>
 								</div>
 							</div>
 						</div>
 						<div class="col-xs-12 nopadding">
-							<h5>Total Payable <span class="pull-right">&#8377; {{shippingAdressData.grand_total}}</span></h5>
+							<h5>Total Payable <span class="pull-right">&#8377; {{shippingAdressData.grand_total | number : 2}}</span></h5>
 						</div>
 					</div>
 
