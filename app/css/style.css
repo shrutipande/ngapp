@@ -72,11 +72,6 @@ a.signup-fb { background: #4962ba none repeat scroll 0 0; margin-bottom: 7px; }
 
 .signinForm { border-right: solid 1px #d8d8d8;}
 .signinForm .form-control { border-radius: 0; height: 45px; padding: 4px 15px 6px 15px; color: #9b9b9b; }
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 0d2aac1f38385eed0a1568ce8fc125621f0aee70
 .error input { border: solid 1px #ff0c00 !important; }
 .error span, .error p { color: #ff0c00; display: block; }
 
