@@ -350,11 +350,11 @@ div[check-out] .left-panel .cart-items-card .cart-seller-cont{float: left;  padd
 .open-cont p{font-size: 14px; margin:0; color: #4a4a4a;}
 .chck-caret{color:#7a7a7a; margin-left: 4px !important;}
 
-.seller-texta{width:100%;font-size: 12px;color: #e6e6e6; border:1px solid #ebebeb; padding:5px 10px;}
+.seller-texta{width:100%;font-size: 12px; border:1px solid #ebebeb; padding:5px 10px;}
 div[check-out]   .out-o-stk{color:#9b9b9b;}
 .cart-details-cont .c-itm-name{ font-size: 14px; color: #3b3b3b;}
 .cart-items-cont .cart-img-cont{float:left; margin-top:6px; width:20%; height: 170px; border-radius: 2px; background-color: #ffffff; border: solid 1px #ebebeb;}
-.cart-items-cont .cart-details-cont{float:left; margin-top:8px; margin-left:31px; }
+.cart-items-cont .cart-details-cont{float:left; margin-top:8px; margin-left:31px; width:75%;}
 
 .cart-details-cont .c-itm-price{margin-top:20px; font-size: 16px; font-weight:bold; line-height: 1.2;  color: #4c4c4c;}
 .cart-details-cont .c-itm-qty{margin-top:20px; margin-bottom:20px;}
@@ -371,7 +371,7 @@ div[check-out] .right-panel .coupon-cont, .order-cont{border-radius: 2px;   back
 .order-cont .o-heading{padding:16px 0 12px 0;font-size: 16px; line-height: 1.9; letter-spacing: 1.2px; color: #000000; text-transform: uppercase;}
 .order-cont  .o-left-cont{float:left;margin:11px 0 13px 0; width:70%; text-align:left;font-size: 14px; line-height: 1.4; color: #747474;}
 .order-cont  .o-right-cont{float:left;margin:11px 0 13px 0;  width:30%; text-align: right;  font-size: 14px; line-height: 1.4; color: #747474; font-weight: bold;}
-.order-cont  .o-right-cont .ord-amt{float:right; width:70%; margin-bottom: 10px;}
+.order-cont  .o-right-cont .ord-amt{float:right; width:auto; margin-bottom: 10px;}
 .total{color:#000000;}
 .procd-to-checkout{padding:16px 0; margin-bottom:15px; height: 50px; background-color: #6da40e;font-size: 16px;  line-height: 1.1;  color: #ffffff; font-weight: bold; text-transform: uppercase; text-align: center; }
 
@@ -529,10 +529,9 @@ MEDIA QUERI
     div[check-out] .m-left-59{    margin-left: 33%;}
 }
 /* Check out media end */
-
-.card-type {
-    position: absolute;
-    right: 10px;
-    top: 35px;
-    color: #aaa;
+.width100{
+    width: 100%;
+}
+.width-auto{
+    width:auto;
 }

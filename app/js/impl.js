@@ -9,9 +9,10 @@ define([
     './controllers/login-ctrl',
     './controllers/payment-ctrl',
     './controllers/payment-error-ctrl',
-  './controllers/payment-success-ctrl',
-  './controllers/shipping-ctrl',
-     './directives/craftsvilla-directive',
+    './controllers/payment-success-ctrl',
+    './controllers/shipping-ctrl',
+    './controllers/test-ctrl',
+    './directives/craftsvilla-directive',
     './services/craftsvilla-service',
     './filters/craftsvilla-filter',
     './animations/craftsvilla-animation'
