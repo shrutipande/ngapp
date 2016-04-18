@@ -184,7 +184,8 @@ define(['./index'], function (services) {
   //shipping page
 
     function getAddress() {
-      return $http.get( HOST + 'checkoutService/index/getAddress');
+       return $http.get( HOST + 'checkoutService/index/getAddress');
+       //return $http.get('https://api.myjson.com/bins/yjgw');
     }
 
     function assignAddressToQuote(billingId, shippingId) {
