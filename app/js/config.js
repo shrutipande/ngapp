@@ -27,6 +27,9 @@ define(['angular'], function(angular) {
             delete $httpProvider.defaults.headers.common['X-Requested-With'];
         }])
         .config(['$authProvider', function($authProvider) {
+            $authProvider.baseUrl = 'http://dev7.craftsvilla.com';
+
+            // $authProvider.httpInterceptor = function() { return true; },
 
             $authProvider.facebook({
                 clientId: '1696658660596971',

@@ -9,7 +9,7 @@ define(['./index'], function (controllers) {
     		//console.log('calling fn');
     		//console.log(craftsvillaService);
     		//console.log(craftsvillaService.getCartData);
-	        craftsvillaService.getCartData()
+	        craftsvillaService.loadQuote()
 	        .success(function (response) {
 	          console.log(response);
 
@@ -29,19 +29,19 @@ define(['./index'], function (controllers) {
 
 		$scope.proceedToCheckout = function() {
 			console.log("click on proceedToCheckout");
-			/*craftsvillaService.loginCheck()
+			craftsvillaService.loginCheck()
 				.success(function (response) {
-					if (response.d === 1) {
+					if (response.s == 0) {
 						$state.go('login');
 					}
 					else {
 						$state.go('shipping');
 					}
 
-				}
+				})
 				.error(function (error) {
-
-				})*/
+					throw new Error(err);
+				})
 		};
 
 		$scope.removeOutOfStockProducts = function() {
@@ -54,15 +54,16 @@ define(['./index'], function (controllers) {
 
 		$scope.removeAllItems = function() {
 			console.log("click on removeAllItems");
+
 		};
 
 		$scope.addNoteToSeller = function() {
 			console.log(1);
-			console.log($scope.sellerForm);
-			if ($scope.sellerForm1.$valid) {
-				console.log('test');
-				console.log($scope.seller);
-			}
+			//console.log($scope.sellerForm1);
+			// if ($scope.sellerForm.$valid) {
+			// 	console.log('test');
+			// 	console.log($scope.seller);
+			// }
 		};
 
 		$scope.updateNoteToSeller = function() {
@@ -86,23 +87,28 @@ define(['./index'], function (controllers) {
 		$scope.applyCoupon = function() {
 			//console.log($scope.couponForm);
 			if ($scope.couponForm.$valid) {
-				//console.log($scope.coupon);
+				console.log($scope.coupon);
 
-				craftsvillaService.getApplyCoupon($scope.coupon)
-				.success(function (response) {
-
-					$scope.successCoupon = true;
+				craftsvillaService.applyCoupon($scope.coupon.couponcode)
+				.success(function (response) {					
 					console.log(response);
-					//console.log(response.d[0]);
-					$scope.couponCode = response.d.coupon_code;
-					$scope.couponMessage = response.m;
-					$scope.subTotal = response.d.sub_total;
-					$scope.totalDiscount = response.d.totol_discount;
-					$scope.shippingAmount = response.d.shipping_amount;
-					$scope.grandTotal = response.d.grand_total;
-					$scope.discount = (1 - ($scope.grandTotal / $scope.subTotal)) * 100;
-					console.log( (1 - ($scope.grandTotal / $scope.subTotal)) * 100 );
-					//$discount = (1 - ($discountPrice / $productPrice)) * 100;
+					if( response.s == 1){
+						console.log('success');
+						//console.log(response.d[0]);
+						$scope.successCoupon = true;
+						$scope.couponCode = response.d.coupon_code;
+						$scope.couponMessage = response.m;
+						$scope.subTotal = response.d.sub_total;
+						$scope.totalDiscount = response.d.totol_discount;
+						$scope.shippingAmount = response.d.shipping_amount;
+						$scope.grandTotal = response.d.grand_total;
+						$scope.discount = (1 - ($scope.grandTotal / $scope.subTotal)) * 100;
+						console.log( (1 - ($scope.grandTotal / $scope.subTotal)) * 100 );
+						//$discount = (1 - ($discountPrice / $productPrice)) * 100;
+					}else{
+						console.log('fail');
+						$scope.couponMessage = response.m;
+					}
 				})
 				.error(function (err) {
 					throw new Error(err);
@@ -114,7 +120,7 @@ define(['./index'], function (controllers) {
 		$scope.removeCoupon = function() {
 			console.log("click on removeCoupon");
 
-			craftsvillaService.getRemoveCoupon($scope.coupon)
+			craftsvillaService.removeCoupon($scope.coupon.couponcode)
 			.success(function (response) {
 				$scope.successCoupon = false;
 				console.log(response);

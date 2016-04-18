@@ -5,6 +5,8 @@ define(['./index'], function (services) {
 
     return {
       getCartData: getCartData,
+      loginCheck : loginCheck,
+      // getCartData: getCartData,
       // getApplyCoupon : getApplyCoupon,
       // getRemoveCoupon: getRemoveCoupon,
       // getProducts: getProducts,
@@ -31,13 +33,14 @@ define(['./index'], function (services) {
       placeOrder: placeOrder,
       paymentRedirect: paymentRedirect,
       continueAsGuest : continueAsGuest,
-      loadFinalQuote : loadFinalQuote
+      loadFinalQuote : loadFinalQuote,
+      placeOrderCOD: placeOrderCOD
     };
 
     //////////////////////////////////////////
 
 
-    function getCartData(){
+    /*function getCartData(){
       return $http.get('https://api.myjson.com/bins/u3o4');
       //https://api.myjson.com/bins/36aj8
     }
@@ -51,12 +54,14 @@ define(['./index'], function (services) {
     function getRemoveCoupon(c) {
       return $http.get( 'https://api.myjson.com/bins/2wv10');
 
-    }
+    }*/
 
     //demo apis ends here
+    function loginCheck () {
+      return $http.get( HOST + 'checkoutService/index/loginCheck');
+    }
 
     function loadQuote() {
-      alert("hi")
       return $http.get( HOST + 'checkoutService/index/loadQuote');
     }
 
@@ -96,12 +101,14 @@ define(['./index'], function (services) {
     }
 
     function applyCoupon(couponCode) {
+      console.log(couponCode);
       return $http.post( HOST + 'checkoutService/index/applyCoupon', {
-        "couponCode": couponCode
+        "couponCode" : couponCode
       });
     }
 
     function removeCoupon(couponCode) {
+      console.log(couponCode);
       return $http.post( HOST + 'checkoutService/index/removeCoupon', {
         "couponCode": couponCode
       });
@@ -225,25 +232,24 @@ define(['./index'], function (services) {
   //payment methods
 
     function getPaymentMethods() {
-      return $http.get('http://dev7.craftsvilla.com/checkoutService/index/getPaymentMethods');
+      return $http.get(HOST + 'checkoutService/index/getPaymentMethods');
     }
 
   //payment methods ends
 
     function postQuote (customerId, quoteId) {
-      return $http.post('http://local.craftsvilla.com/checkoutService/index/loadQuote', {
+      return $http.post(HOST + 'checkoutService/index/loadQuote', {
         customerId: customerId,
         quoteId: quoteId
       });
     }
-
     // Place order (Prepaid)
     function placeOrder(json) {
       return $http({
         method: 'GET',
-        url: 'http://dev7.craftsvilla.com/checkoutService/index/placeOrderPrepaid',
+        url: HOST + 'checkoutService/index/placeOrderPrepaid',
         params: json
-      })
+      });
     }
 
     function paymentRedirect(url, json) {
@@ -251,7 +257,14 @@ define(['./index'], function (services) {
         method: 'POST',
         url: url,
         data: json
-      })
+      });
+    }
+
+    function placeOrderCOD() {
+      return $http({
+        method: 'POST',
+        url: HOST + 'checkoutService/index/placeOrderCOD'
+      });
     }
   }]);
 });
