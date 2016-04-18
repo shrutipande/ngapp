@@ -132,6 +132,9 @@ define(['./index'], function (controllers) {
 	$scope.initLogin = function() {
 		console.log("Login Initialised");
 	};
+	$scope.authenticate = function(provider) {
+    	$auth.authenticate(provider);
+    };
 	$scope.initLogin();
 
 	}]);

@@ -2,13 +2,14 @@ define([
   'angular',
   'angular-sanitize',
   'angular-ui-router',
-  //'angular-animate',
+  'angular-credit-cards',
   'config',
   './controllers/index',
   './directives/index',
   './filters/index',
   './services/index',
-  './animations/index'
+  './animations/index',
+  'satellizer',
 ], function (ng) {
   'use strict';
 
@@ -20,7 +21,8 @@ define([
     'app.directives',
     'app.animations',
     'ngSanitize',
-    'ui.router'
-    //ng-animate'
+    'ui.router',
+    'credit-cards',
+    'satellizer'
   ]);
 });

@@ -9,8 +9,14 @@ require.config({
         'domReady': '../bower_components/requirejs-domready/domReady',
         'angular': '../bower_components/angular/angular.min',
         'angular-sanitize' : '../bower_components/angular-sanitize/angular-sanitize.min',
+<<<<<<< HEAD
         'angular-ui-router' : '../bower_components/angular-ui-router/release/angular-ui-router.min'
         //'angular-animate' : '../bower_components/angular-animate/angular-animate.min'
+=======
+        'angular-ui-router' : '../bower_components/angular-ui-router/release/angular-ui-router.min',
+        'angular-credit-cards' : '../bower_components/angular-credit-cards/release/angular-credit-cards',
+        'satellizer' : '../bower_components/satellizer/satellizer'
+>>>>>>> 0e6c83a2efa8671b14984e5fd85f161823d12443
     },
 
     shim: {
@@ -22,6 +28,9 @@ require.config({
         },
         'angular-ui-router': {
             deps: ['angular']
+        },
+        'satellizer': {
+            dep: ['angular']
         }
         //  'angular-animate': {
         //     deps: ['angular']
