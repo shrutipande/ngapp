@@ -5,7 +5,7 @@ define(['./app'], function (app) {
   'use strict';
   app.config(['$stateProvider', '$locationProvider', '$urlRouterProvider', function ($stateProvider, $locationProvider, $urlRouterProvider) {
 
-    $locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(false);
 
     $stateProvider
         .state('login', {
@@ -50,7 +50,7 @@ define(['./app'], function (app) {
           controller: 'emptyCartCtrl',
           title: 'Empty cart'
         });
-    $urlRouterProvider.otherwise("/login");
+    $urlRouterProvider.otherwise("/checkout");
 
   }]);
 });
