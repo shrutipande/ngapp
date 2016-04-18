@@ -29,6 +29,8 @@ define(['./index'], function (services) {
       forgotPassword : forgotPassword,
       getLogout : getLogout,
       getPaymentMethods : getPaymentMethods,
+      placeOrder: placeOrder,
+      paymentRedirect: paymentRedirect,
       continueAsGuest : continueAsGuest,
       loadFinalQuote : loadFinalQuote
     };
@@ -229,13 +231,32 @@ define(['./index'], function (services) {
   //payment methods
 
     function getPaymentMethods() {
-      return $http.get('https://api.myjson.com/bins/4yszk');
+      return $http.get('http://dev7.craftsvilla.com/checkoutService/index/getPaymentMethods');
     }
 
   //payment methods ends
 
+    function postQuote (customerId, quoteId) {
+      return $http.post('http://local.craftsvilla.com/checkoutService/index/loadQuote', {
+        customerId: customerId,
+        quoteId: quoteId
+      });
+    }
+    // Place order (Prepaid)
+    function placeOrder(json) {
+      return $http({
+        method: 'GET',
+        url: 'http://dev7.craftsvilla.com/checkoutService/index/placeOrderPrepaid',
+        params: json
+      });
+    }
 
-
-
+    function paymentRedirect(url, json) {
+      return $http({
+        method: 'POST',
+        url: url,
+        data: json
+      });
+    }
   }]);
 });

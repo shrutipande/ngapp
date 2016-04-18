@@ -1,6 +1,6 @@
 define(['./index'], function (controllers) {
     'use strict';
-    controllers.controller('loginCtrl', ['$scope', 'craftsvillaService', function ($scope, craftsvillaService) {
+    controllers.controller('loginCtrl', ['$scope', '$auth', 'craftsvillaService', function ($scope, $auth, craftsvillaService) {
 
         $scope.guestUser = false;
 
@@ -16,6 +16,10 @@ define(['./index'], function (controllers) {
           throw new Error(err);
         })
       };
+
+      $scope.authenticate = function(provider) {
+          $auth.authenticate(provider);
+        };
 
     }]);
 });
