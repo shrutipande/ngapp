@@ -1,31 +1,42 @@
 define(['./index'], function (controllers) {
-    'use strict';
-    controllers.controller('checkoutCartCtrl', ['$scope', 'craftsvillaService','$state', function ($scope, craftsvillaService,$state) {
+	'use strict';
+	controllers.controller('checkoutCartCtrl', ['$scope', 'craftsvillaService', '$state', function ($scope, craftsvillaService, $state) {
+		var successCoupon = false;
+		$scope.showNoteForm = false;
 
-    	var successCoupon = false;
-    	var showNote = false;
-    	$scope.getCartDetails = function() {
+		$scope.outOfStockProducts = [];
+		$scope.inStockCod = [];
+		$scope.inStockNotCod = [];
+		$scope.itemRemoved = 0;
+		$scope.latestRemovedItem = null;
 
-    		//console.log('calling fn');
-    		//console.log(craftsvillaService);
-    		//console.log(craftsvillaService.getCartData);
-	        craftsvillaService.loadQuote()
-	        .success(function (response) {
-	          console.log(response);
-
-	          $scope.cartData = response.d.product_list;
-	          $scope.items = response.d.total_items;
-	          $scope.grandTotal = response.d.grand_total;
-	          $scope.subTotal = response.d.sub_total;
-	          $scope.totalDiscount = response.d.totol_discount;
-	          $scope.shippingAmount = response.d.shipping_amount;
-	        })
-	        .error(function (err) {
-	          throw new Error(err);
-	        })
-	    };
-
-
+		$scope.getCartDetails = function() {
+			craftsvillaService.loadQuote()
+			.success(function(response) {
+				// console.log(response);
+				angular.forEach(response.d.product_list, function(product) {
+					if(!product.IsInStock) {
+						$scope.outOfStockProducts.push(product);
+					} else {
+						if(!product.cod_available) {
+							$scope.inStockCod.push(product);
+						} else {
+							$scope.inStockNotCod.push(product);
+						}
+					}
+				});
+				// console.log($scope.inStockProducts);
+				$scope.items = response.d.total_items;
+				$scope.grandTotal = response.d.grand_total;
+				$scope.subTotal = response.d.sub_total;
+				$scope.totalDiscount = response.d.totol_discount;
+				$scope.shippingAmount = response.d.shipping_amount;
+				$scope.shownote
+			})
+			.error(function (err) {
+				throw new Error(err);
+			})
+		};
 
 		$scope.proceedToCheckout = function() {
 			console.log("click on proceedToCheckout");
@@ -45,25 +56,88 @@ define(['./index'], function (controllers) {
 		};
 
 		$scope.removeOutOfStockProducts = function() {
-			console.log("click on removeOutOfStockProducts");
+			var productIds = [];
+			console.log("inside out of stock");
+			angular.forEach($scope.outOfStockProducts, function(product) {
+				var data = {
+					productID: product.product_id
+				};
+				productIds.push(data);
+			});
+			craftsvillaService.removeQuoteItems(productIds)
+			.success(function(response) {
+				console.log("products removed");
+				console.log(response);
+				$scope.outOfStockProducts = [];
+				angular.forEach(response.d.product_list, function(product) {
+					$scope.outOfStockProducts.push(product);
+				});
+			})
+			.error(function(error) {
+				console.log(error);
+			});
 		};
 
-		$scope.removeProductFromCart = function() {
-			console.log("click on removeProductFromCart");
+		$scope.removeProductFromCart = function(product_id) {
+			console.log(product_id);
+			var data = {
+				productID: product_id
+			};
+			var productIds = [];
+			productIds.push(data);
+			console.log(productIds);
+			console.log("inside remove from cart");
+			craftsvillaService.removeQuoteItems(productIds)
+			.success(function(response) {
+				console.log("product removed");
+				console.log(response);
+				divideProducts(response);
+				// $scope.inStockProducts = response.d.product_list;
+				$scope.itemRemoved = 1;
+				$scope.latestRemovedItem = product_id;
+			})
+			.error(function(error) {
+				console.log(error);
+			});
+
 		};
 
 		$scope.removeAllItems = function() {
 			console.log("click on removeAllItems");
-
+			var productIds = [];
+			var allProducts = $scope.outOfStockProducts.concat($scope.inStockCod.concat($scope.inStockNotCod));
+			angular.forEach(allProducts, function(product) {
+				var data = {
+					productID: product.product_id
+				};
+				productIds.push(data);
+			});
+			craftsvillaService.removeQuoteItems(productIds)
+			.success(function(response) {
+				console.log("products removed");
+				console.log(response);
+				$scope.inStockProducts = [];
+				$scope.inStockCod = [];
+				$scope.inStockNotCod = [];
+			})
+			.error(function(error) {
+				console.log(error);
+			});
 		};
 
-		$scope.addNoteToSeller = function() {
-			console.log(1);
-			//console.log($scope.sellerForm1);
-			// if ($scope.sellerForm.$valid) {
-			// 	console.log('test');
-			// 	console.log($scope.seller);
-			// }
+		$scope.addNoteToSeller = function(index, product_id, comment) {
+			console.log(comment);
+			console.log(index);
+			// if ($scope['sellerForm'+index].$valid) {
+			// 	var comment = $scope.sellerForm1.sellernote;
+			craftsvillaService.addNoteToSeller(product_id, comment)
+			.success(function(response) {
+				console.log("comment added");
+				console.log(response);
+			})
+			.error(function(error) {
+				console.log(error);
+			});
 		};
 
 		$scope.updateNoteToSeller = function() {
@@ -90,7 +164,7 @@ define(['./index'], function (controllers) {
 				console.log($scope.coupon);
 
 				craftsvillaService.applyCoupon($scope.coupon.couponcode)
-				.success(function (response) {					
+				.success(function (response) {
 					console.log(response);
 					if( response.s == 1){
 						console.log('success');
@@ -140,8 +214,33 @@ define(['./index'], function (controllers) {
 			console.log("click on updateQuantity");
 		};
 
+		$scope.addToCart = function() {
+			craftsvillaService.addToQuote($scope.latestRemovedItem, 1)
+			.success(function (response) {
+				console.log(response);
+				divideProducts(response);
+				$scope.latestRemovedItem = null;
+				$scope.itemRemoved = 0;
+			})
+			.error(function(error) {
+				console.log(error);
+			});
+		}
+
 		$scope.initCheckoutCart = function() {
 			$scope.getCartDetails();
+		}
+
+		function divideProducts(response) {
+			$scope.inStockCod = [];
+			$scope.inStockNotCod = [];
+			angular.forEach(response.d.product_list, function(product) {
+				if(!product.cod_available) {
+					$scope.inStockCod.push(product);
+				} else {
+					$scope.inStockNotCod.push(product);
+				}
+			});
 		}
 		$scope.initCheckoutCart();
     }]);

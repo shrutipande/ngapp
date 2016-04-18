@@ -4,11 +4,6 @@ define(['./index'], function (services) {
   services.service('craftsvillaService', ['$http','HOST', function($http,HOST) {
 
     return {
-      //getCartData: getCartData,
-      //getApplyCoupon : getApplyCoupon,
-      //getRemoveCoupon: getRemoveCoupon,
-      //getProducts: getProducts,
-      //getProductById: getProductById,
       loginCheck : loginCheck,
       loadQuote: loadQuote,
       updateQty: updateQty,
@@ -58,7 +53,6 @@ define(['./index'], function (services) {
     }
 
     function loadQuote() {
-      //alert("hi")
       return $http.get( HOST + 'checkoutService/index/loadQuote');
     }
 
@@ -70,9 +64,9 @@ define(['./index'], function (services) {
     }
 
       //remove items
-    function removeQuoteItems(productIdArrayObj) {
+    function removeQuoteItems(productIds) {
       return $http.post( HOST + 'checkoutService/index/removeQuoteItems', {
-        "productIds":productIdArrayObj
+        "productIds": productIds
       });
     }
 
