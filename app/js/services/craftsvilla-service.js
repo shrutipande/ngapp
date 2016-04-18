@@ -33,7 +33,7 @@ define(['./index'], function (services) {
       paymentRedirect: paymentRedirect,
       continueAsGuest : continueAsGuest,
       loadFinalQuote : loadFinalQuote,
-      placeOrderCOD: placeOrderCOD
+      placeOrderCOD: placeOrderCOD,
       getSuccessData:getSuccessData
     };
 
