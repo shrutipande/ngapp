@@ -130,7 +130,6 @@
                                 </select>
                             </div>
                             <div class="seller-note hidden-xs" ng-click="showNoteToSeller()" ng-hide="showNote">add a note seller</div>
-
                         </div>
                     </div>
                     <div class="cart-seller-cont" ng-show="showNote">
@@ -160,7 +159,6 @@
                 </div>
 
                 <!--ng repeat for non cod products : 1 for non cod as in api call ends here-->
-
                 <!--ng repeat for cod products : 0 for cod as in api call-->
 
                 <div class="col-xs-6 nopadding red t-m-10">Items with cash on delivery</div>
@@ -221,14 +219,12 @@
                                 <span class="buttons r-m-20 t-m-10 m-left-59 m-right-20">remove</span>
                                 <span class="buttons t-m-10">edit</span>
                             </div>
-
                     </div>
 
                 </div>
-
                 <!--ng repeat for cod products : 0 for cod as in api call ends here-->
 
-                
+
                 <!-- cart-items-card ends -->
                 <div class="cart-items-card t-m-10">
                     <div class="cart-details-close"><img src="images/delete-icon.png" width:'100%'></div>
@@ -293,7 +289,6 @@
 
             <!--coupon code proceed to checkout starts here-->
             <div class="col-xs-12 nopadding  right-panel">
-
                 <div class="col-xs-12  coupon-cont"  >
                     <div class="coupon-text" ng-show="successCoupon" >Coupon
                         <span class="colorblack"><strong>"{{couponCode}}"</strong></span> applied
@@ -306,7 +301,7 @@
                             <form class="coupon-cont-form" name="couponForm" ng-submit="applyCoupon()" novalidate>
                                 <div ng-class="{ 'error' : (couponForm.couponcode.$invalid && !couponForm.couponcode.$pristine) || (couponForm.$submitted && couponForm.couponcode.$error.required) }">
                                     <input type="text" class="col-xs-8 coupon-input red-border" name="couponcode" ng-model="coupon.couponcode" required>
-                                    
+
 
                                 </div>
                                 <button type="submit" class="col-xs-4 coupon-c-button">APPLY</button>
