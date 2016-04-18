@@ -579,3 +579,73 @@ span[role="division"] { margin-left: 5%; }
 .width-auto{
     width:auto;
 }
+/****** added by rupali for order-success page **/
+
+div[order-success-cont]{float:left;width:770px; margin: 5px 200px; }
+div[order-thank-cont]{float:left;width:770px; margin: 25px 200px; }
+div[order-success-cont] .details-cont{float:left;border: solid 1px #ebebeb; color:#4c4c4c;  background-color: #ffffff;}
+div[order-thank-cont] .order-header{float:left;border: solid 1px #ebebeb; color:#4c4c4c;  background-color: #ffffff; padding:25px 0 20px 50px  !important;}
+div[order-success-cont] .details-cont{padding:25px 20px  0 25px !important;border-bottom:1px solid #f0f0f0;}
+div[order-thank-cont] .order-header .thnku{float:left; width: 100%; font-size: 24px;line-height: 1.3;  letter-spacing: 0.3px;  color:#4c4c4c;  }
+div[order-thank-cont] .order-header .thnku .t-img{float:left; width:3%;}
+div[order-thank-cont] .order-header .thnku .t-txt{float:left; margin:0.5% 0 0 1%; width:95%; font-weight: bold;}
+div[order-thank-cont] .order-header .succ-txt{float:left;padding:10px 0; font-size: 20px;  line-height: 1.5;  letter-spacing: 0.3px;}
+div[order-success-cont] .detls-cont{float:left; margin: 25px 0 5px 0;color: #4c4c4c;line-height: 1.9; letter-spacing: 0.2px;}
+div[order-success-cont] .detls-cont .dtl-txt{float:left; font-size: 16px; font-weight: bold;}
+div[order-success-cont] .detls-cont .ttl-no-ord{float:right;  margin-top: 5px; font-size: 13px; color:#000000;}
+div[order-success-cont] .details-cont .detail-text{float:left; margin-top: 2px; width: 210px; font-size: 14px; line-height: 1.6;  color: #747474;}
+div[order-success-cont] .details-cont  .detail-amt{float:right;  font-size: 16px;  line-height: 1.3;  color: #747474; }
+div[order-success-cont] .details-cont .detail-qty{float:left;margin:10px 0; font-size: 14px; line-height: 1.4; color: #747474;}
+div[order-success-cont] .color-black{color:#000 !important;}
+div[order-success-cont]  .font16{font-size: 16px !important;}
+div[order-success-cont]  .ln-hgt-2-6{line-height: 2.6 !important;}
+div[order-success-cont]  .m-t-8px{margin-top: 8px;}
+div[order-success-cont]  .m-b-10px{margin-bottom: 10px;}
+div[order-success-cont]  .p-b-10px{padding-bottom: 10px;}
+div[order-success-cont] .gryeish-brown{color:#4c4c4c !important;}
+div[order-success-cont]  .note{float:left; padding: 20px 0  !important; font-size: 14px;  letter-spacing: 0.2px;  color: #4c4c4c;}
+div[order-success-cont] .shpng-contn{padding:15px 0;margin:0 0 20px 0; width: 350px; height: 50px; background-color: #981937;font-size: 16px; font-weight: bold; text-align: center; line-height: 1.1; color: #ffffff;}
+.icon {
+    float:left;
+    margin-top:3px;
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+}
+.icon-inr {
+    width: 0.5009765625em;
+}
+
+@media screen and (min-width:768px) and (max-width: 1024px) {
+    div[order-success-cont]{width:100%; margin:0; }
+    div[order-thank-cont]{width:100%; margin:0; }
+    div[order-success-cont] .order-header, .detials-cont{border:none;}
+    div[order-thank-cont] .order-header{border:none; padding:15px !important; }
+div[order-thank-cont] .order-header .thnku{float:left; width: 100%;  }
+div[order-thank-cont] .order-header .thnku .t-img{float:left; width:4%;}
+div[order-thank-cont] .order-header .thnku .t-txt{float:left; margin: 2% 0 0 2%; width:93%; font-size: 18px; font-weight: bold;}
+}
+
+@media screen and (max-width:767px){
+
+div[order-success-cont]{width:100%; margin:0; padding:0 15px; }
+div[order-thank-cont]{width:100%; margin:0; }
+div[order-success-cont] .details-cont{    padding: 16px 12px 0 13px;    border-bottom: 1px solid #f0f0f0;}
+div[order-thank-cont] .order-header{border:none; padding:15px !important; }
+div[order-thank-cont] .order-header .thnku{float:left; width: 100%;  }
+div[order-thank-cont] .order-header .thnku .t-img{float:left; width:4%;}
+div[order-thank-cont] .order-header .thnku .t-txt{float:left; margin: 2% 0 0 2%; width:93%; font-size: 18px; font-weight: bold;}
+div[order-thank-cont] .order-header .succ-txt{float:left;padding:5px 0; font-size: 16px;}
+div[order-success-cont] .details-cont .detail-text{width:171px; font-size: 12px;}
+div[order-success-cont] .details-cont  .detail-amt{font-size: 14px;}
+div[order-success-cont] .details-cont .detail-qty{font-size: 12px;}
+div[order-success-cont] .detls-cont .dtl-txt{font-size: 14px;}
+div[order-success-cont] .detls-cont .ttl-no-ord{font-size: 11px;}
+div[order-success-cont] p{font-size: 14px;}
+div[order-success-cont] .font14-xs{font-size: 14px !important;}
+div[order-success-cont]  .p-b-10px{padding-bottom: 10px;}
+div[order-success-cont] .shpng-contn{position: fixed; bottom:0; left:0; z-index: 99; margin: 0;}
+div[order-success-cont]  .note{margin:20px 0 5px 0; padding: 0;}
+}
+
+

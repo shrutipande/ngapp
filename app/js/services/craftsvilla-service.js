@@ -32,7 +32,8 @@ define(['./index'], function (services) {
       placeOrder: placeOrder,
       paymentRedirect: paymentRedirect,
       continueAsGuest : continueAsGuest,
-      loadFinalQuote : loadFinalQuote
+      loadFinalQuote : loadFinalQuote,
+      getSuccessData:getSuccessData
     };
 
     //////////////////////////////////////////
@@ -249,6 +250,16 @@ define(['./index'], function (services) {
         params: json
       });
     }
+
+  //final quote
+    function getSuccessData() {
+      return $http.get( HOST + 'checkoutService/index/loadFinalQuote');
+     //return $http.get( 'https://api.myjson.com/bins/3wu38');
+
+
+
+    }
+
 
     function paymentRedirect(url, json) {
       return $http({
