@@ -230,13 +230,13 @@ define(['./index'], function (services) {
   //payment methods
 
     function getPaymentMethods() {
-      return $http.get('http://dev7.craftsvilla.com/checkoutService/index/getPaymentMethods');
+      return $http.get(HOST + 'checkoutService/index/getPaymentMethods');
     }
 
   //payment methods ends
 
     function postQuote (customerId, quoteId) {
-      return $http.post('http://local.craftsvilla.com/checkoutService/index/loadQuote', {
+      return $http.post(HOST + 'checkoutService/index/loadQuote', {
         customerId: customerId,
         quoteId: quoteId
       });
@@ -245,7 +245,7 @@ define(['./index'], function (services) {
     function placeOrder(json) {
       return $http({
         method: 'GET',
-        url: 'http://dev7.craftsvilla.com/checkoutService/index/placeOrderPrepaid',
+        url: HOST + 'checkoutService/index/placeOrderPrepaid',
         params: json
       });
     }
