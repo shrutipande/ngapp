@@ -2,7 +2,7 @@ define(['./index'], function (controllers) {
 	'use strict';
 	controllers.controller('checkoutCartCtrl', ['$scope', 'craftsvillaService', '$state', function ($scope, craftsvillaService, $state) {
 		var successCoupon = false;
-		$scope.showNoteForm = false;
+		$scope.showNote = false;
 
 		$scope.outOfStockProducts = [];
 		$scope.inStockCod = [];
@@ -32,6 +32,8 @@ define(['./index'], function (controllers) {
 				$scope.totalDiscount = response.d.totol_discount;
 				$scope.shippingAmount = response.d.shipping_amount;
 				$scope.shownote
+				console.log($scope.inStockCod)
+
 			})
 			.error(function (err) {
 				throw new Error(err);
@@ -125,7 +127,7 @@ define(['./index'], function (controllers) {
 			});
 		};
 
-		$scope.addNoteToSeller = function(index, product_id, comment) {
+		$scope.addNoteToSeller = function(index, product_id, comment,data) {
 			console.log(comment);
 			console.log(index);
 			// if ($scope['sellerForm'+index].$valid) {
@@ -134,23 +136,28 @@ define(['./index'], function (controllers) {
 			.success(function(response) {
 				console.log("comment added");
 				console.log(response);
+				$scope.getCartDetails();
+				data.showFormNote =false;
 			})
 			.error(function(error) {
 				console.log(error);
 			});
 		};
 
-		$scope.updateNoteToSeller = function() {
-			console.log("click on updateNoteToSeller");
+		$scope.updateNoteToSeller = function(data) {
+			console.log(data.sellernote);
+			data.showFormNote =true;
+
 		};
 
 		$scope.removeNoteToSeller = function() {
 			console.log("click on removeNoteToSeller");
 		};
 
-		$scope.showNoteToSeller = function() {
+		$scope.showNoteToSeller = function(data) {
 			console.log("click on showNoteToSeller");
 			$scope.showNote = true;
+			data.showFormNote = true;
 		};
 
 		$scope.hideNoteToSeller = function() {
