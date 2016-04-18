@@ -36,7 +36,7 @@ define(['angular'], function(angular) {
             });
 
             $authProvider.google({
-                clientId: '-4rsq630ova71avmsph5ded5uvp3tac8t.apps.googleusercontent.com'
+                clientId: '34235241642-4rsq630ova71avmsph5ded5uvp3tac8t.apps.googleusercontent.com'
             });
 
         }]);
