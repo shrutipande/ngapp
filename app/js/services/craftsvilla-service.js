@@ -33,7 +33,7 @@ define(['./index'], function (services) {
       paymentRedirect: paymentRedirect,
       continueAsGuest : continueAsGuest,
       loadFinalQuote : loadFinalQuote,
-      placeOrderCOD: placeOrderCOD
+      placeOrderCOD: placeOrderCOD,
       getSuccessData:getSuccessData
     };
 
@@ -184,7 +184,8 @@ define(['./index'], function (services) {
   //shipping page
 
     function getAddress() {
-      return $http.get( HOST + 'checkoutService/index/getAddress');
+       return $http.get( HOST + 'checkoutService/index/getAddress');
+       //return $http.get('https://api.myjson.com/bins/yjgw');
     }
 
     function assignAddressToQuote(billingId, shippingId) {

@@ -1924,9 +1924,9 @@ define(['angular', 'app'], function(angular, app) { app.run(['$templateCache', f
 
 
   $templateCache.put('partials/shipping.html',
-    "\n" +
     "<div data-overlay class=\"hide\">&nbsp;</div>\n" +
     "<!--// Header -->\n" +
+    "<div ng-app=\"validApp\">\n" +
     "<div role-header class=\"container-fluid nopadding\">\n" +
     "\t<div role-nav class=\"container\">\n" +
     "\t\t<div class=\"col-xs-6 nopadding\" role=\"logo\">\n" +
@@ -1975,63 +1975,110 @@ define(['angular', 'app'], function(angular, app) { app.run(['$templateCache', f
     "\t<div class=\"container\">\n" +
     "\t\t<!--// login Container Start -->\n" +
     "\t\t<div class=\"col-xs-12 nopadding shippingContainer\">\n" +
-    "\t\t\t<h4 role=\"headding\">SELECT SHIPPING ADDRESS <small><a class=\"rougeColor\" href=\"#\">Change</a></small></h4>\n" +
+    "\t\t\t<h4 role=\"headding\">SELECT SHIPPING ADDRESS <small><a class=\"rougeColor\" href=\"#\" ng-show=\"showhideprop\">Change</a></small></h4>\n" +
     "\t\t\t<!--// -->\n" +
+    "\n" +
     "\t\t\t<div class=\"row\">\n" +
-    "\t\t\t\t<div class=\"col-xs-12 col-sm-6 col-md-4\">\n" +
-    "\t\t\t\t\t<div class=\"col-xs-12 addressCard addressCardActive\">\n" +
+    "\t\t\t\t<div class=\"col-xs-12 col-sm-6 col-md-4\" ng-repeat=\"address in addresses\">\n" +
+    "\t\t\t\t\t<div class=\"col-xs-12 addressCard \">\n" +
     "\t\t\t\t\t\t<div class=\"col-xs-12 nopadding customer-address\">\n" +
     "\t\t\t\t\t\t\t<div class=\"col-xs-12 nopadding\">\n" +
-    "\t\t\t\t\t\t\t\t<h5>Shruti Kartikey <span><a href=\"#\"><img src=\"images/edit-icon.png\"></a></span><span class=\"pull-right delete-shipping\"><a href=\"#\"><img src=\"images/remove.png\"></a></span></h5>\n" +
-    "\t\t\t\t\t\t\t\t<p>G-1502, Craftsvilla, Lotus Business Park, Goregaon East, Mumbai, Maharashtra - 400056</p>\n" +
-    "\t\t\t\t\t\t\t\t<p class=\"margin0\">+91 7738233261</p>\n" +
+    "\t\t\t\t\t\t\t\t<h5>{{address.firstname}} {{address.lastname}}<span></span><span class=\"pull-right delete-shipping\"><a href=\"javascript:void(0)\" ng-click=\"shippingEdit(address);\"><img src=\"images/edit-icon.png\"></a></span></h5>\n" +
+    "\t\t\t\t\t\t\t\t<p>{{address.street}}</p>\n" +
+    "\t\t\t\t\t\t\t\t<p class=\"margin0\">{{address.telephone}}</p>\n" +
+    "\t\t\t\t\t\t\t</div> \n" +
+    "\t\t\t\t\t\t</div>\n" +
+    "\t\t\t\t\t\t<!-- <div class=\"col-xs-12 nopadding hidden-xs\">\n" +
+    "\t\t\t\t\t\t\t<input class=\"btn btn-newStyle\" ng-show=\"shippadd\" type=\"button\"  ng-click=\"deliveryAddress(address)\" value=\"DELIVER TO THIS ADDRESS\">\n" +
+    "\t\t\t\t\t\t</div> -->\n" +
+    "\t\t\t\t\t</div>\n" +
+    "\t\t\t\t\t\n" +
+    "\t\t\t\t</div>\n" +
+    "\t\t\t\t<div class=\"checkbox col-xs-12 nopadding\" ng-show=\"shippadd\">\n" +
+    "\t\t\t\t\t\t<label><input type=\"checkbox\" id=\"Guest\"  ng-model=\"chkStatus\" ng-change=\"checkStatus()\" checked><span for=\"Guest\"></span> This is also my Billing Address --AAAAA</label>\n" +
+    "\t\t\t\t\t</div>\n" +
+    "\t\t\t\t\t<div class=\"col-xs-12 nopadding\">\n" +
+    "\t\t\t\t\t<div class=\"col-xs-12 nopadding hidden-xs\">\n" +
+    "\t\t\t\t\t\t\t<input class=\"btn btn-newStyle\" type=\"button\" value=\"DELIVER TO THIS ADDRESS\" style=\"width:30%;\">\n" +
+    "\t\t\t\t\t\t</div>\n" +
+    "\t\t\t\t\t</div>\n" +
+    "\n" +
+    "<div ng-hide=\"billingAddress\" >\n" +
+    "\t\t\t\t<div class=\"col-xs-12\"><h4 role=\"headding\">SELECT BILLING ADDRESS</h4></div>\n" +
+    "\t\t\t\t<!--// Billing Address Not select Error -->\n" +
+    "\t\t\t\t\n" +
+    "\t\t\t\t<!--// -->\n" +
+    "\t\t\t\t<div class=\"col-xs-12 col-sm-6 col-md-4\" ng-repeat=\"address in addresses\">\n" +
+    "\t\t\t\t\t<div class=\"col-xs-12 addressCard\" ng-show=\"shippadd\">\n" +
+    "\t\t\t\t\t\t<div class=\"col-xs-12 nopadding customer-address\">\n" +
+    "\t\t\t\t\t\t\t<div class=\"col-xs-12 nopadding\">\n" +
+    "\t\t\t\t\t\t\t\t<h5>{{address.firstname}} {{address.lastname}}<span></span><span class=\"pull-right delete-shipping\"><a href=\"javascript:void(0)\" ng-click=\"shippingEdit();\"><img src=\"images/edit-icon.png\"></a></span></h5>\n" +
+    "\t\t\t\t\t\t\t\t<p>{{address.street}}</p>\n" +
+    "\t\t\t\t\t\t\t\t<p class=\"margin0\">{{address.telephone}}</p>\n" +
     "\t\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t<div class=\"col-xs-12 nopadding hidden-xs\">\n" +
+    "\t\t\t\t\t\t<!-- <div class=\"col-xs-12 nopadding hidden-xs\">\n" +
     "\t\t\t\t\t\t\t<input class=\"btn btn-newStyle\" type=\"button\" value=\"DELIVER TO THIS ADDRESS\">\n" +
-    "\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t<div class=\"checkbox col-xs-12 nopadding\">\n" +
-    "\t\t\t\t\t\t<label><input type=\"checkbox\" id=\"Guest\"><span for=\"Guest\"></span> This is also my Billing Address</label>\n" +
+    "\t\t\t\t\t\t</div> -->\n" +
     "\t\t\t\t\t</div>\n" +
     "\t\t\t\t</div>\n" +
+    "\t\t\t\n" +
+    "\t\t\t</div>\n" +
+    "\t\t\t\n" +
+    "\n" +
     "\t\t\t\t<!--// Edit Shipping Address Start -->\n" +
-    "\t\t\t\t<div class=\"col-xs-12 add-new-shipping\">\n" +
+    "\t\t\t\t<div class=\"col-xs-12 add-new-shipping\" ng-hide=\"true\">\n" +
     "\t\t\t\t\t<!--// -->\n" +
     "\t\t\t\t\t<div class=\"row\">\n" +
     "\t\t\t\t\t\t<div class=\"col-xs-12\">\n" +
     "\t\t\t\t\t\t\t<div class=\"col-xs-12 new-address\">\n" +
     "\t\t\t\t\t\t\t\t<div class=\"col-xs-12 col-sm-6 nopadding\">\n" +
-    "\t\t\t\t\t\t\t\t\t<form role=\"form\">\n" +
+    "\t\t\t\t\t\t\t\t\t\n" +
+    "\t\t\t\t\t\t\t\t\t<!---1st edit form-->\t\n" +
+    "\t\t\t\t\t\t\t\t\t<form role=\"form\" name=\"editaddrForm\" ng-submit=\"editsubmitForm();\" novalidate>\n" +
     "\t\t\t\t\t\t\t\t\t\t<h4 role=\"headding\">\n" +
     "\t\t\t\t\t\t\t\t\t\t\t<a href=\"#new-address\">Edit Address </a>\n" +
     "\t\t\t\t\t\t\t\t\t\t</h4>\n" +
-    "\t\t\t\t\t\t\t\t\t\t<div class=\"form-group nopadding col-sm-8 col-xs-12\">\n" +
+    "\t\t\t\t\t\t\t\t\t\t<div class=\"form-group nopadding col-sm-8 col-xs-12\" ng-class=\"{ 'error' : editaddrForm.country.$invalid && !editaddrForm.country.$pristine }\">\n" +
     "\t\t\t\t\t\t\t\t\t\t\t<label>Country: <span role=\"country\">India</span> <a href=\"#change-country\">Change</a></label>\n" +
     "\t\t\t\t\t\t\t\t\t\t\t<div class=\"select-style\">\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t<select id=\"change-country\">\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"0\">Select Country</option>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"1\">India</option>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"2\">US</option>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"3\">UK</option>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"4\">Dubai</option>\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t<select id=\"change-country\" name=\"country\" ng-model=\"editaddr.country\" ng-option=\" item as item in country \" required>\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\t\n" +
     "\t\t\t\t\t\t\t\t\t\t\t\t</select>\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t<span ng-show=\"editaddrForm.country.$invaild\">Please Select Country</span>\n" +
     "\t\t\t\t\t\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t\t\t\t\t<div class=\"form-group nopadding col-sm-8 col-xs-12\">\n" +
+    "\t\t\t\t\t\t\t\t\t\t <!-- USERNAME -->\n" +
+    "       \n" +
+    "\t\t\t\t\t\t\t\t\t\t<div class=\"form-group nopadding col-sm-8 col-xs-12\"  ng-class=\"{ 'error' : editaddrForm.username.$invalid && !editaddrForm.username.$pristine }\">\n" +
     "\t\t\t\t\t\t\t\t\t\t\t<label for=\"name\">Name</label>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t<input id=\"name\" type=\"text\" class=\"form-control\" placeholder=\"Enter Full Name\" >\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t<input id=\"name\" name=\"username\" type=\"text\" class=\"form-control\" placeholder=\"Enter Full Name\" ng-model=\"editaddr.username\"  ng-minlength=\"2\" >\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t <span ng-show=\"editaddrForm.username.$error.minlength\" class=\"error\">Name is too short.</span>\n" +
     "\t\t\t\t\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t\t\t\t\t<div class=\"form-group nopadding col-xs-12\">\n" +
+    "\n" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t\t<div class=\"form-group nopadding col-xs-12\" ng-class=\"{ 'error' : editaddrForm.address.$invalid && !editaddrForm.address.$pristine }\">\n" +
     "\t\t\t\t\t\t\t\t\t\t\t<label for=\"Address\">Address</label>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t<textarea id=\"Address\" class=\"form-control\"></textarea>\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t<textarea id=\"Address\" name=\"address\" class=\"form-control\" ng-minlength=\"10\" mg-model=\"editaddr.address\" required ></textarea>\n" +
+    "            <span ng-show=\"editaddrForm.address.$error.minlength\" class=\"error\">Address is too short.</span>\n" +
     "\t\t\t\t\t\t\t\t\t\t</div>\n" +
+    "\n" +
+    "\n" +
+    "\n" +
+    "\n" +
     "\t\t\t\t\t\t\t\t\t\t<div class=\"col-xs-12 col-sm-4 nopadding\">\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t<div class=\"form-group\">\n" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t<div class=\"form-group\"  ng-class=\"{ 'error' : editaddrForm.pincode.$invalid && !editaddrForm.pincode.$pristine }\">\n" +
     "\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"Pincode\">Pincode</label>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t<input id=\"Pincode\" type=\"text\" class=\"form-control\" placeholder=\"Pincode\" >\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t<input id=\"Pincode\" name=\"pincode\" type=\"text\" class=\"form-control\" placeholder=\"Pincode\" ng-minlength=\"4\" ng-model=\"editaddr.pincode\" ng-maxlength=\"7\" >\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t <span ng-show=\"editaddrForm.pincode.$error.minlength\" class=\"error\">Pincode is too short.</span>\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t <span ng-show=\"editaddrForm.pincode.$error.maxlength\" class=\"error\">Username is too long.</span>\n" +
     "\t\t\t\t\t\t\t\t\t\t\t</div>\n" +
+    "\n" +
     "\t\t\t\t\t\t\t\t\t\t</div>\n" +
+    "\n" +
+    "\n" +
+    "\n" +
     "\t\t\t\t\t\t\t\t\t\t<div class=\"col-xs-12 col-sm-7 m-padding\">\n" +
     "\t\t\t\t\t\t\t\t\t\t\t<div class=\"form-group\">\n" +
     "\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"City\">City</label>\n" +
@@ -2045,6 +2092,8 @@ define(['angular', 'app'], function(angular, app) { app.run(['$templateCache', f
     "\t\t\t\t\t\t\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t\t\t\t\t\t</div>\n" +
+    "\n" +
+    "\n" +
     "\t\t\t\t\t\t\t\t\t\t<div class=\"form-group col-xs-12 nopadding\">\n" +
     "\t\t\t\t\t\t\t\t\t\t\t<label for=\"State\">State</label>\n" +
     "\t\t\t\t\t\t\t\t\t\t\t<div id=\"State\" class=\"select-style\">\n" +
@@ -2056,36 +2105,46 @@ define(['angular', 'app'], function(angular, app) { app.run(['$templateCache', f
     "\t\t\t\t\t\t\t\t\t\t\t\t</select>\n" +
     "\t\t\t\t\t\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t\t\t\t\t<div class=\"form-group col-sm-8 col-xs-12 nopadding\">\n" +
+    "\n" +
+    "\n" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\t\t<div class=\"form-group col-sm-8 col-xs-12 nopadding\" ng-class=\"{ 'error' : editaddrForm.username.$invalid && !editaddrForm.username.$pristine }\">\n" +
     "\t\t\t\t\t\t\t\t\t\t\t<label for=\"Number\">Phone Number</label>\n" +
     "\t\t\t\t\t\t\t\t\t\t\t<div class=\"input-group\">\n" +
     "\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"input-group-addon\">+91</div>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"Number\" placeholder=\"Phone Number\">\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"text\" name=\"phonenumber\" class=\"form-control\" id=\"Number\" placeholder=\"Phone Number\" ng-model=\"editaddr.phonenumber\" ng-minlength=\"10\">\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\n" +
     "\t\t\t\t\t\t\t\t\t\t\t</div>\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t<span ng-show=\"editaddrForm.phonenumber.$error.minlength\" class=\"error\">Phone Number is too short.</span>\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t<span ng-show=\"editaddrForm.pincode.$error.maxlength\" class=\"error\">phone number is too long .</span>\n" +
     "\t\t\t\t\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t\t\t\t\t\t<div class=\"form-group col-xs-12 nopadding\">\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t<a role=\"button\" class=\"btn btn-default outline-btn\" href=\"#\">SAVE</a>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t<a role=\"button\" class=\"btn btn-default outline-btn\" href=\"#\">CANCEL</a>\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t<button type=\"submit\" class=\"btn btn-default outline-btn\" >SAVE</button>\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t<button type=\"submit\" class=\"btn btn-default outline-btn\" >CANCEL</button>\n" +
     "\t\t\t\t\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t\t\t\t\t</form>\n" +
+    "\t\t\t\t\t\t\t\t\t<!---/ 1st edit form-->\t\n" +
     "\t\t\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t</div>\n" +
     "\t\t\t\t</div>\n" +
     "\t\t\t\t<!--// Edit Shipping Address End -->\n" +
-    "\t\t\t\t<!--// Desktop Edit Shipping Address Start -->\n" +
-    "\t\t\t\t<div class=\"addressEditContainer hide\">\n" +
+    "\t\t\t\t<!--// Desktop Edit Shipping Address Start destop popup -->\n" +
+    "\t\t\t\t<div class=\"addressEditContainer \" ng-hide=\"editAddPOP\"><!--hide-->\n" +
+    "\t\t\t\t\t\n" +
+    "\t\t\t\t\t<span role=\"close\" ng-click=\"formclose()\"><a href=\"#\"><img src=\"images/delete-icon.png\" alt=\"\" title=\"\"></a></span>\n" +
     "\t\t\t\t\t<div class=\"col-xs-12 new-address\">\n" +
-    "\t\t\t\t\t\t<div class=\"col-xs-12 col-sm-6 nopadding\">\n" +
-    "\t\t\t\t\t\t\t<form role=\"form\">\n" +
+    "\t\t\t\t\t\t<div class=\"col-xs-12 nopadding\">\n" +
+    "\t\t\t\t\t\t<!---2st edit form -->\t\n" +
+    "\t\t\t\t\t\t\t<form role=\"form\" name=\"DeditAddress\" ng-submit=\"DeditsubmitForm();\" novalidate> \n" +
     "\t\t\t\t\t\t\t\t<h4 role=\"headding\">\n" +
-    "\t\t\t\t\t\t\t\t\t<a href=\"#new-address\">Edit Address </a>\n" +
+    "\t\t\t\t\t\t\t\t\t<a href=\"#new-address\">Edit Address</a>\n" +
     "\t\t\t\t\t\t\t\t</h4>\n" +
     "\t\t\t\t\t\t\t\t<div class=\"form-group nopadding col-sm-8 col-xs-12\">\n" +
     "\t\t\t\t\t\t\t\t\t<label>Country: <span role=\"country\">India</span> <a href=\"#change-country\">Change</a></label>\n" +
     "\t\t\t\t\t\t\t\t\t<div class=\"select-style\">\n" +
-    "\t\t\t\t\t\t\t\t\t\t<select id=\"change-country\">\n" +
+    "\t\t\t\t\t\t\t\t\t\t<select id=\"change-country\" mg-model=\"editAddr.country\" ng-model=\"Dedit.country\">\n" +
     "\t\t\t\t\t\t\t\t\t\t\t<option value=\"0\">Select Country</option>\n" +
     "\t\t\t\t\t\t\t\t\t\t\t<option value=\"1\">India</option>\n" +
     "\t\t\t\t\t\t\t\t\t\t\t<option value=\"2\">US</option>\n" +
@@ -2094,254 +2153,205 @@ define(['angular', 'app'], function(angular, app) { app.run(['$templateCache', f
     "\t\t\t\t\t\t\t\t\t\t</select>\n" +
     "\t\t\t\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t\t\t<div class=\"form-group nopadding col-sm-8 col-xs-12\">\n" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t  \n" +
+    "\t\t\t\t\t\t\t\t<div class=\"form-group nopadding col-sm-8 col-xs-12\" ng-class=\"{ 'error' : DeditAddress.fullname.$invalid && !DeditAddress.fullname.$pristine }\">\n" +
     "\t\t\t\t\t\t\t\t\t<label for=\"name\">Name</label>\n" +
-    "\t\t\t\t\t\t\t\t\t<input id=\"name\" type=\"text\" class=\"form-control\" placeholder=\"Enter Full Name\" >\n" +
+    "\t\t\t\t\t\t\t\t\t<input id=\"name\" name=\"fullname\" type=\"text\" class=\"form-control\" placeholder=\"Enter Full Name\" ng-model=\"editAddr.firstname\" ng-minlength=\"2\" >\n" +
+    "\t\t\t\t\t\t\t\t\t<span ng-show=\"DeditAddress.fullname.$error.minlength\" class=\"error\">FullName is too short.</span>\n" +
     "\t\t\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t\t\t<div class=\"form-group nopadding col-xs-12\">\n" +
+    "\t\t\t\t\t\t\t\t<div class=\"form-group nopadding col-sm-8 col-xs-12\" ng-class=\"{ 'error' : DeditAddress.lastname.$invalid && !DeditAddress.lastname.$pristine }\">\n" +
+    "\t\t\t\t\t\t\t\t\t<label for=\"name\">Last Name</label>\n" +
+    "\t\t\t\t\t\t\t\t\t<input id=\"name\" name=\"lastname\" type=\"text\" class=\"form-control\" placeholder=\"Enter Full Name\" ng-model=\"editAddr.lastname\" ng-minlength=\"2\" >\n" +
+    "\t\t\t\t\t\t\t\t\t<span ng-show=\"DeditAddress.lastname.$error.minlength\" class=\"error\">FullName is too short.</span>\n" +
+    "\t\t\t\t\t\t\t\t</div>\n" +
+    "\n" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t<div class=\"form-group nopadding col-xs-12\" ng-class=\"{ 'error' : DeditAddress.address.$invalid && !DeditAddress.address.$pristine }\">\n" +
     "\t\t\t\t\t\t\t\t\t<label for=\"Address\">Address</label>\n" +
-    "\t\t\t\t\t\t\t\t\t<textarea id=\"Address\" class=\"form-control\"></textarea>\n" +
+    "\t\t\t\t\t\t\t\t\t<textarea id=\"Address\" name=\"address\" class=\"form-control\" ng-minlength=\"10\" ng-model=\"editAddr.street\"></textarea>\n" +
+    "\t\t\t\t\t\t\t\t\t<span ng-show=\"DeditAddress.address.$error.minlength\" class=\"error\">Address is too short.</span>\n" +
     "\t\t\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t\t\t<div class=\"col-xs-12 col-sm-4 nopadding\">\n" +
-    "\t\t\t\t\t\t\t\t\t<div class=\"form-group\">\n" +
+    "\n" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t<div class=\"col-xs-12 col-sm-4 nopadding\" >\n" +
+    "\t\t\t\t\t\t\t\t\t<div class=\"form-group\" ng-class=\"{ 'error' : DeditAddress.pincode.$invalid && !DeditAddress.pincode.$pristine }\">\n" +
     "\t\t\t\t\t\t\t\t\t\t<label for=\"Pincode\">Pincode</label>\n" +
-    "\t\t\t\t\t\t\t\t\t\t<input id=\"Pincode\" type=\"text\" class=\"form-control\" placeholder=\"Pincode\" >\n" +
+    "\t\t\t\t\t\t\t\t\t\t<input id=\"Pincode\" name=\"pincode\" type=\"text\" class=\"form-control\" placeholder=\"Pincode\" ng-minlength=\"4\" ng-model=\"editAddr.postcode\" ng-maxlength=\"7\" >\n" +
+    "\t\t\t\t\t\t\t\t\t\t <span ng-show=\"DeditAddress.pincode.$error.minlength\" class=\"error\">Pincode is too short.</span>\n" +
+    "\t\t\t\t\t\t\t\t\t\t <span ng-show=\"DeditAddress.pincode.$error.maxlength\" class=\"error\">pincode is too long.</span>\n" +
     "\t\t\t\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t\t\t\t</div>\n" +
+    "\n" +
     "\t\t\t\t\t\t\t\t<div class=\"col-xs-12 col-sm-7 m-padding\">\n" +
-    "\t\t\t\t\t\t\t\t\t<div class=\"form-group\">\n" +
+    "\t\t\t\t\t\t\t\t\t<div class=\"form-group\" ng-class=\"{ 'error' : DeditAddress.city.$invalid && !DeditAddress.city.$pristine }\">\n" +
     "\t\t\t\t\t\t\t\t\t\t<label for=\"City\">City</label>\n" +
-    "\t\t\t\t\t\t\t\t\t\t<div class=\"select-style\">\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t<select>\n" +
+    "\t\t\t\t\t\t\t\t\t\t<div class=\"select-style\" >\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t<select name=\"city\" ng-model=\"editAddr.city\" ng-option=\"\" requried>\n" +
     "\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"0\">Select City</option>\n" +
     "\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"1\">India</option>\n" +
     "\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"2\">US</option>\n" +
     "\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"3\">UK</option>\n" +
     "\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"4\">Dubai</option>\n" +
     "\t\t\t\t\t\t\t\t\t\t\t</select>\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t <span ng-show=\"DeditAddress.city.$error.minlength\" class=\"error\">Please Select </span>\n" +
     "\t\t\t\t\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t\t\t<div class=\"form-group col-sm-8 col-xs-12 nopadding\">\n" +
+    "\n" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t<div class=\"form-group col-xs-12 nopadding\" ng-class=\"{ 'error' : DeditAddress.state.$invalid && !DeditAddress.state.$pristine }\">\n" +
     "\t\t\t\t\t\t\t\t\t<label for=\"State\">State</label>\n" +
     "\t\t\t\t\t\t\t\t\t\t<div class=\"select-style\">\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t<select>\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t<select name=\"state\" ng-model=\"editAddr.region\" ng-option=\"\" requried>\n" +
     "\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"0\">Select State</option>\n" +
     "\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"1\">India</option>\n" +
     "\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"2\">US</option>\n" +
     "\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"3\">UK</option>\n" +
     "\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"4\">Dubai</option>\n" +
     "\t\t\t\t\t\t\t\t\t\t\t</select>\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t<span ng-show=\"DeditAddress.state.$error.minlength\" class=\"error\">Please Select State </span>\n" +
     "\t\t\t\t\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t\t\t<div class=\"form-group col-sm-8 col-xs-12 nopadding\">\n" +
-    "\t\t\t\t\t\t\t\t\t<label for=\"Number\">Phone Number</label>\n" +
-    "\t\t\t\t\t\t\t\t\t<div class=\"input-group\">\n" +
-    "\t\t\t\t\t\t\t\t\t\t<div class=\"input-group-addon\">+91</div>\n" +
-    "\t\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"Number\" placeholder=\"Phone Number\">\n" +
-    "\t\t\t\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t\t\t</div>\n" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t<div class=\"form-group col-sm-8 col-xs-12 nopadding\" ng-class=\"{ 'error' : DeditAddress.telephone.$invalid && !DeditAddress.telephone.$pristine }\">\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t<label for=\"Number\">Phone Number</label>\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t<div class=\"input-group\">\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"input-group-addon\">+91</div>\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"text\" name=\"telephone\" class=\"form-control\" id=\"Number\" placeholder=\"Phone Number\" ng-model=\"editAddr.telephone\" ng-minlength=\"10\">\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t</div>\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t<span ng-show=\"DeditAddress.telephone.$error.minlength\" class=\"error\">Phone Number is too short.</span>\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t<span ng-show=\"DeditAddress.telephone.$error.maxlength\" class=\"error\">phone number is too long .</span>\n" +
+    "\t\t\t\t\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t\t\t\t<div class=\"form-group col-xs-12 nopadding\">\n" +
-    "\t\t\t\t\t\t\t\t\t<a role=\"button\" class=\"btn btn-default outline-btn\" href=\"#\">SAVE</a>\n" +
-    "\t\t\t\t\t\t\t\t\t<a role=\"button\" class=\"btn btn-default outline-btn\" href=\"#\">CANCEL</a>\n" +
+    "\t\t\t\t\t\t\t\t\t<button type=\"submit\" class=\"btn btn-default outline-btn\" >SAVE</button>\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t<button type=\"submit\" class=\"btn btn-default outline-btn\" >CANCEL</button>\n" +
     "\t\t\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t\t\t</form>\n" +
+    "\t\t\t\t\t\t\t<!---/2st edit form-->\t\n" +
     "\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t</div>\n" +
     "\t\t\t\t</div>\n" +
     "\t\t\t\t<!--// Desktop Edit Shipping Address End -->\n" +
     "\t\t\t\t<!--// Select Billing Address -->\n" +
-    "\t\t\t\t<div class=\"col-xs-12\"><h4 role=\"headding\">SELECT BILLING ADDRESS</h4></div>\n" +
-    "\t\t\t\t<!--// Billing Address Not select Error -->\n" +
-    "\t\t\t\t<div class=\"col-xs-12\">\n" +
-    "\t\t\t\t\t<div class=\"col-xs-12 col-sm-4 text-center form-error\">Please select billing address or add new billing Address</div>\n" +
-    "\t\t\t\t</div>\n" +
-    "\t\t\t\t<!--// -->\n" +
-    "\t\t\t\t<div class=\"col-xs-12 col-sm-6 col-md-4\">\n" +
-    "\t\t\t\t\t<div class=\"col-xs-12 addressCard\">\n" +
-    "\t\t\t\t\t\t<div class=\"col-xs-12 nopadding customer-address\">\n" +
-    "\t\t\t\t\t\t\t<div class=\"col-xs-12 nopadding\">\n" +
-    "\t\t\t\t\t\t\t\t<h5>Shruti Kartikey <span><a href=\"#\"><img src=\"images/edit-icon.png\"></a></span><span class=\"pull-right delete-shipping\"><a href=\"#\"><img src=\"images/remove.png\"></a></span></h5>\n" +
-    "\t\t\t\t\t\t\t\t<p>G-1502, Craftsvilla, Lotus Business Park, Goregaon East, Mumbai, Maharashtra - 400056</p>\n" +
-    "\t\t\t\t\t\t\t\t<p class=\"margin0\">+91 7738233261</p>\n" +
-    "\t\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t<div class=\"col-xs-12 nopadding hidden-xs\">\n" +
-    "\t\t\t\t\t\t\t<input class=\"btn btn-newStyle\" type=\"button\" value=\"DELIVER TO THIS ADDRESS\">\n" +
-    "\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t</div>\n" +
-    "\t\t\t\t</div>\n" +
-    "\t\t\t\t<div class=\"col-xs-12 col-sm-6 col-md-4\">\n" +
-    "\t\t\t\t\t<div class=\"col-xs-12 addressCard\">\n" +
-    "\t\t\t\t\t\t<div class=\"col-xs-12 nopadding customer-address\">\n" +
-    "\t\t\t\t\t\t\t<div class=\"col-xs-12 nopadding\">\n" +
-    "\t\t\t\t\t\t\t\t<h5>Shruti Kartikey <span><a href=\"#\"><img src=\"images/edit-icon.png\"></a></span><span class=\"pull-right delete-shipping\"><a href=\"#\"><img src=\"images/remove.png\"></a></span></h5>\n" +
-    "\t\t\t\t\t\t\t\t<p>G-1502, Craftsvilla, Lotus Business Park, Goregaon East, Mumbai, Maharashtra - 400056</p>\n" +
-    "\t\t\t\t\t\t\t\t<p class=\"margin0\">+91 7738233261</p>\n" +
-    "\t\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t<div class=\"col-xs-12 nopadding hidden-xs\">\n" +
-    "\t\t\t\t\t\t\t<input class=\"btn btn-newStyle\" type=\"button\" value=\"DELIVER TO THIS ADDRESS\">\n" +
-    "\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t</div>\n" +
-    "\t\t\t\t</div>\n" +
+    "\n" +
+    "\t\t\t\t\t\n" +
+    "\n" +
     "\t\t\t</div>\n" +
     "\t\t</div>\n" +
     "\t\t<!--// -->\n" +
     "\t\t<!--// -->\n" +
     "\t\t<div class=\"col-xs-12 nopadding add-new-shipping\">\n" +
     "\t\t\t<h4 class=\"M-add-new-address\" role=\"headding\">\n" +
-    "\t\t\t\t<a href=\"#new-address\">ADD NEW ADDRESS <span><img src=\"images/Shape.png\" title=\"\" alt=\"\"></span></a>\n" +
+    "\t\t\t\t<a href=\"#new-address\">ADD NEW ADDRESS<span><img src=\"images/Shape.png\" title=\"\" alt=\"\"></span></a>\n" +
     "\t\t\t</h4>\n" +
     "\t\t\t<!--// -->\n" +
     "\t\t\t<div class=\"row\">\n" +
     "\t\t\t\t<div class=\"col-xs-12\">\n" +
     "\t\t\t\t\t<div class=\"col-xs-12 new-address\">\n" +
     "\t\t\t\t\t\t<div class=\"col-xs-12 col-sm-7 nopadding\">\n" +
-    "\t\t\t\t\t\t\t<form role=\"form\">\n" +
-    "\t\t\t\t\t\t\t\t<div class=\"form-group nopadding col-sm-8 col-xs-12\">\n" +
+    "\t\t\t\t\t\t<!---3st edit form-->\t\n" +
+    "\t\t\t\t\t\t<form role=\"form\" name=\"addnewForm\" ng-submit=\"addnewsubmit();\" novalidate>\n" +
+    "\t\t\t\t\t\t\t\t<div class=\"form-group nopadding col-sm-8 col-xs-12\" ng-class=\"{ 'error' : addnewForm.state.$invalid && !addnewForm.state.$pristine }\">\n" +
     "\t\t\t\t\t\t\t\t\t<label>Country: <span role=\"country\">India</span> <a href=\"#change-country\">Change</a></label>\n" +
-    "\t\t\t\t\t\t\t\t\t<div class=\"select-style\">\n" +
-    "\t\t\t\t\t\t\t\t\t\t<select>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t<option value=\"0\">Select Country</option>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t<option value=\"1\">India</option>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t<option value=\"2\">US</option>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t<option value=\"3\">UK</option>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t<option value=\"4\">Dubai</option>\n" +
+    "\t\t\t\t\t\t\t\t\t<div class=\"select-style\" >\n" +
+    "\t\t\t\t\t\t\t\t\t\t<select ng-model=\"addnew.state\" name=\"state\" required ng-options=\"v.name for v in states track by v.id\">\n" +
+    "\t\t\t\t\t\t\t\t\t\t<option selected value=\"\"> Select State</option>\n" +
     "\t\t\t\t\t\t\t\t\t\t</select>\n" +
-    "\t\t\t\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t\t\t<div class=\"form-group nopadding col-sm-8 col-xs-12\">\n" +
+    "\t\t\t\t\t\t\t\t<span ng-show=\"addnewForm.state.$error.minlength\" class=\"error\">Username is too short.</span>\n" +
+    "\t\t\t\t\t\t\t\t<span class=\"error\" ng-show=\"addnewForm.$submitted && addnewForm.state.$error.required\">Please Select State</span>\n" +
+    "\t\t\t\t\t\t\t\t\n" +
+    "\t\t\t\t\t\t\t\t\t</div>\n" +
+    "\n" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t\n" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t<div class=\"form-group nopadding col-sm-8 col-xs-12\" ng-class=\"{ 'error' : (addnewForm.fullname.$invalid && !addnewForm.fullname.$pristine) || (addnewForm.$submitted && addnewForm.fullname.$error.required) }\">\n" +
     "\t\t\t\t\t\t\t\t\t<label for=\"name\">Name</label>\n" +
-    "\t\t\t\t\t\t\t\t\t<input id=\"name\" type=\"text\" class=\"form-control\" placeholder=\"Enter Full Name\" >\n" +
+    "\t\t\t\t\t\t\t\t\t<input id=\"name\" name =\"fullname\" type=\"text\" class=\"form-control\" placeholder=\"Enter Full Name\" ng-model=\"addNew.fullname\" ng-minlength=\"2\"  required>\n" +
+    "\t\t\t\t\t\t\t\t\t <span ng-show=\"addnewForm.fullname.$error.minlength\" class=\"error\">Username is too short.</span>\n" +
+    "\t\t\t\t\t\t\t\t\t  <div ng-show=\"addnewForm.$submitted || addnewForm.fullname.$touched\">\n" +
+    "             <span ng-show=\"addnewForm.fullname.$error.required\" class=\"error\">Tell us your name.</span>\n" +
+    "             </div>\n" +
     "\t\t\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t\t\t<div class=\"form-group nopadding col-xs-12\">\n" +
+    "\n" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t<div class=\"form-group nopadding col-xs-12\" ng-class=\"{ 'error' : (addnewForm.address.$invalid && !addnewForm.address.$pristine) || (addnewForm.$submitted && addnewForm.address.$error.required) }\">\n" +
     "\t\t\t\t\t\t\t\t\t<label for=\"Address\">Address</label>\n" +
-    "\t\t\t\t\t\t\t\t\t<textarea id=\"Address\" class=\"form-control\"></textarea>\n" +
+    "\t\t\t\t\t\t\t\t\t<textarea id=\"Address\" name=\"address\" ng-model=\"addNew.address\" class=\"form-control\" ng-minlength=\"10\" required></textarea>\n" +
+    "\t\t\t\t\t\t\t\t\t<span ng-show=\"addnewForm.address.$error.minlength\" class=\"error\">Address is too short.</span>\n" +
+    "\t\t\t\t\t\t\t\t\t<div ng-show=\"addnewForm.$submitted || addnewForm.address.$touched\">\n" +
+    "             <span ng-show=\"addnewForm.address.$error.required\" class=\"error\">Tell us your Address.</span>\n" +
+    "             </div>\n" +
+    "\n" +
     "\t\t\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t\t\t<div class=\"col-xs-12 col-sm-4 nopadding\">\n" +
+    "\t\t\t\t\t\t\t\t<div class=\"col-xs-12 col-sm-4 nopadding\" ng-class=\"{ 'error' : (addnewForm.pincode.$invalid && !addnewForm.pincode.$pristine) || (addnewForm.$submitted && addnewForm.pincode.$error.required) }\">\n" +
     "\t\t\t\t\t\t\t\t\t<div class=\"form-group\">\n" +
     "\t\t\t\t\t\t\t\t\t\t<label for=\"Pincode\">Pincode</label>\n" +
-    "\t\t\t\t\t\t\t\t\t\t<input id=\"Pincode\" type=\"text\" class=\"form-control\" placeholder=\"Pincode\" >\n" +
+    "\t\t\t\t\t\t\t\t\t\t<input id=\"Pincode\" name=\"pincode\" type=\"number\" class=\"form-control\" placeholder=\"Pincode\"  ng-minlength=\"4\" ng-maxlength=\"9\" ng-model=\"addnew.pincode\" required>\n" +
+    "\t\t\t\t\t\t\t\t\t\t<span ng-show=\"addnewForm.pincode.$error.minlength\" class=\"error\">Pincode is too short.</span>\n" +
+    "\t\t\t\t\t\t\t\t\t\t<span ng-show=\"addnewForm.pincode.$error.maxlength\" class=\"error\">phone number is too long .</span>\n" +
+    "\t\t\t\t\t\t\t\t\t\t<div ng-show=\"addnewForm.$submitted || addnewForm.pincode.$touched\">\n" +
+    "             <span ng-show=\"addnewForm.pincode.$error.required\" class=\"error\">Tell us your Pincode.</span>\n" +
+    "             </div>\n" +
     "\t\t\t\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t\t\t\t<div class=\"col-xs-12 col-sm-7 m-padding\">\n" +
     "\t\t\t\t\t\t\t\t\t<div class=\"form-group\">\n" +
     "\t\t\t\t\t\t\t\t\t\t<label for=\"City\">City</label>\n" +
     "\t\t\t\t\t\t\t\t\t\t<div class=\"select-style\">\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t<select>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"0\">Select City</option>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"1\">India</option>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"2\">US</option>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"3\">UK</option>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"4\">Dubai</option>\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t<select ng-model=\"addnew.city\" name=\"city\"  required ng-options=\"v.name for v in city track by v.id\">\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t<option selected value=\"\">Select City</option>\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\n" +
     "\t\t\t\t\t\t\t\t\t\t\t</select>\n" +
     "\t\t\t\t\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t\t\t<div class=\"form-group nopadding col-sm-8 col-xs-12\">\n" +
-    "\t\t\t\t\t\t\t\t\t<label for=\"State\">State</label>\n" +
-    "\t\t\t\t\t\t\t\t\t\t<div class=\"select-style\">\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t<select>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"0\">Select State</option>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"1\">India</option>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"2\">US</option>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"3\">UK</option>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"4\">Dubai</option>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t</select>\n" +
-    "\t\t\t\t\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t\t\t<div class=\"form-group nopadding col-sm-8 col-xs-12\">\n" +
-    "\t\t\t\t\t\t\t\t\t<label for=\"Number\">Phone Number</label>\n" +
-    "\t\t\t\t\t\t\t\t\t<div class=\"input-group\">\n" +
-    "\t\t\t\t\t\t\t\t\t\t<div class=\"input-group-addon\">+91</div>\n" +
-    "\t\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"Number\" placeholder=\"Phone Number\">\n" +
+    "\n" +
+    "\t\t\t\t\t\t\t\t<span class=\"error\" ng-show=\"addnewForm.$submitted && addnewForm.city.$error.required\">Please Select State</span>\n" +
     "\t\t\t\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t\t\t\t<div class=\"form-group nopadding col-xs-12\">\n" +
-    "\t\t\t\t\t\t\t\t\t<div class=\"checkbox col-xs-12 nopadding margin0\">\n" +
-    "\t\t\t\t\t\t\t\t\t\t<label><input type=\"checkbox\" id=\"Guest\"><span for=\"Guest\"></span> This is also my Billing Address</label>\n" +
-    "\t\t\t\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t\t</form>\n" +
-    "\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t<hr class=\"line-divider\" />\n" +
-    "\t\t\t\t\t\t<div class=\"col-xs-12 nopadding\">\n" +
-    "\t\t\t\t\t\t\t<h4 role=\"headding\">ADD BILLING ADDRESS</h4>\n" +
-    "\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t<div class=\"col-xs-12 col-sm-7 nopadding\">\n" +
-    "\t\t\t\t\t\t\t<form role=\"form\">\n" +
-    "\t\t\t\t\t\t\t\t<div class=\"form-group nopadding col-sm-8 col-xs-12\">\n" +
-    "\t\t\t\t\t\t\t\t\t<label>Country: <span role=\"country\">India</span> <a href=\"#change-country\">Change</a></label>\n" +
-    "\t\t\t\t\t\t\t\t\t\t<div class=\"select-style\">\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t<select>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"0\">Select Country</option>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"1\">India</option>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"2\">US</option>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"3\">UK</option>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"4\">Dubai</option>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t</select>\n" +
-    "\t\t\t\t\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t\t\t<div class=\"form-group nopadding col-sm-8 col-xs-12\">\n" +
-    "\t\t\t\t\t\t\t\t\t<div class=\"form-group col-sm-8 nopadding\">\n" +
-    "\t\t\t\t\t\t\t\t\t\t<label for=\"name\">Name</label>\n" +
-    "\t\t\t\t\t\t\t\t\t\t<input id=\"name\" type=\"text\" class=\"form-control\" placeholder=\"Enter Full Name\" >\n" +
-    "\t\t\t\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t\t\t<div class=\"form-group nopadding col-xs-12\">\n" +
-    "\t\t\t\t\t\t\t\t\t<label for=\"Address\">Address</label>\n" +
-    "\t\t\t\t\t\t\t\t\t<textarea id=\"Address\" class=\"form-control\"></textarea>\n" +
-    "\t\t\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t\t\t<div class=\"col-xs-12 col-sm-4 nopadding\">\n" +
-    "\t\t\t\t\t\t\t\t\t<div class=\"form-group\">\n" +
-    "\t\t\t\t\t\t\t\t\t\t<label for=\"Pincode\">Pincode</label>\n" +
-    "\t\t\t\t\t\t\t\t\t\t<input id=\"Pincode\" type=\"text\" class=\"form-control\" placeholder=\"Pincode\" >\n" +
-    "\t\t\t\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t\t\t<div class=\"col-xs-12 col-sm-7 m-padding\">\n" +
-    "\t\t\t\t\t\t\t\t\t<div class=\"form-group\">\n" +
-    "\t\t\t\t\t\t\t\t\t\t<label for=\"City\">City</label>\n" +
-    "\t\t\t\t\t\t\t\t\t\t<div class=\"select-style\">\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t<select>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"0\">Select City</option>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"1\">India</option>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"2\">US</option>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"3\">UK</option>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"4\">Dubai</option>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t</select>\n" +
-    "\t\t\t\t\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t\t\t<div class=\"form-group nopadding col-sm-8 col-xs-12\">\n" +
     "\t\t\t\t\t\t\t\t\t<label for=\"State\">State</label>\n" +
-    "\t\t\t\t\t\t\t\t\t<div class=\"select-style\">\n" +
-    "\t\t\t\t\t\t\t\t\t\t<select>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t<option value=\"0\">Select State</option>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t<option value=\"1\">India</option>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t<option value=\"2\">US</option>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t<option value=\"3\">UK</option>\n" +
-    "\t\t\t\t\t\t\t\t\t\t\t<option value=\"4\">Dubai</option>\n" +
+    "\t\t\t\t\t\t\t\t\t\t<div class=\"select-style\">\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t<select ng-model=\"addnew.state\" name=\"state\" required ng-options=\"v.name for v in states track by v.id\">\n" +
+    "\t\t\t\t\t\t\t\t\t\t<option selected value=\"\"> Select State</option>\n" +
     "\t\t\t\t\t\t\t\t\t\t</select>\n" +
-    "\t\t\t\t\t\t\t\t\t</div>\n" +
+    "\t\t\t\t\t\t\t\t\t\t</div>\n" +
+    "\t\t\t\t\t\t\t\t\t\t<span ng-show=\"addnewForm.state.$error.minlength\" class=\"error\">Username is too short.</span>\n" +
+    "\t\t\t\t\t\t\t\t<span class=\"error\" ng-show=\"addnewForm.$submitted && addnewForm.state.$error.required\">Please Select State</span>\n" +
+    "\t\t\t\t\t\t\t\t\n" +
     "\t\t\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t\t\t<div class=\"form-group nopadding col-sm-8 col-xs-12\">\n" +
-    "\t\t\t\t\t\t\t\t\t<label for=\"Number\">Phone Number</label>\n" +
-    "\t\t\t\t\t\t\t\t\t<div class=\"input-group\">\n" +
-    "\t\t\t\t\t\t\t\t\t\t<div class=\"input-group-addon\">+91</div>\n" +
-    "\t\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"Number\" placeholder=\"Phone Number\">\n" +
-    "\t\t\t\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t\t\t</div>\n" +
+    "\t\t\t\t\t\t\t\t<div class=\"form-group col-sm-8 col-xs-12 nopadding\" ng-class=\"{ 'error' : (addnewForm.phonenumber.$invalid && !addnewForm.phonenumber.$pristine) || (addnewForm.$submitted && addnewForm.phonenumber.$error.required) }\">\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t<label for=\"Number\">Phone Number</label>\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t<div class=\"input-group\"> \n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"input-group-addon\">+91</div>\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"number\" name=\"phonenumber\" class=\"form-control\" id=\"Number\" placeholder=\"Phone Number\" ng-model=\"addnew.phonenumber\" ng-minlength=\"10\" ng-maxlength=\"10\" ng-required=\"true\">\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t\t\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t</div>\n" +
+    "\t\t\t<span class=\"error\" ng-show=\"addnewForm.phone.$error.required || addnewForm.phone.$error.number\">Valid phone number is required</span>\n" +
+    "            <span class=\"error\" ng-show=\"((addnewForm.phonenumber.$error.minlength || addnewForm.phonenumber.$error.maxlength) && addnewForm.phonenumber.$dirty) \">phone number should be 10 digits</span>\n" +
+    "\t\t\t\t\t\t\t\t\t\t\t<div ng-show=\"addnewForm.$submitted || addnewForm.phonenumber.$touched\">\n" +
+    "             <span ng-show=\"addnewForm.phonenumber.$error.required\" class=\"error\">Valid phone number is required</span>\n" +
+    "             </div>\n" +
+    "\t\t\t\t\t\t\t\t\t\t</div>\n" +
+    "\t\t\t\t\t\t\t\t\n" +
     "\t\t\t\t\t\t\t\t<div class=\"form-group nopadding col-xs-12\">\n" +
+    "\t\t\t\t\t\t\t<!-- <input class=\"btn btn-newStyle btn-newStyleActive Width60\" type=\"button\" value=\"SAVE & CONTINUE\"> -->\n" +
+    "\t\t\t\t\t\t\t<button type=\"submit\" class=\"btn btn-newStyle btn-newStyleActive Width60\" > SAVE & CONTINUE</button>\n" +
+    "\n" +
+    "\t\t\t\t\t\t</div>\n" +
+    "\n" +
+    "\t\t\t\t\t\t<div class=\"form-group nopadding col-xs-12\">\n" +
     "\t\t\t\t\t\t\t\t\t<div class=\"checkbox col-xs-12 nopadding margin0\">\n" +
-    "\t\t\t\t\t\t\t\t\t\t<label><input type=\"checkbox\" id=\"Guest\"><span for=\"Guest\"></span> This is also my Billing Address</label>\n" +
+    "\t\t\t\t\t\t\t\t\t\t<label><input type=\"checkbox\" id=\"Guest\" ng-model=\"chkbill\" ng-change=\"checkBilling()\" checked><span for=\"Guest\"></span> This is also my Billing Address</label>\n" +
     "\t\t\t\t\t\t\t\t\t</div>\n" +
+    "\n" +
     "\t\t\t\t\t\t\t\t</div>\n" +
     "\t\t\t\t\t\t\t</form>\n" +
+    "\t\t\t\t\t\t\t<!---4st edit form-->\t\n" +
     "\t\t\t\t\t\t</div>\n" +
-    "\t\t\t\t\t\t<div class=\"form-group nopadding col-xs-12\">\n" +
-    "\t\t\t\t\t\t\t<input class=\"btn btn-newStyle btn-newStyleActive Width60\" type=\"button\" value=\"SAVE & CONTINUE\">\n" +
-    "\t\t\t\t\t\t</div>\n" +
+    "\t\t\t\t\t\t\n" +
     "\t\t\t\t\t</div>\n" +
     "\t\t\t\t</div>\n" +
     "\t\t\t</div>\n" +
@@ -2355,44 +2365,7 @@ define(['angular', 'app'], function(angular, app) { app.run(['$templateCache', f
     "\t\t<div class=\"col-xs-12 nopadding spacer\">&nbsp;</div>\n" +
     "\t</div>\n" +
     "</div>\n" +
-    "<!--// Content -->\n" +
-    "\n" +
-    "<!--// Footer -->\n" +
-    "<div role=\"footer\" class=\"container-fluid\">\n" +
-    "\t<div class=\"container\">\n" +
-    "\t\t<section class=\"col-xs-12 m-padding hidden-xs\">\n" +
-    "\t\t  <ul class=\"footer-col col-xs-12 col-sm-3 m-padding\">\n" +
-    "\t\t    <li class=\"FooterHeader\">SUPPORT</li>\n" +
-    "\t\t    <li><span class=\"ln-hgt-15\">For Help, send email to </span>\n" +
-    "\t\t      <a href=\"mailto:customercare@craftsvilla.com\"><span class=\"rouge ln-hgt-15\">customercare@craftsvilla.com</span></a>\n" +
-    "\t\t    </li>\n" +
-    "\t\t  </ul>\n" +
-    "\n" +
-    "\t\t  <ul class=\"footer-col col-xs-12 col-sm-3 m-padding\">\n" +
-    "\t\t    <li class=\"FooterHeader\"> PAYMENT OPTIONS </li>\n" +
-    "\t\t    <li><img src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/Visa_1.png\"> <img src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/Visa_2.png\"> <img src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/Visa_3.png\"></li>\n" +
-    "\t\t  </ul>\n" +
-    "\n" +
-    "\t\t  <ul class=\"footer-col col-xs-12 col-sm-3 m-padding\">\n" +
-    "\t\t    <li class=\"FooterHeader\">STAY CONNECTED</li>\n" +
-    "\t\t    <li>\n" +
-    "\t\t      <a target=\"_blank\" href=\"http://www.facebook.com/craftsvilla\"><img src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/FB.png\"></a>\n" +
-    "\t\t      <a target=\"_blank\" href=\"https://twitter.com/craftsvilla\"><img src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/Twitter.png\" class=\"p-l-5\"></a>\n" +
-    "\t\t      <a target=\"_blank\" href=\"https://plus.google.com/117677147285924975963\"><!-- <img class=\"p-l-5\" src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/g-plus.png\"> --></a>\n" +
-    "\t\t      <a target=\"_blank\" href=\"https://www.pinterest.com/craftsvilla/\">\n" +
-    "\t\t        <img src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/pin.png\" class=\"p-l-5\">\n" +
-    "\t\t      </a>\n" +
-    "\t\t    </li>\n" +
-    "\t\t  </ul>\n" +
-    "\t\t  <ul class=\"footer-col col-xs-12 col-sm-3 m-padding\">\n" +
-    "\t\t    <li class=\"FooterHeader\">DOWNLOAD OUR APP</li>\n" +
-    "\t\t    <li><a target=\"_blank\" href=\"https://play.google.com/store/apps/details?id=com.craftsvilla.app&amp;hl=en\">\n" +
-    "\t\t      <img src=\"http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/Googleplay.png\">\n" +
-    "\t\t      </a>\n" +
-    "\t\t    </li>\n" +
-    "\t\t  </ul>\n" +
-    "\t\t</section>\n" +
-    "\t</div>\n" +
-    "</div>\n"
+    "</div>\n" +
+    "<div data-overlay  ng-hide=\"editAddPOP\">&nbsp;</div>"
   );
 }]); });
