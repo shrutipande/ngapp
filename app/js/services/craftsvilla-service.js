@@ -32,7 +32,8 @@ define(['./index'], function (services) {
       placeOrder: placeOrder,
       paymentRedirect: paymentRedirect,
       continueAsGuest : continueAsGuest,
-      loadFinalQuote : loadFinalQuote
+      loadFinalQuote : loadFinalQuote,
+      placeOrderCOD: placeOrderCOD
     };
 
     //////////////////////////////////////////
@@ -255,6 +256,13 @@ define(['./index'], function (services) {
         method: 'POST',
         url: url,
         data: json
+      });
+    }
+
+    function placeOrderCOD() {
+      return $http({
+        method: 'POST',
+        url: HOST + 'checkoutService/index/placeOrderCOD'
       });
     }
   }]);

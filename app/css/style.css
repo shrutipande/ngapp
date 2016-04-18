@@ -535,3 +535,9 @@ MEDIA QUERI
 .width-auto{
     width:auto;
 }
+.card-type {
+     position: absolute;
+     right: 10px;
+     top: 35px;
+     color: #aaa;
+ }
