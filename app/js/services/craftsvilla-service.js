@@ -5,10 +5,10 @@ define(['./index'], function (services) {
 
     return {
       getCartData: getCartData,
-      getApplyCoupon : getApplyCoupon,
-      getRemoveCoupon: getRemoveCoupon,
-      getProducts: getProducts,
-      getProductById: getProductById,
+      // getApplyCoupon : getApplyCoupon,
+      // getRemoveCoupon: getRemoveCoupon,
+      // getProducts: getProducts,
+      // getProductById: getProductById,
       loadQuote: loadQuote,
       updateQty: updateQty,
       addToQuote: addToQuote,
@@ -29,7 +29,7 @@ define(['./index'], function (services) {
       getLogout : getLogout,
       getPaymentMethods : getPaymentMethods,
       placeOrder: placeOrder,
-      paymentRedirect: paymentRedirect
+      paymentRedirect: paymentRedirect,
       continueAsGuest : continueAsGuest,
       loadFinalQuote : loadFinalQuote
     };
