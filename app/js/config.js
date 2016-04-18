@@ -2,8 +2,8 @@
 
 define(['angular'], function(angular) {
     'use strict';
-    
-  return angular.module('app.config', [])
+
+  return angular.module('app.config', ['satellizer'])
       .constant('VERSION', '0.0.1')
       //.constant('HOST', 'http://localhost:8000/api')
       //.constant('HOST', 'https://api.myjson.com/bins/')

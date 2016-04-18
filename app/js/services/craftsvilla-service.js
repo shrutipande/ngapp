@@ -7,8 +7,8 @@ define(['./index'], function (services) {
       getCartData: getCartData,
       getApplyCoupon : getApplyCoupon,
       getRemoveCoupon: getRemoveCoupon,
-      getProducts: getProducts,
-      getProductById: getProductById,
+      // getProducts: getProducts,
+      // getProductById: getProductById,
       loadQuote: loadQuote,
       updateQty: updateQty,
       addToQuote: addToQuote,
@@ -29,7 +29,7 @@ define(['./index'], function (services) {
       getLogout : getLogout,
       getPaymentMethods : getPaymentMethods,
       placeOrder: placeOrder,
-      paymentRedirect: paymentRedirect
+      paymentRedirect: paymentRedirect,
       continueAsGuest : continueAsGuest,
       loadFinalQuote : loadFinalQuote
     };
@@ -56,7 +56,6 @@ define(['./index'], function (services) {
     //demo apis ends here
 
     function loadQuote() {
-      alert("hi")
       return $http.get( HOST + 'checkoutService/index/loadQuote');
     }
 
@@ -243,7 +242,7 @@ define(['./index'], function (services) {
         method: 'GET',
         url: 'http://dev7.craftsvilla.com/checkoutService/index/placeOrderPrepaid',
         params: json
-      })
+      });
     }
 
     function paymentRedirect(url, json) {
@@ -251,7 +250,7 @@ define(['./index'], function (services) {
         method: 'POST',
         url: url,
         data: json
-      })
+      });
     }
   }]);
 });
