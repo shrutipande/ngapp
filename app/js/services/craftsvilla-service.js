@@ -210,7 +210,7 @@ define(['./index'], function (services) {
         "city" : city,
         "state" : state,
         "pincode" : pincode,
-        "country" : country,
+        "country" : country, 
         "phoneNo" : phoneNo,
         "isBillingAddress": isBillingAddress
       });

@@ -165,7 +165,7 @@ define(['./index'], function (controllers) {
 			if ($scope.DeditAddress) {
 				console.log($scope.editAddr);
 			}
-
+ 
 		}
 
 		
