@@ -525,7 +525,7 @@ span[role="division"] { margin-left: 5%; }
     div[check-out] .r-m-20{margin-right:20px;}
     div[check-out] .lx-m-20{margin-left:20px;}
     .cart-pad-lr5-xs{padding-left: 5px; padding-right: 5px;}
-    div[check-out] .header {padding:9px 5px; }
+    div[check-out] .header {padding:9px 5px; font-size: 14px;}
     div[check-out] .left-panel{margin-top:0px; padding:0 5px;}
     div[check-out] .check-out-msg{text-align: left;  padding:10px 2px;}
     div[check-out] .check-out-msg-txt{width:68%; margin-right:3%; padding:0 10px;}
@@ -562,7 +562,7 @@ span[role="division"] { margin-left: 5%; }
 @media screen and (min-width: 768px) {
     div[check-out] .m-left-59{margin-left: 59%;}
     div[check-out] .m-right-20{margin-right: 20px;}
-    div[check-out] .header {padding-top:26px; }
+    div[check-out] .header {padding-top:26px;}
     div[check-out] .left-panel{width:67%;}
     div[check-out] .right-panel {margin-left:2%; width:31%; margin-top: 10px;}
     .open-cont .buttons{float:left; padding:5px 0;width: 134px;   height: 30px; border-radius: 2px; font-size: 14px;  font-weight:bold;  line-height: 1.4;  color: #981937; text-align: center; text-transform: uppercase;background-color: #fff;}
@@ -672,6 +672,7 @@ div[order-success-cont]  .note{margin:20px 0 5px 0; padding: 0;}
     text-align: center;
     font-weight: bold;}
 
+/* css added for cart pages */
 .c-continue-shpng button {
     cursor: pointer;
 }
@@ -679,10 +680,27 @@ div[order-success-cont]  .note{margin:20px 0 5px 0; padding: 0;}
     opacity: 0.7;
     border: 1px solid #981937 !important;
 }
-
 .hideAddressCard{
     display: none;
 }
 .hide{
     display: none;
+}
+.red {
+    color: #ec2024 !important;
+}
+.craftsvilla-navbar .autosuggest-section {
+    width: 58.33% !important;
+}
+#custom-header-dropdown ul li:nth-child(3) {
+    padding: 0px !important;
+}
+.buyer-section {
+    margin-top: 80px;
+}
+.buyer_protection_mobile {
+    margin-top: 58px !important;
+}
+.navbar-fixed-top {
+    top: 0px !important;
 }

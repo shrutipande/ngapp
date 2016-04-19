@@ -4,6 +4,7 @@ define(['./index'], function (controllers) {
 		$scope.successCoupon = false;
 		$scope.showFormNote = false;
 		$scope.coupon = {};
+		$scope.isLoggedIn = false;
 
 		$scope.options = [
 			{'id': 1, 'label': '1'},
@@ -216,6 +217,21 @@ define(['./index'], function (controllers) {
 
 		$scope.initCheckoutCart = function() {
 			$scope.getCartDetails();
+			$scope.checkLogin();
+		}
+
+		$scope.checkLogin = function() {
+			craftsvillaService.loginCheck()
+			.success(function(response) {
+				if(response.s == 1) {
+					$scope.isLoggedIn = true;
+				} else {
+					$scope.isLoggedIn = false;
+				}
+			})
+			.error(function (error) {
+				throw new Error(err);
+			});
 		}
 
 		$scope.initializeQuantity = function(data) {
