@@ -112,7 +112,7 @@ h4[role="headding"] { color: #747474; font-size: 18px; margin-bottom: 15px; font
 h4[role="headding"] a { text-decoration: none; color: #888888; outline: none; }
 h4[role="headding"] small a { color: #981937; font-size: 14px; }
 h4[role="headding"] a span { display: none; }
-.addressCard { border: solid 1px #e9e9e9; background: #ffffff; padding: 15px; margin-bottom: 15px; cursor: pointer; }
+.addressCard { border: solid 1px #e9e9e9; background: #ffffff; padding: 15px; margin-bottom: 15px; cursor: pointer; height: 150px;}
 /*.customer-address > div:nth-of-type(1) { width: 15%; }
 .customer-address > div:nth-of-type(1) img { margin-top: -4px; visibility: hidden; }
 .customer-address > div:nth-of-type(2) { width: 85%; }
@@ -678,4 +678,11 @@ div[order-success-cont]  .note{margin:20px 0 5px 0; padding: 0;}
 .left-panel > .out-of-stock-items {
     opacity: 0.7;
     border: 1px solid #981937 !important;
+}
+
+.hideAddressCard{
+    display: none;
+}
+.hide{
+    display: none;
 }

@@ -34,7 +34,9 @@ define(['./index'], function (services) {
       continueAsGuest : continueAsGuest,
       loadFinalQuote : loadFinalQuote,
       placeOrderCOD: placeOrderCOD,
-      getSuccessData:getSuccessData
+      getSuccessData:getSuccessData,
+      getAddressFromPincode : getAddressFromPincode
+
     };
 
     //////////////////////////////////////////
@@ -184,8 +186,13 @@ define(['./index'], function (services) {
   //shipping page
 
     function getAddress() {
-       return $http.get( HOST + 'checkoutService/index/getAddress');
-       //return $http.get('https://api.myjson.com/bins/yjgw');
+      return $http.get( HOST + 'checkoutService/index/getAddress');
+    }
+
+    function getAddressFromPincode(pincode) {
+      return $http.post( HOST + 'checkoutService/index/getAddressFromPincode', {
+        "Pincode": pincode
+      });
     }
 
     function assignAddressToQuote(billingId, shippingId) {
@@ -195,18 +202,18 @@ define(['./index'], function (services) {
       });
     }
 
-    function updateAddress(name, address1, address2, city, state, pincode, country, phoneNo, isBillingAddress, addressId) {
+    function updateAddress(firstName,lastName, address1, city, state, pincode, country, phoneNo, addressId) {
+      console.log(firstName,lastName, address1, city, state, pincode, country, phoneNo, addressId);
       return $http.post( HOST + 'checkoutService/index/updateAddress', {
-        "name" : name,
+        "firstName" : firstName,
+        "lastName" : lastName,
         "address1" : address1,
-        "address2" : address2,
         "city" : city,
         "state" : state,
         "pincode" : pincode,
         "country" : country,
         "phoneNo" : phoneNo,
-        "isBillingAddress": isBillingAddress,
-        "addressId": addressId
+        "addressId":addressId
       });
     }
 
@@ -214,20 +221,32 @@ define(['./index'], function (services) {
       return $http.get( HOST + 'checkoutService/index/getCountry');
     }
 
-    function addAddress(name, address1, address2, city, state, pincode, country, phoneNo, isBillingAddress) {
+    function addAddress(shipping, billing) {
+      console.log(shipping, billing);
+
       return $http.post( HOST + 'checkoutService/index/addAddress', {
-        "name" : name,
-        "address1" : address1,
-        "address2" : address2,
-        "city" : city,
-        "state" : state,
-        "pincode" : pincode,
-        "country" : country,
-        "phoneNo" : phoneNo,
-        "isBillingAddress": isBillingAddress
+        "shippingAddreess":{
+          "firstName":shipping.firstName,
+          "lastName":shipping.lastName,
+          "address1":shipping.address1,
+           "city":shipping.city,
+          "state":shipping.state,
+          "pincode":shipping.pincode,
+          "country":shipping.countryName,
+          "phoneNo":shipping.phoneNo
+        },
+        "billingAddreess":{
+          "firstName":billing.firstName,
+          "lastName":billing.lastName,
+          "address1":billing.address1,
+           "city":billing.city,
+          "state":billing.state,
+          "pincode":billing.pincode,
+          "country":billing.countryName,
+          "phoneNo":billing.phoneNo
+        }
       });
     }
-
   //shipping page ends
 
   //payment methods
