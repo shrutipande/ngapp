@@ -1,8 +1,21 @@
 define(['./index'], function (controllers) {
 	'use strict';
-	controllers.controller('checkoutCartCtrl', ['$scope', 'craftsvillaService', '$state', function ($scope, craftsvillaService, $state) {
-		var successCoupon = false;
-		$scope.showNote = false;
+	controllers.controller('checkoutCartCtrl', ['$scope', 'craftsvillaService', '$state', '$window', function ($scope, craftsvillaService, $state, $window) {
+		$scope.successCoupon = false;
+		$scope.showFormNote = false;
+		$scope.coupon = {};
+
+		$scope.options = [
+			{'id': 1, 'label': '1'},
+			{'id': 2, 'label': '2'},
+			{'id': 3, 'label': '3'},
+			{'id': 4, 'label': '4'},
+			{'id': 5, 'label': '5'},
+			{'id': 6, 'label': '6'},
+			{'id': 7, 'label': '7'},
+			{'id': 8, 'label': '8'},
+			{'id': 9, 'label': '9'},
+		];
 
 		$scope.outOfStockProducts = [];
 		$scope.inStockCod = [];
@@ -11,29 +24,23 @@ define(['./index'], function (controllers) {
 		$scope.latestRemovedItem = null;
 
 		$scope.getCartDetails = function() {
+			$scope.outOfStockProducts = [];
+			$scope.inStockCod = [];
+			$scope.inStockNotCod = [];
 			craftsvillaService.loadQuote()
 			.success(function(response) {
-				// console.log(response);
 				angular.forEach(response.d.product_list, function(product) {
 					if(!product.IsInStock) {
 						$scope.outOfStockProducts.push(product);
 					} else {
-						if(!product.cod_available) {
+						if(product.cod_available) {
 							$scope.inStockCod.push(product);
 						} else {
 							$scope.inStockNotCod.push(product);
 						}
 					}
 				});
-				// console.log($scope.inStockProducts);
-				$scope.items = response.d.total_items;
-				$scope.grandTotal = response.d.grand_total;
-				$scope.subTotal = response.d.sub_total;
-				$scope.totalDiscount = response.d.totol_discount;
-				$scope.shippingAmount = response.d.shipping_amount;
-				$scope.shownote
-				console.log($scope.inStockCod)
-
+				updateTotals(response);
 			})
 			.error(function (err) {
 				throw new Error(err);
@@ -41,7 +48,6 @@ define(['./index'], function (controllers) {
 		};
 
 		$scope.proceedToCheckout = function() {
-			console.log("click on proceedToCheckout");
 			craftsvillaService.loginCheck()
 				.success(function (response) {
 					if (response.s == 0) {
@@ -50,7 +56,6 @@ define(['./index'], function (controllers) {
 					else {
 						$state.go('shipping');
 					}
-
 				})
 				.error(function (error) {
 					throw new Error(err);
@@ -59,7 +64,6 @@ define(['./index'], function (controllers) {
 
 		$scope.removeOutOfStockProducts = function() {
 			var productIds = [];
-			console.log("inside out of stock");
 			angular.forEach($scope.outOfStockProducts, function(product) {
 				var data = {
 					productID: product.product_id
@@ -68,12 +72,11 @@ define(['./index'], function (controllers) {
 			});
 			craftsvillaService.removeQuoteItems(productIds)
 			.success(function(response) {
-				console.log("products removed");
-				console.log(response);
 				$scope.outOfStockProducts = [];
 				angular.forEach(response.d.product_list, function(product) {
 					$scope.outOfStockProducts.push(product);
 				});
+				updateTotals(response);
 			})
 			.error(function(error) {
 				console.log(error);
@@ -81,22 +84,17 @@ define(['./index'], function (controllers) {
 		};
 
 		$scope.removeProductFromCart = function(product_id) {
-			console.log(product_id);
 			var data = {
 				productID: product_id
 			};
 			var productIds = [];
 			productIds.push(data);
-			console.log(productIds);
-			console.log("inside remove from cart");
 			craftsvillaService.removeQuoteItems(productIds)
 			.success(function(response) {
-				console.log("product removed");
-				console.log(response);
 				divideProducts(response);
-				// $scope.inStockProducts = response.d.product_list;
 				$scope.itemRemoved = 1;
 				$scope.latestRemovedItem = product_id;
+				updateTotals(response);
 			})
 			.error(function(error) {
 				console.log(error);
@@ -104,10 +102,9 @@ define(['./index'], function (controllers) {
 
 		};
 
-		$scope.removeAllItems = function() {
-			console.log("click on removeAllItems");
+		$scope.removeAllNonCodItems = function() {
 			var productIds = [];
-			var allProducts = $scope.outOfStockProducts.concat($scope.inStockCod.concat($scope.inStockNotCod));
+			var allProducts = $scope.inStockNotCod;
 			angular.forEach(allProducts, function(product) {
 				var data = {
 					productID: product.product_id
@@ -116,26 +113,36 @@ define(['./index'], function (controllers) {
 			});
 			craftsvillaService.removeQuoteItems(productIds)
 			.success(function(response) {
-				console.log("products removed");
-				console.log(response);
-				$scope.inStockProducts = [];
-				$scope.inStockCod = [];
 				$scope.inStockNotCod = [];
+				updateTotals(response);
 			})
 			.error(function(error) {
 				console.log(error);
 			});
 		};
 
+		$scope.removeOutOfStockProducts = function() {
+			var allProducts = $scope.outOfStockProducts;
+			angular.forEach(allProducts, function(product) {
+				var data = {
+					productID: product.product_id
+				};
+				productIds.push(data);
+			});
+			craftsvillaService.removeQuoteItems(productIds)
+			.success(function(response) {
+				$scope.outOfStockProducts = [];
+				updateTotals(response);
+			})
+			.error(function(error) {
+				console.log(error);
+			});
+
+		}
+
 		$scope.addNoteToSeller = function(index, product_id, comment,data) {
-			console.log(comment);
-			console.log(index);
-			// if ($scope['sellerForm'+index].$valid) {
-			// 	var comment = $scope.sellerForm1.sellernote;
 			craftsvillaService.addNoteToSeller(product_id, comment)
 			.success(function(response) {
-				console.log("comment added");
-				console.log(response);
 				$scope.getCartDetails();
 				data.showFormNote =false;
 			})
@@ -144,67 +151,55 @@ define(['./index'], function (controllers) {
 			});
 		};
 
-		$scope.updateNoteToSeller = function(data) {
-			console.log(data.sellernote);
-			data.showFormNote =true;
-
+		$scope.updateNoteToSeller = function(data, note) {
+			data.showFormNote = true;
+			data.sellernote = note;
 		};
 
-		$scope.removeNoteToSeller = function() {
-			console.log("click on removeNoteToSeller");
+		$scope.removeNoteToSeller = function(data) {
+			craftsvillaService.removeNoteToSeller(data.product_id)
+			.success(function(response) {
+				data.seller_note = null;
+				data.showFormNote = false;
+			})
+			.error(function(error) {
+				console.log(error);
+			});
 		};
 
 		$scope.showNoteToSeller = function(data) {
-			console.log("click on showNoteToSeller");
-			$scope.showNote = true;
 			data.showFormNote = true;
 		};
 
-		$scope.hideNoteToSeller = function() {
-			console.log("click on hideNoteToSeller");
-			$scope.showNote = false;
+		$scope.hideNoteToSeller = function(data) {
+			data.showFormNote = false;
 		};
 
 		$scope.applyCoupon = function() {
-			//console.log($scope.couponForm);
-			if ($scope.couponForm.$valid) {
-				console.log($scope.coupon);
-
-				craftsvillaService.applyCoupon($scope.coupon.couponcode)
-				.success(function (response) {
-					console.log(response);
-					if( response.s == 1){
-						console.log('success');
-						//console.log(response.d[0]);
-						$scope.successCoupon = true;
-						$scope.couponCode = response.d.coupon_code;
-						$scope.couponMessage = response.m;
-						$scope.subTotal = response.d.sub_total;
-						$scope.totalDiscount = response.d.totol_discount;
-						$scope.shippingAmount = response.d.shipping_amount;
-						$scope.grandTotal = response.d.grand_total;
-						$scope.discount = (1 - ($scope.grandTotal / $scope.subTotal)) * 100;
-						console.log( (1 - ($scope.grandTotal / $scope.subTotal)) * 100 );
-						//$discount = (1 - ($discountPrice / $productPrice)) * 100;
-					}else{
-						console.log('fail');
-						$scope.couponMessage = response.m;
-					}
-				})
-				.error(function (err) {
-					throw new Error(err);
-				})
-
-			}
+			craftsvillaService.applyCoupon($scope.coupon.couponcode)
+			.success(function(response) {
+				if(response.s == 1){
+					$scope.successCoupon = true;
+					$scope.couponCode = response.d.coupon_code;
+					$scope.couponMessage = response.m;
+					$scope.subTotal = response.d.sub_total;
+					$scope.totalDiscount = response.d.totol_discount;
+					$scope.shippingAmount = response.d.shipping_amount;
+					$scope.grandTotal = response.d.grand_total;
+					$scope.discount = (1 - ($scope.grandTotal / $scope.subTotal)) * 100;
+				} else {
+					$scope.couponMessage = response.m;
+				}
+			})
+			.error(function (err) {
+				throw new Error(err);
+			});
 		};
 
 		$scope.removeCoupon = function() {
-			console.log("click on removeCoupon");
-
 			craftsvillaService.removeCoupon($scope.coupon.couponcode)
 			.success(function (response) {
 				$scope.successCoupon = false;
-				console.log(response);
 				$scope.couponMessage = response.m;
 				$scope.subTotal = response.d.sub_total;
 				$scope.totalDiscount = response.d.totol_discount;
@@ -217,15 +212,21 @@ define(['./index'], function (controllers) {
 
 		};
 
-		$scope.updateQuantity = function() {
-			console.log("click on updateQuantity");
+		$scope.updateQuantity = function(quantity, product_id) {
+			craftsvillaService.updateQty(product_id, quantity.id)
+			.success(function(response) {
+				$scope.getCartDetails();
+			})
+			.error(function(error) {
+				console.log(error);
+			});
 		};
 
 		$scope.addToCart = function() {
 			craftsvillaService.addToQuote($scope.latestRemovedItem, 1)
 			.success(function (response) {
-				console.log(response);
 				divideProducts(response);
+				updateTotals(response);
 				$scope.latestRemovedItem = null;
 				$scope.itemRemoved = 0;
 			})
@@ -238,17 +239,38 @@ define(['./index'], function (controllers) {
 			$scope.getCartDetails();
 		}
 
+		$scope.initializeQuantity = function(data) {
+			data.quantity = $scope.options[data.product_qty-1];
+		}
+
 		function divideProducts(response) {
 			$scope.inStockCod = [];
 			$scope.inStockNotCod = [];
 			angular.forEach(response.d.product_list, function(product) {
-				if(!product.cod_available) {
+				if(product.cod_available) {
 					$scope.inStockCod.push(product);
 				} else {
 					$scope.inStockNotCod.push(product);
 				}
 			});
 		}
+
+		function updateTotals(response) {
+			$scope.items = response.d.total_items;
+			$scope.grandTotal = response.d.grand_total;
+			$scope.subTotal = response.d.sub_total;
+			$scope.totalDiscount = response.d.totol_discount;
+			$scope.shippingAmount = response.d.shipping_amount;
+			if(response.d.coupon_code.length) {
+				$scope.successCoupon = true;
+				$scope.couponCode = response.d.coupon_code;
+				$scope.discount = (1 - ($scope.grandTotal / $scope.subTotal)) * 100;
+			}
+		}
+
+		$scope.continueShopping = function() {
+			$window.history.back();
+		}
 		$scope.initCheckoutCart();
-    }]);
+	}]);
 });
