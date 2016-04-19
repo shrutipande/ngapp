@@ -214,7 +214,7 @@ define(['./index'], function (controllers) {
 				craftsvillaService.getPaymentMethods()
 				.success( function(response) {
 					console.log(response);
-					$scope.paymentMethods = response.d;
+					$scope.paymentMethods = response.d[0];
 					console.log($scope.paymentMethods);
 				})
 				.error(function(err) {

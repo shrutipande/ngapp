@@ -193,7 +193,7 @@
 										<div class="col-xs-5 cvv-code">
 											<fieldset class="form-group" ng-class="{'error' : !forms.creditForm.cardCVC.$valid && !forms.creditForm.cardCVC.$pristine}">
 												<label>CVV Code</label>
-												<input type="text" class="form-control" id="cc_cvc" cc-cvc cc-type="forms.creditForm.cardNumber.$ccType" name="cardCVC" ng-model="credit.cardCvv">
+												<input type="password" class="form-control" id="cc_cvc" cc-cvc cc-type="forms.creditForm.cardNumber.$ccType" name="cardCVC" ng-model="credit.cardCvv">
 											</fieldset>
 										</div>
 									</div>
@@ -240,7 +240,7 @@
 										<div class="col-xs-5 cvv-code">
 											<fieldset class="form-group" ng-class="{'error' : !forms.debitForm.cardCvv.$valid && !forms.debitForm.cardCvv.$pristine}">
 												<label>CVV Code</label>
-												<input type="text" class="form-control" id="dc_cvc" cc-cvc cc-type="forms.debitForm.cardNumber.$ccType" name="cardCvv" ng-model="debit.cardCvv">
+												<input type="password" class="form-control" id="dc_cvc" cc-cvc cc-type="forms.debitForm.cardNumber.$ccType" name="cardCvv" ng-model="debit.cardCvv">
 											</fieldset>
 										</div>
 									</div>
