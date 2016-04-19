@@ -136,7 +136,16 @@ define(['./index'], function (controllers) {
 	$scope.authenticate = function(provider) {
 		$auth.authenticate(provider)
 			.then(function(data) {
-				console.log(data);
+				craftsvillaService.socialAuth({
+					"accessToken": data.access_token,
+					"sourceType": provider
+				})
+				.success(function (_data) {
+					console.log(_data);
+				})
+				.error(function (_err) {
+					console.log(_err);
+				})
 			})
 			.catch(function(error) {
 				console.log(error);
