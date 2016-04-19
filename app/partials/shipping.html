@@ -1,443 +1,944 @@
-<div data-overlay class="hide">&nbsp;</div>
-<!--// Header -->
-<div ng-app="validApp">
-<div role-header class="container-fluid nopadding">
-	<div role-nav class="container">
-		<div class="col-xs-6 nopadding" role="logo">
-			<img role="back" src="images/Shape.png" alt="" title="">
-			<a href="#" title=""><img class="logo" src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/cv_logo.png" alt="" title=""></a>
-			<span class="hidden-xs">Call 022 288288281 for any assistance</span>
-		</div>
-		<div class="col-xs-6 nopadding buyerProtection">
-			<ul>
-				<li class="visible-xs">100% Buyer Protection<br>Secure Payments</li>
-				<li class="hidden-xs">100% BUYER<br>PROTECTION</li>
-				<li class="hidden-xs"><strong>SECURE</strong><br>PAYMENTS</li>
-			</ul>
-		</div>
-	</div>
-</div>
-<!--// Header -->
 
-<!--// Content -->
-<div class="container-fluid nopadding">
-	<div class="container">
-		<!--// login Flow Start -->
-		<div class="loginProcessContainer container-fluid">
-			<div role="loginFlow" class="col-xs-12 nopadding">
-				<div class="circleBox LoginIcon rougeBack">
-					<span><img src="images/check.png" data-complete alt="" title=""></span>
-					<span class="rougeColor">Login</span>
-				</div>
-				<div class="Progressliner Firstliner rougeBack"></div>
-				<div class="circleBox ShippingIcon rougeBack">
-					<span><img src="images/Shipping-icon.png" alt="" title=""></span>
-					<span class="rougeColor">Shipping</span>
-				</div>
-				<div class="Progressliner Secoundliner white-nine"></div>
-				<div class="circleBox PaymentIcon white-nine">
-					<span><img src="images/payment-icon.png" alt="" title=""></span>
-					<span class="warm-greyColor">Payment</span>
-				</div>
-			</div>
-		</div>
-		<!--// login Flow End -->
-	</div>
-</div>
+    <div data-overlay class="hide">&nbsp;</div>
+    <!--// Header -->
+    <div role-header class="container-fluid nopadding">
+        <div role-nav class="container">
+            <div class="col-xs-6 nopadding" role="logo">
+                <img role="back" src="images/Shape.png" alt="" title="">
+                <a href="" title=""><img class="logo" src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/cv_logo.png" alt="" title="">
+                </a>
+                <span class="hidden-xs">Call 022 288288281 for any assistance</span>
+            </div>
+            <div class="col-xs-6 nopadding buyerProtection">
+                <ul>
+                    <li class="visible-xs">100% Buyer Protection
+                        <br>Secure Payments</li>
+                    <li class="hidden-xs">100% BUYER
+                        <br>PROTECTION</li>
+                    <li class="hidden-xs"><strong>SECURE</strong>
+                        <br>PAYMENTS</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--// Header -->
 
-<div class="container-fluid nopadding">
-	<div class="container">
-		<!--// login Container Start -->
-		<div class="col-xs-12 nopadding shippingContainer">
-			<h4 role="headding">SELECT SHIPPING ADDRESS <small><a class="rougeColor" href="#" ng-show="showhideprop">Change</a></small></h4>
-			<!--// -->
-
-			<div class="row">
-				<div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="address in addresses">
-					<div class="col-xs-12 addressCard ">
-						<div class="col-xs-12 nopadding customer-address">
-							<div class="col-xs-12 nopadding">
-								<h5>{{address.firstname}} {{address.lastname}}<span></span><span class="pull-right delete-shipping"><a href="javascript:void(0)" ng-click="shippingEdit(address);"><img src="images/edit-icon.png"></a></span></h5>
-								<p>{{address.street}}</p>
-								<p class="margin0">{{address.telephone}}</p>
-							</div> 
-						</div>
-						<!-- <div class="col-xs-12 nopadding hidden-xs">
-							<input class="btn btn-newStyle" ng-show="shippadd" type="button"  ng-click="deliveryAddress(address)" value="DELIVER TO THIS ADDRESS">
-						</div> -->
-					</div>
-					
-				</div>
-				<div class="checkbox col-xs-12 nopadding" ng-show="shippadd">
-						<label><input type="checkbox" id="Guest"  ng-model="chkStatus" ng-change="checkStatus()" checked><span for="Guest"></span> This is also my Billing Address --AAAAA</label>
-					</div>
-					<div class="col-xs-12 nopadding">
-					<div class="col-xs-12 nopadding hidden-xs">
-							<input class="btn btn-newStyle" type="button" value="DELIVER TO THIS ADDRESS" style="width:30%;">
-						</div>
-					</div>
-
-<div ng-hide="billingAddress" >
-				<div class="col-xs-12"><h4 role="headding">SELECT BILLING ADDRESS</h4></div>
-				<!--// Billing Address Not select Error -->
-				
-				<!--// -->
-				<div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="address in addresses">
-					<div class="col-xs-12 addressCard" ng-show="shippadd">
-						<div class="col-xs-12 nopadding customer-address">
-							<div class="col-xs-12 nopadding">
-								<h5>{{address.firstname}} {{address.lastname}}<span></span><span class="pull-right delete-shipping"><a href="javascript:void(0)" ng-click="shippingEdit();"><img src="images/edit-icon.png"></a></span></h5>
-								<p>{{address.street}}</p>
-								<p class="margin0">{{address.telephone}}</p>
-							</div>
-						</div>
-						<!-- <div class="col-xs-12 nopadding hidden-xs">
-							<input class="btn btn-newStyle" type="button" value="DELIVER TO THIS ADDRESS">
-						</div> -->
-					</div>
-				</div>
-			
-			</div>
-			
-
-				<!--// Edit Shipping Address Start -->
-				<div class="col-xs-12 add-new-shipping" ng-hide="true">
-					<!--// -->
-					<div class="row">
-						<div class="col-xs-12">
-							<div class="col-xs-12 new-address">
-								<div class="col-xs-12 col-sm-6 nopadding">
-									
-									<!---1st edit form-->	
-									<form role="form" name="editaddrForm" ng-submit="editsubmitForm();" novalidate>
-										<h4 role="headding">
-											<a href="#new-address">Edit Address </a>
-										</h4>
-										<div class="form-group nopadding col-sm-8 col-xs-12" ng-class="{ 'error' : editaddrForm.country.$invalid && !editaddrForm.country.$pristine }">
-											<label>Country: <span role="country">India</span> <a href="#change-country">Change</a></label>
-											<div class="select-style">
-												<select id="change-country" name="country" ng-model="editaddr.country" ng-option=" item as item in country " required>
-													
-												</select>
-												<span ng-show="editaddrForm.country.$invaild">Please Select Country</span>
-											</div>
-										</div>
-										 <!-- USERNAME -->
-       
-										<div class="form-group nopadding col-sm-8 col-xs-12"  ng-class="{ 'error' : editaddrForm.username.$invalid && !editaddrForm.username.$pristine }">
-											<label for="name">Name</label>
-											<input id="name" name="username" type="text" class="form-control" placeholder="Enter Full Name" ng-model="editaddr.username"  ng-minlength="2" >
-											 <span ng-show="editaddrForm.username.$error.minlength" class="error">Name is too short.</span>
-										</div>
+    <!--// Content -->
+    <div class="container-fluid nopadding">
+        <div class="container">
 
 
-										<div class="form-group nopadding col-xs-12" ng-class="{ 'error' : editaddrForm.address.$invalid && !editaddrForm.address.$pristine }">
-											<label for="Address">Address</label>
-											<textarea id="Address" name="address" class="form-control" ng-minlength="10" mg-model="editaddr.address" required ></textarea>
-            <span ng-show="editaddrForm.address.$error.minlength" class="error">Address is too short.</span>
-										</div>
+            <!--// login Flow Start -->
+            <div class="loginProcessContainer container-fluid">
+                <div role="loginFlow" class="col-xs-12 nopadding">
+                    <div class="circleBox LoginIcon rougeBack">
+                        <span><img src="images/check.png" data-complete alt="" title=""></span>
+                        <span class="rougeColor">Login</span>
+                    </div>
+                    <div class="Progressliner Firstliner rougeBack"></div>
+                    <div class="circleBox ShippingIcon rougeBack">
+                        <span><img src="images/Shipping-icon.png" alt="" title=""></span>
+                        <span class="rougeColor">Shipping</span>
+                    </div>
+                    <div class="Progressliner Secoundliner white-nine"></div>
+                    <div class="circleBox PaymentIcon white-nine">
+                        <span><img src="images/payment-icon.png" alt="" title=""></span>
+                        <span class="warm-greyColor">Payment</span>
+                    </div>
+                </div>
+            </div>
+            <!--// login Flow End -->
+        </div>
+    </div>
+
+    <div class="container-fluid nopadding">
+        <div class="container">
+            <!--// login Container Start -->
+            <div class="col-xs-12 nopadding shippingContainer" ng-class="{'hidden-xs': mform }">
+                <h4 role="headding">SELECT SHIPPING ADDRESS </h4> 
+                <!--// -->
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="address in addresses" ng-click="checkSameOrNot(address.entity_id);" ng-class="{'hideAddressCard': address.entity_id !== shippingID && selectedShippingID !== null}">
+                        <div class="col-xs-12 addressCard " ng-class="{'addressCardActive': address.entity_id == shippingID}" ng-hide="displayAddresscheckbox == true && address.entity_id !== shippingID">
+
+                        <div class="col-xs-12 nopadding customer-address">
+                            <div class="col-xs-12 nopadding">
+                                <h5>{{address.firstname}} {{address.lastname}}<span></span><span class="pull-right delete-shipping"><a href="javascript:void(0)" ng-click="shippingEdit(address);"><img src="images/edit-icon.png"></a></span></h5>
+                                <p>{{address.street}}</p>
+                                <p class="margin0">{{address.telephone}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="checkbox col-xs-12 nopadding hidden-lg" ng-hide="displayAddresscheckbox" ng-class="{'hide': address.entity_id !== shippingID}">
+                        <label><input type="checkbox" id="Guest"  ng-model="chkStatus" ng-change="checkStatus()" checked ><span for="Guest"></span> This is also my Billing Address</label>
+                    </div>
+                </div>
 
 
 
+                
+                    <!--// Edit Shipping Address Start -->
+                    <div class="col-xs-12 add-new-shipping hide hidden-xs-" >
+                        <!--/Desktop Edit Form/ -->
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="col-xs-12 new-address">
+                                    <div class="col-xs-12 col-sm-6 nopadding">
+                                        <form role="form" name="DeseditaddrForm" ng-submit="meditsubmitForm();" novalidate>
+                                            <h4 role="headding">
+                                            <a href="#new-address">Edit Address --des </a>
+                                        </h4>
 
-										<div class="col-xs-12 col-sm-4 nopadding">
+                                            <div class="form-group nopadding col-sm-8 col-xs-12" 
+                                             ng-class="{ 'error' : DeseditaddrForm.country.$invalid && !DeseditaddrForm.country.$pristine }">
 
-											<div class="form-group"  ng-class="{ 'error' : editaddrForm.pincode.$invalid && !editaddrForm.pincode.$pristine }">
-												<label for="Pincode">Pincode</label>
-												<input id="Pincode" name="pincode" type="text" class="form-control" placeholder="Pincode" ng-minlength="4" ng-model="editaddr.pincode" ng-maxlength="7" >
-												 <span ng-show="editaddrForm.pincode.$error.minlength" class="error">Pincode is too short.</span>
-												 <span ng-show="editaddrForm.pincode.$error.maxlength" class="error">Username is too long.</span>
-											</div>
+                                                <label>Country:
+                                                    <span role="country">India</span>
+                                                    <a href="#change-country">Change</a>
+                                                </label>
 
-										</div>
+                                                <select class="form-control"
+                                                id="change-country"
+                                                name="country"
+                                                ng-model="editAddr.country"
+                                                ng-option="item as item in country"
+                                                style="display:none;">
+                                                </select>
 
+                                            </div>
 
+                                            <div class="form-group nopadding col-sm-8 col-xs-12"
+                                            ng-class="{ 'error' : DeseditaddrForm.firstname.$invalid && !DeseditaddrForm.firstname.$pristine }">
 
-										<div class="col-xs-12 col-sm-7 m-padding">
-											<div class="form-group">
-												<label for="City">City</label>
-												<div class="select-style">
-													<select id="City">
-														<option value="volvo">Select City</option>
-														<option value="saab">Saab</option>
-														<option value="mercedes">Mercedes</option>
-														<option value="audi">Audi</option>
-													</select>
-												</div>
-											</div>
-										</div>
+                                                <label for="name">First Name</label>
+                                                <input id="name" 
+                                                type="text" 
+                                                class="form-control"
+                                                name="firstname" 
+                                                ng-model="editAddr.firstname"
+                                                ng-minlength="2"
+                                                placeholder="Enter First Name" 
+                                                required>
+                                                {{editAdd.firstname}}
 
+                                                <span ng-show="DeseditaddrForm.firstname.$error.minlength" class="error">First Name is too short.</span>
 
-										<div class="form-group col-xs-12 nopadding">
-											<label for="State">State</label>
-											<div id="State" class="select-style">
-												<select id="City">
-													<option value="volvo">Select State</option>
-													<option value="saab">Saab</option>
-													<option value="mercedes">Mercedes</option>
-													<option value="audi">Audi</option>
-												</select>
-											</div>
-										</div>
-
-
-
-										<div class="form-group col-sm-8 col-xs-12 nopadding" ng-class="{ 'error' : editaddrForm.username.$invalid && !editaddrForm.username.$pristine }">
-											<label for="Number">Phone Number</label>
-											<div class="input-group">
-												<div class="input-group-addon">+91</div>
-												<input type="text" name="phonenumber" class="form-control" id="Number" placeholder="Phone Number" ng-model="editaddr.phonenumber" ng-minlength="10">
-												
-											</div>
-											<span ng-show="editaddrForm.phonenumber.$error.minlength" class="error">Phone Number is too short.</span>
-											<span ng-show="editaddrForm.pincode.$error.maxlength" class="error">phone number is too long .</span>
-										</div>
-										<div class="form-group col-xs-12 nopadding">
-											<button type="submit" class="btn btn-default outline-btn" >SAVE</button>
-											<button type="submit" class="btn btn-default outline-btn" >CANCEL</button>
-										</div>
-									</form>
-									<!---/ 1st edit form-->	
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!--// Edit Shipping Address End -->
-				<!--// Desktop Edit Shipping Address Start destop popup -->
-				<div class="addressEditContainer " ng-hide="editAddPOP"><!--hide-->
-					
-					<span role="close" ng-click="formclose()"><a href="#"><img src="images/delete-icon.png" alt="" title=""></a></span>
-					<div class="col-xs-12 new-address">
-						<div class="col-xs-12 nopadding">
-						<!---2st edit form -->	
-							<form role="form" name="DeditAddress" ng-submit="DeditsubmitForm();" novalidate> 
-								<h4 role="headding">
-									<a href="#new-address">Edit Address</a>
-								</h4>
-								<div class="form-group nopadding col-sm-8 col-xs-12">
-									<label>Country: <span role="country">India</span> <a href="#change-country">Change</a></label>
-									<div class="select-style">
-										<select id="change-country" mg-model="editAddr.country" ng-model="Dedit.country">
-											<option value="0">Select Country</option>
-											<option value="1">India</option>
-											<option value="2">US</option>
-											<option value="3">UK</option>
-											<option value="4">Dubai</option>
-										</select>
-									</div>
-								</div>
-
-								  
-								<div class="form-group nopadding col-sm-8 col-xs-12" ng-class="{ 'error' : DeditAddress.fullname.$invalid && !DeditAddress.fullname.$pristine }">
-									<label for="name">Name</label>
-									<input id="name" name="fullname" type="text" class="form-control" placeholder="Enter Full Name" ng-model="editAddr.firstname" ng-minlength="2" >
-									<span ng-show="DeditAddress.fullname.$error.minlength" class="error">FullName is too short.</span>
-								</div>
-								<div class="form-group nopadding col-sm-8 col-xs-12" ng-class="{ 'error' : DeditAddress.lastname.$invalid && !DeditAddress.lastname.$pristine }">
-									<label for="name">Last Name</label>
-									<input id="name" name="lastname" type="text" class="form-control" placeholder="Enter Full Name" ng-model="editAddr.lastname" ng-minlength="2" >
-									<span ng-show="DeditAddress.lastname.$error.minlength" class="error">FullName is too short.</span>
-								</div>
+                                            </div>
 
 
-								<div class="form-group nopadding col-xs-12" ng-class="{ 'error' : DeditAddress.address.$invalid && !DeditAddress.address.$pristine }">
-									<label for="Address">Address</label>
-									<textarea id="Address" name="address" class="form-control" ng-minlength="10" ng-model="editAddr.street"></textarea>
-									<span ng-show="DeditAddress.address.$error.minlength" class="error">Address is too short.</span>
-								</div>
+                                            <div class="form-group nopadding col-sm-8 col-xs-12"
+                                            ng-class="{ 'error' : DeseditaddrForm.lastname.$invalid && !DeseditaddrForm.lastname.$pristine }">
+
+                                                <label for="name">Last Name</label>
+                                                <input id="name" 
+                                                type="text" 
+                                                class="form-control"
+                                                name="lastname" 
+                                                ng-model="editAddr.lastname"
+                                                ng-minlength="2"
+                                                placeholder="Enter Lastname">
+
+                                                 <span ng-show="DeseditaddrForm.lastname.$error.minlength" class="error">Last Name is too short.</span>
+                                            </div>
 
 
-								<div class="col-xs-12 col-sm-4 nopadding" >
-									<div class="form-group" ng-class="{ 'error' : DeditAddress.pincode.$invalid && !DeditAddress.pincode.$pristine }">
-										<label for="Pincode">Pincode</label>
-										<input id="Pincode" name="pincode" type="text" class="form-control" placeholder="Pincode" ng-minlength="4" ng-model="editAddr.postcode" ng-maxlength="7" >
-										 <span ng-show="DeditAddress.pincode.$error.minlength" class="error">Pincode is too short.</span>
-										 <span ng-show="DeditAddress.pincode.$error.maxlength" class="error">pincode is too long.</span>
-									</div>
-								</div>
+                                            <div class="form-group nopadding col-xs-12"
+                                            ng-class="{ 'error' : DeseditaddrForm.address.$invalid && !DeseditaddrForm.address.$pristine }">
 
-								<div class="col-xs-12 col-sm-7 m-padding">
-									<div class="form-group" ng-class="{ 'error' : DeditAddress.city.$invalid && !DeditAddress.city.$pristine }">
-										<label for="City">City</label>
-										<div class="select-style" >
-											<select name="city" ng-model="editAddr.city" ng-option="" requried>
-												<option value="0">Select City</option>
-												<option value="1">India</option>
-												<option value="2">US</option>
-												<option value="3">UK</option>
-												<option value="4">Dubai</option>
-											</select>
-											 <span ng-show="DeditAddress.city.$error.minlength" class="error">Please Select </span>
-										</div>
-									</div>
-								</div>
+                                                <label for="Address">Address</label>
+                                                <textarea id="Address"
+                                                ng-model="editAddr.street"
+                                                name="address"
+                                                ng-minlength="10" 
+                                                class="form-control">
+                                                </textarea>
+                                                <span ng-show="DeseditaddrForm.address.$error.minlength" class="error">Address is too short.</span>
+                                            </div>
 
 
-								<div class="form-group col-xs-12 nopadding" ng-class="{ 'error' : DeditAddress.state.$invalid && !DeditAddress.state.$pristine }">
-									<label for="State">State</label>
-										<div class="select-style">
-											<select name="state" ng-model="editAddr.region" ng-option="" requried>
-												<option value="0">Select State</option>
-												<option value="1">India</option>
-												<option value="2">US</option>
-												<option value="3">UK</option>
-												<option value="4">Dubai</option>
-											</select>
-											<span ng-show="DeditAddress.state.$error.minlength" class="error">Please Select State </span>
-										</div>
-								</div>
+                                            <div class="col-xs-12 col-sm-4 nopadding">
+                                            
+                                                <div class="form-group" 
+                                                ng-class="{ 'error' : DeseditaddrForm.pincode.$invalid && !DeseditaddrForm.pincode.$pristine }">
 
-								<div class="form-group col-sm-8 col-xs-12 nopadding" ng-class="{ 'error' : DeditAddress.telephone.$invalid && !DeditAddress.telephone.$pristine }">
-											<label for="Number">Phone Number</label>
-											<div class="input-group">
-												<div class="input-group-addon">+91</div>
-												<input type="text" name="telephone" class="form-control" id="Number" placeholder="Phone Number" ng-model="editAddr.telephone" ng-minlength="10">
-												
-											</div>
-											<span ng-show="DeditAddress.telephone.$error.minlength" class="error">Phone Number is too short.</span>
-											<span ng-show="DeditAddress.telephone.$error.maxlength" class="error">phone number is too long .</span>
-										</div>
-								<div class="form-group col-xs-12 nopadding">
-									<button type="submit" class="btn btn-default outline-btn" >SAVE</button>
-											<button type="submit" class="btn btn-default outline-btn" >CANCEL</button>
-								</div>
-							</form>
-							<!---/2st edit form-->	
-						</div>
-					</div>
-				</div>
-				<!--// Desktop Edit Shipping Address End -->
-				<!--// Select Billing Address -->
-
-					
-
-			</div>
-		</div>
-		<!--// -->
-		<!--// -->
-		<div class="col-xs-12 nopadding add-new-shipping">
-			<h4 class="M-add-new-address" role="headding">
-				<a href="#new-address">ADD NEW ADDRESS<span><img src="images/Shape.png" title="" alt=""></span></a>
-			</h4>
-			<!--// -->
-			<div class="row">
-				<div class="col-xs-12">
-					<div class="col-xs-12 new-address">
-						<div class="col-xs-12 col-sm-7 nopadding">
-						<!---3st edit form-->	
-						<form role="form" name="addnewForm" ng-submit="addnewsubmit();" novalidate>
-								<div class="form-group nopadding col-sm-8 col-xs-12" ng-class="{ 'error' : addnewForm.state.$invalid && !addnewForm.state.$pristine }">
-									<label>Country: <span role="country">India</span> <a href="#change-country">Change</a></label>
-									<div class="select-style" >
-										<select ng-model="addnew.state" name="state" required ng-options="v.name for v in states track by v.id">
-										<option selected value=""> Select State</option>
-										</select>
-								</div>
-								<span ng-show="addnewForm.state.$error.minlength" class="error">Username is too short.</span>
-								<span class="error" ng-show="addnewForm.$submitted && addnewForm.state.$error.required">Please Select State</span>
-								
-									</div>
+                                                    <label for="Pincode">Pincode</label>
+                                                    <input id="Pincode" 
+                                                    type="text" 
+                                                    class="form-control" 
+                                                    name="pincode"
+                                                    ng-model="editAddr.postcode"
+                                                    ng-minlength="4"
+                                                    ng-maxlength="9"
+                                                    placeholder="Pincode">
+                                                     <span ng-show="DeseditaddrForm.address.$error.minlength" class="error">Pincode is too short.</span>
+                                                     <span ng-show="DeseditaddrForm.pincode.$error.maxlength" class="error">Pincode is too long .</span>
+                                                </div>
+                                            </div>
 
 
-								
+                                            <div class="col-xs-12 col-sm-7 m-padding">
+                                                <div class="form-group" 
+                                                ng-class="{ 'error' : DeseditaddrForm.city.$invalid && !DeseditaddrForm.city.$pristine }">
+                                                    <label for="City">City</label>
+                                                    <input id="City" 
+                                                    type="text" 
+                                                    name="city"
+                                                    ng-model="editAddr.city"
+                                                    class="form-control" 
+                                                    placeholder="Select City">
 
-								<div class="form-group nopadding col-sm-8 col-xs-12" ng-class="{ 'error' : (addnewForm.fullname.$invalid && !addnewForm.fullname.$pristine) || (addnewForm.$submitted && addnewForm.fullname.$error.required) }">
-									<label for="name">Name</label>
-									<input id="name" name ="fullname" type="text" class="form-control" placeholder="Enter Full Name" ng-model="addNew.fullname" ng-minlength="2"  required>
-									 <span ng-show="addnewForm.fullname.$error.minlength" class="error">Username is too short.</span>
-									  <div ng-show="addnewForm.$submitted || addnewForm.fullname.$touched">
-             <span ng-show="addnewForm.fullname.$error.required" class="error">Tell us your name.</span>
-             </div>
-								</div>
+                                                </div>
+                                            </div>
 
 
-								<div class="form-group nopadding col-xs-12" ng-class="{ 'error' : (addnewForm.address.$invalid && !addnewForm.address.$pristine) || (addnewForm.$submitted && addnewForm.address.$error.required) }">
-									<label for="Address">Address</label>
-									<textarea id="Address" name="address" ng-model="addNew.address" class="form-control" ng-minlength="10" required></textarea>
-									<span ng-show="addnewForm.address.$error.minlength" class="error">Address is too short.</span>
-									<div ng-show="addnewForm.$submitted || addnewForm.address.$touched">
-             <span ng-show="addnewForm.address.$error.required" class="error">Tell us your Address.</span>
-             </div>
+                                            <div class="form-group  col-xs-12 nopadding" 
+                                             ng-class="{ 'error' : MobeditaddrForm.state.$invalid && !MobeditaddrForm.state.$pristine }">
+                                                <label for="State">State</label>
+                                                <input id="State" 
+                                                type="text" 
+                                                class="form-control" 
+                                                name="state"
+                                                ng-model="editAddr.region"
+                                                placeholder="Select State">
+                                            </div>
 
-								</div>
-								<div class="col-xs-12 col-sm-4 nopadding" ng-class="{ 'error' : (addnewForm.pincode.$invalid && !addnewForm.pincode.$pristine) || (addnewForm.$submitted && addnewForm.pincode.$error.required) }">
-									<div class="form-group">
-										<label for="Pincode">Pincode</label>
-										<input id="Pincode" name="pincode" type="number" class="form-control" placeholder="Pincode"  ng-minlength="4" ng-maxlength="9" ng-model="addnew.pincode" required>
-										<span ng-show="addnewForm.pincode.$error.minlength" class="error">Pincode is too short.</span>
-										<span ng-show="addnewForm.pincode.$error.maxlength" class="error">phone number is too long .</span>
-										<div ng-show="addnewForm.$submitted || addnewForm.pincode.$touched">
-             <span ng-show="addnewForm.pincode.$error.required" class="error">Tell us your Pincode.</span>
-             </div>
-									</div>
-								</div>
-								<div class="col-xs-12 col-sm-7 m-padding">
-									<div class="form-group">
-										<label for="City">City</label>
-										<div class="select-style">
-											<select ng-model="addnew.city" name="city"  required ng-options="v.name for v in city track by v.id">
-												<option selected value="">Select City</option>
-												
-											</select>
-										</div>
+                                            <div class="form-group col-sm-8 col-xs-12 nopadding"
+                                             ng-class="{ 'error' : MobeditaddrForm.country.$invalid && !MobeditaddrForm.country.$pristine }">
+                                                <label for="Country">Country</label>
+                                                <input id="Country" 
+                                                type="text" 
+                                                class="form-control" 
+                                                name="country"
+                                                ng-model="editAddr.city"
+                                                placeholder="Select Country">
+                                            </div>
 
-								<span class="error" ng-show="addnewForm.$submitted && addnewForm.city.$error.required">Please Select State</span>
-									</div>
-								</div>
-								<div class="form-group nopadding col-xs-12">
-									<label for="State">State</label>
-										<div class="select-style">
-											<select ng-model="addnew.state" name="state" required ng-options="v.name for v in states track by v.id">
-										<option selected value=""> Select State</option>
-										</select>
-										</div>
-										<span ng-show="addnewForm.state.$error.minlength" class="error">Username is too short.</span>
-								<span class="error" ng-show="addnewForm.$submitted && addnewForm.state.$error.required">Please Select State</span>
-								
-								</div>
-								<div class="form-group col-sm-8 col-xs-12 nopadding" ng-class="{ 'error' : (addnewForm.phonenumber.$invalid && !addnewForm.phonenumber.$pristine) || (addnewForm.$submitted && addnewForm.phonenumber.$error.required) }">
-											<label for="Number">Phone Number</label>
-											<div class="input-group"> 
-												<div class="input-group-addon">+91</div>
-												<input type="number" name="phonenumber" class="form-control" id="Number" placeholder="Phone Number" ng-model="addnew.phonenumber" ng-minlength="10" ng-maxlength="10" ng-required="true">
-												
-											</div>
-			<span class="error" ng-show="addnewForm.phone.$error.required || addnewForm.phone.$error.number">Valid phone number is required</span>
-            <span class="error" ng-show="((addnewForm.phonenumber.$error.minlength || addnewForm.phonenumber.$error.maxlength) && addnewForm.phonenumber.$dirty) ">phone number should be 10 digits</span>
-											<div ng-show="addnewForm.$submitted || addnewForm.phonenumber.$touched">
-             <span ng-show="addnewForm.phonenumber.$error.required" class="error">Valid phone number is required</span>
-             </div>
-										</div>
-								
-								<div class="form-group nopadding col-xs-12">
-							<!-- <input class="btn btn-newStyle btn-newStyleActive Width60" type="button" value="SAVE & CONTINUE"> -->
-							<button type="submit" class="btn btn-newStyle btn-newStyleActive Width60" > SAVE & CONTINUE</button>
+                                            <div class="form-group col-sm-8 col-xs-12 nopadding"
+                                             ng-class="{ 'error' : MobeditaddrForm.phonenumbar.$invalid && !MobeditaddrForm.phonenumbar.$pristine }">
+                                                <label for="Number">Phone Number</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">+91</div>
+                                                    <input type="text" 
+                                                    class="form-control" 
+                                                    id="Number" 
+                                                    name="phonenumbar"
+                                                     ng-model="editAddr.telephone"
+                                                    ng-minlength="10"
+                                                    ng-maxlength="10"
+                                                    ng-required="true"
+                                                    placeholder="Phone Number">
+                                                    
+                                                </div>
+                                                <span ng-show="DeseditaddrForm.phonenumbar.$error.minlength" class="error">Phone Number is too short.</span>
+                                                <span ng-show="DeseditaddrForm.phonenumbar.$error.maxlength" class="error">Phone Number is too long .</span>
+                                            </div>
 
-						</div>
 
-						<div class="form-group nopadding col-xs-12">
-									<div class="checkbox col-xs-12 nopadding margin0">
-										<label><input type="checkbox" id="Guest" ng-model="chkbill" ng-change="checkBilling()" checked><span for="Guest"></span> This is also my Billing Address</label>
-									</div>
+                                            <div class="form-group col-xs-12 nopadding">
+                                            <button type="submit" class="btn btn-default outline-btn"  ng-click="editSave();">SAVE</button>
+                                            <button type="submit" class="btn btn-default outline-btn"ng-click="editCancel();
+                                            " >CANCEL</button>
+                                            </div>
+                                            
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--// Edit Shipping Address End -->
+                    <!--// Desktop Edit Shipping Address Start  -->
+                     <!--/Mobile Edit Form/ -->
 
-								</div>
-							</form>
-							<!---4st edit form-->	
-						</div>
-						
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--// Button Mobile Start -->
-		<div class="BtnContainer col-xs-12 nopadding visible-xs">
-			<a class="btn newBtn" href="#">PROCEED TO PAYMENT <span><img src="images/Checkout-CTA-icon.png" title="" alt=""></span></a>
-		</div>
-		<!--// Button Mobile End -->
-		<!--// login Container End -->
-		<div class="col-xs-12 nopadding spacer">&nbsp;</div>
-	</div>
-</div>
-</div>
-<div data-overlay  ng-hide="editAddPOP">&nbsp;</div>
+
+                    <div class="addressEditContainer "  ng-hide="popupEditAddress">
+                        <div class="col-xs-12 new-address">
+                            <div class="col-xs-12  nopadding">
+                            <span role="close" ng-click="formclose()"><a  ><img src="images/delete-icon.png" alt="" title=""></a></span>
+                                 <form role="form" name="DeseditaddrForm" ng-submit="editsubmitForm();" novalidate>
+                                            <h4 role="headding">
+                                            <a href="#new-address">Edit Address</a>
+                                        </h4>
+
+                                            <div class="form-group nopadding col-sm-8 col-xs-12" 
+                                             ng-class="{ 'error' : DeseditaddrForm.country.$invalid && !DeseditaddrForm.country.$pristine }">
+
+                                                <label>Country: 
+                                                    <span role="country">India</span> 
+                                                    <a href="#change-country">Change</a>
+                                                </label>
+                                                
+                                                <select class="form-control" 
+                                                id="change-country" 
+                                                name="country"
+                                                ng-model="editAddr.country"
+                                                ng-option="item as item in country"
+                                                style="display:none;">
+                                                </select>
+
+                                            </div>
+
+                                            <div class="form-group nopadding col-sm-8 col-xs-12"
+                                            ng-class="{ 'error' : DeseditaddrForm.firstname.$invalid && !DeseditaddrForm.firstname.$pristine }">
+
+                                                <label for="name">First Name</label>
+                                                <input id="name" 
+                                                type="text" 
+                                                class="form-control"
+                                                name="firstname" 
+                                                ng-model="editAddr.firstname"
+                                                ng-minlength="2"
+                                                placeholder="Enter First Name" 
+                                                required>
+                                                {{editAdd.firstname}}
+
+                                                <span ng-show="DeseditaddrForm.firstname.$error.minlength" class="error">First Name is too short.</span>
+
+                                            </div>
+
+
+                                            <div class="form-group nopadding col-sm-8 col-xs-12"
+                                            ng-class="{ 'error' : DeseditaddrForm.lastname.$invalid && !DeseditaddrForm.lastname.$pristine }">
+
+                                                <label for="name">Last Name</label>
+                                                <input id="name" 
+                                                type="text" 
+                                                class="form-control"
+                                                name="lastname" 
+                                                ng-model="editAddr.lastname"
+                                                ng-minlength="2"
+                                                placeholder="Enter Lastname">
+
+                                                 <span ng-show="DeseditaddrForm.lastname.$error.minlength" class="error">Last Name is too short.</span>
+                                            </div>
+
+
+                                            <div class="form-group nopadding col-xs-12"
+                                            ng-class="{ 'error' : DeseditaddrForm.address.$invalid && !DeseditaddrForm.address.$pristine }">
+
+                                                <label for="Address">Address</label>
+                                                <textarea id="Address"
+                                                ng-model="editAddr.street"
+                                                name="address"
+                                                ng-minlength="10" 
+                                                class="form-control">
+                                                </textarea>
+                                                <span ng-show="DeseditaddrForm.address.$error.minlength" class="error">Address is too short.</span>
+                                            </div>
+
+
+                                            <div class="col-xs-12 col-sm-4 nopadding">
+                                            
+                                                <div class="form-group" 
+                                                ng-class="{ 'error' : DeseditaddrForm.pincode.$invalid && !DeseditaddrForm.pincode.$pristine }">
+
+                                                    <label for="Pincode">Pincode</label>
+                                                    <input id="Pincode" 
+                                                    type="text" 
+                                                    class="form-control" 
+                                                    name="pincode"
+                                                    ng-model="editAddr.postcode"
+                                                    ng-minlength="4"
+                                                    ng-maxlength="9"
+                                                    ng-change="changePincode($scope.editAddr.pincode)"
+                                                    placeholder="Pincode">
+                                                     <span ng-show="DeseditaddrForm.address.$error.minlength" class="error">Pincode is too short.</span>
+                                                     <span ng-show="DeseditaddrForm.pincode.$error.maxlength" class="error">Pincode is too long .</span>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-xs-12 col-sm-7 m-padding">
+                                                <div class="form-group" 
+                                                ng-class="{ 'error' : DeseditaddrForm.city.$invalid && !DeseditaddrForm.city.$pristine }">
+                                                    <label for="City">City</label>
+                                                    <input id="City" 
+                                                    type="text" 
+                                                    name="city"
+                                                    ng-model="editAddr.city"
+                                                    class="form-control" 
+                                                    placeholder="Select City">
+
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group  col-xs-12 nopadding" 
+                                             ng-class="{ 'error' : MobeditaddrForm.state.$invalid && !MobeditaddrForm.state.$pristine }">
+                                                <label for="State">State</label>
+                                                <input id="State" 
+                                                type="text" 
+                                                class="form-control" 
+                                                name="state"
+                                                ng-model="editAddr.region"
+                                                placeholder="Select State">
+                                            </div>
+
+                                            <div class="form-group col-sm-8 col-xs-12 nopadding"
+                                             ng-class="{ 'error' : MobeditaddrForm.country.$invalid && !MobeditaddrForm.country.$pristine }">
+                                                <label for="Country">Country</label>
+                                                <input id="Country" 
+                                                type="text" 
+                                                class="form-control" 
+                                                name="country"
+                                                ng-model="editAddr.country"
+                                                placeholder="Select Country">
+                                            </div>
+
+                                            <div class="form-group col-sm-8 col-xs-12 nopadding"
+                                             ng-class="{ 'error' : MobeditaddrForm.phonenumbar.$invalid && !MobeditaddrForm.phonenumbar.$pristine }">
+                                                <label for="Number">Phone Number</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">+91</div>
+                                                    <input type="text" 
+                                                    class="form-control" 
+                                                    id="Number" 
+                                                    name="phonenumbar"
+                                                     ng-model="editAddr.telephone"
+                                                    ng-minlength="10"
+                                                    ng-maxlength="10"
+                                                    ng-required="true"
+                                                    placeholder="Phone Number">
+                                                    
+                                                </div>
+                                                <span ng-show="DeseditaddrForm.phonenumbar.$error.minlength" class="error">Phone Number is too short.</span>
+                                                <span ng-show="DeseditaddrForm.phonenumbar.$error.maxlength" class="error">Phone Number is too long .</span>
+                                            </div>
+
+
+                                            <div class="form-group col-xs-12 nopadding">
+                                            <button type="submit" class="btn btn-default outline-btn"  ng-click="editSave();">SAVE</button>
+                                            <button type="submit" class="btn btn-default outline-btn" ng-click="formclose();"
+                                            >CANCEL</button>
+                                            </div>
+                                            
+                                        </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!--// Desktop Edit Shipping Address End -->
+                    <!--// Select Billing Address -->
+                   <div class="checkbox col-xs-12 nopadding hidden-xs" ng-hide="displayAddresscheckbox">
+                        <label><input type="checkbox" id="Guest"  ng-model="chkStatus" ng-change="checkStatus()" checked><span for="Guest"></span> This is also my Billing Address</label>
+                    </div>
+                    <div class="col-xs-12 nopadding" style="padding-bottom:20px;">
+
+                <div class="alert alert-danger fade in" ng-show="noshippingSelected">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                    Please select billing address or add new billing address.
+                </div>
+
+                    <div  class="col-xs-12 nopadding hidden-xs" ng-hide="displayAddresscheckbox">
+                            <input class="btn btn-newStyle btn-newStyleActive " type="button" value="DELIVER TO THIS ADDRESS" style="width:30%;" ng-click="proceed();">
+                        </div>
+                    </div>
+
+
+
+                    <!--// -->
+                    <div ng-hide="displayAddress">
+                    <div class="col-xs-12 nopadding">
+                     <h4 role="headding">SELECT BILLING ADDRESS </h4>
+                     </div>
+                   <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="address in addresses"  ng-click="setbillingID(address.entity_id)" ng-if= "address.entity_id !== shippingID">
+
+                    <div class="col-xs-12 addressCard"  ng-class="{'addressCardActive': address.entity_id == billingID}">
+                        <div class="col-xs-12 nopadding customer-address">
+                            <div class="col-xs-12 nopadding">
+                                <h5>{{address.firstname}} {{address.lastname}}<span></span><span class="pull-right delete-shipping"><a href="javascript:void(0)" ng-click="shippingEdit(address);"><img src="images/edit-icon.png"></a></span></h5>
+                                <p>{{address.street}}</p>
+                                <p class="margin0">{{address.telephone}}</p>
+                            </div>
+                        </div>
+                        <!-- <div class="col-xs-12 nopadding hidden-xs">
+                            <input class="btn btn-newStyle" type="button" value="DELIVER TO THIS ADDRESS">
+                        </div> -->
+                    </div>
+                </div>
+                </div>
+
+                    
+
+                <div class="col-xs-12" style="padding-bottom:20px;" ng-hide="displayAddress">
+
+                    <div  class="col-xs-12 nopadding hidden-xs" >
+                            <input class="btn btn-newStyle btn-newStyleActive " type="button" value="PROCEED TO PAYMENT" style="width:30%;" ng-click="proceed()">
+                        </div>
+                    </div>
+
+
+                    <!-- <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="col-xs-12 addressCard">
+                            <div class="col-xs-12 nopadding customer-address">
+                                <div class="col-xs-12 nopadding">
+                                    <h5>Shruti Kartikey <span><a  ><img src="images/edit-icon.png"></a></span><span class="pull-right delete-shipping"><a  ><img src="images/remove.png"></a></span></h5>
+                                    <p>G-1502, Craftsvilla, Lotus Business Park, Goregaon East, Mumbai, Maharashtra - 400056</p>
+                                    <p class="margin0">+91 7738233261</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 nopadding hidden-xs">
+                                <input class="btn btn-newStyle" type="button" value="DELIVER TO THIS ADDRESS">
+                            </div>
+                        </div>
+                    </div>  -->
+
+                </div>
+            </div>
+            <!--// -->
+            <!--// -->
+            <div class="col-xs-12 nopadding add-new-shipping">
+                <h4 class="M-add-new-address" role="headding" ng-class="{'hidden-xs': mform }">
+                <a ng-click="MaddnewAddress()">ADD NEW SHIPPING ADDRESS<span><img src="images/Shape.png" title="" alt=""></span></a>
+            </h4>
+                <!--// -->
+                <h4 class="hidden-lg" role="headding" ng-class="{'hidden-xs': !mform }" >
+                <a ng-click="MaddnewAddress()">ADD SHIPPING ADDRESS</a>
+                 <span ><a ng-click="MaddnewAddress()" style="font-size:12px;color:#971937;">Back to Saved Addresses</a></span>
+            </h4>
+
+                <div class="row" ng-class="{'hidden-xs': !mform }">
+                    <div class="col-xs-12">
+                        <div class="col-xs-12 new-address">
+                            <div class="col-xs-12 col-sm-7 nopadding">
+
+
+                                <form role="form" name="addnewForm" ng-submit="addnewsubmit(chkStatusBilling);" novalidate>
+                                <div class="form-group nopadding col-sm-8 col-xs-12" 
+                                ng-class="{ 'error' : (addnewForm.state.$invalid && !addnewForm.state.$pristine)  || (addnewForm.$submitted && addnewForm.state.$error.required)  }" >
+                                    <label>
+                                        Country: 
+                                        <span role="country">{{addnewcountry.country_name}}</span>
+                                         <a href="javascript:void(0)" ng-click="changecountry = true"><span ng-hide="changecountry">Change</span></a>
+                                    </label>
+                                    <div class="select-style" ng-show="changecountry">
+                                        <select ng-model="addnewcountry"
+                                        name="state"
+                                                ng-options="item as item.country_name for item in countries track by item.country_code"
+                                        required >
+                                        
+                                        <option value>Select Country</option>
+                                          </select>
+                                    </div>
+
+                                    <span ng-show="addnewForm.state.$error.minlength" class="error">Username is too short.</span>
+                                    <span class="error" ng-show="addnewForm.$submitted && addnewForm.state.$error.required">Please Select State</span>
+                                
+                                </div>
+
+                                <div class="form-group nopadding col-sm-8 col-xs-12" 
+                                    ng-class="{ 'error' : (addnewForm.firstname.$invalid && !addnewForm.firstname.$pristine)  || (addnewForm.$submitted && addnewForm.firstname.$error.required)  }">
+                                    <label for="name">First Name</label>
+                                    <input id="name" 
+                                    name ="firstname" 
+                                    type="text" 
+                                    class="form-control" 
+                                    placeholder="Enter Full Name" 
+                                    ng-model="shipping.firstName"
+                                    ng-minlength="2"
+                                    required>
+
+                                     <span  ng-message="addnewForm.firstname.$error.minlength && !addnewForm.firstname.$pristine" ng-show="addnewForm.firstname.$invalid && addnewForm.firstname.$touched"  class="error">First Name is too short</span>
+                                    <div ng-show="addnewForm.$submitted">
+                                    <span ng-show="addnewForm.firstname.$error.required" class="error">Please Enter your First Name.</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group nopadding col-sm-8 col-xs-12" 
+                                     ng-class="{ 'error' : (addnewForm.lastname.$invalid && !addnewForm.lastname.$pristine)  || (addnewForm.$submitted && addnewForm.lastname.$error.required)  }">
+                                    <label for="name">last Name</label>
+                                    <input id="name" 
+                                    name ="shipping.lastname"
+                                    type="text" 
+                                    class="form-control" 
+                                    placeholder="Enter Full Name" 
+                                    ng-model="shipping.lastName"
+                                    ng-minlength="2"
+                                    required>
+                                     <span ng-message="addnewForm.lastname.$error.minlength && !addnewForm.lastname.$pristine" ng-show="addnewForm.lastname.$invalid && addnewForm.lastname.$touched"  class="error">last Name is too short</span>
+                                      <div ng-show="addnewForm.$submitted">
+                                    <span ng-show="addnewForm.lastname.$error.required" class="error">Please Enter your Last Name.</span>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group nopadding col-xs-12" 
+                                     ng-class="{ 'error' : (addnewForm.address.$invalid && !addnewForm.address.$pristine)  || (addnewForm.$submitted && addnewForm.address.$error.required)  }">
+                                    <label for="Address">Address</label>
+                                    
+                                    <textarea id="Address" 
+                                    name="address" 
+                                    ng-model="shipping.address1"
+                                    class="form-control" 
+                                    ng-minlength="3"
+                                    required>
+                                    </textarea>
+
+                                    <span ng-message="addnewForm.address.$error.minlength && !addnewForm.address.$pristine" ng-show="addnewForm.address.$invalid && addnewForm.address.$touched"  class="error">Address is too short.</span>
+                                    <div ng-show="addnewForm.$submitted || addnewForm.address.$touched">
+                                    <span ng-show="addnewForm.address.$error.required" class="error">Tell us your Address.</span>
+                                </div>
+
+                                </div>
+
+
+                                <div class="col-xs-12 col-sm-4 nopadding" >
+                                    <div class="form-group"
+                                     ng-class="{ 'error' : (addnewForm.pincode.$invalid && !addnewForm.pincode.$pristine)  || (addnewForm.$submitted && addnewForm.pincode.$error.required)  }">
+                                        <label for="Pincode">Pincode</label>
+                                        <input id="Pincode" 
+                                        name="pincode" 
+                                        type="text" 
+                                        class="form-control" 
+                                        placeholder="Pincode"  
+                                        ng-minlength="4" 
+                                        ng-maxlength="6" 
+                                        ng-model="shipping.pincode"
+                                    ng-blur="changePincode(shipping.pincode)"
+                                required>
+                                        <div ng-show="addnewForm.pincode.$error.minlength && !addnewForm.pincode.$pristine"  class="error">
+
+                                        <span ng-message="addnewForm.pincode.$invalid && addnewForm.pincode.$touched" >Pincode is too short.</span>
+                                        </div>
+
+                                        <div ng-show="addnewForm.pincode.$error.maxlength && !addnewForm.pincode.$pristine" class="error">
+
+                                        <span ng-message="addnewForm.pincode.$invalid && addnewForm.pincode.$touched"   >Pincode number is too long .</span>
+                                        </div>
+
+                                        <div ng-show="addnewForm.$submitted ">
+                                        <span ng-show="addnewForm.pincode.$error.required" class="error">Tell us your Pincode.</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="col-xs-12 col-sm-7 m-padding">
+                                    <div class="form-group">
+                                        <label for="City">City</label>
+                                        {{addnew.city}}
+                                        
+
+                                          <input type="text"
+                                          ng-model="shipping.city"
+                                           name="city"
+                                           required 
+                                           class="form-control" 
+                                            placeholder="city"
+                                          >
+                                            <!-- <select ng-model="addnew.city" 
+                                            name="city"  
+                                            required 
+                                            ng-options="obj for obj in city track by obj.value">
+                                            <option value="0">Select City</option>
+                                           
+                                                
+                                            </select> -->
+                                       
+
+                                <span class="error" ng-show="addnewForm.$submitted && addnewForm.city.$error.required">Please Select State</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group nopadding col-xs-12"
+                                ng-class="{ 'error' : (addnewForm.state.$invalid && !addnewForm.state.$pristine) || (addnewForm.$submitted && addnewForm.state.$error.required) }">
+                                    <label for="State">State</label>
+                                        <input type="text"
+                                          ng-model="shipping.state"
+                                           name="state"
+                                           required 
+                                           class="form-control" 
+                                            placeholder="state"
+                                          >
+                                        <span ng-show="addnewForm.state.$error.minlength" class="error">Username is too short.</span>
+                                    <span class="error" ng-show="addnewForm.$submitted && addnewForm.state.$error.required">Please Select State</span>
+                                
+                                </div>
+
+
+                                <div class="form-group col-sm-8 col-xs-12 nopadding" 
+                               ng-class="{ 'error' : (addnewForm.phonenumber.$invalid && !addnewForm.phonenumber.$pristine)  || (addnewForm.$submitted && addnewForm.phonenumber.$error.required)  }">
+                                        <label for="Number">Phone Number</label>
+                                        <div class="input-group"> 
+                                        <div class="input-group-addon">+91</div>
+                                        <input type="number" 
+                                        name="phonenumber" 
+                                        class="form-control" 
+                                        id="Number" 
+                                        placeholder="Phone Number" 
+                                        ng-model="shipping.phoneNo"
+                                        ng-minlength="10" 
+                                        ng-maxlength="10" 
+                                        ng-required="true">
+                                        
+                                        </div>
+                                        <div ng-show="addnewForm.phonenumber.$error.minlength && !addnewForm.phonenumber.$pristine"  class="error">
+
+                                        <span ng-message="addnewForm.phonenumber.$invalid && addnewForm.phonenumber.$touched" >phonenumber is too short.</span>
+                                        </div>
+
+                                        <div ng-show="addnewForm.phonenumber.$error.maxlength && !addnewForm.phonenumber.$pristine" class="error">
+
+                                        <span ng-message="addnewForm.phonenumber.$invalid && addnewForm.phonenumber.$touched"   >phonenumber number is too long .</span>
+                                        </div>
+
+                                        <div ng-show="addnewForm.$submitted ">
+                                        <span ng-show="addnewForm.phonenumber.$error.required" class="error">Tell us your phonenumber.</span>
+                                        </div>
+                                </div>
+
+                                
+                                <div class="form-group nopadding col-xs-12">
+                            <!-- <input class="btn btn-newStyle btn-newStyleActive Width60" type="button" value="SAVE & CONTINUE"> -->
+                            <button type="submit" class="btn btn-newStyle btn-newStyleActive Width60" ng-hide = "!addBilingaddreshideshow"> SAVE & CONTINUE</button>
+
+                        </div>
+
+                       
+                            </form>
+
+                                <div class="form-group nopadding col-xs-12" ng-hide="!addBilingaddreshideshow">
+                                        <div class="checkbox col-xs-12 nopadding margin0">
+                                            <label>
+                                                
+                                                <input type="checkbox" 
+                                                id="Guest"  
+                                                ng-model="chkStatusBilling" 
+                                                ng-change="checkStatusBilling()" 
+                                                checked >
+                                                <span for="Guest"></span> This is also my Billing Address</label>
+                                        </div>
+                                    </div>
+                            </div>
+
+                        <div ng-hide="addBilingaddreshideshow " >      
+                            <hr class="line-divider" />
+                            <div class="col-xs-12 nopadding">
+                                <h4 role="headding">ADD BILLING ADDRESS</h4>
+                            </div>
+                            <div class="col-xs-12 col-sm-7 nopadding">
+                                <form role="form" name="BillingADDForm" ng-submit="addnewsubmitBilling(chkStatusBilling);" novalidate>
+                                <div class="form-group nopadding col-sm-8 col-xs-12" 
+                                ng-class="{ 'error' : (BillingADDForm.state.$invalid && !BillingADDForm.state.$pristine)  || (BillingADDForm.$submitted && BillingADDForm.state.$error.required)  }">
+                                    <label>
+                                        Country:
+                                        <span role="country">India</span>
+                                        <a href="#change-country">Change</a>
+                                    </label>
+
+                                    <div class="select-style" >
+                                        <select ng-model="addnewcountry"
+                                                name="state"
+                                                ng-options="item as item.country_name for item in countries track by item.country_code"
+                                                required >
+
+                                            <option value>Select Country</option>
+                                        </select>
+                                    </div>
+
+                                    <span ng-show="BillingADDForm.state.$error.minlength" class="error">Username is too short.</span>
+                                    <span class="error" ng-show="BillingADDForm.$submitted && BillingADDForm.state.$error.required">Please Select State</span>
+                                
+                                </div>
+
+
+                                <div class="form-group nopadding col-sm-8 col-xs-12" 
+                                    ng-class="{ 'error' : (BillingADDForm.firstname.$invalid && !BillingADDForm.firstname.$pristine)  || (BillingADDForm.$submitted && BillingADDForm.firstname.$error.required)  }">
+                                    <label for="name">First Name</label>
+                                    <input id="name" 
+                                    name ="firstname" 
+                                    type="text" 
+                                    class="form-control" 
+                                    placeholder="Enter Full Name" 
+                                    ng-model="addNewBilling.firstName"
+                                    ng-minlength="2"
+                                    required>
+                                     <span  ng-message="BillingADDForm.firstname.$error.minlength && !BillingADDForm.firstname.$pristine" ng-show="BillingADDForm.firstname.$invalid && BillingADDForm.firstname.$touched"  class="error">First Name is too short</span>
+                                    <div ng-show="BillingADDForm.$submitted">
+                                    <span ng-show="BillingADDForm.firstname.$error.required" class="error">Please Enter your First Name.</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group nopadding col-sm-8 col-xs-12" 
+                                     ng-class="{ 'error' : (BillingADDForm.lastname.$invalid && !BillingADDForm.lastname.$pristine)  || (BillingADDForm.$submitted && BillingADDForm.lastname.$error.required)  }">
+                                    <label for="name">last Name</label>
+                                    <input id="name" 
+                                    name ="lastname" 
+                                    type="text" 
+                                    class="form-control" 
+                                    placeholder="Enter Full Name" 
+                                    ng-model="addNewBilling.lastName"
+                                    ng-minlength="2"
+                                    required>
+                                     <span ng-message="BillingADDForm.lastname.$error.minlength && !BillingADDForm.lastname.$pristine" ng-show="BillingADDForm.lastname.$invalid && BillingADDForm.lastname.$touched"  class="error">last Name is too short</span>
+                                      <div ng-show="BillingADDForm.$submitted">
+                                    <span ng-show="BillingADDForm.lastname.$error.required" class="error">Please Enter your Last Name.</span>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group nopadding col-xs-12" 
+                                     ng-class="{ 'error' : (BillingADDForm.address.$invalid && !BillingADDForm.address.$pristine)  || (BillingADDForm.$submitted && BillingADDForm.address.$error.required)  }">
+                                    <label for="Address">Address</label>
+                                    
+                                    <textarea id="Address" 
+                                    name="address" 
+                                    ng-model="addNewBilling.address1"
+                                    class="form-control" 
+                                    ng-minlength="3"
+                                    required>
+                                    </textarea>
+
+                                    <span ng-message="BillingADDForm.address.$error.minlength && !BillingADDForm.address.$pristine" ng-show="BillingADDForm.address.$invalid && BillingADDForm.address.$touched"  class="error">Address is too short.</span>
+                                    <div ng-show="BillingADDForm.$submitted || BillingADDForm.address.$touched">
+                                    <span ng-show="BillingADDForm.address.$error.required" class="error">Tell us your Address.</span>
+                                </div>
+
+                                </div>
+
+
+                                <div class="col-xs-12 col-sm-4 nopadding" >
+                                    <div class="form-group"
+                                     ng-class="{ 'error' : (BillingADDForm.pincode.$invalid && !BillingADDForm.pincode.$pristine)  || (BillingADDForm.$submitted && BillingADDForm.pincode.$error.required)  }">
+                                        <label for="Pincode">Pincode</label>
+                                        <input id="Pincode" 
+                                        name="pincode" 
+                                        type="text" 
+                                        class="form-control" 
+                                        placeholder="Pincode"  
+                                        ng-minlength="4" 
+                                        ng-maxlength="6" 
+                                        ng-model="addNewBilling.pincode"
+                                               ng-blur="changePincodeBilling(addNewBilling.pincode)"
+                                               required>
+                                        <div ng-show="BillingADDForm.pincode.$error.minlength && !BillingADDForm.pincode.$pristine"  class="error">
+
+                                        <span ng-message="BillingADDForm.pincode.$invalid && BillingADDForm.pincode.$touched" >Pincode is too short.</span>
+                                        </div>
+
+                                        <div ng-show="BillingADDForm.pincode.$error.maxlength && !BillingADDForm.pincode.$pristine" class="error">
+
+                                        <span ng-message="BillingADDForm.pincode.$invalid && BillingADDForm.pincode.$touched"   >Pincode number is too long .</span>
+                                        </div>
+
+                                        <div ng-show="BillingADDForm.$submitted ">
+                                        <span ng-show="BillingADDForm.pincode.$error.required" class="error">Tell us your Pincode.</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                    <div class="col-xs-12 col-sm-7 m-padding">
+                                        <div class="form-group">
+                                            <label for="City">City</label>
+                                            {{addnew.city}}
+
+
+                                            <input type="text"
+                                                   ng-model="addNewBilling.city"
+                                                   name="city"
+                                                   required
+                                                   class="form-control"
+                                                   placeholder="city"
+                                            >
+                                            <!-- <select ng-model="addnew.city"
+                                            name="city"
+                                            required
+                                            ng-options="obj for obj in city track by obj.value">
+                                            <option value="0">Select City</option>
+
+
+                                            </select> -->
+
+
+                                            <span class="error" ng-show="addnewForm.$submitted && addnewForm.city.$error.required">Please Select State</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group nopadding col-xs-12"
+                                         ng-class="{ 'error' : (addnewForm.state.$invalid && !addnewForm.state.$pristine) || (addnewForm.$submitted && addnewForm.state.$error.required) }">
+                                        <label for="State">State</label>
+                                        <input type="text"
+                                               ng-model="addNewBilling.state"
+                                               name="state"
+                                               required
+                                               class="form-control"
+                                               placeholder="state"
+                                        >
+                                        <span ng-show="addnewForm.state.$error.minlength" class="error">Username is too short.</span>
+                                        <span class="error" ng-show="addnewForm.$submitted && addnewForm.state.$error.required">Please Select State</span>
+
+                                    </div>
+
+
+
+                                <div class="form-group col-sm-8 col-xs-12 nopadding" 
+                               ng-class="{ 'error' : (BillingADDForm.phonenumber.$invalid && !BillingADDForm.phonenumber.$pristine)  || (BillingADDForm.$submitted && BillingADDForm.phonenumber.$error.required)  }">
+                                        <label for="Number">Phone Number</label>
+                                        <div class="input-group"> 
+                                        <div class="input-group-addon">+91</div>
+                                        <input type="number" 
+                                        name="phonenumber" 
+                                        class="form-control" 
+                                        id="Number" 
+                                        placeholder="Phone Number" 
+                                        ng-model="addNewBilling.phoneNo"
+                                        ng-minlength="10" 
+                                        ng-maxlength="10" 
+                                        ng-required="true">
+                                        
+                                        </div>
+                                        <div ng-show="BillingADDForm.phonenumber.$error.minlength && !BillingADDForm.phonenumber.$pristine"  class="error">
+
+                                        <span ng-message="BillingADDForm.phonenumber.$invalid && BillingADDForm.phonenumber.$touched" >phonenumber is too short.</span>
+                                        </div>
+
+                                        <div ng-show="BillingADDForm.phonenumber.$error.maxlength && !BillingADDForm.phonenumber.$pristine" class="error">
+
+                                        <span ng-message="BillingADDForm.phonenumber.$invalid && BillingADDForm.phonenumber.$touched"   >phonenumber number is too long .</span>
+                                        </div>
+
+                                        <div ng-show="BillingADDForm.$submitted ">
+                                        <span ng-show="BillingADDForm.phonenumber.$error.required" class="error">Tell us your phonenumber.</span>
+                                        </div>
+                                </div>
+                                
+                                
+                                <div class="form-group nopadding col-xs-12">
+                            <!-- <input class="btn btn-newStyle btn-newStyleActive Width60" type="button" value="SAVE & CONTINUE"> -->
+                            <button type="submit" class="btn btn-newStyle btn-newStyleActive Width60" > SAVE & CONTINUE</button>
+
+                        </div>
+
+                       
+                            </form>
+                            </div>
+
+                    </div>        
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--// Button Mobile Start -->
+            <!-- <div class="BtnContainer col-xs-12 nopadding visible-xs">
+                <a class="btn newBtn"  >PROCEED TO PAYMENT <span><img src="images/Checkout-CTA-icon.png" title="" alt=""></span></a>
+            </div> -->
+            <!--// Button Mobile End -->
+            <!--// login Container End -->
+            <div class="col-xs-12 nopadding spacer">&nbsp;</div>
+        </div>
+
+
+         <div class="col-xs-12 " style="padding-bottom:20px;">
+                        <div  class="col-xs-12 nopadding hidden-lg" >
+                            <input class="btn col-xs-12 procd-to-checkout" type="button" value="PROCEED TO PAYMENT"  ng-click="proceed()">
+                        </div>
+                    </div>
+    </div>
+
+
+    <!--// Content -->
+<div data-overlay  ng-hide="popupEditAddress">&nbsp;</div>
