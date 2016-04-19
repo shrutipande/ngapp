@@ -429,7 +429,6 @@ MEDIA QUERI
 ============================== */
 /* Small devices (320 to 768) */
 @media (max-width: 768px) {
-<<<<<<< HEAD
 .m-padding { padding: 0px; }
 div[role="logo"] img { float: left;}
 div[role="logo"] img.logo { margin-top: 4px; width: 130px; }
@@ -565,7 +564,7 @@ span[role="division"] { margin-left: 5%; }
     div[check-out] .m-right-20{margin-right: 20px;}
     div[check-out] .header {padding-top:26px; }
     div[check-out] .left-panel{width:67%;}
-    div[check-out] .right-panel {margin-left:2%; width:31%; margin-top: 39px;}
+    div[check-out] .right-panel {margin-left:2%; width:31%; margin-top: 10px;}
     .open-cont .buttons{float:left; padding:5px 0;width: 134px;   height: 30px; border-radius: 2px; font-size: 14px;  font-weight:bold;  line-height: 1.4;  color: #981937; text-align: center; text-transform: uppercase;background-color: #fff;}
     .open-cont .b-border{ border-radius: 2px; border: solid 1px #dec6cc;}
 
@@ -592,6 +591,7 @@ span[role="division"] { margin-left: 5%; }
      top: 35px;
      color: #aaa;
  }
+
 /****** added by rupali for order-success page **/
 
 div[order-success-cont]{float:left;width:770px; margin: 5px 200px; }
@@ -671,3 +671,11 @@ div[order-success-cont]  .note{margin:20px 0 5px 0; padding: 0;}
     margin-right: 10px;
     text-align: center;
     font-weight: bold;}
+
+.c-continue-shpng button {
+    cursor: pointer;
+}
+.left-panel > .out-of-stock-items {
+    opacity: 0.7;
+    border: 1px solid #981937 !important;
+}
