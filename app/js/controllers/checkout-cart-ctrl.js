@@ -62,27 +62,6 @@ define(['./index'], function (controllers) {
 				})
 		};
 
-		$scope.removeOutOfStockProducts = function() {
-			var productIds = [];
-			angular.forEach($scope.outOfStockProducts, function(product) {
-				var data = {
-					productID: product.product_id
-				};
-				productIds.push(data);
-			});
-			craftsvillaService.removeQuoteItems(productIds)
-			.success(function(response) {
-				$scope.outOfStockProducts = [];
-				angular.forEach(response.d.product_list, function(product) {
-					$scope.outOfStockProducts.push(product);
-				});
-				updateTotals(response);
-			})
-			.error(function(error) {
-				console.log(error);
-			});
-		};
-
 		$scope.removeProductFromCart = function(product_id) {
 			var data = {
 				productID: product_id
