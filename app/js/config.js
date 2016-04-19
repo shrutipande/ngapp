@@ -5,7 +5,7 @@ define(['angular'], function(angular) {
     return angular.module('app.config', ['satellizer'])
         .constant('VERSION', '0.0.1')
         .constant('PRODUCTURL', 'http://dev7.craftsvilla.com/catalog/product/view/id/')
-        .constant('HOST', 'http://localhost:8001/')
+        .constant('HOST', 'http://dev7.craftsvilla.com/')
         .constant('IMGHOST', 'https://secureimg1.craftsvilla.com/thumb/166x166')
         .constant('ENVIRONMENT', 'development')
         .config(['$httpProvider', function($httpProvider) {
@@ -26,13 +26,13 @@ define(['angular'], function(angular) {
             delete $httpProvider.defaults.headers.common['X-Requested-With'];
         }])
         .config(['$authProvider', 'HOST', function($authProvider, HOST) {
-            $authProvider.baseUrl = 'http://localhost:8001';
+            $authProvider.baseUrl = 'http://dev7.craftsvilla.com';
             $authProvider.withCredentials = true;
 
             // $authProvider.httpInterceptor = function() { return true; },
 
             $authProvider.facebook({
-                clientId: '1034776946594646',
+                clientId: '1696658660596971',
                 responseType: 'token',
                 url: '/checkoutService/index/socialLogin',
                 skipAuthorization: true

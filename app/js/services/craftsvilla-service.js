@@ -34,7 +34,8 @@ define(['./index'], function (services) {
       continueAsGuest : continueAsGuest,
       loadFinalQuote : loadFinalQuote,
       placeOrderCOD: placeOrderCOD,
-      getSuccessData:getSuccessData
+      getSuccessData:getSuccessData,
+      socialAuth: socialAuth
     };
 
     //////////////////////////////////////////
@@ -275,6 +276,15 @@ define(['./index'], function (services) {
       return $http({
         method: 'POST',
         url: HOST + 'checkoutService/index/placeOrderCOD'
+      });
+    }
+
+    function socialAuth (json) {
+      return $http({
+        method: 'POST',
+        url: HOST + 'checkoutService/index/socialLogin',
+        data: json,
+        withCredentials: true
       });
     }
   }]);
