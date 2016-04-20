@@ -10,6 +10,7 @@ define([
   './services/index',
   './animations/index',
   'satellizer',
+    'angular-animate'
 ], function (ng) {
   'use strict';
 
@@ -23,6 +24,7 @@ define([
     'ngSanitize',
     'ui.router',
     'credit-cards',
-    'satellizer'
+    'satellizer',
+      'ngAnimate'
   ]);
 });
