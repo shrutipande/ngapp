@@ -72,7 +72,7 @@
                     </div>
 
                     <div class="checkbox col-xs-12 nopadding hidden-lg" ng-hide="displayAddresscheckbox" ng-class="{'hide': address.entity_id !== shippingID}">
-                        <label><input type="checkbox" id="Guest"  ng-model="chkStatus" ng-change="checkStatus()" checked ><span for="Guest"></span> This is also my Billing Address</label>
+                        <label><input type="checkbox" id="Guest"  ng-model="chkStatus" ng-change="checkStatus()" checked ><span for="Guest"></span> This is also my Billing Address --a</label>
                     </div>
                 </div>
 
@@ -92,7 +92,7 @@
                                         </h4>
 
                                             <div class="form-group nopadding col-sm-8 col-xs-12"
-                                             ng-class="{ 'error' : DeseditaddrForm.country.$invalid && !DeseditaddrForm.country.$pristine }">
+                                             ng-class="{ 'error' : DeseditaddrForm.country.$invalid && !DeseditaddrForm.country.$pristine  }">
 
                                                 <label>Country:
                                                     <span role="country">India</span>
@@ -420,17 +420,17 @@
                     </div>
                     <!--// Desktop Edit Shipping Address End -->
                     <!--// Select Billing Address -->
-                   <div class="checkbox col-xs-12 nopadding hidden-xs" ng-hide="displayAddresscheckbox">
+                   <div class="checkbox col-xs-12  hidden-xs" ng-hide="displayAddresscheckbox">
                         <label><input type="checkbox" id="Guest"  ng-model="chkStatus" ng-change="checkStatus()" checked><span for="Guest"></span> This is also my Billing Address</label>
-                    </div>
-                    <div class="col-xs-12 nopadding" style="padding-bottom:20px;">
+                    </div>  
+                    <div class="col-xs-12 " style="padding-bottom:20px;">
 
                 <div class="alert alert-danger fade in" ng-show="noshippingSelected">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
                     Please select billing address or add new billing address.
                 </div>
 
-                    <div  class="col-xs-12 nopadding hidden-xs" ng-hide="displayAddresscheckbox">
+                    <div  class="col-xs-12 nopadding  hidden-xs" ng-hide="displayAddresscheckbox">
                             <input class="btn btn-newStyle btn-newStyleActive " type="button" value="DELIVER TO THIS ADDRESS" style="width:30%;" ng-click="proceed();">
                         </div>
                     </div>
@@ -439,7 +439,7 @@
 
                     <!--// -->
                     <div ng-hide="displayAddress">
-                    <div class="col-xs-12 nopadding">
+                    <div class="col-xs-12 ">
                      <h4 role="headding">SELECT BILLING ADDRESS </h4>
                      </div>
                    <div class="col-xs-12 col-sm-6 col-md-4 slideInLeft enter-slideInLeft exit-fadeOut speed-0 stagger-3" ng-repeat="address in addresses"  ng-click="setbillingID(address.entity_id)" ng-if= "address.entity_id !== shippingID">
@@ -505,8 +505,9 @@
 
 
                                 <form role="form" name="addnewForm" ng-submit="addnewsubmit(chkStatusBilling);" novalidate>
+
                                 <div class="form-group nopadding col-sm-8 col-xs-12"
-                                ng-class="{ 'error' : (addnewForm.state.$invalid && !addnewForm.state.$pristine)  || (addnewForm.$submitted && addnewForm.state.$error.required)  }" >
+                                ng-class="{ 'error' : (addnewForm.state.$invalid && !addnewForm.state.$pristine  )    || (addnewForm.$submitted && addnewForm.state.$error.required)  }" >
                                     <label>
                                         Country:
                                         <span role="country">{{addnewcountry.country_name}}</span>
@@ -528,7 +529,9 @@
                                 </div>
 
                                 <div class="form-group nopadding col-sm-8 col-xs-12"
-                                    ng-class="{ 'error' : (addnewForm.firstname.$invalid && !addnewForm.firstname.$pristine)  || (addnewForm.$submitted && addnewForm.firstname.$error.required)  }">
+                                    ng-class="{ 'error' : (addnewForm.firstname.$invalid && !addnewForm.firstname.$pristine && addnewForm.firstname.$touched )  || (addnewForm.$submitted && addnewForm.firstname.$error.required)  }">
+                             
+
                                     <label for="name">First Name</label>
                                     <input id="name"
                                     name ="firstname"
@@ -538,78 +541,86 @@
                                     ng-model="shipping.firstName"
                                     ng-minlength="2"
                                     required>
-
-                                     <span  ng-message="addnewForm.firstname.$error.minlength && !addnewForm.firstname.$pristine" ng-show="addnewForm.firstname.$invalid && addnewForm.firstname.$touched"  class="error">First Name is too short</span>
                                     <div ng-show="addnewForm.$submitted">
-                                    <span ng-show="addnewForm.firstname.$error.required" class="error">Please Enter your First Name.</span>
+                                        <span ng-show="addnewForm.firstname.$error.required" class="error">Please Enter your First Name.</span>
                                     </div>
+                                        <span  ng-message="addnewForm.firstname.$error.minlength && !addnewForm.firstname.$pristine" ng-show="addnewForm.firstname.$invalid && addnewForm.firstname.$touched"  class="error">First Name is too short</span>
+                                  
                                 </div>
 
                                 <div class="form-group nopadding col-sm-8 col-xs-12"
-                                     ng-class="{ 'error' : (addnewForm.lastname.$invalid && !addnewForm.lastname.$pristine)  || (addnewForm.$submitted && addnewForm.lastname.$error.required)  }">
+                                     ng-class="{ 'error' : (addnewForm.lastname.$invalid && !addnewForm.lastname.$pristine && addnewForm.lastname.$touched)  || (addnewForm.$submitted && addnewForm.lastname.$error.required)  }">
                                     <label for="name">last Name</label>
                                     <input id="name"
-                                    name ="shipping.lastname"
+                                    name ="lastname"
                                     type="text"
                                     class="form-control"
                                     placeholder="Enter Full Name"
                                     ng-model="shipping.lastName"
                                     ng-minlength="2"
                                     required>
-                                     <span ng-message="addnewForm.lastname.$error.minlength && !addnewForm.lastname.$pristine" ng-show="addnewForm.lastname.$invalid && addnewForm.lastname.$touched"  class="error">last Name is too short</span>
-                                      <div ng-show="addnewForm.$submitted">
+                                      
+                                     <div ng-show="addnewForm.$submitted">
                                     <span ng-show="addnewForm.lastname.$error.required" class="error">Please Enter your Last Name.</span>
-                                    </div>
+                                    </div>   
+                                     <span ng-message="addnewForm.lastname.$error.minlength && !addnewForm.lastname.$pristine" ng-show="addnewForm.lastname.$invalid && addnewForm.lastname.$touched"  class="error">last Name is too short</span>
+                                      
                                 </div>
 
 
                                 <div class="form-group nopadding col-xs-12"
-                                     ng-class="{ 'error' : (addnewForm.address.$invalid && !addnewForm.address.$pristine)  || (addnewForm.$submitted && addnewForm.address.$error.required)  }">
+                                     ng-class="{ 'error' : (addnewForm.address.$invalid && !addnewForm.address.$pristine && addnewForm.address.$touched)  || (addnewForm.$submitted && addnewForm.address.$error.required)  }">
                                     <label for="Address">Address</label>
 
                                     <textarea id="Address"
                                     name="address"
                                     ng-model="shipping.address1"
                                     class="form-control"
-                                    ng-minlength="3"
+                                    ng-minlength="10"
                                     required>
                                     </textarea>
 
-                                    <span ng-message="addnewForm.address.$error.minlength && !addnewForm.address.$pristine" ng-show="addnewForm.address.$invalid && addnewForm.address.$touched"  class="error">Address is too short.</span>
-                                    <div ng-show="addnewForm.$submitted || addnewForm.address.$touched">
+                                    <div ng-show="addnewForm.$submitted">
                                     <span ng-show="addnewForm.address.$error.required" class="error">Tell us your Address.</span>
-                                </div>
+                                    </div>
+                                    <span ng-message="addnewForm.address.$error.minlength && !addnewForm.address.$pristine" ng-show="addnewForm.address.$invalid && addnewForm.address.$touched"  class="error">Address is too short.</span>
+
+                                   
+                                     
 
                                 </div>
 
 
                                 <div class="col-xs-12 col-sm-4 nopadding" >
                                     <div class="form-group"
-                                     ng-class="{ 'error' : (addnewForm.pincode.$invalid && !addnewForm.pincode.$pristine)  || (addnewForm.$submitted && addnewForm.pincode.$error.required)  }">
+                                     ng-class="{ 'error' : (addnewForm.pincode.$invalid && !addnewForm.pincode.$pristine && addnewForm.pincode.$touched)  || (addnewForm.$submitted && addnewForm.pincode.$error.required)  }">
                                         <label for="Pincode">Pincode</label>
                                         <input id="Pincode"
                                         name="pincode"
                                         type="text"
                                         class="form-control"
                                         placeholder="Pincode"
-                                        ng-minlength="4"
                                         ng-maxlength="6"
+                                        ng-minlength="3"
                                         ng-model="shipping.pincode"
-                                    ng-blur="changePincode(shipping.pincode)"
-                                required>
-                                        <div ng-show="addnewForm.pincode.$error.minlength && !addnewForm.pincode.$pristine"  class="error">
+                                        ng-blur="changePincode(shipping.pincode)"
+                                        required>
 
-                                        <span ng-message="addnewForm.pincode.$invalid && addnewForm.pincode.$touched" >Pincode is too short.</span>
+                                         <div ng-show="addnewForm.pincode.$error.minlength && !addnewForm.pincode.$pristine"  class="error">
+
+                                        <span ng-message="addnewForm.pincode.$invalid" ng-show="addnewForm.pincode.$touched" >Pincode is too short.</span>
                                         </div>
 
                                         <div ng-show="addnewForm.pincode.$error.maxlength && !addnewForm.pincode.$pristine" class="error">
 
-                                        <span ng-message="addnewForm.pincode.$invalid && addnewForm.pincode.$touched"   >Pincode number is too long .</span>
+                                        <span ng-message="addnewForm.pincode.$invalid" ng-show="addnewForm.pincode.$touched"   >Pincode number is too long .</span>
                                         </div>
 
                                         <div ng-show="addnewForm.$submitted ">
                                         <span ng-show="addnewForm.pincode.$error.required" class="error">Tell us your Pincode.</span>
                                         </div>
+                                   
+                                        
                                     </div>
 
                                 </div>
@@ -643,7 +654,7 @@
                                 </div>
 
                                 <div class="form-group nopadding col-xs-12"
-                                ng-class="{ 'error' : (addnewForm.state.$invalid && !addnewForm.state.$pristine) || (addnewForm.$submitted && addnewForm.state.$error.required) }">
+                                ng-class="{ 'error' : (addnewForm.state.$invalid && !addnewForm.state.$pristine && addnewForm.state.$touched) || (addnewForm.$submitted && addnewForm.state.$error.required) }">
                                     <label for="State">State</label>
                                         <input type="text"
                                           ng-model="shipping.state"
@@ -659,7 +670,7 @@
 
 
                                 <div class="form-group col-sm-8 col-xs-12 nopadding"
-                               ng-class="{ 'error' : (addnewForm.phonenumber.$invalid && !addnewForm.phonenumber.$pristine)  || (addnewForm.$submitted && addnewForm.phonenumber.$error.required)  }">
+                               ng-class="{ 'error' : (addnewForm.phonenumber.$invalid && !addnewForm.phonenumber.$pristine && addnewForm.phonenumber.$touched)  || (addnewForm.$submitted && addnewForm.phonenumber.$error.required)  }">
                                         <label for="Number">Phone Number</label>
                                         <div class="input-group">
                                         <div class="input-group-addon">+91</div>
@@ -674,19 +685,21 @@
                                         ng-required="true">
 
                                         </div>
-                                        <div ng-show="addnewForm.phonenumber.$error.minlength && !addnewForm.phonenumber.$pristine"  class="error">
+                                            <div ng-show="addnewForm.phonenumber.$error.minlength && !addnewForm.phonenumber.$pristine"  class="error">
 
-                                        <span ng-message="addnewForm.phonenumber.$invalid && addnewForm.phonenumber.$touched" >phonenumber is too short.</span>
+                                        <span ng-message="addnewForm.phonenumber.$invalid" ng-show="addnewForm.phonenumber.$touched" >phonenumber is too short.</span>
                                         </div>
 
                                         <div ng-show="addnewForm.phonenumber.$error.maxlength && !addnewForm.phonenumber.$pristine" class="error">
 
-                                        <span ng-message="addnewForm.phonenumber.$invalid && addnewForm.phonenumber.$touched"   >phonenumber number is too long .</span>
+                                        <span ng-message="addnewForm.phonenumber.$invalid" ng-show="addnewForm.phonenumber.$touched"   >phonenumber number is too long .</span>
                                         </div>
 
                                         <div ng-show="addnewForm.$submitted ">
                                         <span ng-show="addnewForm.phonenumber.$error.required" class="error">Tell us your phonenumber.</span>
                                         </div>
+
+                                        
                                 </div>
 
 
@@ -745,7 +758,7 @@
 
 
                                 <div class="form-group nopadding col-sm-8 col-xs-12"
-                                    ng-class="{ 'error' : (BillingADDForm.firstname.$invalid && !BillingADDForm.firstname.$pristine)  || (BillingADDForm.$submitted && BillingADDForm.firstname.$error.required)  }">
+                                    ng-class="{ 'error' : (BillingADDForm.firstname.$invalid && !BillingADDForm.firstname.$pristine && BillingADDForm.firstname.$touched)  || (BillingADDForm.$submitted && BillingADDForm.firstname.$error.required)  }">
                                     <label for="name">First Name</label>
                                     <input id="name"
                                     name ="firstname"
@@ -755,14 +768,15 @@
                                     ng-model="addNewBilling.firstName"
                                     ng-minlength="2"
                                     required>
-                                     <span  ng-message="BillingADDForm.firstname.$error.minlength && !BillingADDForm.firstname.$pristine" ng-show="BillingADDForm.firstname.$invalid && BillingADDForm.firstname.$touched"  class="error">First Name is too short</span>
-                                    <div ng-show="BillingADDForm.$submitted">
+                                      <div ng-show="BillingADDForm.$submitted">
                                     <span ng-show="BillingADDForm.firstname.$error.required" class="error">Please Enter your First Name.</span>
                                     </div>
+                                     <span  ng-message="BillingADDForm.firstname.$error.minlength && !BillingADDForm.firstname.$pristine" ng-show="BillingADDForm.firstname.$invalid && BillingADDForm.firstname.$touched"  class="error">First Name is too short</span>
+                                  
                                 </div>
 
                                 <div class="form-group nopadding col-sm-8 col-xs-12"
-                                     ng-class="{ 'error' : (BillingADDForm.lastname.$invalid && !BillingADDForm.lastname.$pristine)  || (BillingADDForm.$submitted && BillingADDForm.lastname.$error.required)  }">
+                                     ng-class="{ 'error' : (BillingADDForm.lastname.$invalid && !BillingADDForm.lastname.$pristine && BillingADDForm.lastname.$touched)  || (BillingADDForm.$submitted && BillingADDForm.lastname.$error.required)  }">
                                     <label for="name">last Name</label>
                                     <input id="name"
                                     name ="lastname"
@@ -772,15 +786,16 @@
                                     ng-model="addNewBilling.lastName"
                                     ng-minlength="2"
                                     required>
-                                     <span ng-message="BillingADDForm.lastname.$error.minlength && !BillingADDForm.lastname.$pristine" ng-show="BillingADDForm.lastname.$invalid && BillingADDForm.lastname.$touched"  class="error">last Name is too short</span>
-                                      <div ng-show="BillingADDForm.$submitted">
+                                    <div ng-show="BillingADDForm.$submitted">
                                     <span ng-show="BillingADDForm.lastname.$error.required" class="error">Please Enter your Last Name.</span>
                                     </div>
+                                     <span ng-message="BillingADDForm.lastname.$error.minlength && !BillingADDForm.lastname.$pristine" ng-show="BillingADDForm.lastname.$invalid && BillingADDForm.lastname.$touched"  class="error">last Name is too short</span>
+                                      
                                 </div>
 
 
                                 <div class="form-group nopadding col-xs-12"
-                                     ng-class="{ 'error' : (BillingADDForm.address.$invalid && !BillingADDForm.address.$pristine)  || (BillingADDForm.$submitted && BillingADDForm.address.$error.required)  }">
+                                     ng-class="{ 'error' : (BillingADDForm.address.$invalid && !BillingADDForm.address.$pristine && BillingADDForm.address.$touched)  || (BillingADDForm.$submitted && BillingADDForm.address.$error.required)  }">
                                     <label for="Address">Address</label>
 
                                     <textarea id="Address"
@@ -801,7 +816,7 @@
 
                                 <div class="col-xs-12 col-sm-4 nopadding" >
                                     <div class="form-group"
-                                     ng-class="{ 'error' : (BillingADDForm.pincode.$invalid && !BillingADDForm.pincode.$pristine)  || (BillingADDForm.$submitted && BillingADDForm.pincode.$error.required)  }">
+                                     ng-class="{ 'error' : (BillingADDForm.pincode.$invalid && !BillingADDForm.pincode.$pristine && BillingADDForm.pincode.$touched)  || (BillingADDForm.$submitted && BillingADDForm.pincode.$error.required)  }">
                                         <label for="Pincode">Pincode</label>
                                         <input id="Pincode"
                                         name="pincode"
@@ -815,12 +830,12 @@
                                                required>
                                         <div ng-show="BillingADDForm.pincode.$error.minlength && !BillingADDForm.pincode.$pristine"  class="error">
 
-                                        <span ng-message="BillingADDForm.pincode.$invalid && BillingADDForm.pincode.$touched" >Pincode is too short.</span>
+                                        <span ng-message="BillingADDForm.pincode.$invalid" ng-show="BillingADDForm.pincode.$touched" >Pincode is too short.</span>
                                         </div>
 
                                         <div ng-show="BillingADDForm.pincode.$error.maxlength && !BillingADDForm.pincode.$pristine" class="error">
 
-                                        <span ng-message="BillingADDForm.pincode.$invalid && BillingADDForm.pincode.$touched"   >Pincode number is too long .</span>
+                                        <span ng-message="BillingADDForm.pincode.$invalid" ng-show="BillingADDForm.pincode.$touched"   >Pincode number is too long .</span>
                                         </div>
 
                                         <div ng-show="BillingADDForm.$submitted ">
@@ -859,7 +874,7 @@
                                     </div>
 
                                     <div class="form-group nopadding col-xs-12"
-                                         ng-class="{ 'error' : (addnewForm.state.$invalid && !addnewForm.state.$pristine) || (addnewForm.$submitted && addnewForm.state.$error.required) }">
+                                         ng-class="{ 'error' : (addnewForm.state.$invalid && !addnewForm.state.$pristine ) || (addnewForm.$submitted && addnewForm.state.$error.required) }">
                                         <label for="State">State</label>
                                         <input type="text"
                                                ng-model="addNewBilling.state"
@@ -876,7 +891,7 @@
 
 
                                 <div class="form-group col-sm-8 col-xs-12 nopadding"
-                               ng-class="{ 'error' : (BillingADDForm.phonenumber.$invalid && !BillingADDForm.phonenumber.$pristine)  || (BillingADDForm.$submitted && BillingADDForm.phonenumber.$error.required)  }">
+                               ng-class="{ 'error' : (BillingADDForm.phonenumber.$invalid && !BillingADDForm.phonenumber.$pristine && BillingADDForm.address.$touched)  || (BillingADDForm.$submitted && BillingADDForm.phonenumber.$error.required)  }">
                                         <label for="Number">Phone Number</label>
                                         <div class="input-group">
                                         <div class="input-group-addon">+91</div>
@@ -893,12 +908,12 @@
                                         </div>
                                         <div ng-show="BillingADDForm.phonenumber.$error.minlength && !BillingADDForm.phonenumber.$pristine"  class="error">
 
-                                        <span ng-message="BillingADDForm.phonenumber.$invalid && BillingADDForm.phonenumber.$touched" >phonenumber is too short.</span>
+                                        <span ng-message="BillingADDForm.phonenumber.$invalid" ng-show="BillingADDForm.phonenumber.$touched" >phonenumber is too short.</span>
                                         </div>
 
                                         <div ng-show="BillingADDForm.phonenumber.$error.maxlength && !BillingADDForm.phonenumber.$pristine" class="error">
 
-                                        <span ng-message="BillingADDForm.phonenumber.$invalid && BillingADDForm.phonenumber.$touched"   >phonenumber number is too long .</span>
+                                        <span ng-message="BillingADDForm.phonenumber.$invalid" ng-show="BillingADDForm.phonenumber.$touched"   >phonenumber number is too long .</span>
                                         </div>
 
                                         <div ng-show="BillingADDForm.$submitted ">
