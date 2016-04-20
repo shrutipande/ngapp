@@ -273,7 +273,7 @@ define(['./index'], function (controllers) {
 			$scope.subTotal = response.d.sub_total;
 			$scope.totalDiscount = response.d.totol_discount;
 			$scope.shippingAmount = response.d.shipping_amount;
-			if(response.d.coupon_code.length) {
+			if(response.d.coupon_code && response.d.coupon_code.length) {
 				$scope.successCoupon = true;
 				$scope.couponCode = response.d.coupon_code;
 				$scope.discount = (1 - ($scope.grandTotal / $scope.subTotal)) * 100;

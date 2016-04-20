@@ -55,7 +55,7 @@
         <div class="container">
             <!--// login Container Start -->
             <div class="col-xs-12 nopadding shippingContainer" ng-class="{'hidden-xs': mform }">
-                <h4 role="headding">SELECT SHIPPING ADDRESS </h4> 
+                <h4 role="headding">SELECT SHIPPING ADDRESS </h4>
                 <!--// -->
                 <div class="row" ng-show="addressExists">
                     <div class="col-xs-12 col-sm-6 col-md-4 fadeIn enter-fadeIn exit-fadeOut speed-0 stagger-3"  ng-repeat="address in addresses" ng-click="checkSameOrNot(address.entity_id);" ng-class="{'hideAddressCard': address.entity_id !== shippingID && selectedShippingID !== null}">
@@ -78,7 +78,7 @@
 
 
 
-                
+
                     <!--// Edit Shipping Address Start -->
                     <div class="col-xs-12 add-new-shipping hide hidden-xs-" >
                         <!--/Desktop Edit Form/ -->
@@ -91,7 +91,7 @@
                                             <a href="#new-address">Edit Address --des </a>
                                         </h4>
 
-                                            <div class="form-group nopadding col-sm-8 col-xs-12" 
+                                            <div class="form-group nopadding col-sm-8 col-xs-12"
                                              ng-class="{ 'error' : DeseditaddrForm.country.$invalid && !DeseditaddrForm.country.$pristine }">
 
                                                 <label>Country:
@@ -113,13 +113,13 @@
                                             ng-class="{ 'error' : DeseditaddrForm.firstname.$invalid && !DeseditaddrForm.firstname.$pristine }">
 
                                                 <label for="name">First Name</label>
-                                                <input id="name" 
-                                                type="text" 
+                                                <input id="name"
+                                                type="text"
                                                 class="form-control"
-                                                name="firstname" 
+                                                name="firstname"
                                                 ng-model="editAddr.firstname"
                                                 ng-minlength="2"
-                                                placeholder="Enter First Name" 
+                                                placeholder="Enter First Name"
                                                 required>
                                                 {{editAdd.firstname}}
 
@@ -132,10 +132,10 @@
                                             ng-class="{ 'error' : DeseditaddrForm.lastname.$invalid && !DeseditaddrForm.lastname.$pristine }">
 
                                                 <label for="name">Last Name</label>
-                                                <input id="name" 
-                                                type="text" 
+                                                <input id="name"
+                                                type="text"
                                                 class="form-control"
-                                                name="lastname" 
+                                                name="lastname"
                                                 ng-model="editAddr.lastname"
                                                 ng-minlength="2"
                                                 placeholder="Enter Lastname">
@@ -151,7 +151,7 @@
                                                 <textarea id="Address"
                                                 ng-model="editAddr.street"
                                                 name="address"
-                                                ng-minlength="10" 
+                                                ng-minlength="10"
                                                 class="form-control">
                                                 </textarea>
                                                 <span ng-show="DeseditaddrForm.address.$error.minlength" class="error">Address is too short.</span>
@@ -159,14 +159,14 @@
 
 
                                             <div class="col-xs-12 col-sm-4 nopadding">
-                                            
-                                                <div class="form-group" 
+
+                                                <div class="form-group"
                                                 ng-class="{ 'error' : DeseditaddrForm.pincode.$invalid && !DeseditaddrForm.pincode.$pristine }">
 
                                                     <label for="Pincode">Pincode</label>
-                                                    <input id="Pincode" 
-                                                    type="text" 
-                                                    class="form-control" 
+                                                    <input id="Pincode"
+                                                    type="text"
+                                                    class="form-control"
                                                     name="pincode"
                                                     ng-model="editAddr.postcode"
                                                     ng-minlength="4"
@@ -179,26 +179,26 @@
 
 
                                             <div class="col-xs-12 col-sm-7 m-padding">
-                                                <div class="form-group" 
+                                                <div class="form-group"
                                                 ng-class="{ 'error' : DeseditaddrForm.city.$invalid && !DeseditaddrForm.city.$pristine }">
                                                     <label for="City">City</label>
-                                                    <input id="City" 
-                                                    type="text" 
+                                                    <input id="City"
+                                                    type="text"
                                                     name="city"
                                                     ng-model="editAddr.city"
-                                                    class="form-control" 
+                                                    class="form-control"
                                                     placeholder="Select City">
 
                                                 </div>
                                             </div>
 
 
-                                            <div class="form-group  col-xs-12 nopadding" 
+                                            <div class="form-group  col-xs-12 nopadding"
                                              ng-class="{ 'error' : MobeditaddrForm.state.$invalid && !MobeditaddrForm.state.$pristine }">
                                                 <label for="State">State</label>
-                                                <input id="State" 
-                                                type="text" 
-                                                class="form-control" 
+                                                <input id="State"
+                                                type="text"
+                                                class="form-control"
                                                 name="state"
                                                 ng-model="editAddr.region"
                                                 placeholder="Select State">
@@ -207,9 +207,9 @@
                                             <div class="form-group col-sm-8 col-xs-12 nopadding"
                                              ng-class="{ 'error' : MobeditaddrForm.country.$invalid && !MobeditaddrForm.country.$pristine }">
                                                 <label for="Country">Country</label>
-                                                <input id="Country" 
-                                                type="text" 
-                                                class="form-control" 
+                                                <input id="Country"
+                                                type="text"
+                                                class="form-control"
                                                 name="country"
                                                 ng-model="editAddr.city"
                                                 placeholder="Select Country">
@@ -220,16 +220,16 @@
                                                 <label for="Number">Phone Number</label>
                                                 <div class="input-group">
                                                     <div class="input-group-addon">+91</div>
-                                                    <input type="text" 
-                                                    class="form-control" 
-                                                    id="Number" 
+                                                    <input type="text"
+                                                    class="form-control"
+                                                    id="Number"
                                                     name="phonenumbar"
                                                      ng-model="editAddr.telephone"
                                                     ng-minlength="10"
                                                     ng-maxlength="10"
                                                     ng-required="true"
                                                     placeholder="Phone Number">
-                                                    
+
                                                 </div>
                                                 <span ng-show="DeseditaddrForm.phonenumbar.$error.minlength" class="error">Phone Number is too short.</span>
                                                 <span ng-show="DeseditaddrForm.phonenumbar.$error.maxlength" class="error">Phone Number is too long .</span>
@@ -241,7 +241,7 @@
                                             <button type="submit" class="btn btn-default outline-btn"ng-click="editCancel();
                                             " >CANCEL</button>
                                             </div>
-                                            
+
                                         </form>
                                     </div>
                                 </div>
@@ -262,16 +262,16 @@
                                             <a href="#new-address">Edit Address</a>
                                         </h4>
 
-                                            <div class="form-group nopadding col-sm-8 col-xs-12" 
+                                            <div class="form-group nopadding col-sm-8 col-xs-12"
                                              ng-class="{ 'error' : DeseditaddrForm.country.$invalid && !DeseditaddrForm.country.$pristine }">
 
-                                                <label>Country: 
-                                                    <span role="country">India</span> 
+                                                <label>Country:
+                                                    <span role="country">India</span>
                                                     <a href="#change-country">Change</a>
                                                 </label>
-                                                
-                                                <select class="form-control" 
-                                                id="change-country" 
+
+                                                <select class="form-control"
+                                                id="change-country"
                                                 name="country"
                                                 ng-model="editAddr.country"
                                                 ng-option="item as item in country"
@@ -284,13 +284,13 @@
                                             ng-class="{ 'error' : DeseditaddrForm.firstname.$invalid && !DeseditaddrForm.firstname.$pristine }">
 
                                                 <label for="name">First Name</label>
-                                                <input id="name" 
-                                                type="text" 
+                                                <input id="name"
+                                                type="text"
                                                 class="form-control"
-                                                name="firstname" 
+                                                name="firstname"
                                                 ng-model="editAddr.firstname"
                                                 ng-minlength="2"
-                                                placeholder="Enter First Name" 
+                                                placeholder="Enter First Name"
                                                 required>
                                                 {{editAdd.firstname}}
 
@@ -303,10 +303,10 @@
                                             ng-class="{ 'error' : DeseditaddrForm.lastname.$invalid && !DeseditaddrForm.lastname.$pristine }">
 
                                                 <label for="name">Last Name</label>
-                                                <input id="name" 
-                                                type="text" 
+                                                <input id="name"
+                                                type="text"
                                                 class="form-control"
-                                                name="lastname" 
+                                                name="lastname"
                                                 ng-model="editAddr.lastname"
                                                 ng-minlength="2"
                                                 placeholder="Enter Lastname">
@@ -322,7 +322,7 @@
                                                 <textarea id="Address"
                                                 ng-model="editAddr.street"
                                                 name="address"
-                                                ng-minlength="10" 
+                                                ng-minlength="10"
                                                 class="form-control">
                                                 </textarea>
                                                 <span ng-show="DeseditaddrForm.address.$error.minlength" class="error">Address is too short.</span>
@@ -330,14 +330,14 @@
 
 
                                             <div class="col-xs-12 col-sm-4 nopadding">
-                                            
-                                                <div class="form-group" 
+
+                                                <div class="form-group"
                                                 ng-class="{ 'error' : DeseditaddrForm.pincode.$invalid && !DeseditaddrForm.pincode.$pristine }">
 
                                                     <label for="Pincode">Pincode</label>
-                                                    <input id="Pincode" 
-                                                    type="text" 
-                                                    class="form-control" 
+                                                    <input id="Pincode"
+                                                    type="text"
+                                                    class="form-control"
                                                     name="pincode"
                                                     ng-model="editAddr.postcode"
                                                     ng-minlength="4"
@@ -351,26 +351,26 @@
 
 
                                             <div class="col-xs-12 col-sm-7 m-padding">
-                                                <div class="form-group" 
+                                                <div class="form-group"
                                                 ng-class="{ 'error' : DeseditaddrForm.city.$invalid && !DeseditaddrForm.city.$pristine }">
                                                     <label for="City">City</label>
-                                                    <input id="City" 
-                                                    type="text" 
+                                                    <input id="City"
+                                                    type="text"
                                                     name="city"
                                                     ng-model="editAddr.city"
-                                                    class="form-control" 
+                                                    class="form-control"
                                                     placeholder="Select City">
 
                                                 </div>
                                             </div>
 
 
-                                            <div class="form-group  col-xs-12 nopadding" 
+                                            <div class="form-group  col-xs-12 nopadding"
                                              ng-class="{ 'error' : MobeditaddrForm.state.$invalid && !MobeditaddrForm.state.$pristine }">
                                                 <label for="State">State</label>
-                                                <input id="State" 
-                                                type="text" 
-                                                class="form-control" 
+                                                <input id="State"
+                                                type="text"
+                                                class="form-control"
                                                 name="state"
                                                 ng-model="editAddr.region"
                                                 placeholder="Select State">
@@ -379,9 +379,9 @@
                                             <div class="form-group col-sm-8 col-xs-12 nopadding"
                                              ng-class="{ 'error' : MobeditaddrForm.country.$invalid && !MobeditaddrForm.country.$pristine }">
                                                 <label for="Country">Country</label>
-                                                <input id="Country" 
-                                                type="text" 
-                                                class="form-control" 
+                                                <input id="Country"
+                                                type="text"
+                                                class="form-control"
                                                 name="country"
                                                 ng-model="editAddr.country"
                                                 placeholder="Select Country">
@@ -392,16 +392,16 @@
                                                 <label for="Number">Phone Number</label>
                                                 <div class="input-group">
                                                     <div class="input-group-addon">+91</div>
-                                                    <input type="text" 
-                                                    class="form-control" 
-                                                    id="Number" 
+                                                    <input type="text"
+                                                    class="form-control"
+                                                    id="Number"
                                                     name="phonenumbar"
                                                      ng-model="editAddr.telephone"
                                                     ng-minlength="10"
                                                     ng-maxlength="10"
                                                     ng-required="true"
                                                     placeholder="Phone Number">
-                                                    
+
                                                 </div>
                                                 <span ng-show="DeseditaddrForm.phonenumbar.$error.minlength" class="error">Phone Number is too short.</span>
                                                 <span ng-show="DeseditaddrForm.phonenumbar.$error.maxlength" class="error">Phone Number is too long .</span>
@@ -413,7 +413,7 @@
                                             <button type="submit" class="btn btn-default outline-btn" ng-click="formclose();"
                                             >CANCEL</button>
                                             </div>
-                                            
+
                                         </form>
                             </div>
                         </div>
@@ -459,7 +459,7 @@
                 </div>
                 </div>
 
-                    
+
 
                 <div class="col-xs-12" style="padding-bottom:20px;" ng-hide="displayAddress">
 
@@ -505,10 +505,10 @@
 
 
                                 <form role="form" name="addnewForm" ng-submit="addnewsubmit(chkStatusBilling);" novalidate>
-                                <div class="form-group nopadding col-sm-8 col-xs-12" 
+                                <div class="form-group nopadding col-sm-8 col-xs-12"
                                 ng-class="{ 'error' : (addnewForm.state.$invalid && !addnewForm.state.$pristine)  || (addnewForm.$submitted && addnewForm.state.$error.required)  }" >
                                     <label>
-                                        Country: 
+                                        Country:
                                         <span role="country">{{addnewcountry.country_name}}</span>
                                          <a href="javascript:void(0)" ng-click="changecountry = true"><span ng-hide="changecountry">Change</span></a>
                                     </label>
@@ -517,24 +517,24 @@
                                         name="state"
                                                 ng-options="item as item.country_name for item in countries track by item.country_code"
                                         required >
-                                        
+
                                         <option value>Select Country</option>
                                           </select>
                                     </div>
 
                                     <span ng-show="addnewForm.state.$error.minlength" class="error">Username is too short.</span>
                                     <span class="error" ng-show="addnewForm.$submitted && addnewForm.state.$error.required">Please Select State</span>
-                                
+
                                 </div>
 
-                                <div class="form-group nopadding col-sm-8 col-xs-12" 
+                                <div class="form-group nopadding col-sm-8 col-xs-12"
                                     ng-class="{ 'error' : (addnewForm.firstname.$invalid && !addnewForm.firstname.$pristine)  || (addnewForm.$submitted && addnewForm.firstname.$error.required)  }">
                                     <label for="name">First Name</label>
-                                    <input id="name" 
-                                    name ="firstname" 
-                                    type="text" 
-                                    class="form-control" 
-                                    placeholder="Enter Full Name" 
+                                    <input id="name"
+                                    name ="firstname"
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="Enter Full Name"
                                     ng-model="shipping.firstName"
                                     ng-minlength="2"
                                     required>
@@ -545,14 +545,14 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group nopadding col-sm-8 col-xs-12" 
+                                <div class="form-group nopadding col-sm-8 col-xs-12"
                                      ng-class="{ 'error' : (addnewForm.lastname.$invalid && !addnewForm.lastname.$pristine)  || (addnewForm.$submitted && addnewForm.lastname.$error.required)  }">
                                     <label for="name">last Name</label>
-                                    <input id="name" 
+                                    <input id="name"
                                     name ="shipping.lastname"
-                                    type="text" 
-                                    class="form-control" 
-                                    placeholder="Enter Full Name" 
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="Enter Full Name"
                                     ng-model="shipping.lastName"
                                     ng-minlength="2"
                                     required>
@@ -563,14 +563,14 @@
                                 </div>
 
 
-                                <div class="form-group nopadding col-xs-12" 
+                                <div class="form-group nopadding col-xs-12"
                                      ng-class="{ 'error' : (addnewForm.address.$invalid && !addnewForm.address.$pristine)  || (addnewForm.$submitted && addnewForm.address.$error.required)  }">
                                     <label for="Address">Address</label>
-                                    
-                                    <textarea id="Address" 
-                                    name="address" 
+
+                                    <textarea id="Address"
+                                    name="address"
                                     ng-model="shipping.address1"
-                                    class="form-control" 
+                                    class="form-control"
                                     ng-minlength="3"
                                     required>
                                     </textarea>
@@ -587,13 +587,13 @@
                                     <div class="form-group"
                                      ng-class="{ 'error' : (addnewForm.pincode.$invalid && !addnewForm.pincode.$pristine)  || (addnewForm.$submitted && addnewForm.pincode.$error.required)  }">
                                         <label for="Pincode">Pincode</label>
-                                        <input id="Pincode" 
-                                        name="pincode" 
-                                        type="text" 
-                                        class="form-control" 
-                                        placeholder="Pincode"  
-                                        ng-minlength="4" 
-                                        ng-maxlength="6" 
+                                        <input id="Pincode"
+                                        name="pincode"
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Pincode"
+                                        ng-minlength="4"
+                                        ng-maxlength="6"
                                         ng-model="shipping.pincode"
                                     ng-blur="changePincode(shipping.pincode)"
                                 required>
@@ -619,24 +619,24 @@
                                     <div class="form-group">
                                         <label for="City">City</label>
                                         {{addnew.city}}
-                                        
+
 
                                           <input type="text"
                                           ng-model="shipping.city"
                                            name="city"
-                                           required 
-                                           class="form-control" 
+                                           required
+                                           class="form-control"
                                             placeholder="city"
                                           >
-                                            <!-- <select ng-model="addnew.city" 
-                                            name="city"  
-                                            required 
+                                            <!-- <select ng-model="addnew.city"
+                                            name="city"
+                                            required
                                             ng-options="obj for obj in city track by obj.value">
                                             <option value="0">Select City</option>
-                                           
-                                                
+
+
                                             </select> -->
-                                       
+
 
                                 <span class="error" ng-show="addnewForm.$submitted && addnewForm.city.$error.required">Please Select State</span>
                                     </div>
@@ -648,31 +648,31 @@
                                         <input type="text"
                                           ng-model="shipping.state"
                                            name="state"
-                                           required 
-                                           class="form-control" 
+                                           required
+                                           class="form-control"
                                             placeholder="state"
                                           >
                                         <span ng-show="addnewForm.state.$error.minlength" class="error">Username is too short.</span>
                                     <span class="error" ng-show="addnewForm.$submitted && addnewForm.state.$error.required">Please Select State</span>
-                                
+
                                 </div>
 
 
-                                <div class="form-group col-sm-8 col-xs-12 nopadding" 
+                                <div class="form-group col-sm-8 col-xs-12 nopadding"
                                ng-class="{ 'error' : (addnewForm.phonenumber.$invalid && !addnewForm.phonenumber.$pristine)  || (addnewForm.$submitted && addnewForm.phonenumber.$error.required)  }">
                                         <label for="Number">Phone Number</label>
-                                        <div class="input-group"> 
+                                        <div class="input-group">
                                         <div class="input-group-addon">+91</div>
-                                        <input type="number" 
-                                        name="phonenumber" 
-                                        class="form-control" 
-                                        id="Number" 
-                                        placeholder="Phone Number" 
+                                        <input type="number"
+                                        name="phonenumber"
+                                        class="form-control"
+                                        id="Number"
+                                        placeholder="Phone Number"
                                         ng-model="shipping.phoneNo"
-                                        ng-minlength="10" 
-                                        ng-maxlength="10" 
+                                        ng-minlength="10"
+                                        ng-maxlength="10"
                                         ng-required="true">
-                                        
+
                                         </div>
                                         <div ng-show="addnewForm.phonenumber.$error.minlength && !addnewForm.phonenumber.$pristine"  class="error">
 
@@ -689,38 +689,38 @@
                                         </div>
                                 </div>
 
-                                
+
                                 <div class="form-group nopadding col-xs-12">
                             <!-- <input class="btn btn-newStyle btn-newStyleActive Width60" type="button" value="SAVE & CONTINUE"> -->
                             <button type="submit" class="btn btn-newStyle btn-newStyleActive Width60" ng-hide = "!addBilingaddreshideshow"> SAVE & CONTINUE</button>
 
                         </div>
 
-                       
+
                             </form>
 
                                 <div class="form-group nopadding col-xs-12" ng-hide="!addBilingaddreshideshow">
                                         <div class="checkbox col-xs-12 nopadding margin0">
                                             <label>
-                                                
-                                                <input type="checkbox" 
-                                                id="Guest"  
-                                                ng-model="chkStatusBilling" 
-                                                ng-change="checkStatusBilling()" 
+
+                                                <input type="checkbox"
+                                                id="Guest"
+                                                ng-model="chkStatusBilling"
+                                                ng-change="checkStatusBilling()"
                                                 checked >
                                                 <span for="Guest"></span> This is also my Billing Address</label>
                                         </div>
                                     </div>
                             </div>
 
-                        <div ng-hide="addBilingaddreshideshow " >      
+                        <div ng-hide="addBilingaddreshideshow " >
                             <hr class="line-divider" />
                             <div class="col-xs-12 nopadding">
                                 <h4 role="headding">ADD BILLING ADDRESS</h4>
                             </div>
                             <div class="col-xs-12 col-sm-7 nopadding">
                                 <form role="form" name="BillingADDForm" ng-submit="addnewsubmitBilling(chkStatusBilling);" novalidate>
-                                <div class="form-group nopadding col-sm-8 col-xs-12" 
+                                <div class="form-group nopadding col-sm-8 col-xs-12"
                                 ng-class="{ 'error' : (BillingADDForm.state.$invalid && !BillingADDForm.state.$pristine)  || (BillingADDForm.$submitted && BillingADDForm.state.$error.required)  }">
                                     <label>
                                         Country:
@@ -740,18 +740,18 @@
 
                                     <span ng-show="BillingADDForm.state.$error.minlength" class="error">Username is too short.</span>
                                     <span class="error" ng-show="BillingADDForm.$submitted && BillingADDForm.state.$error.required">Please Select State</span>
-                                
+
                                 </div>
 
 
-                                <div class="form-group nopadding col-sm-8 col-xs-12" 
+                                <div class="form-group nopadding col-sm-8 col-xs-12"
                                     ng-class="{ 'error' : (BillingADDForm.firstname.$invalid && !BillingADDForm.firstname.$pristine)  || (BillingADDForm.$submitted && BillingADDForm.firstname.$error.required)  }">
                                     <label for="name">First Name</label>
-                                    <input id="name" 
-                                    name ="firstname" 
-                                    type="text" 
-                                    class="form-control" 
-                                    placeholder="Enter Full Name" 
+                                    <input id="name"
+                                    name ="firstname"
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="Enter Full Name"
                                     ng-model="addNewBilling.firstName"
                                     ng-minlength="2"
                                     required>
@@ -761,14 +761,14 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group nopadding col-sm-8 col-xs-12" 
+                                <div class="form-group nopadding col-sm-8 col-xs-12"
                                      ng-class="{ 'error' : (BillingADDForm.lastname.$invalid && !BillingADDForm.lastname.$pristine)  || (BillingADDForm.$submitted && BillingADDForm.lastname.$error.required)  }">
                                     <label for="name">last Name</label>
-                                    <input id="name" 
-                                    name ="lastname" 
-                                    type="text" 
-                                    class="form-control" 
-                                    placeholder="Enter Full Name" 
+                                    <input id="name"
+                                    name ="lastname"
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="Enter Full Name"
                                     ng-model="addNewBilling.lastName"
                                     ng-minlength="2"
                                     required>
@@ -779,14 +779,14 @@
                                 </div>
 
 
-                                <div class="form-group nopadding col-xs-12" 
+                                <div class="form-group nopadding col-xs-12"
                                      ng-class="{ 'error' : (BillingADDForm.address.$invalid && !BillingADDForm.address.$pristine)  || (BillingADDForm.$submitted && BillingADDForm.address.$error.required)  }">
                                     <label for="Address">Address</label>
-                                    
-                                    <textarea id="Address" 
-                                    name="address" 
+
+                                    <textarea id="Address"
+                                    name="address"
                                     ng-model="addNewBilling.address1"
-                                    class="form-control" 
+                                    class="form-control"
                                     ng-minlength="3"
                                     required>
                                     </textarea>
@@ -803,13 +803,13 @@
                                     <div class="form-group"
                                      ng-class="{ 'error' : (BillingADDForm.pincode.$invalid && !BillingADDForm.pincode.$pristine)  || (BillingADDForm.$submitted && BillingADDForm.pincode.$error.required)  }">
                                         <label for="Pincode">Pincode</label>
-                                        <input id="Pincode" 
-                                        name="pincode" 
-                                        type="text" 
-                                        class="form-control" 
-                                        placeholder="Pincode"  
-                                        ng-minlength="4" 
-                                        ng-maxlength="6" 
+                                        <input id="Pincode"
+                                        name="pincode"
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Pincode"
+                                        ng-minlength="4"
+                                        ng-maxlength="6"
                                         ng-model="addNewBilling.pincode"
                                                ng-blur="changePincodeBilling(addNewBilling.pincode)"
                                                required>
@@ -875,21 +875,21 @@
 
 
 
-                                <div class="form-group col-sm-8 col-xs-12 nopadding" 
+                                <div class="form-group col-sm-8 col-xs-12 nopadding"
                                ng-class="{ 'error' : (BillingADDForm.phonenumber.$invalid && !BillingADDForm.phonenumber.$pristine)  || (BillingADDForm.$submitted && BillingADDForm.phonenumber.$error.required)  }">
                                         <label for="Number">Phone Number</label>
-                                        <div class="input-group"> 
+                                        <div class="input-group">
                                         <div class="input-group-addon">+91</div>
-                                        <input type="number" 
-                                        name="phonenumber" 
-                                        class="form-control" 
-                                        id="Number" 
-                                        placeholder="Phone Number" 
+                                        <input type="number"
+                                        name="phonenumber"
+                                        class="form-control"
+                                        id="Number"
+                                        placeholder="Phone Number"
                                         ng-model="addNewBilling.phoneNo"
-                                        ng-minlength="10" 
-                                        ng-maxlength="10" 
+                                        ng-minlength="10"
+                                        ng-maxlength="10"
                                         ng-required="true">
-                                        
+
                                         </div>
                                         <div ng-show="BillingADDForm.phonenumber.$error.minlength && !BillingADDForm.phonenumber.$pristine"  class="error">
 
@@ -905,20 +905,20 @@
                                         <span ng-show="BillingADDForm.phonenumber.$error.required" class="error">Tell us your phonenumber.</span>
                                         </div>
                                 </div>
-                                
-                                
+
+
                                 <div class="form-group nopadding col-xs-12">
                             <!-- <input class="btn btn-newStyle btn-newStyleActive Width60" type="button" value="SAVE & CONTINUE"> -->
                             <button type="submit" class="btn btn-newStyle btn-newStyleActive Width60" > SAVE & CONTINUE</button>
 
                         </div>
 
-                       
+
                             </form>
                             </div>
 
-                    </div>        
-                            
+                    </div>
+
                         </div>
                     </div>
                 </div>

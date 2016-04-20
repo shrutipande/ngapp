@@ -7,7 +7,7 @@ define(['./index'], function (controllers) {
 			$scope.credit = {};
 			$scope.debit = {};
 			$scope.netbanking = {};
-			$scope.imgHost = IMGHOST;
+			$scope.imgHost = IMGHOST + '/thumb/166x166';
 			$scope.prdctUrl = PRODUCTURL;
 			$scope.showDetails = false;
 			// Repeat

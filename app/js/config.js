@@ -6,8 +6,20 @@ define(['angular'], function(angular) {
         .constant('VERSION', '0.0.1')
         .constant('PRODUCTURL', 'http://dev7.craftsvilla.com/catalog/product/view/id/')
         .constant('HOST', 'http://dev7.craftsvilla.com/')
-        .constant('IMGHOST', 'https://securesecureimg1.craftsvilla.com/thumb/166x166')
+
+        .constant('IMGHOST_DEV', 'https://img1.craftsvilla.com')
+        .constant('IMGHOST_PROD', 'https://secureimg1.craftsvilla.com')
+
+        .constant('LSTATIC_DEV', 'http://lstatic1.craftsvilla.com/')
+        .constant('LSTATIC_PROD', 'https://securelstatic1.craftsvilla.com/')
+
+        // Change this to switch between dev and prod
         .constant('ENVIRONMENT', 'development')
+        // .constant('ENVIRONMENT', 'production')
+
+        .constant('VIEWS', {
+            footer: 'partials/footer.html'
+        })
         .config(['$httpProvider', function($httpProvider) {
             // delete $httpProvider.defaults.headers.common['X-Requested-With'];
             // $httpProvider.defaults.headers.post['Accept'] = 'application/json, text/javascript';

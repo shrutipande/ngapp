@@ -254,7 +254,7 @@
                     <a href="javascript:void(0)" class="cart-details-close" ng-click="removeProductFromCart(product.product_id)"><img src="images/delete-icon.png" width:'100%'></a>
                     <div class="cart-items-cont">
                         <div class="cart-img-cont">
-                            <img src="http://secureimg1.craftsvilla.com/thumb/216x216{{ product.product_image }}" class="img-responsive">
+                            <img ng-src={{IMGHOST}}/thumb/216x216{{ product.product_image }}" class="img-responsive">
                         </div>
                         <div class="cart-details-cont">
                             <div class="col-xs-12 nopadding  c-itm-name">{{ product.product_name }}</div>
@@ -315,7 +315,7 @@
                     <a href="javascript:void(0)" class="cart-details-close" ng-click="removeProductFromCart(data.product_id,data)"><img src="images/delete-icon.png" width:'100%'></a>
                     <div class="cart-items-cont">
                         <div class="cart-img-cont">
-                            <img src="http://secureimg1.craftsvilla.com/thumb/216x216{{data.product_image}}" class="img-responsive">
+                            <img ng-src={{IMGHOST}}/thumb/216x216{{data.product_image}}" class="img-responsive">
                         </div>
                         <div class="cart-details-cont">
                             <div class="col-xs-12 nopadding c-itm-name">{{data.product_name}}</div>
@@ -377,7 +377,7 @@
                     <a href="javascript:void(0)" class="cart-details-close" ng-click="removeProductFromCart(data.product_id)"><img src="images/delete-icon.png" width:'100%'></a>
                     <div class="cart-items-cont">
                         <div class="cart-img-cont">
-                            <img src="http://secureimg1.craftsvilla.com/thumb/216x216{{data.product_image}}" class="img-responsive">
+                            <img ng-src={{IMGHOST}}/thumb/216x216{{data.product_image}}" class="img-responsive">
                         </div>
                         <div class="cart-details-cont">
                             <div class="col-xs-12 nopadding c-itm-name">{{data.product_name}}</div>
@@ -526,45 +526,6 @@
         <div class="fancybox" id="filetypeext" style="display:none">
             <p class="colorred mt20">It is not valid file type</p>
         </div>
-    </div>
-</div>
-<!--// Footer -->
-<div role="footer" class="container-fluid">
-    <div class="container">
-        <section class="col-xs-12 m-padding hidden-xs">
-            <ul class="footer-col col-xs-12 col-sm-3 m-padding">
-                <li class="FooterHeader">SUPPORT</li>
-                <li>
-                    <span class="ln-hgt-15">For Help, send email to </span>
-                    <a href="mailto:customercare@craftsvilla.com"><span class="rouge ln-hgt-15">customercare@craftsvilla.com</span></a>
-                </li>
-            </ul>
-
-            <ul class="footer-col col-xs-12 col-sm-3 m-padding">
-                <li class="FooterHeader"> PAYMENT OPTIONS </li>
-                <li><img src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/Visa_1.png"> <img src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/Visa_2.png"> <img src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/Visa_3.png"></li>
-            </ul>
-
-            <ul class="footer-col col-xs-12 col-sm-3 m-padding">
-                <li class="FooterHeader">STAY CONNECTED</li>
-                <li>
-                    <a target="_blank" href="http://www.facebook.com/craftsvilla"><img src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/FB.png"></a>
-                    <a target="_blank" href="https://twitter.com/craftsvilla"><img src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/Twitter.png" class="p-l-5"></a>
-                    <a target="_blank" href="https://plus.google.com/117677147285924975963"><!-- <img class="p-l-5" src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/g-plus.png"> --></a>
-                    <a target="_blank" href="https://www.pinterest.com/craftsvilla/">
-                        <img src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/pin.png" class="p-l-5">
-                    </a>
-                </li>
-            </ul>
-            <ul class="footer-col col-xs-12 col-sm-3 m-padding">
-                <li class="FooterHeader">DOWNLOAD OUR APP</li>
-                <li>
-                    <a target="_blank" href="https://play.google.com/store/apps/details?id=com.craftsvilla.app&amp;hl=en">
-                        <img src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/Googleplay.png">
-                    </a>
-                </li>
-            </ul>
-        </section>
     </div>
 </div>
 <script type="text/javascript">
