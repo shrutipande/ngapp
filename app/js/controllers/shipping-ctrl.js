@@ -1,14 +1,14 @@
 define(['./index'], function (controllers) {
 	'use strict';
 	controllers.controller('shippingCtrl', ['$scope','$state','craftsvillaService', function ($scope, $state, craftsvillaService) {
-		
+
         //Variables
 		$scope.addNew ={};
 		$scope.billingID = null;
     $scope.shippingID =null;
 		$scope.popupEditAddress=true;
 		$scope.displayAddress=true;
-		$scope.displayAddresscheckbox=false;  
+		$scope.displayAddresscheckbox=false;
 		$scope.addBilingaddreshideshow=true;
 		$scope.chkStatusBilling = true;
 	$scope.mform = false;
@@ -22,9 +22,9 @@ $scope.noshippingSelected=false;
 		 /*----Fetech Country---*/
 
 		$scope.fetchCountries=function()
-		 	{	
+		 	{
 		 		$scope.currentCountries;
-		 		
+
 		 		craftsvillaService.getCountry()
 				.success(function(response){
 					console.log(response);
@@ -63,7 +63,7 @@ $scope.noshippingSelected=false;
 				 $scope.selectedShippingID = $scope.shippingID;
 
 				}
-			else 
+			else
 				{
 					$scope.billingID = null;
           $scope.selectedShippingID = $scope.shippingID;
@@ -71,22 +71,22 @@ $scope.noshippingSelected=false;
           console.log($scope.selectedShippingID);
 				$scope.displayAddress=false;
 				$scope.displayAddresscheckbox=true;
-				
+
 				}
 		};
 
-		$scope.checkStatusBilling=function(){ 
+		$scope.checkStatusBilling=function(){
 			if ($scope.chkStatusBilling) {
 				//alert('checked:show');
 				$scope.addBilingaddreshideshow=true;
-				
+
 				}
-			else 
+			else
 				{
 				//alert('unchecked: hide');
 				$scope.addBilingaddreshideshow=false;
-				
-				
+
+
 				}
 		}
 
@@ -133,7 +133,7 @@ $scope.noshippingSelected=false;
 	    };
 
 
-		 //Edit address	
+		 //Edit address
 	    $scope.changePincode = function(pincode){
         console.log($scope.addnewcountry.country_name)
           if ($scope.addnewcountry.country_name == "India")
@@ -156,7 +156,7 @@ $scope.noshippingSelected=false;
 					.error (function(error)
 						{
 							console.log('Error');
-						});	
+						});
 
 	    }
 
@@ -190,10 +190,10 @@ $scope.noshippingSelected=false;
 		 //Edit address
 	    $scope.editsubmitForm = function(){
 	    	//alert("saefgs")
-		 		
+
 		 		console.log($scope.editAddr);
 
-					
+
 					var addId=$scope.editAddr.entity_id;
 					var firstname=$scope.editAddr.firstname;
 					var lastname=$scope.editAddr.lastname;
@@ -215,14 +215,14 @@ $scope.noshippingSelected=false;
 								$scope.formclose();
 								$scope.viewaddress();
 							}
-							
+
 
 						})
 
 					.error (function(error)
 						{
 							console.log('Error');
-						});	
+						});
 
 
 
@@ -230,10 +230,10 @@ $scope.noshippingSelected=false;
 
 	    };
 
-		
-        
-   
-		
+
+
+
+
 		$scope.viewaddress=function()
 			{
 				craftsvillaService.getAddress()
@@ -250,11 +250,11 @@ $scope.noshippingSelected=false;
 				})
 				.error(function(error){
 					console.log(error);
-					
+
 				});
 			}
 
-		
+
 		/*$scope.checkStatus=function(){
 			$scope.billingID =null;
 		angular.forEach($scope.addresses, function(value, key) {
@@ -266,15 +266,15 @@ $scope.noshippingSelected=false;
 				$scope.showhideprop =false ;
 				$scope.shippadd=true;
 				$scope.billingAddress=true;
-				
+
 				}
-			else 
+			else
 				{
 				alert('unchecked: hide');
 				$scope.showhideprop =true;
 				$scope.shippadd=false;
 				$scope.billingAddress=false;
-				
+
 				}
 		};*/
 
@@ -287,13 +287,13 @@ $scope.noshippingSelected=false;
 				console.log(response)
 			}
 			);
-			
-		}
-		 	
-		 $scope.addnewsubmitBilling=function(address, chkStatusBilling)
-		 	{	
 
-					
+		}
+
+		 $scope.addnewsubmitBilling=function(address, chkStatusBilling)
+		 	{
+
+
 					var fullname=$scope.addNewBilling.fullname;
 					var address=$scope.addNewBilling.address;
 					var pincode=$scope.addNewBilling.pincode;
@@ -314,28 +314,28 @@ $scope.noshippingSelected=false;
 					.error (function(error)
 						{
 							console.log('Error');
-						});	
+						});
 
 
 
-		 	}  		
-				
+		 	}
+
          $scope.editaddressSave=function(){
          	console.log(addNewBilling);
          };
 
-		
+
 
 		// $scope.deliverAddress = function() {
 		// 	//alert('Delivery Address Working');
 		// 	craftsvillaService.updateQty(1234, 2546, 2);
 		// };
 
-		
 
 
 
-		
+
+
 
 
 		$scope.chkbill=true;
@@ -344,7 +344,7 @@ $scope.noshippingSelected=false;
 		if ($scope.chkbill) {
 				$scope.showbilling =false ;
 				}
-			else 
+			else
 				{
 				$scope.showbilling =true;
 				}
@@ -357,7 +357,7 @@ $scope.noshippingSelected=false;
 		 $scope.shippingID = addId;
 
       if ($scope.chkStatus == true)
-		 	{		
+		 	{
 		  		$scope.billingID = addId;
       }
 		}
@@ -382,7 +382,7 @@ $scope.noshippingSelected=false;
 				.success(function(response)
 					{
 						if(response.s == 1){
-							$state.go('checkout');
+							$state.go('payment');
 						}
 						else{
 							//alert(response.m)
@@ -392,7 +392,7 @@ $scope.noshippingSelected=false;
 				.error (function(error)
 					{
 						console.log('Error');
-					});	
+					});
 			}
 				else {
 					$scope.noshippingSelected=true;
@@ -409,9 +409,9 @@ $scope.noshippingSelected=false;
 
 
 		$scope.initshipping=function(){
-			$scope.viewaddress();	
+			$scope.viewaddress();
 			$scope.fetchCountries();
-			
+
 		}
 		$scope.initshipping();
 	}]);

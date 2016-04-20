@@ -35,7 +35,7 @@ define(['./index'], function (services) {
       loadFinalQuote : loadFinalQuote,
       placeOrderCOD: placeOrderCOD,
       getSuccessData:getSuccessData,
-      getAddressFromPincode : getAddressFromPincode
+      getAddressFromPincode : getAddressFromPincode,
       socialAuth: socialAuth
     };
 

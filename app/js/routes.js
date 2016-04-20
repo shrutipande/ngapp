@@ -39,7 +39,7 @@ define(['./app'], function (app) {
           title: 'payments-success'
         })
         .state('checkout', {
-          url: "/checkout",
+          url: "/cart",
           templateUrl: 'partials/checkout-cart.html',
           controller: 'checkoutCartCtrl',
           title: 'checkout'
@@ -50,6 +50,6 @@ define(['./app'], function (app) {
           controller: 'emptyCartCtrl',
           title: 'Empty cart'
         });
-    $urlRouterProvider.otherwise("/login");
+    $urlRouterProvider.otherwise("/cart");
   }]);
 });
