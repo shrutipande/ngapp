@@ -100,9 +100,7 @@ define(['./index'], function (controllers) {
                   .success(function (response) {
                     //$scope.assignAddressToQuote();
                     if (response.s ==1) {
-                      $scope.billingID = response.d.billingID
-                      $scope.shippingID = response.d.ShippingID
-                      $scope.proceed();
+                      $scope.addressProceed();
                     }
                     else
                       alert(response.m)
@@ -289,9 +287,7 @@ define(['./index'], function (controllers) {
           .success(function(response)
           {
             if (response.s ==1) {
-              $scope.billingID = response.d.billingID
-              $scope.shippingID = response.d.ShippingID
-              $scope.proceed();
+              $scope.addressProceed();
             }
             else
               alert(response.m)
@@ -362,6 +358,10 @@ define(['./index'], function (controllers) {
       $scope.noshippingSelected=false;
     }
 
+    $scope.addressProceed=function(){
+      $state.go('payment');
+    }
+
     $scope.proceed=function(){
       console.log($scope.billingID,$scope.shippingID);
       if ($scope.billingID !==null && $scope.shippingID !==null){
@@ -369,7 +369,7 @@ define(['./index'], function (controllers) {
             .success(function(response)
             {
               if(response.s == 1){
-                $state.go('checkout');
+                $state.go('payment');
               }
               else{
                 //alert(response.m)
