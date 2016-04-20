@@ -1,13 +1,13 @@
 define(['./index'], function (controllers) {
     'use strict';
-    controllers.controller('paymentCtrl', ['$scope', '$state', 'craftsvillaService', 'IMGHOST','PRODUCTURL', function ($scope,$state,craftsvillaService,IMGHOST,PRODUCTURL) {
+    controllers.controller('paymentCtrl', ['$scope', '$state', '$timeout', 'craftsvillaService','PRODUCTURL', function ($scope,$state,$timeout,craftsvillaService,PRODUCTURL) {
 			var controllerRef = this;
 			window.scope = $scope;
 			$scope.forms = {};
 			$scope.credit = {};
 			$scope.debit = {};
 			$scope.netbanking = {};
-			$scope.imgHost = IMGHOST + '/thumb/166x166';
+			$scope.imgHost = $scope.IMGHOST + '/thumb/166x166';
 			$scope.prdctUrl = PRODUCTURL;
 			$scope.showDetails = false;
 			// Repeat
@@ -234,7 +234,14 @@ define(['./index'], function (controllers) {
 					$scope.shippingAmountData.grand_total = +$scope.shippingAmountData.grand_total;
 
 					if($scope.shippingAmountData.showCod === 0) {
-						$scope.changeName = $scope.paymentMethods[1].method;
+						$timeout(function() {
+							if($scope.paymentMethods) {
+									$scope.changeName = $scope.paymentMethods[1].method;
+							}
+							else {
+									$scope.changeName = 'Credit card';
+							}
+						})
 					}
 				});
 			};
