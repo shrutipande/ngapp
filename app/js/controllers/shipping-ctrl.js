@@ -98,7 +98,6 @@ define(['./index'], function (controllers) {
             .success(function (response) {
               craftsvillaService.getAddress()
                   .success(function (response) {
-                    //$scope.assignAddressToQuote();
                     if (response.s ==1) {
                       $scope.addressProceed();
                     }
@@ -261,16 +260,16 @@ define(['./index'], function (controllers) {
      };*/
 
 
-    $scope.deliveryAddress=function(address){
-      console.log(address);
-      $scope.billingID = address.entity_id
-      craftsvillaService.assignAddressToQuote($scope.billingID, 2546)
-          .success(function(response){
-                console.log(response)
-              }
-          );
-
-    }
+    //$scope.deliveryAddress=function(address){
+    //  console.log(address);
+    //  $scope.billingID = address.entity_id
+    //  craftsvillaService.assignAddressToQuote($scope.billingID, 2546)
+    //      .success(function(response){
+    //            console.log(response)
+    //          }
+    //      );
+    //
+    //}
 
     $scope.addnewsubmitBilling=function(address, chkStatusBilling)
     {
