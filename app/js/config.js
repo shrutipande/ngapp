@@ -6,7 +6,7 @@ define(['angular'], function(angular) {
         .constant('VERSION', '0.0.1')
         .constant('PRODUCTURL', 'http://dev7.craftsvilla.com/catalog/product/view/id/')
         .constant('HOST', 'http://dev7.craftsvilla.com/')
-        .constant('IMGHOST', 'https://secureimg1.craftsvilla.com/thumb/166x166')
+        .constant('IMGHOST', 'https://securesecureimg1.craftsvilla.com/thumb/166x166')
         .constant('ENVIRONMENT', 'development')
         .config(['$httpProvider', function($httpProvider) {
             // delete $httpProvider.defaults.headers.common['X-Requested-With'];
