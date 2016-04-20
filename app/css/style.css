@@ -704,3 +704,18 @@ div[order-success-cont]  .note{margin:20px 0 5px 0; padding: 0;}
 .navbar-fixed-top {
     top: 0px !important;
 }
+
+.loader{
+    position: relative;
+    max-width: 40%;
+    max-height: 80%;
+}
+
+.loader-cartitem{
+    position: absolute;
+    margin: auto;
+    left: 45%;
+    top: 30%;
+    max-height: 40%;
+    max-width: 10%;
+}
