@@ -234,7 +234,8 @@
 												ng-model="credit.cardCvv"
 												ng-blur="forms.creditForm.cardCVC.$xblur=true"
 												ng-focus="forms.creditForm.cardCVC.$xblur=false"
-												required/>
+												required
+												placeholder="CVV/CVC"/>
 											</fieldset>
 										</div>
 									</div>
@@ -245,7 +246,7 @@
 							</div>
 							<!-- show on Debit card -->
 							<div class="col-xs-12 col-sm-8 creditcard" ng-if = "item.method == 'Debit Card'">
-								<form name="forms.debitForm" ng-submit="submitDebitForm()" novalidate >
+								<form name="forms.debitForm" ng-submit="submitDebitForm()" novalidate>
 									<div class="col-xs-12 nopadding">
 										<fieldset class="form-group" ng-class="{ 'error' : forms.debitForm.cardNumber.$invalid && !forms.debitForm.cardNumber.$pristine && forms.debitForm.cardNumber.$xblur}">
 											<label>Debit Card Number</label>
@@ -259,37 +260,78 @@
 												cc-format
 												cc-type="cardType"
 									      placeholder="Card Number"
+												autocomplete="off"
 												ng-blur="forms.debitForm.cardNumber.$xblur=true"
 												ng-focus="forms.debitForm.cardNumber.$xblur=false">
-											<p ng-show="forms.debitForm.cardNumber.$invalid && !forms.debitForm.cardNumber.$pristine">Invalid Credit Card</p>
+											<p ng-show="forms.debitForm.cardNumber.$invalid && !forms.debitForm.cardNumber.$pristine && forms.debitForm.cardNumber.$xblur">Invalid Debit Card</p>
 											<span class="card-type">{{forms.debitForm.cardNumber.$ccType || ''}}</span>
 										</fieldset>
 									</div>
 									<div class="col-xs-12 nopadding">
-										<fieldset class="form-group" ng-class="{ 'error' : forms.debitForm.cardName.$invalid && !forms.debitForm.cardName.$pristine }">
+										<fieldset class="form-group" ng-class="{ 'error' : forms.debitForm.cardName.$invalid && !forms.debitForm.cardName.$pristine && forms.debitForm.cardName.$xblur }">
 											<label>Name on Card</label>
-											<input type="text" placeholder="Name on Card" class="form-control" ng-model="debit.cardName" required>
+											<input
+											type="text"
+											placeholder="Name on Card"
+											class="form-control"
+											ng-model="debit.cardName"
+											required
+											name="cardName"
+											autocomplete="off"
+											ng-blur="forms.debitForm.cardName.$xblur=true"
+											ng-focus="forms.debitForm.cardName.$xblur=false">
+											<p ng-show="forms.debitForm.cardName.$invalid && !forms.debitForm.cardName.$pristine && forms.debitForm.cardName.$xblur">Please enter name</p>
 										</fieldset>
 									</div>
 									<div class="col-xs-12 nopadding">
 										<div class="col-xs-7 valid-upto">
-											<fieldset class="form-group" ng-class="{ 'error' : (!forms.debitForm.cardM.$valid && !forms.debitForm.cardM.$pristine) || (!forms.debitForm.cardY.$valid && !forms.debitForm.cardY.$pristine) }">
+											<fieldset class="form-group" ng-class="{ 'error' : (!forms.debitForm.cardM.$valid && !forms.debitForm.cardM.$pristine && forms.debitForm.cardM.$xblur) || (!forms.debitForm.cardY.$valid && !forms.debitForm.cardY.$pristine && forms.debitForm.cardM.$xblur) }">
 												<label>Valid Upto</label>
-												<input ng-model="debit.cardMonth" cc-exp-month class="form-control pull-left" placeholder="MM"  name="cardM"/>
+												<input
+												ng-model="debit.cardMonth"
+												cc-exp-month
+												class="form-control pull-left"
+												placeholder="MM"
+												name="cardM"
+												ng-blur="forms.debitForm.cardM.$xblur=true"
+												ng-focus="forms.debitForm.cardM.$xblur=false"
+												required/>
+
 												<span role="division">/</span>
-  											<input ng-model="debit.cardYear" cc-exp-year class="form-control pull-right" placeholder="YY" name="cardY"/>
+
+  											<input
+												ng-model="debit.cardYear"
+												cc-exp-year
+												class="form-control pull-right"
+												placeholder="YY"
+												name="cardY"
+												ng-blur="forms.debitForm.cardY.$xblur=true"
+												ng-focus="forms.debitForm.cardY.$xblur=false"
+												required/>
 											</fieldset>
 										</div>
 										<div class="col-xs-5 cvv-code">
-											<fieldset class="form-group" ng-class="{'error' : !forms.debitForm.cardCvv.$valid && !forms.debitForm.cardCvv.$pristine}">
+											<fieldset class="form-group" ng-class="{'error' : !forms.debitForm.cardCVC.$valid && !forms.debitForm.cardCVC.$pristine && forms.debitForm.cardCVC.$xblur}">
 												<label>CVV Code</label>
-												<input type="password" class="form-control" id="dc_cvc" cc-cvc cc-type="forms.debitForm.cardNumber.$ccType" name="cardCvv" ng-model="debit.cardCvv">
+												<input
+												type="password"
+												class="form-control"
+												id="cc_cvc"
+												cc-cvc
+												cc-type="forms.debitForm.cardNumber.$ccType"
+												name="cardCVC"
+												ng-model="debit.cardCvv"
+												ng-blur="forms.debitForm.cardCVC.$xblur=true"
+												ng-focus="forms.debitForm.cardCVC.$xblur=false"
+												required
+												placeholder="CVV/CVC"/>
 											</fieldset>
 										</div>
 									</div>
 									<div class="col-xs-12 nopadding">
 										<button type="submit" class="btn btn-newStyle bg-green" ng-disabled="forms.debitForm.$invalid">PAY <span><i>&#x20B9;</i>3240</span> SECURELY</button>
 									</div>
+								</div>
 								</form>
 							</div>
 							<!-- show on Net Banking -->
@@ -311,6 +353,7 @@
 									<a class="btn btn-newStyle bg-green" href="javascript:void(0)" ng-click="submitNBForm()">PAY <span><i>&#x20B9;</i>3240</span> SECURELY</a>
 								</div>
 							</div>
+						</form>
 							<!-- pay U Money -->
 							<!--<div class="col-xs-12 PayUMoney" ng-if = "item.method == 'PayU Money'">
 								<form name="DebitCardForm" ng-submit="submitCreditForm()" novalidate >
