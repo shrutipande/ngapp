@@ -5,7 +5,7 @@ define(['./index'], function (controllers) {
 		$scope.showFormNote = false;
 		$scope.coupon = {};
 		$scope.isLoggedIn = false;
-
+    $scope.couponMessage = null;
 		$scope.options = [
 			{'id': 1, 'label': '1'},
 			{'id': 2, 'label': '2'},
@@ -23,6 +23,8 @@ define(['./index'], function (controllers) {
 		$scope.inStockNotCod = [];
 		$scope.itemRemoved = 0;
 		$scope.latestRemovedItem = null;
+    $scope.couponWait=false;
+    $scope.waitingCartItem=false;
 
 		$scope.getCartDetails = function() {
 			$scope.outOfStockProducts = [];
@@ -63,7 +65,8 @@ define(['./index'], function (controllers) {
 				})
 		};
 
-		$scope.removeProductFromCart = function(product_id) {
+		$scope.removeProductFromCart = function(product_id,data) {
+      data.waitingCartItem = true;
 			var data = {
 				productID: product_id
 			};
@@ -71,13 +74,15 @@ define(['./index'], function (controllers) {
 			productIds.push(data);
 			craftsvillaService.removeQuoteItems(productIds)
 			.success(function(response) {
-				divideProducts(response);
+        data.waitingCartItem = false;
+        divideProducts(response);
 				$scope.itemRemoved = 1;
 				$scope.latestRemovedItem = product_id;
 				updateTotals(response);
 			})
 			.error(function(error) {
-				console.log(error);
+        data.waitingCartItem = false;
+        console.log(error);
 			});
 
 		};
@@ -121,13 +126,16 @@ define(['./index'], function (controllers) {
 		}
 
 		$scope.addNoteToSeller = function(index, product_id, comment,data) {
+      data.showFormNote =false;
+      data.waitingCartItem = true;
 			craftsvillaService.addNoteToSeller(product_id, comment)
 			.success(function(response) {
-				$scope.getCartDetails();
-				data.showFormNote =false;
+        data.waitingCartItem = false;
+        $scope.getCartDetails();
 			})
 			.error(function(error) {
-				console.log(error);
+        data.waitingCartItem = false;
+        console.log(error);
 			});
 		};
 
@@ -156,8 +164,11 @@ define(['./index'], function (controllers) {
 		};
 
 		$scope.applyCoupon = function() {
+      $scope.couponWait=true;
 			craftsvillaService.applyCoupon($scope.coupon.couponcode)
 			.success(function(response) {
+        $scope.couponWait = false;
+        console.log($scope.couponWait)
 				if(response.s == 1){
 					$scope.successCoupon = true;
 					$scope.couponCode = response.d.coupon_code;
@@ -192,13 +203,19 @@ define(['./index'], function (controllers) {
 
 		};
 
-		$scope.updateQuantity = function(quantity, product_id) {
-			craftsvillaService.updateQty(product_id, quantity.id)
+		$scope.updateQuantity = function(quantity, product_id,data) {
+      data.waitingCartItem = true;
+
+      craftsvillaService.updateQty(product_id, quantity.id)
 			.success(function(response) {
-				$scope.getCartDetails();
+        data.waitingCartItem = true;
+
+        $scope.getCartDetails();
 			})
 			.error(function(error) {
-				console.log(error);
+        data.waitingCartItem = true;
+
+        console.log(error);
 			});
 		};
 

@@ -5,7 +5,7 @@ define(['./app'], function (app) {
   'use strict';
   app.config(['$stateProvider', '$locationProvider', '$urlRouterProvider', function ($stateProvider, $locationProvider, $urlRouterProvider) {
 
-    $locationProvider.html5Mode(false);
+    $locationProvider.html5Mode(true).hashPrefix('!');
 
     $stateProvider
         .state('login', {
@@ -38,7 +38,7 @@ define(['./app'], function (app) {
           controller: 'paymentSuccessCtrl',
           title: 'payments-success'
         })
-        .state('checkout', {
+        .state('cart', {
           url: "/cart",
           templateUrl: 'partials/checkout-cart.html',
           controller: 'checkoutCartCtrl',

@@ -9,6 +9,7 @@ define(['./index'], function (controllers) {
 			$scope.netbanking = {};
 			$scope.imgHost = IMGHOST;
 			$scope.prdctUrl = PRODUCTURL;
+			$scope.showDetails = false;
 			// Repeat
 
 			// Tabs
@@ -222,16 +223,6 @@ define(['./index'], function (controllers) {
 				});
 			};
 
-			$scope.getOrderproducts = function() {
-				craftsvillaService.assignAddressToQuote(3034030, 3034030)
-				.success( function(response) {
-					console.log(response);
-					$scope.productDetails = response;
-				})
-				.error(function(err) {
-					console.log(err);
-				});
-			};
 
 			$scope.finalQuoteDetails = function() {
 				craftsvillaService.loadFinalQuote()
@@ -251,7 +242,6 @@ define(['./index'], function (controllers) {
 			$scope.initPayment = function() {
 				console.log("initializing Payment");
 				$scope.getPayments();
-				$scope.getOrderproducts();
 				$scope.finalQuoteDetails();
 			};
 
