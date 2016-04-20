@@ -54,18 +54,19 @@
 					<div class="col-xs-12">
 						<div role="items" class="col-xs-12 padding-left-0 padding-right-0">
 							<div class="col-xs-8 nopadding">
-								<h5>You Pay <span><a href="#">Hide Details</a></span></h5>
+								<h5 ng-show="!showDetails">You Pay <span><a ng-click="showDetails = !showDetails" ng-show="!showDetails">View Details</a></span></h5>
+								<h5 ng-show="showDetails">You Pay <span><a ng-click="showDetails = !showDetails" >Hide Details</a></span></h5>
 							</div>
-							<div class="col-xs-4 nopadding text-right"><span class="total-amount">&#8377; 3,240</span></div>
+							<div class="col-xs-4 nopadding text-right"><span class="total-amount">&#8377; {{shippingAdressData.grand_total}}</span></div>
 						</div>
 					</div>
 				</div>
-				<div class="col-xs-12 nopadding r-bg hidden-xs">
-					<div role="items" class="col-xs-12">
+				<div class="col-xs-12 nopadding r-bg">
+					<div role="items" class="col-xs-12 hidden-xs">
 						<div class="col-xs-8 nopadding">
 							<h5>{{shippingAmountData.total_items}} ITEMS <span>
                                 <a href="javascript:void(0)" ng-click="showDetails = !showDetails" ng-show="!showDetails">View Details</a>
-                                <a href="javascript:void(0)" ng-click="showDetails = !showDetails" ng-show="showDetails">Hide</a>
+                                <a href="javascript:void(0)" ng-click="showDetails = !showDetails" ng-show="showDetails">Hide Details</a>
                             </span></h5>
 						</div>
 						<div class="col-xs-4 nopadding text-right"><span class="total-amount">&#8377; {{shippingAdressData.grand_total}}</span></div>
