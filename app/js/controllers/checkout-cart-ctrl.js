@@ -183,7 +183,7 @@ define(['./index'], function (controllers) {
 					$scope.totalDiscount = response.d.totol_discount;
 					$scope.shippingAmount = response.d.shipping_amount;
 					$scope.grandTotal = response.d.grand_total;
-					$scope.discount = (1 - ($scope.grandTotal / $scope.subTotal)) * 100;
+					$scope.discount = ($scope.totalDiscount / $scope.subTotal) * 100;
 				} else {
 					$scope.couponMessage = response.m;
 				}
@@ -282,7 +282,7 @@ define(['./index'], function (controllers) {
 			if(response.d.coupon_code && response.d.coupon_code.length) {
 				$scope.successCoupon = true;
 				$scope.couponCode = response.d.coupon_code;
-				$scope.discount = (1 - ($scope.grandTotal / $scope.subTotal)) * 100;
+				$scope.discount = ($scope.totalDiscount / $scope.subTotal) * 100;
 			}
 		}
 
