@@ -28,22 +28,28 @@ define(['./index'], function (controllers) {
     $scope.waitingCartItem=false;
 
 		$scope.getCartDetails = function() {
-			$scope.outOfStockProducts = [];
-			$scope.inStockCod = [];
-			$scope.inStockNotCod = [];
 			craftsvillaService.loadQuote()
 			.success(function(response) {
+				var _outOfStockProducts = [];
+				var _inStockCod = [];
+				var _inStockNotCod = [];
+
 				angular.forEach(response.d.product_list, function(product) {
 					if(!product.IsInStock) {
-						$scope.outOfStockProducts.push(product);
+						_outOfStockProducts.push(product);
 					} else {
 						if(product.cod_available) {
-							$scope.inStockCod.push(product);
+							_inStockCod.push(product);
 						} else {
-							$scope.inStockNotCod.push(product);
+							_inStockNotCod.push(product);
 						}
 					}
 				});
+
+				$scope.outOfStockProducts = _outOfStockProducts;
+				$scope.inStockCod = _inStockCod;
+				$scope.inStockNotCod = _inStockNotCod;
+
 				updateTotals(response);
 			})
 			.error(function (err) {
