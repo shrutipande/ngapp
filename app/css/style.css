@@ -707,15 +707,22 @@ div[order-success-cont]  .note{margin:20px 0 5px 0; padding: 0;}
 
 .loader{
     position: relative;
-    max-width: 40%;
+    max-width: 40%;  
     max-height: 80%;
 }
 
 .loader-cartitem{
-    position: absolute;
+    position: absolute; 
     margin: auto;
     left: 45%;
     top: 30%;
     max-height: 40%;
     max-width: 10%;
+}
+.error textarea , .error input {
+    border: solid 1px #ff0c00 !important;
+}
+span.error{
+        color: #ff0c00;
+    display: block;
 }
