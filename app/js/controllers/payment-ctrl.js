@@ -44,23 +44,33 @@ define(['./index'], function (controllers) {
 			$scope.cardTypes = {
 				'Visa': {
 					'CC': 'CC',
-					'DC': 'VISA'
+					'DC': 'VISA',
+					'img': '../images/card-types/visa.png'
 				},
 				'MasterCard': {
 					'CC': 'CC',
-					'DC': 'MAST'
+					'DC': 'MAST',
+					'img': '../images/card-types/mastercard.png'
 				},
 				'American Express': {
 					'CC': 'AMEX',
-					'DC': 'AMEX'
+					'DC': 'AMEX',
+					'img': '../images/card-types/american-express.png'
 				},
 				'Diners Club': {
 					'CC': 'DINR',
-					'DC': 'DINR'
+					'DC': 'DINR',
+					'img': '../images/card-types/dinners-club.png'
 				},
 				'Maestro': {
 					'DC': 'MAES',
-					'CC': 'MAES'
+					'CC': 'MAES',
+					'img': '../images/card-types/maestro.png'
+				},
+				'Discover': {
+					'DC': '',
+					'CC': '',
+					'img': '../images/card-types/discover.png'
 				}
 			};
 
@@ -322,6 +332,10 @@ define(['./index'], function (controllers) {
 				default:
 					return false;
 				}
+			}
+
+			$scope.getCCTypeImage = function (ccType) {
+				return $scope.cardTypes[ccType].img;
 			}
 
 			$scope.initPayment = function() {
