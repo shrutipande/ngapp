@@ -246,6 +246,16 @@ define(['./index'], function (controllers) {
 				});
 			};
 
+			$scope.validate = function (element, form) {
+				switch (element) {
+					case 'cardNumber':
+						return form[element].$invalid && !form[element].$pristine && form[element].$xblur;
+						break;
+					default:
+
+				}
+			}
+
 			$scope.initPayment = function() {
 				console.log("initializing Payment");
 				$scope.getPayments();

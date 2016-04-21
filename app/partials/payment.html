@@ -166,7 +166,7 @@
 							<div class="col-xs-12 col-sm-8 creditcard" ng-if = "item.method == 'Credit card'">
 								<form name="forms.creditForm" ng-submit="submitCreditForm()" novalidate>
 									<div class="col-xs-12 nopadding">
-										<fieldset class="form-group" ng-class="{ 'error' : forms.creditForm.cardNumber.$invalid && !forms.creditForm.cardNumber.$pristine && forms.creditForm.cardNumber.$xblur}">
+										<fieldset class="form-group" ng-class="{ 'error' : validate('cardNumber', forms.creditForm)}">
 											<label>Credit Card Number</label>
 											<input
 												class="form-control"
@@ -181,7 +181,7 @@
 												autocomplete="off"
 												ng-blur="forms.creditForm.cardNumber.$xblur=true"
 												ng-focus="forms.creditForm.cardNumber.$xblur=false">
-											<p ng-show="forms.creditForm.cardNumber.$invalid && !forms.creditForm.cardNumber.$pristine && forms.creditForm.cardNumber.$xblur">Invalid Credit Card</p>
+											<p ng-show="validate('cardNumber', forms.creditForm)">Invalid Credit Card</p>
 											<span class="card-type">{{forms.creditForm.cardNumber.$ccType || ''}}</span>
 										</fieldset>
 									</div>
@@ -256,7 +256,7 @@
 							<div class="col-xs-12 col-sm-8 creditcard" ng-if = "item.method == 'Debit Card'">
 								<form name="forms.debitForm" ng-submit="submitDebitForm()" novalidate>
 									<div class="col-xs-12 nopadding">
-										<fieldset class="form-group" ng-class="{ 'error' : forms.debitForm.cardNumber.$invalid && !forms.debitForm.cardNumber.$pristine && forms.debitForm.cardNumber.$xblur}">
+										<fieldset class="form-group" ng-class="{ 'error' : validate('cardNumber', forms.debitForm)}">
 											<label>Debit Card Number</label>
 											<input
 												class="form-control"
@@ -271,7 +271,7 @@
 												autocomplete="off"
 												ng-blur="forms.debitForm.cardNumber.$xblur=true"
 												ng-focus="forms.debitForm.cardNumber.$xblur=false">
-											<p ng-show="forms.debitForm.cardNumber.$invalid && !forms.debitForm.cardNumber.$pristine && forms.debitForm.cardNumber.$xblur">Invalid Debit Card</p>
+											<p ng-show="validate('cardNumber', forms.debitForm)">Invalid Debit Card</p>
 											<span class="card-type">{{forms.debitForm.cardNumber.$ccType || ''}}</span>
 										</fieldset>
 									</div>
@@ -384,7 +384,7 @@
 						    <!-- Nav tabs -->
 							<ul data-payment-mobile class="nav nav-tabs tabs-left">
 								<li ng-repeat="item in paymentMethods" ng-class="{ active: changeName == '{{item.method}}' }">
-									<a href="javascript:void(0)" data-toggle="tab" ng-click="changeSlide(item)">{{ item.method }}</a>
+									<a href="javascript:void(0)" data-toggle="tab" ng-click="changeSlide(item.method)">{{ item.method }}</a>
 										<!-- show on cod -->
 										<div class="col-xs-12 cashondelivery" ng-if = "item.method == 'Cash On Delivery' && shippingAmountData.showCod == 1">
 											<h3>Pay Using Cash on Delivery</h3>
@@ -400,7 +400,7 @@
 										<div class="col-xs-12 col-sm-8 creditcard" ng-if = "item.method == 'Credit card'">
 											<form name="forms.creditForm_mobile" ng-submit="submitCreditForm()" novalidate>
 												<div class="col-xs-12 nopadding">
-													<fieldset class="form-group" ng-class="{ 'error' : forms.creditForm_mobile.cardNumber.$invalid && !forms.creditForm_mobile.cardNumber.$pristine && forms.creditForm_mobile.cardNumber.$xblur}">
+													<fieldset class="form-group" ng-class="{ 'error' : validate('cardNumber', forms.creditForm_mobile)}">
 														<label>Credit Card Number</label>
 														<input
 															class="form-control"
@@ -415,7 +415,7 @@
 															autocomplete="off"
 															ng-blur="forms.creditForm_mobile.cardNumber.$xblur=true"
 															ng-focus="forms.creditForm_mobile.cardNumber.$xblur=false">
-														<p ng-show="forms.creditForm_mobile.cardNumber.$invalid && !forms.creditForm_mobile.cardNumber.$pristine && forms.creditForm_mobile.cardNumber.$xblur">Invalid Credit Card</p>
+														<p ng-show="validate('cardNumber', forms.creditForm_mobile)">Invalid Credit Card</p>
 														<span class="card-type">{{forms.creditForm_mobile.cardNumber.$ccType || ''}}</span>
 													</fieldset>
 												</div>
@@ -490,7 +490,7 @@
 										<div class="col-xs-12 col-sm-8 creditcard" ng-if = "item.method == 'Debit Card'">
 											<form name="forms.debitForm_mobile" ng-submit="submitDebitForm()" novalidate>
 												<div class="col-xs-12 nopadding">
-													<fieldset class="form-group" ng-class="{ 'error' : forms.debitForm_mobile.cardNumber.$invalid && !forms.debitForm_mobile.cardNumber.$pristine && forms.debitForm_mobile.cardNumber.$xblur}">
+													<fieldset class="form-group" ng-class="{ 'error' : validate('cardNumber', forms.debitForm_mobile)}">
 														<label>Debit Card Number</label>
 														<input
 															class="form-control"
@@ -505,7 +505,7 @@
 															autocomplete="off"
 															ng-blur="forms.debitForm_mobile.cardNumber.$xblur=true"
 															ng-focus="forms.debitForm_mobile.cardNumber.$xblur=false">
-														<p ng-show="forms.debitForm_mobile.cardNumber.$invalid && !forms.debitForm_mobile.cardNumber.$pristine && forms.debitForm_mobile.cardNumber.$xblur">Invalid Debit Card</p>
+														<p ng-show="validate('cardNumber', forms.debitForm_mobile)">Invalid Debit Card</p>
 														<span class="card-type">{{forms.debitForm_mobile.cardNumber.$ccType || ''}}</span>
 													</fieldset>
 												</div>
