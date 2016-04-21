@@ -152,6 +152,8 @@ define(['./index'], function (controllers) {
 		};
 
 		$scope.removeNoteToSeller = function(data) {
+			if(!data) return;
+
 			craftsvillaService.removeNoteToSeller(data.product_id)
 			.success(function(response) {
 				data.seller_note = null;

@@ -540,7 +540,7 @@ span[role="division"] { margin-left: 5%; }
     div[check-out] .left-panel .cart-items-card .cart-items-cont{padding: 12px 0 12px 12px;}
     div[check-out] .left-panel .cart-items-card .cart-seller-cont{float: left;  padding:10px 0;  width: 97%; border-top: 1px solid #ebebeb; margin: 0 5px}
     .cart-items-cont .cart-img-cont{float:left;margin-top: 0;  width: 102px;  height: 102px;}
-    .cart-items-cont .cart-details-cont{float:left;width:180px;margin:0  0 0 8px;}
+    .cart-items-cont .cart-details-cont{float:left;width:200px;margin:0  0 0 8px;}
     div[check-out] .left-panel .cart-items-card .cart-details-close{ width: 12px;   margin: 6px 6px 0 0; }
     div[check-out] .left-panel .cart-items-card .cart-items-cont{width: 95%;}
     .cart-details-cont .c-itm-name{font-size: 12px;}
