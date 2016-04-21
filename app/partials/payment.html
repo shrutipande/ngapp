@@ -144,7 +144,7 @@
 					    <!-- Nav tabs -->
 						<ul class="nav nav-tabs tabs-left">
 							<li ng-repeat="item in paymentMethods" ng-class="{ active: changeName == '{{item.method}}' }">
-								<a href="javascript:void(0)" data-toggle="tab" ng-click="changeSlide(item.method)">{{ item.method }}</a>
+								<a href="javascript:void(0)" data-toggle="tab" ng-click="changeSlide(item)">{{ item.method }}</a>
 							</li>
 						</ul>
 					</div>
@@ -161,6 +161,13 @@
 							</div>
 							<div class="col-xs-12 cashondelivery" ng-if = "item.method == 'Cash On Delivery' && shippingAmountData.showCod == 0">
 								<p>Your order is not eligible for Cash On Delivery</p>
+							</div>
+							<!-- show on payu -->
+							<div class="col-xs-12 payuform" ng-if = "item.method == 'PayU Money'">
+								<h3>Pay Using PayU Money</h3>
+								<div class="col-xs-12 col-sm-7 nopadding">
+									<input type="button" value="PLACE ORDER" class="btn btn-newStyle bg-green" ng-click="submitPayUForm()">
+								</div>
 							</div>
 							<!-- show on creditcard -->
 							<div class="col-xs-12 col-sm-8 creditcard" ng-if = "item.method == 'Credit card'">
@@ -362,13 +369,6 @@
 								</div>
 							</div>
 						</form>
-							<!-- pay U Money -->
-							<!--<div class="col-xs-12 PayUMoney" ng-if = "item.method == 'PayU Money'">
-								<form name="DebitCardForm" ng-submit="submitCreditForm()" novalidate >
-									<label>PayU Money</label>
-								</form>
-							</div>-->
-
 						</div>
 					</div>
 				</div>
@@ -384,7 +384,7 @@
 						    <!-- Nav tabs -->
 							<ul data-payment-mobile class="nav nav-tabs tabs-left">
 								<li ng-repeat="item in paymentMethods" ng-class="{ active: changeName == '{{item.method}}' }">
-									<a href="javascript:void(0)" data-toggle="tab" ng-click="changeSlide(item.method)">{{ item.method }}</a>
+									<a href="javascript:void(0)" data-toggle="tab" ng-click="changeSlide(item)">{{ item.method }}</a>
 										<!-- show on cod -->
 										<div class="col-xs-12 cashondelivery" ng-if = "item.method == 'Cash On Delivery' && shippingAmountData.showCod == 1">
 											<h3>Pay Using Cash on Delivery</h3>
@@ -395,6 +395,13 @@
 										</div>
 										<div class="col-xs-12 cashondelivery" ng-if = "item.method == 'Cash On Delivery' && shippingAmountData.showCod == 0">
 											<p>Your order is not eligible for Cash On Delivery</p>
+										</div>
+										<!-- show on payu -->
+										<div class="col-xs-12 payuform" ng-if = "item.method == 'PayU Money'">
+											<h3>Pay Using PayU Money</h3>
+											<div class="col-xs-12 col-sm-7 nopadding">
+												<input type="button" value="PLACE ORDER" class="btn btn-newStyle bg-green" ng-click="submitPayUForm()">
+											</div>
 										</div>
 										<!-- show on creditcard -->
 										<div class="col-xs-12 col-sm-8 creditcard" ng-if = "item.method == 'Credit card'">
@@ -596,12 +603,6 @@
 											</div>
 										</div>
 									</form>
-										<!-- pay U Money -->
-										<!--<div class="col-xs-12 PayUMoney" ng-if = "item.method == 'PayU Money'">
-											<form name="DebitCardForm" ng-submit="submitCreditForm()" novalidate >
-												<label>PayU Money</label>
-											</form>
-										</div>-->
 								</li>
 							</ul>
 						</div>
