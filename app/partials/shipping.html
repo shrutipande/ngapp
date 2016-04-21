@@ -71,8 +71,8 @@
                         </div>
                     </div>
 
-                    <div class="checkbox col-xs-12 nopadding hidden-lg" ng-hide="displayAddresscheckbox" ng-class="{'hide': address.entity_id !== shippingID}">
-                        <label><input type="checkbox" id="Guest"  ng-model="chkStatus" ng-change="checkStatus()" checked ><span for="Guest"></span> This is also my Billing Address --a</label>
+                    <div class="checkbox col-xs-12 nopadding hidden-lg" ng-class="{'hide': address.entity_id !== shippingID}">
+                        <label><input type="checkbox" id="Guest"  ng-model="chkStatus" ng-change="checkStatus(chkStatus)" checked ><span for="Guest"></span> This is also my Billing Address</label>
                     </div>
                 </div>
 
@@ -424,8 +424,10 @@
                     </div>
                     <!--// Desktop Edit Shipping Address End -->
                     <!--// Select Billing Address -->
-                   <div class="checkbox col-xs-12  hidden-xs" ng-hide="displayAddresscheckbox">
-                        <label><input type="checkbox" id="Guest"  ng-model="chkStatus" ng-change="checkStatus()" checked><span for="Guest"></span> This is also my Billing Address</label>
+                   <div class="checkbox col-xs-12  hidden-xs" >
+                        <label>
+                        <input type="checkbox" id="Guest"  ng-model="chkStatus" ng-change="checkStatus(chkStatus)" checked>
+                        <span for="Guest"></span> This is also my Billing Address</label>
                     </div>  
                     <div class="col-xs-12 " style="padding-bottom:20px;">
 
@@ -439,14 +441,12 @@
                         </div>
                     </div>
 
-
-
                     <!--// -->
-                    <div ng-hide="displayAddress">
+                    <div ng-hide="displayAddress" >
                     <div class="col-xs-12 ">
-                     <h4 role="headding">SELECT BILLING ADDRESS </h4>
+                     <h4 role="headding">SELECT BILLING ADDRESS</h4>
                      </div>
-                   <div class="col-xs-12 col-sm-6 col-md-4 slideInLeft enter-slideInLeft exit-fadeOut speed-0 stagger-3 " ng-repeat="address in addresses"  ng-click="setbillingID(address.entity_id)" ng-if= "address.entity_id !== shippingID">
+                   <div class="col-xs-12 col-sm-6 col-md-4 slideInLeft enter-slideInLeft exit-fadeOut speed-0 stagger-3 nopad-xs" ng-repeat="address in addresses"  ng-click="setbillingID(address.entity_id)" ng-if= "address.entity_id !== shippingID">
 
                     <div class="col-xs-12 addressCard"  ng-class="{'addressCardActive': address.entity_id == billingID}">
                         <div class="col-xs-12 nopadding customer-address">
