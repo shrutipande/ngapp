@@ -5,7 +5,8 @@ define(['./index'], function (controllers) {
 		$scope.showFormNote = false;
 		$scope.coupon = {};
 		$scope.isLoggedIn = false;
-    $scope.couponMessage = null;
+  		$scope.couponMessage = null;
+
 		$scope.options = [
 			{'id': 1, 'label': '1'},
 			{'id': 2, 'label': '2'},
