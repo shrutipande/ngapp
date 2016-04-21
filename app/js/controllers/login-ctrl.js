@@ -141,7 +141,7 @@ define(['./index'], function (controllers) {
 					"sourceType": provider
 				})
 				.success(function (_data) {
-					console.log(_data);
+					$state.go('shipping');
 				})
 				.error(function (_err) {
 					console.log(_err);
