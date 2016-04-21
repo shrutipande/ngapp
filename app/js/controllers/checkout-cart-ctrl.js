@@ -169,7 +169,6 @@ define(['./index'], function (controllers) {
 			craftsvillaService.applyCoupon($scope.coupon.couponcode)
 			.success(function(response) {
         $scope.couponWait = false;
-        console.log($scope.couponWait)
 				if(response.s == 1){
 					$scope.successCoupon = true;
 					$scope.couponCode = response.d.coupon_code;

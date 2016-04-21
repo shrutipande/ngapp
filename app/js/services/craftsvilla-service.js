@@ -175,8 +175,19 @@ define(['./index'], function (services) {
   //continue as guest ends
 
   //final quote
-    function loadFinalQuote() {
-      return $http.get( HOST + 'checkoutService/index/loadFinalQuote');
+    function loadFinalQuote(platform, quoteId) {
+      if(platform === 'web') {
+        return $http.get( HOST + 'checkoutService/index/loadFinalQuote');
+      }
+      else {
+        return $http({
+          url: HOST + 'checkoutService/index/loadFinalQuote',
+          method: 'POST',
+          data: {
+            quoteId: quoteId
+          }
+        });
+      }
     }
   //final quote ends
 

@@ -21,7 +21,7 @@ define(['./app'], function (app) {
           title: 'shipping'
         })
         .state('payment', {
-          url: "/payment",
+          url: "/payment/:platform/:quoteId",
           templateUrl: 'partials/payment.html',
           controller: 'paymentCtrl',
           title: 'payments'

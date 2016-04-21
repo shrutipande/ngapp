@@ -1,8 +1,7 @@
 define(['./index'], function (controllers) {
     'use strict';
-    controllers.controller('paymentCtrl', ['$scope', '$state', '$timeout', 'craftsvillaService','PRODUCTURL', function ($scope,$state,$timeout,craftsvillaService,PRODUCTURL) {
+    controllers.controller('paymentCtrl', ['$scope', '$state', '$stateParams', '$timeout', 'craftsvillaService','PRODUCTURL', function ($scope,$state,$stateParams,$timeout,craftsvillaService,PRODUCTURL) {
 			var controllerRef = this;
-			window.scope = $scope;
 			$scope.forms = {};
 			$scope.credit = {};
 			$scope.debit = {};
@@ -270,7 +269,7 @@ define(['./index'], function (controllers) {
 
 
 			$scope.finalQuoteDetails = function() {
-				craftsvillaService.loadFinalQuote()
+				craftsvillaService.loadFinalQuote($stateParams.platform, $stateParams.quoteId)
 				.success(function(response) {
 					console.log(response);
 					$scope.finalQuoteData = response.d.product_list;

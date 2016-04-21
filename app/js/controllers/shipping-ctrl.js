@@ -387,7 +387,7 @@ define(['./index'], function (controllers) {
     }
 
     $scope.addressProceed=function(){
-      $state.go('payment');
+      $state.go('payment', { platform: 'web' });
     }
 
     $scope.proceed=function(){
@@ -397,7 +397,7 @@ define(['./index'], function (controllers) {
             .success(function(response)
             {
               if(response.s == 1){
-                $state.go('payment');
+                $state.go('payment', { platform: 'web' });
               }
               else{
                 //alert(response.m)
