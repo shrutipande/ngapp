@@ -58,7 +58,7 @@
                 <h4 role="headding">SELECT SHIPPING ADDRESS </h4>
                 <!--// -->
                 <div class="row" ng-show="addressExists">
-                    <div class="col-xs-12 col-sm-6 col-md-4 fadeIn enter-fadeIn exit-fadeOut speed-0 stagger-3"  ng-repeat="address in addresses" ng-click="checkSameOrNot(address.entity_id);" ng-class="{'hideAddressCard': address.entity_id !== shippingID && selectedShippingID !== null}">
+                    <div class="col-xs-12 col-sm-6 col-md-4 fadeIn enter-fadeIn exit-fadeOut speed-0 stagger-3 nopad-xs"  ng-repeat="address in addresses" ng-click="checkSameOrNot(address.entity_id);" ng-class="{'hideAddressCard': address.entity_id !== shippingID && selectedShippingID !== null}">
 
                     <div class="col-xs-12 addressCard " ng-class="{'addressCardActive': address.entity_id == shippingID}" ng-hide="displayAddresscheckbox == true && address.entity_id !== shippingID">
 
@@ -88,7 +88,7 @@
                                     <div class="col-xs-12 col-sm-6 nopadding">
                                         <form role="form" name="DeseditaddrForm" ng-submit="meditsubmitForm();" novalidate>
                                             <h4 role="headding">
-                                            <a href="#new-address">Edit Address --des </a>
+                                            <a href="#new-address">Edit Address</a>
                                         </h4>
 
                                             <div class="form-group nopadding col-sm-8 col-xs-12"
@@ -165,7 +165,7 @@
 
                                                     <label for="Pincode">Pincode</label>
                                                     <input id="Pincode"
-                                                    type="text"
+                                                    type="number"
                                                     class="form-control"
                                                     name="pincode"
                                                     ng-model="editAddr.postcode"
@@ -176,6 +176,11 @@
                                                      <span ng-show="DeseditaddrForm.pincode.$error.maxlength" class="error">Pincode is too long .</span>
                                                 </div>
                                             </div>
+                                            <div class="col-xs-12 col-sm-2 m-padding hidden-xs mt28">                                
+                                
+                                             <img ng-show="citystateWait" src="images/loader.gif" class="loader"> 
+                                            
+                                        </div>
 
 
                                             <div class="col-xs-12 col-sm-7 m-padding">
@@ -262,8 +267,7 @@
                                             <a href="#new-address">Edit Address</a>
                                         </h4>
 
-                                            <div class="form-group nopadding col-sm-8 col-xs-12"
-                                             ng-class="{ 'error' : DeseditaddrForm.country.$invalid && !DeseditaddrForm.country.$pristine }">
+                                            <div class="form-group nopadding col-sm-8 col-xs-12">
 
                                                 <label>Country:
                                                     <span role="country">India</span>
@@ -392,7 +396,7 @@
                                                 <label for="Number">Phone Number</label>
                                                 <div class="input-group">
                                                     <div class="input-group-addon">+91</div>
-                                                    <input type="text"
+                                                    <input type="number"
                                                     class="form-control"
                                                     id="Number"
                                                     name="phonenumbar"
@@ -442,7 +446,7 @@
                     <div class="col-xs-12 ">
                      <h4 role="headding">SELECT BILLING ADDRESS </h4>
                      </div>
-                   <div class="col-xs-12 col-sm-6 col-md-4 slideInLeft enter-slideInLeft exit-fadeOut speed-0 stagger-3" ng-repeat="address in addresses"  ng-click="setbillingID(address.entity_id)" ng-if= "address.entity_id !== shippingID">
+                   <div class="col-xs-12 col-sm-6 col-md-4 slideInLeft enter-slideInLeft exit-fadeOut speed-0 stagger-3 " ng-repeat="address in addresses"  ng-click="setbillingID(address.entity_id)" ng-if= "address.entity_id !== shippingID">
 
                     <div class="col-xs-12 addressCard"  ng-class="{'addressCardActive': address.entity_id == billingID}">
                         <div class="col-xs-12 nopadding customer-address">
@@ -499,15 +503,14 @@
             </h4>
 
                 <div class="row" ng-class="{'hidden-xs': !mform }">
-                    <div class="col-xs-12">
+                    <div class="col-xs-12 nopad-xs">
                         <div class="col-xs-12 new-address">
                             <div class="col-xs-12 col-sm-7 nopadding">
 
 
                                 <form role="form" name="addnewForm" ng-submit="addnewsubmit(chkStatusBilling);" novalidate>
 
-                                <div class="form-group nopadding col-sm-8 col-xs-12"
-                                ng-class="{ 'error' : (addnewForm.state.$invalid && !addnewForm.state.$pristine  )    || (addnewForm.$submitted && addnewForm.state.$error.required)  }" >
+                                <div class="form-group nopadding col-sm-8 col-xs-12" >
                                     <label>
                                         Country:
                                         <span role="country">{{addnewcountry.country_name}}</span>
@@ -523,8 +526,8 @@
                                           </select>
                                     </div>
 
-                                    <span ng-show="addnewForm.state.$error.minlength" class="error">Username is too short.</span>
-                                    <span class="error" ng-show="addnewForm.$submitted && addnewForm.state.$error.required">Please Select State</span>
+                                    <!-- <span ng-show="addnewForm.state.$error.minlength" class="error">Username is too short.</span>
+                                    <span class="error" ng-show="addnewForm.$submitted && addnewForm.state.$error.required">Please Select Coutry</span> -->
 
                                 </div>
 
@@ -597,7 +600,7 @@
                                         <label for="Pincode">Pincode</label>
                                         <input id="Pincode"
                                         name="pincode"
-                                        type="text"
+                                        type="number"
                                         class="form-control"
                                         placeholder="Pincode"
                                         ng-maxlength="6"
@@ -625,9 +628,12 @@
 
                                 </div>
 
+                                <div class="col-xs-12 col-sm-1 m-padding hidden-lg">                                
+                                     <img ng-show="citystateWait" src="images/loader.gif" class="loader m-loAd"> 
+                                </div>
 
-                                <div class="col-xs-12 col-sm-7 m-padding">
-                                    <div class="form-group">
+                                <div class="col-xs-12 col-sm-6 m-padding">
+                                    <div class="form-group" ng-class="{ 'error' : (addnewForm.city.$invalid && !addnewForm.city.$pristine && addnewForm.city.$touched) || (addnewForm.$submitted && addnewForm.city.$error.required) }">
                                         <label for="City">City</label>
                                         {{addnew.city}}
 
@@ -649,8 +655,14 @@
                                             </select> -->
 
 
-                                <span class="error" ng-show="addnewForm.$submitted && addnewForm.city.$error.required">Please Select State</span>
-                                    </div>
+                                <span class="error" ng-show="addnewForm.$submitted && addnewForm.city.$error.required">Please Select City</span>
+                                    </div> 
+                                </div>
+
+                                <div class="col-xs-12 col-sm-2 m-padding hidden-xs mt28">                                
+                                
+                                     <img ng-show="citystateWait" src="images/loader.gif" class="loader"> 
+                                    
                                 </div>
 
                                 <div class="form-group nopadding col-xs-12"
@@ -733,8 +745,7 @@
                             </div>
                             <div class="col-xs-12 col-sm-7 nopadding">
                                 <form role="form" name="BillingADDForm" ng-submit="addnewsubmitBilling(chkStatusBilling);" novalidate>
-                                <div class="form-group nopadding col-sm-8 col-xs-12"
-                                ng-class="{ 'error' : (BillingADDForm.state.$invalid && !BillingADDForm.state.$pristine)  || (BillingADDForm.$submitted && BillingADDForm.state.$error.required)  }">
+                                <div class="form-group nopadding col-sm-8 col-xs-12">
                                     <label>
                                         Country:
                                         <span role="country">India</span>
@@ -751,8 +762,8 @@
                                         </select>
                                     </div>
 
-                                    <span ng-show="BillingADDForm.state.$error.minlength" class="error">Username is too short.</span>
-                                    <span class="error" ng-show="BillingADDForm.$submitted && BillingADDForm.state.$error.required">Please Select State</span>
+                                    <!-- <span ng-show="BillingADDForm.state.$error.minlength" class="error">Username is too short.</span>
+                                    <span class="error" ng-show="BillingADDForm.$submitted && BillingADDForm.state.$error.required">Please Select Country</span> -->
 
                                 </div>
 
@@ -820,7 +831,7 @@
                                         <label for="Pincode">Pincode</label>
                                         <input id="Pincode"
                                         name="pincode"
-                                        type="text"
+                                        type="number"
                                         class="form-control"
                                         placeholder="Pincode"
                                         ng-minlength="4"
@@ -869,7 +880,7 @@
                                             </select> -->
 
 
-                                            <span class="error" ng-show="addnewForm.$submitted && addnewForm.city.$error.required">Please Select State</span>
+                                            <span class="error" ng-show="addnewForm.$submitted && addnewForm.city.$error.required">Please Select City</span>
                                         </div>
                                     </div>
 
