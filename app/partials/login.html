@@ -72,7 +72,7 @@
 					<h4>HAVE AN ACCOUNT? SIGN IN</h4>
 					<div class="existingUser" ng-hide="guestUser">
 						<form name="userLoginForm" ng-submit =" loginCred()" novalidate>
-							<fieldset class="form-group" ng-class="{ 'error' : (userLoginForm.email.$invalid && !userLoginForm.email.$pristine) || (userLoginForm.$submitted && userLoginForm.email.$error.required)}" >
+							<fieldset class="form-group" ng-class="{ 'error' : (userLoginForm.email.$invalid && !userLoginForm.email.$pristine && userLoginForm.email.$touched) || (userLoginForm.$submitted && userLoginForm.email.$error.required)}" >
 
 								<label>Email</label>
 									<input type="email" name="email" class="form-control" placeholder="Enter email address"  ng-model="userLogin.email" required>
@@ -82,10 +82,10 @@
 									<span ng-show="userLoginForm.email.$error.required" class="error">Tell us your email.</span>
 								</div >
 							</fieldset>
-							<fieldset class="form-group " ng-class="{'error': (userLoginForm.password.$invalid && !userLoginForm.password.$pristine) || (userLoginForm.$submitted && userLoginForm.password.$error.required)}">
+							<fieldset class="form-group " ng-class="{'error': (userLoginForm.password.$invalid && !userLoginForm.password.$pristine && userLoginForm.password.$touched) || (userLoginForm.$submitted && userLoginForm.password.$error.required)}">
 								<label>Password</label>
 								<input type="password" name ="password" class="form-control" placeholder="password"   ng-minlength="6" ng-model="userLogin.password" required>
-								<span ng-message="userLoginForm.password.$error.minlength &&  !userLoginForm.password.$pristine" ng-show="userLoginForm.email.$invalid &&  userLoginForm.password.$touched" class="error">Password needs to be minimum 6 characters.</span>
+								<span ng-message="userLoginForm.password.$error.minlength &&  !userLoginForm.password.$pristine" ng-show="userLoginForm.password.$invalid &&  userLoginForm.password.$touched" class="error">Password needs to be minimum 6 characters.</span>
 								 <div ng-show="userLoginForm.$submitted" >
 								<span ng-show="userLoginForm.password.$error.required" class="error">Please enter password.</p>
 								</div>
@@ -100,11 +100,11 @@
 						</form>
 						<div class="container-fluid ForgotPasswordContainer"  ng-show="forgotPasswd">
 							<div class="FPcontainer">
-								<span role="close" ng-show="forgotPasswd" ng-click="forgtPwdClose()"><a href="#"><img src="images/delete-icon.png" alt="" title=""></a></span>
+								<span role="close" ng-show="forgotPasswd"><a  href="javascript:void(0)" ng-click="forgtPwdClose()"><img src="images/delete-icon.png" alt="" title=""></a></span>
 								<h3>FORGOT PASSWORD?</h3>
 								<p>Enter your email below and we’ll send you a new password by email.</p>
 								<form  name="sendPasswordForm" ng-submit="sendPassword()" novalidate>
-									<fieldset class="form-group" ng-class="{ 'error' : (sendPasswordForm.forgotEmail.$invalid && !sendPasswordForm.forgotEmail.$pristine)  || (sendPasswordForm.$submitted && sendPasswordForm.forgotEmail.$error.required)  }">
+									<fieldset class="form-group" ng-class="{ 'error' : (sendPasswordForm.forgotEmail.$invalid && !sendPasswordForm.forgotEmail.$pristine && sendPasswordForm.forgotEmail.$touched)  || (sendPasswordForm.$submitted && sendPasswordForm.forgotEmail.$error.required)  }">
 										<input type="email" name="forgotEmail" class="form-control" placeholder="Enter email address" ng-model="userForgot.forgotEmail" required>
 										<span ng-message="sendPasswordForm.forgotEmail.$invalid && !sendPasswordForm.forgotEmail.$pristine" ng-show="sendPasswordForm.forgotEmail.$invalid && sendPasswordForm.forgotEmail.$touched"  class="error" >Please enter valid Email ID.</span>
 										<div ng-show="sendPasswordForm.$submitted">
@@ -125,7 +125,7 @@
 					</div>
 					<div class="guestUser col-xs-12 nopadding" ng-show="guestUser" >
 						<form  name="guestUserForm" ng-submit="changeGuestCheckout()"  novalidate>
-							<fieldset class="form-group" ng-class="{ 'error' : (guestUserForm.guestEmail.$invalid && !guestUserForm.guestEmail.$pristine) || (guestUserForm.$submitted && guestUserForm.guestEmail.$error.required) }">
+							<fieldset class="form-group" ng-class="{ 'error' : (guestUserForm.guestEmail.$invalid && !guestUserForm.guestEmail.$pristine && guestUserForm.guestEmail.$touched) || (guestUserForm.$submitted && guestUserForm.guestEmail.$error.required) }">
 								<label>Email</label>
 								<input type="email" name="guestEmail" class="form-control" placeholder="Enter email address" ng-model="guest.guestUserEmail" required>
 								<span ng-message="guestUserForm.guestEmail.$invalid && !guestUserForm.guestEmail.$pristine" ng-show="guestUserForm.guestEmail.$invalid && guestUserForm.guestEmail.$touched" class="error" >Please enter valid Email ID.</span>

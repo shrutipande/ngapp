@@ -56,7 +56,7 @@ define(['./index'], function (controllers) {
 			.success(function (response) {
 				if(response.s==0 )
 				{
-						$scope.invalidCred=true;
+					$scope.invalidCred=true;
 				}
 				else{
 					$state.go('shipping');
