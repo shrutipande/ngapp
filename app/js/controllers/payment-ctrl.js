@@ -257,7 +257,7 @@ define(['./index'], function (controllers) {
 							var check1 = form.cardM.$dirty && form.cardY.$dirty;
 							var check2 = form.cardM.$valid;
 							var check3 = form.cardY.$valid;
-							var check4 = form.cardY.$xblur && form.cardM.$xblur;
+							var check4 = true;//form.cardY.$xblur && form.cardM.$xblur;
 							var check5 = new Date() > new Date(form.cardY.$modelValue, form.cardM.$modelValue - 1);
 
 							if(check1) {
@@ -271,10 +271,12 @@ define(['./index'], function (controllers) {
 							}
 							else return false;
 					}
-
-						(!forms.creditForm.cardM.$valid && !forms.creditForm.cardM.$pristine && forms.creditForm.cardM.$xblur) || (!forms.creditForm.cardY.$valid && !forms.creditForm.cardY.$pristine && forms.creditForm.cardM.$xblur)
-					default:
-
+				case 'cardCVC':
+					return form[element].$invalid && !form[element].$pristine && form[element].$xblur
+				case 'payment':
+					return form.$invalid || $scope.validate('cardExp', form);
+				default:
+					return false;
 				}
 			}
 

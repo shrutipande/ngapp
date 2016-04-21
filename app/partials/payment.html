@@ -230,7 +230,7 @@
 											</fieldset>
 										</div>
 										<div class="col-xs-5 cvv-code">
-											<fieldset class="form-group" ng-class="{'error' : !forms.creditForm.cardCVC.$valid && !forms.creditForm.cardCVC.$pristine && forms.creditForm.cardCVC.$xblur}">
+											<fieldset class="form-group" ng-class="{'error' : validate('cardCVC', forms.creditForm)}">
 												<label>CVV Code</label>
 												<input
 												type="password"
@@ -248,7 +248,7 @@
 										</div>
 									</div>
 									<div class="col-xs-12 nopadding">
-										<button type="submit" class="btn btn-newStyle bg-green" ng-disabled="forms.creditForm.$invalid">PAY <span><i>&#x20B9;</i>{{shippingAmountData.grand_total || 0}}</span> SECURELY</button>
+										<button type="submit" class="btn btn-newStyle bg-green" ng-disabled="validate('payment', forms.creditForm)">PAY <span><i>&#x20B9;</i>{{shippingAmountData.grand_total || 0}}</span> SECURELY</button>
 									</div>
 								</form>
 							</div>
@@ -320,7 +320,7 @@
 											</fieldset>
 										</div>
 										<div class="col-xs-5 cvv-code">
-											<fieldset class="form-group" ng-class="{'error' : !forms.debitForm.cardCVC.$valid && !forms.debitForm.cardCVC.$pristine && forms.debitForm.cardCVC.$xblur}">
+											<fieldset class="form-group" ng-class="{'error' : validate('cardCVC', forms.debitForm)}">
 												<label>CVV Code</label>
 												<input
 												type="password"
@@ -338,7 +338,7 @@
 										</div>
 									</div>
 									<div class="col-xs-12 nopadding">
-										<button type="submit" class="btn btn-newStyle bg-green" ng-disabled="forms.debitForm.$invalid">PAY <span><i>&#x20B9;</i>{{shippingAmountData.grand_total || 0}}</span> SECURELY</button>
+										<button type="submit" class="btn btn-newStyle bg-green" ng-disabled="validate('payment', forms.debitForm)">PAY <span><i>&#x20B9;</i>{{shippingAmountData.grand_total || 0}}</span> SECURELY</button>
 									</div>
 								</form>
 							</div>
@@ -464,7 +464,7 @@
 														</fieldset>
 													</div>
 													<div class="col-xs-5 cvv-code">
-														<fieldset class="form-group" ng-class="{'error' : !forms.creditForm_mobile.cardCVC.$valid && !forms.creditForm_mobile.cardCVC.$pristine && forms.creditForm_mobile.cardCVC.$xblur}">
+														<fieldset class="form-group" ng-class="{'error' : validate('cardCVC', forms.creditForm_mobile)}">
 															<label>CVV Code</label>
 															<input
 															type="password"
@@ -482,7 +482,7 @@
 													</div>
 												</div>
 												<div class="col-xs-12 nopadding">
-													<button type="submit" class="btn btn-newStyle bg-green" ng-disabled="forms.creditForm_mobile.$invalid">PAY <span><i>&#x20B9;</i>{{shippingAmountData.grand_total || 0}}</span> SECURELY</button>
+													<button type="submit" class="btn btn-newStyle bg-green" ng-disabled="validate('payment', forms.creditForm_mobile)">PAY <span><i>&#x20B9;</i>{{shippingAmountData.grand_total || 0}}</span> SECURELY</button>
 												</div>
 											</form>
 										</div>
@@ -554,7 +554,7 @@
 														</fieldset>
 													</div>
 													<div class="col-xs-5 cvv-code">
-														<fieldset class="form-group" ng-class="{'error' : !forms.debitForm_mobile.cardCVC.$valid && !forms.debitForm_mobile.cardCVC.$pristine && forms.debitForm_mobile.cardCVC.$xblur}">
+														<fieldset class="form-group" ng-class="{'error' : validate('cardCVC', forms.debitForm_mobile)}">
 															<label>CVV Code</label>
 															<input
 															type="password"
@@ -572,7 +572,7 @@
 													</div>
 												</div>
 												<div class="col-xs-12 nopadding">
-													<button type="submit" class="btn btn-newStyle bg-green" ng-disabled="forms.debitForm_mobile.$invalid">PAY <span><i>&#x20B9;</i>{{shippingAmountData.grand_total || 0}}</span> SECURELY</button>
+													<button type="submit" class="btn btn-newStyle bg-green" ng-disabled="validate('payment', forms.debitForm_mobile)">PAY <span><i>&#x20B9;</i>{{shippingAmountData.grand_total || 0}}</span> SECURELY</button>
 												</div>
 											</form>
 										</div>
