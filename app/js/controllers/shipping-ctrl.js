@@ -55,17 +55,43 @@ define(['./index'], function (controllers) {
     };
 
     //Checkbox view address hide address
-    $scope.checkStatus=function(){
+    $scope.checkStatus=function(value){
       //$scope.selectedBillingID = addId;
+      console.log("** ---  ---**");
 
-      if ($scope.chkStatus) {
-        //alert('checked:show');
-        $scope.displayAddress=false;
+      if (value) {
+       // alert('checked:show');
+        $scope.displayAddress=true;
+                $scope.displayAddresscheckbox=false;
+
         $scope.selectedShippingID = $scope.shippingID;
 
       }
       else
       {
+        //alert('checked:hide');
+        $scope.billingID = null;
+        $scope.selectedShippingID = $scope.shippingID;
+        console.log(")))))))))((((((((((");
+        console.log($scope.selectedShippingID);
+        $scope.displayAddress=false;
+        $scope.displayAddresscheckbox=true;
+      }
+    };
+
+
+    $scope.checkMobileStatus=function(address){
+      //$scope.selectedBillingID = addId;
+
+      if (address.chkStatus) {
+       // alert('checked:show');
+        $scope.displayAddress=true;
+        $scope.selectedShippingID = $scope.shippingID;
+
+      }
+      else
+      {
+        //alert('checked:hide');
         $scope.billingID = null;
         $scope.selectedShippingID = $scope.shippingID;
         console.log(")))))))))((((((((((");
@@ -74,6 +100,7 @@ define(['./index'], function (controllers) {
         $scope.displayAddresscheckbox=true;
 
       }
+      address.chkStatus = address.chkStatus;
     };
 
     $scope.checkStatusBilling=function(){
