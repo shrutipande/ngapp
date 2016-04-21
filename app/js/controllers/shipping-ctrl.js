@@ -17,6 +17,7 @@ define(['./index'], function (controllers) {
     $scope.shipping ={};
     $scope.noshippingSelected=false;
     $scope.addressExists = false;
+    $scope.citystateWait=false;
     // All Functions
 
     /*----Fetech Country---*/
@@ -92,6 +93,7 @@ define(['./index'], function (controllers) {
 
     //add data
     $scope.addnewsubmit = function(chkStatusBilling) {
+      if ($scope.addnewForm.$valid) {
       if (chkStatusBilling == true) {
         $scope.shipping.countryName = $scope.addnewcountry.country_name;
         craftsvillaService.addAddress($scope.shipping, $scope.shipping)
@@ -114,17 +116,20 @@ define(['./index'], function (controllers) {
             .error (function (error) {
               console.log('Error');
             });
+        }
       }
     };
 
 
     //Edit address
     $scope.changePincode = function(pincode){
+      $scope.citystateWait=true;
       console.log($scope.addnewcountry.country_name)
       if ($scope.addnewcountry.country_name == "India")
         craftsvillaService.getAddressFromPincode(pincode)
             .success(function(response)
             {
+               $scope.citystateWait=false;  
               console.log(response);
               if (response.s == 1 )
               {
