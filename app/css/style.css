@@ -535,6 +535,7 @@ span[role="division"] { margin-left: 5%; }
     div[check-out] .left-panel{margin-top:0px; padding:0 5px;}
     div[check-out] .check-out-msg{text-align: left;  padding:10px 2px;}
     div[check-out] .check-out-msg-txt{width:68%; margin-right:3%; padding:0 10px;}
+    div[check-out] .check-out-msg-txt-lrg{width:97%; margin-right:3%; padding:0 10px;}
     div[check-out] .check-out-msg-btn{float:right; width:25%; /*padding:5px 0;*/}
     div[check-out] .left-panel .cart-items-card .cart-items-cont{padding: 12px 0 12px 12px;}
     div[check-out] .left-panel .cart-items-card .cart-seller-cont{float: left;  padding:10px 0;  width: 97%; border-top: 1px solid #ebebeb; margin: 0 5px}
