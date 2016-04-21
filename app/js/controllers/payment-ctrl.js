@@ -303,7 +303,6 @@ define(['./index'], function (controllers) {
 							var check2 = form.cardM.$valid;
 							var check3 = form.cardY.$valid;
 							var check4 = true;//form.cardY.$xblur && form.cardM.$xblur;
-							console.log("changed")
 							var check5 = new Date() > new Date(form.cardY.$modelValue, form.cardM.$modelValue);
 
 							if(check1) {

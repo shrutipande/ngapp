@@ -165,8 +165,9 @@
 							<!-- show on payu -->
 							<div class="col-xs-12 payuform" ng-if = "item.method == 'PayU Money'">
 								<h3>Pay Using PayU Money</h3>
+								<p>You will be redirected to PayU to complete the order</p>
 								<div class="col-xs-12 col-sm-7 nopadding">
-									<input type="button" value="PLACE ORDER" class="btn btn-newStyle bg-green" ng-click="submitPayUForm()">
+									<button type="submit" class="btn btn-newStyle bg-green">PAY <span><i>&#x20B9;</i>{{shippingAmountData.grand_total || 0}}</span> SECURELY</button>
 								</div>
 							</div>
 							<!-- show on creditcard -->
@@ -365,7 +366,7 @@
 									</div>
 								</div>
 								<div class="col-xs-12 col-sm-8 nopadding">
-									<a class="btn btn-newStyle bg-green" href="javascript:void(0)" ng-click="submitNBForm()">PAY <span><i>&#x20B9;</i>{{shippingAmountData.grand_total || 0}}</span> SECURELY</a>
+									<button class="btn btn-newStyle bg-green" href="javascript:void(0)" ng-click="submitNBForm()">PAY <span><i>&#x20B9;</i>{{shippingAmountData.grand_total || 0}}</span> SECURELY</button>
 								</div>
 							</div>
 						</form>
