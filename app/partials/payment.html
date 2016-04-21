@@ -186,7 +186,7 @@
 										</fieldset>
 									</div>
 									<div class="col-xs-12 nopadding">
-										<fieldset class="form-group" ng-class="{ 'error' : forms.creditForm.cardName.$invalid && !forms.creditForm.cardName.$pristine && forms.creditForm.cardName.$xblur }">
+										<fieldset class="form-group" ng-class="{ 'error' : validate('cardName', forms.creditForm) }">
 											<label>Name on Card</label>
 											<input
 											type="text"
@@ -198,7 +198,7 @@
 											autocomplete="off"
 											ng-blur="forms.creditForm.cardName.$xblur=true"
 											ng-focus="forms.creditForm.cardName.$xblur=false">
-											<p ng-show="forms.creditForm.cardName.$invalid && !forms.creditForm.cardName.$pristine && forms.creditForm.cardName.$xblur">Please enter name</p>
+											<p ng-show="validate('cardName', forms.creditForm)">Please enter name</p>
 										</fieldset>
 									</div>
 									<div class="col-xs-12 nopadding">
@@ -276,7 +276,7 @@
 										</fieldset>
 									</div>
 									<div class="col-xs-12 nopadding">
-										<fieldset class="form-group" ng-class="{ 'error' : forms.debitForm.cardName.$invalid && !forms.debitForm.cardName.$pristine && forms.debitForm.cardName.$xblur }">
+										<fieldset class="form-group" ng-class="{ 'error' : validate('cardName', forms.debitForm) }">
 											<label>Name on Card</label>
 											<input
 											type="text"
@@ -288,7 +288,7 @@
 											autocomplete="off"
 											ng-blur="forms.debitForm.cardName.$xblur=true"
 											ng-focus="forms.debitForm.cardName.$xblur=false">
-											<p ng-show="forms.debitForm.cardName.$invalid && !forms.debitForm.cardName.$pristine && forms.debitForm.cardName.$xblur">Please enter name</p>
+											<p ng-show="validate('cardName', forms.debitForm)">Please enter name</p>
 										</fieldset>
 									</div>
 									<div class="col-xs-12 nopadding">
@@ -420,7 +420,7 @@
 													</fieldset>
 												</div>
 												<div class="col-xs-12 nopadding">
-													<fieldset class="form-group" ng-class="{ 'error' : forms.creditForm_mobile.cardName.$invalid && !forms.creditForm_mobile.cardName.$pristine && forms.creditForm_mobile.cardName.$xblur }">
+													<fieldset class="form-group" ng-class="{ 'error' : validate('cardName', forms.creditForm_mobile) }">
 														<label>Name on Card</label>
 														<input
 														type="text"
@@ -432,7 +432,7 @@
 														autocomplete="off"
 														ng-blur="forms.creditForm_mobile.cardName.$xblur=true"
 														ng-focus="forms.creditForm_mobile.cardName.$xblur=false">
-														<p ng-show="forms.creditForm_mobile.cardName.$invalid && !forms.creditForm_mobile.cardName.$pristine && forms.creditForm_mobile.cardName.$xblur">Please enter name</p>
+														<p ng-show="validate('cardName', forms.creditForm_mobile)">Please enter name</p>
 													</fieldset>
 												</div>
 												<div class="col-xs-12 nopadding">
@@ -510,7 +510,7 @@
 													</fieldset>
 												</div>
 												<div class="col-xs-12 nopadding">
-													<fieldset class="form-group" ng-class="{ 'error' : forms.debitForm_mobile.cardName.$invalid && !forms.debitForm_mobile.cardName.$pristine && forms.debitForm_mobile.cardName.$xblur }">
+													<fieldset class="form-group" ng-class="{ 'error' : validate('cardName', forms.debitForm_mobile) }">
 														<label>Name on Card</label>
 														<input
 														type="text"
@@ -522,7 +522,7 @@
 														autocomplete="off"
 														ng-blur="forms.debitForm_mobile.cardName.$xblur=true"
 														ng-focus="forms.debitForm_mobile.cardName.$xblur=false">
-														<p ng-show="forms.debitForm_mobile.cardName.$invalid && !forms.debitForm_mobile.cardName.$pristine && forms.debitForm_mobile.cardName.$xblur">Please enter name</p>
+														<p ng-show="validate('cardName', forms.debitForm_mobile)">Please enter name</p>
 													</fieldset>
 												</div>
 												<div class="col-xs-12 nopadding">

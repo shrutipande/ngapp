@@ -251,6 +251,8 @@ define(['./index'], function (controllers) {
 					case 'cardNumber':
 						return form[element].$invalid && !form[element].$pristine && form[element].$xblur;
 						break;
+					case 'cardName':
+						return form[element].$invalid && !form[element].$pristine && form[element].$xblur;
 					default:
 
 				}
