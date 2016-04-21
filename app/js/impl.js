@@ -4,6 +4,7 @@
  */
 define([
     './templates',
+    './controllers/ctrl.main',
     './controllers/checkout-cart-ctrl',
     './controllers/empty-cart-ctrl',
     './controllers/login-ctrl',
