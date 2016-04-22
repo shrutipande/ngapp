@@ -553,7 +553,7 @@
 
                                 <div class="form-group nopadding col-sm-8 col-xs-12"
                                      ng-class="{ 'error' : (addnewForm.lastname.$invalid && !addnewForm.lastname.$pristine && addnewForm.lastname.$touched)  || (addnewForm.$submitted && addnewForm.lastname.$error.required)  }">
-                                    <label for="name">last Name</label>
+                                    <label for="name">Last Name</label>
                                     <input id="name"
                                     name ="lastname"
                                     type="text"
@@ -580,6 +580,7 @@
                                     ng-model="shipping.address1"
                                     class="form-control"
                                     ng-minlength="10"
+                                    placeholder="Enter Address"
                                     required>
                                     </textarea>
 
@@ -814,6 +815,7 @@
                                     ng-model="addNewBilling.address1"
                                     class="form-control"
                                     ng-minlength="3"
+                                    placeholder="Enter Address"
                                     required>
                                     </textarea>
 
