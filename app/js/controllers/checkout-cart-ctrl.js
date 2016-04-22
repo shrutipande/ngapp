@@ -28,9 +28,11 @@ define(['./index'], function (controllers) {
     $scope.waitingCartItem=false;
 
 		$scope.getCartDetails = function() {
+      $scope.waitingCartDatails=true;
 			craftsvillaService.loadQuote()
 			.success(function(response) {
-				var _outOfStockProducts = [];
+        $scope.waitingCartDatails=false;
+        var _outOfStockProducts = [];
 				var _inStockCod = [];
 				var _inStockNotCod = [];
 
@@ -53,7 +55,8 @@ define(['./index'], function (controllers) {
 				updateTotals(response);
 			})
 			.error(function (err) {
-				throw new Error(err);
+        $scope.waitingCartDatails=false;
+        throw new Error(err);
 			})
 		};
 
@@ -243,10 +246,6 @@ define(['./index'], function (controllers) {
 			});
 		}
 
-		$scope.initCheckoutCart = function() {
-			$scope.getCartDetails();
-			$scope.checkLogin();
-		}
 
 		$scope.checkLogin = function() {
 			craftsvillaService.loginCheck()
@@ -296,6 +295,10 @@ define(['./index'], function (controllers) {
 		$scope.continueShopping = function() {
 			$window.history.back();
 		}
-		$scope.initCheckoutCart();
+    $scope.initCheckoutCart = function() {
+      $scope.getCartDetails();
+      $scope.checkLogin();
+    }
+    $scope.initCheckoutCart();
 	}]);
 });
