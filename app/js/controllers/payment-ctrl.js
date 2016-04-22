@@ -335,6 +335,7 @@ define(['./index'], function (controllers) {
 			}
 
 			$scope.getCCTypeImage = function (ccType) {
+				if(!$scope.cardTypes[ccType]) return '';
 				return $scope.cardTypes[ccType].img;
 			}
 
@@ -346,6 +347,32 @@ define(['./index'], function (controllers) {
 
 			$scope.isValidDate = function(year, month) {
 				return new Date(year, month) < new Date();
+			}
+
+			$scope.removeFromCart = function (product_id, product) {
+				product.waitingCartItem = true;
+				craftsvillaService.removeQuoteItems([{
+					productID: product_id
+				}])
+				.success(function(response) {
+					$scope.finalQuoteData = response.d.product_list;
+					$scope.shippingAmountData.grand_total = +$scope.shippingAmountData.grand_total;
+					product.waitingCartItem = false;
+
+					if($scope.shippingAmountData.showCod === 0) {
+						$timeout(function() {
+							if($scope.paymentMethods) {
+									$scope.changeName = $scope.paymentMethods[1].method;
+							}
+							else {
+									$scope.changeName = 'Credit card';
+							}
+						})
+					}
+				})
+				.error(function(error) {
+	        console.log(error);
+				});
 			}
 
 			$scope.initPayment();
