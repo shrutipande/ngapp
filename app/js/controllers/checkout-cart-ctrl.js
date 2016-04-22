@@ -88,6 +88,7 @@ define(['./index'], function (controllers) {
 				$scope.itemRemoved = 1;
 				$scope.latestRemovedItem = product_id;
 				updateTotals(response);
+				document.body.scrollTop = 0;
 			})
 			.error(function(error) {
         data.waitingCartItem = false;
@@ -219,7 +220,7 @@ define(['./index'], function (controllers) {
       craftsvillaService.updateQty(product_id, quantity.id)
 			.success(function(response) {
         data.waitingCartItem = true;
-
+				document.body.scrollTop = 0;
         $scope.getCartDetails();
 			})
 			.error(function(error) {
