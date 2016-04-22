@@ -176,6 +176,14 @@
 									<button ng-click="submitPayUForm()" class="btn btn-newStyle bg-green">PAY <span><i>&#x20B9;</i>{{shippingAmountData.grand_total || 0}}</span> SECURELY</button>
 								</div>
 							</div>
+							<!-- show on paypal -->
+							<div class="col-xs-12 payuform" ng-if = "item.method == 'PayPal'">
+								<h3>Pay Using PayPal</h3>
+								<p>You will be redirected to PayPal to complete the order</p>
+								<div class="col-xs-12 col-sm-7 nopadding">
+									<button ng-click="submitPaypalForm()" class="btn btn-newStyle bg-green">PAY <span><i>&#x20B9;</i>{{shippingAmountData.grand_total || 0}}</span> SECURELY</button>
+								</div>
+							</div>
 							<!-- show on creditcard -->
 							<div class="col-xs-12 col-sm-8 creditcard" ng-if = "item.method == 'Credit card'">
 								<form name="forms.creditForm" ng-submit="submitCreditForm()" novalidate>
@@ -362,7 +370,7 @@
 							<form class="col-xs-12 NetBanking" name="forms.NBForm" novalidate ng-if = "item.method == 'Net Banking'">
 								<ul role="nasted-list">
 									<li ng-repeat = "bank in item.content.priority">
-										<input id="{{bank.bank_code}}" type="radio" name="bank" value="{{bank.bank_code}}" ng-model="netbanking.bank_code">
+										<input id="{{bank.bank_code}}" type="radio" name="bank" value="{{bank.bank_code}}" ng-model="nb.netbanking.bank_code">
 										<label for="{{bank.bank_code}}"><span></span><img ng-src="{{bank.logo_url}}" alt="{{bank.bank_name}}" /></label>
 									</li>
 
@@ -370,7 +378,7 @@
 								<div class="col-xs-12 nopadding">
 									<span class="pull-left or">OR</span>
 									<div class="select-style">
-										<select ng-model="netbanking" name="bank" ng-options="item as item.bank_name for item in item.content.others"></select>
+										<select ng-model="nb.netbanking" name="bank" ng-options="item as item.bank_name for item in item.content.others"></select>
 									</div>
 								</div>
 								<div class="col-xs-12 col-sm-8 nopadding">
@@ -410,6 +418,14 @@
 											<h3>Pay Using PayU Money</h3>
 											<div class="col-xs-12 col-sm-7 nopadding">
 												<button ng-click="submitPayUForm()" class="btn btn-newStyle bg-green">PAY <span><i>&#x20B9;</i>{{shippingAmountData.grand_total || 0}}</span> SECURELY</button>
+											</div>
+										</div>
+										<!-- show on paypal -->
+										<div class="col-xs-12 payuform" ng-if = "item.method == 'PayPal'">
+											<h3>Pay Using PayPal</h3>
+											<p>You will be redirected to PayPal to complete the order</p>
+											<div class="col-xs-12 col-sm-7 nopadding">
+												<button ng-click="submitPaypalForm()" class="btn btn-newStyle bg-green">PAY <span><i>&#x20B9;</i>{{shippingAmountData.grand_total || 0}}</span> SECURELY</button>
 											</div>
 										</div>
 										<!-- show on creditcard -->
@@ -598,7 +614,7 @@
 										<form class="col-xs-12 NetBanking" name="forms.NBForm" novalidate ng-if = "item.method == 'Net Banking'">
 											<ul role="nasted-list">
 												<li ng-repeat = "bank in item.content.priority">
-													<input id="{{bank.bank_code}}" type="radio" name="bank" value="{{bank.bank_code}}" ng-model="netbanking.bank_code">
+													<input id="{{bank.bank_code}}" type="radio" name="bank" value="{{bank.bank_code}}" ng-model="nb.netbanking.bank_code">
 													<label for="{{bank.bank_code}}"><span></span><img ng-src="{{bank.logo_url}}" alt="{{bank.bank_name}}" /></label>
 												</li>
 
@@ -606,7 +622,7 @@
 											<div class="col-xs-12 nopadding">
 												<span class="pull-left or">OR</span>
 												<div class="select-style">
-													<select ng-model="netbanking" name="bank" ng-options="item as item.bank_name for item in item.content.others"></select>
+													<select ng-model="nb.netbanking" name="bank" ng-options="item as item.bank_name for item in item.content.others"></select>
 												</div>
 											</div>
 											<div class="col-xs-12 col-sm-8 nopadding">

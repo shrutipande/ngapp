@@ -5,7 +5,7 @@ define(['./index'], function (controllers) {
 			$scope.forms = {};
 			$scope.credit = {};
 			$scope.debit = {};
-			$scope.netbanking = {};
+			$scope.nb = { netbanking : {} };
 			$scope.imgHost = $scope.IMGHOST + '/thumb/166x166';
 			$scope.prdctUrl = PRODUCTURL;
 			$scope.showDetails = false;
@@ -178,7 +178,54 @@ define(['./index'], function (controllers) {
 			$scope.submitNBForm = function() {
 				craftsvillaService.placeOrder({
 					"pg": $scope.pg,
-					"bankcode":$scope.netbanking.bank_code,
+					"bankcode":$scope.nb.netbanking.bank_code,
+					"ccnum": '',
+					"ccname": '',
+					"ccvv": '',
+					"ccexpmon": '',
+					"ccexpyr": ''
+				})
+				.success(function(data){
+					var form = document.createElement("form");
+			    form.setAttribute("method", 'POST');
+			    form.setAttribute("action", data.url);
+
+			    for(var key in data.parameter) {
+		        if(data.parameter.hasOwnProperty(key)) {
+	            var hiddenField = document.createElement("input");
+	            hiddenField.setAttribute("type", "hidden");
+	            hiddenField.setAttribute("name", key);
+	            hiddenField.setAttribute("value", data.parameter[key]);
+
+	            form.appendChild(hiddenField);
+		         }
+			    }
+
+					document.body.appendChild(form);
+    			form.submit();
+
+					// craftsvillaService.paymentRedirect(payUData.url, payUData.parameter)
+					// .success(function(data) {
+					//
+					// })
+					// .error(function(err){
+					// 	console.log(err);
+					// })
+				})
+				.error(function(err){
+					console.log(err);
+				});
+			};
+			$scope.submitPayUForm = function() {
+				craftsvillaService.placeOrder({
+					"pg": 'Wallet',
+					"bankcode": 'payuw',
+					"ccnum": '',
+					"ccname": '',
+					"ccvv": '',
+					"ccexpmon": '',
+					"ccexpyr": '',
+					"gateway": 'payu'
 				})
 				.success(function(data){
 					// console.log(data);
@@ -213,10 +260,17 @@ define(['./index'], function (controllers) {
 					console.log(err);
 				});
 			};
-			$scope.submitPayUForm = function() {
+
+			$scope.submitPaypalForm = function() {
 				craftsvillaService.placeOrder({
-					"pg": 'Wallet',
-					"bankcode": 'payuw'
+					"pg": '',
+					"bankcode": '',
+					"ccnum": '',
+					"ccname": '',
+					"ccvv": '',
+					"ccexpmon": '',
+					"ccexpyr": '',
+					"gateway": 'paypal'
 				})
 				.success(function(data){
 					// console.log(data);
