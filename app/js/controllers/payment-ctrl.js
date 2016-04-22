@@ -279,9 +279,11 @@ define(['./index'], function (controllers) {
 
 
 			$scope.finalQuoteDetails = function() {
-				craftsvillaService.loadFinalQuote($stateParams.platform, $stateParams.quoteId)
+        $scope.waitingCartDatails = true;
+        craftsvillaService.loadFinalQuote($stateParams.platform, $stateParams.quoteId)
 				.success(function(response) {
-					console.log(response);
+          $scope.waitingCartDatails = false;
+          console.log(response);
 					$scope.finalQuoteData = response.d.product_list;
 					$scope.shippingAdressData = response.d.shippingAddress;
 					$scope.shippingAmountData = response.d;
