@@ -60,7 +60,7 @@ define(['./index'], function (controllers) {
 					$scope.invalidCred=true;
 				}
 				else{
-					$localStorage.loginData = response.d[0];
+					$localStorage.loginData = response.d;
 					$state.go('shipping');
 				}
 			})

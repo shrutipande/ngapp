@@ -281,6 +281,7 @@ define(['./index'], function (controllers) {
 			$scope.finalQuoteDetails = function() {
 				craftsvillaService.loadFinalQuote($stateParams.platform, $stateParams.quoteId)
 				.success(function(response) {
+					if(response.d.product_list.length === 0) $state.go('cart');
 					console.log(response);
 					$scope.finalQuoteData = response.d.product_list;
 					$scope.shippingAdressData = response.d.shippingAddress;
@@ -355,20 +356,7 @@ define(['./index'], function (controllers) {
 					productID: product_id
 				}])
 				.success(function(response) {
-					$scope.finalQuoteData = response.d.product_list;
-					$scope.shippingAmountData.grand_total = +$scope.shippingAmountData.grand_total;
-					product.waitingCartItem = false;
-
-					if($scope.shippingAmountData.showCod === 0) {
-						$timeout(function() {
-							if($scope.paymentMethods) {
-									$scope.changeName = $scope.paymentMethods[1].method;
-							}
-							else {
-									$scope.changeName = 'Credit card';
-							}
-						})
-					}
+					$scope.finalQuoteDetails()
 				})
 				.error(function(error) {
 	        console.log(error);
