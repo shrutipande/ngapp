@@ -1,150 +1,321 @@
-
 <!--// Header -->
 <div role-header class="container-fluid nopadding">
-	<div class="h-space hidden-xs hidden-sm"></div>
-	<div role-nav class="container nopadding">
-		<div class="col-xs-12 col-sm-5 nopadding" role="logo">
-			<img role="back" src="images/Shape.png" alt="" title="">
-			<img src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/cv_logo.png" alt="" title="">
-		</div>
-		<div class="col-xs-12 col-sm-7 nopadding buyerProtection hidden-xs">
-			<ul>
-				<li><a href="#">
-					<span><img src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/img/sheild.png"></span>
-					<strong>100%</strong> Buyer Protection</a></li>
-				<li>|</li>
-				<li><a href="#"><span>Learn More</span></a></li>
-			</ul>
-		</div>
-	</div>
+    <div class="h-space hidden-xs hidden-sm"></div>
+    <div role-nav class="container nopadding">
+        <div class="col-xs-12 col-sm-5 nopadding" role="logo">
+            <img role="back" src="images/Shape.png" alt="" title="">
+            <img src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/cv_logo.png" alt="" title="">
+        </div>
+        <div class="col-xs-12 col-sm-7 nopadding buyerProtection hidden-xs">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span><img src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/img/sheild.png"></span>
+                        <strong>100%</strong>
+                        Buyer Protection</a>
+                </li>
+                <li>|</li>
+                <li>
+                    <a href="#">
+                        <span>Learn More</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>
 <!--// Header -->
 <!-- order success start -->
 <div class="container nopadding">
-<div class=" nopadding" order-thank-cont="">
-	<div class="col-xs-12  nopadding order-header">
-		<div class="thnku">
-			<div class="t-img"><img src="images/tick.png" width="100%"></div>
-			<div class="t-txt">Thank You</div>
-		</div>
-		<div class="succ-txt">Your order has been placed successfully.</div>
+    <div class=" nopadding" order-thank-cont="">
+        <div class="col-xs-12  nopadding order-header">
+            <div class="thnku">
+                <div class="t-img"><img src="images/tick.png" width="100%"></div>
+                <div class="t-txt">Thank You</div>
+            </div>
+            <div class="succ-txt">Your order has been placed successfully.</div>
 
-	</div>
-</div>
-<div class="col-xs-12  " order-success-cont="" >
-	<div class="col-xs-12 nopadding detls-cont">
-		<div class="dtl-txt">Details</div>
-		<div class="ttl-no-ord">Order number {{ orderNo }} </div>
-	</div>
-	<div class="col-xs-12  nopadding details-cont" ng-repeat="order in orderDetails">
-		<div class="col-xs-12  nopadding">
-			<div class="detail-text">{{ order.product_name }}</div>
-			<div class="detail-amt">
-				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 14 28" class="icon">
-<path d="M14.031 7.344v1.594q0 0.219-0.141 0.359t-0.359 0.141h-2.625q-0.359 2.25-2.016 3.656t-4.312 1.719q2.609 2.781 7.172 8.375 0.219 0.25 0.063 0.531-0.125 0.281-0.453 0.281h-3.047q-0.25 0-0.391-0.187-4.781-5.734-7.781-8.922-0.141-0.141-0.141-0.344v-1.984q0-0.203 0.148-0.352t0.352-0.148h1.75q2.063 0 3.32-0.672t1.602-1.953h-6.672q-0.219 0-0.359-0.141t-0.141-0.359v-1.594q0-0.219 0.141-0.359t0.359-0.141h6.453q-0.891-1.766-4.188-1.766h-2.266q-0.203 0-0.352-0.148t-0.148-0.352v-2.078q0-0.219 0.141-0.359t0.359-0.141h13q0.219 0 0.359 0.141t0.141 0.359v1.594q0 0.219-0.141 0.359t-0.359 0.141h-3.641q0.734 0.953 1 2.25h2.672q0.219 0 0.359 0.141t0.141 0.359z"></path>
-</svg> <strong>{{order.product_price | number : 2 }}</strong></div>
-		</div>
-			<div class="col-xs-12  nopadding detail-qty">Quantity: {{ order.product_qty}}</div>
-	</div>
+        </div>
+    </div>
+    <div class="col-xs-12  " order-success-cont="">
+        <div class="col-xs-12 nopadding detls-cont">
+            <div class="dtl-txt">Details</div>
+            <div class="ttl-no-ord">Order number
+                {{ orderNo }}
+            </div>
+        </div>
+        <div class="col-xs-12  nopadding details-cont" ng-repeat="order in orderDetails">
+            <div class="col-xs-12  nopadding">
+                <div class="detail-text">{{ order.product_name }}</div>
+                <div class="detail-amt">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 14 28" class="icon">
+                        <path
+                            d="M14.031 7.344v1.594q0 0.219-0.141 0.359t-0.359 0.141h-2.625q-0.359 2.25-2.016 3.656t-4.312 1.719q2.609 2.781 7.172 8.375 0.219 0.25 0.063 0.531-0.125 0.281-0.453 0.281h-3.047q-0.25 0-0.391-0.187-4.781-5.734-7.781-8.922-0.141-0.141-0.141-0.344v-1.984q0-0.203 0.148-0.352t0.352-0.148h1.75q2.063 0 3.32-0.672t1.602-1.953h-6.672q-0.219 0-0.359-0.141t-0.141-0.359v-1.594q0-0.219 0.141-0.359t0.359-0.141h6.453q-0.891-1.766-4.188-1.766h-2.266q-0.203 0-0.352-0.148t-0.148-0.352v-2.078q0-0.219 0.141-0.359t0.359-0.141h13q0.219 0 0.359 0.141t0.141 0.359v1.594q0 0.219-0.141 0.359t-0.359 0.141h-3.641q0.734 0.953 1 2.25h2.672q0.219 0 0.359 0.141t0.141 0.359z"></path>
+                    </svg>
+                    <strong>{{order.product_price | number : 2 }}</strong>
+                </div>
+            </div>
+            <div class="col-xs-12  nopadding detail-qty">Quantity:
+                {{ order.product_qty}}</div>
+        </div>
 
-	<div class="col-xs-12  nopadding details-cont">
-		<div class="col-xs-12  nopadding">
-			<div class="detail-text">Sub Total </div>
-			<div class="detail-amt">
-				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 14 28" class="icon">
-<path d="M14.031 7.344v1.594q0 0.219-0.141 0.359t-0.359 0.141h-2.625q-0.359 2.25-2.016 3.656t-4.312 1.719q2.609 2.781 7.172 8.375 0.219 0.25 0.063 0.531-0.125 0.281-0.453 0.281h-3.047q-0.25 0-0.391-0.187-4.781-5.734-7.781-8.922-0.141-0.141-0.141-0.344v-1.984q0-0.203 0.148-0.352t0.352-0.148h1.75q2.063 0 3.32-0.672t1.602-1.953h-6.672q-0.219 0-0.359-0.141t-0.141-0.359v-1.594q0-0.219 0.141-0.359t0.359-0.141h6.453q-0.891-1.766-4.188-1.766h-2.266q-0.203 0-0.352-0.148t-0.148-0.352v-2.078q0-0.219 0.141-0.359t0.359-0.141h13q0.219 0 0.359 0.141t0.141 0.359v1.594q0 0.219-0.141 0.359t-0.359 0.141h-3.641q0.734 0.953 1 2.25h2.672q0.219 0 0.359 0.141t0.141 0.359z"></path>
-</svg> {{ subTotal }}</div>
+        <div class="col-xs-12  nopadding details-cont">
+            <div class="col-xs-12  nopadding">
+                <div class="detail-text">Sub Total
+                </div>
+                <div class="detail-amt">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 14 28" class="icon">
+                        <path
+                            d="M14.031 7.344v1.594q0 0.219-0.141 0.359t-0.359 0.141h-2.625q-0.359 2.25-2.016 3.656t-4.312 1.719q2.609 2.781 7.172 8.375 0.219 0.25 0.063 0.531-0.125 0.281-0.453 0.281h-3.047q-0.25 0-0.391-0.187-4.781-5.734-7.781-8.922-0.141-0.141-0.141-0.344v-1.984q0-0.203 0.148-0.352t0.352-0.148h1.75q2.063 0 3.32-0.672t1.602-1.953h-6.672q-0.219 0-0.359-0.141t-0.141-0.359v-1.594q0-0.219 0.141-0.359t0.359-0.141h6.453q-0.891-1.766-4.188-1.766h-2.266q-0.203 0-0.352-0.148t-0.148-0.352v-2.078q0-0.219 0.141-0.359t0.359-0.141h13q0.219 0 0.359 0.141t0.141 0.359v1.594q0 0.219-0.141 0.359t-0.359 0.141h-3.641q0.734 0.953 1 2.25h2.672q0.219 0 0.359 0.141t0.141 0.359z"></path>
+                    </svg>
+                    {{ subTotal }}</div>
 
-		</div>
-			<div class="col-xs-12  nopadding m-t-8px">
-			<div class="detail-text "> Coupon Applied (CRAFTSLOVE)</div>
-			<div class="detail-amt" ng-if="order.coupon_code">
-				- <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 14 28" class="icon">
-<path d="M14.031 7.344v1.594q0 0.219-0.141 0.359t-0.359 0.141h-2.625q-0.359 2.25-2.016 3.656t-4.312 1.719q2.609 2.781 7.172 8.375 0.219 0.25 0.063 0.531-0.125 0.281-0.453 0.281h-3.047q-0.25 0-0.391-0.187-4.781-5.734-7.781-8.922-0.141-0.141-0.141-0.344v-1.984q0-0.203 0.148-0.352t0.352-0.148h1.75q2.063 0 3.32-0.672t1.602-1.953h-6.672q-0.219 0-0.359-0.141t-0.141-0.359v-1.594q0-0.219 0.141-0.359t0.359-0.141h6.453q-0.891-1.766-4.188-1.766h-2.266q-0.203 0-0.352-0.148t-0.148-0.352v-2.078q0-0.219 0.141-0.359t0.359-0.141h13q0.219 0 0.359 0.141t0.141 0.359v1.594q0 0.219-0.141 0.359t-0.359 0.141h-3.641q0.734 0.953 1 2.25h2.672q0.219 0 0.359 0.141t0.141 0.359z"></path>
-</svg>  {{ order.couponCode }} ></div>
+            </div>
+            <div class="col-xs-12  nopadding m-t-8px">
+                <div class="detail-text ">
+                    Coupon Applied (CRAFTSLOVE)</div>
+                <div class="detail-amt" ng-if="order.coupon_code">
+                    -
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 14 28" class="icon">
+                        <path
+                            d="M14.031 7.344v1.594q0 0.219-0.141 0.359t-0.359 0.141h-2.625q-0.359 2.25-2.016 3.656t-4.312 1.719q2.609 2.781 7.172 8.375 0.219 0.25 0.063 0.531-0.125 0.281-0.453 0.281h-3.047q-0.25 0-0.391-0.187-4.781-5.734-7.781-8.922-0.141-0.141-0.141-0.344v-1.984q0-0.203 0.148-0.352t0.352-0.148h1.75q2.063 0 3.32-0.672t1.602-1.953h-6.672q-0.219 0-0.359-0.141t-0.141-0.359v-1.594q0-0.219 0.141-0.359t0.359-0.141h6.453q-0.891-1.766-4.188-1.766h-2.266q-0.203 0-0.352-0.148t-0.148-0.352v-2.078q0-0.219 0.141-0.359t0.359-0.141h13q0.219 0 0.359 0.141t0.141 0.359v1.594q0 0.219-0.141 0.359t-0.359 0.141h-3.641q0.734 0.953 1 2.25h2.672q0.219 0 0.359 0.141t0.141 0.359z"></path>
+                    </svg>
+                    {{ order.couponCode }}
+                    ></div>
 
-		</div>
-			<div class="col-xs-12  nopadding m-t-8px">
-			<div class="detail-text">Shipping</div>
-			<div class="detail-amt">
-				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 14 28" class="icon">
-<path d="M14.031 7.344v1.594q0 0.219-0.141 0.359t-0.359 0.141h-2.625q-0.359 2.25-2.016 3.656t-4.312 1.719q2.609 2.781 7.172 8.375 0.219 0.25 0.063 0.531-0.125 0.281-0.453 0.281h-3.047q-0.25 0-0.391-0.187-4.781-5.734-7.781-8.922-0.141-0.141-0.141-0.344v-1.984q0-0.203 0.148-0.352t0.352-0.148h1.75q2.063 0 3.32-0.672t1.602-1.953h-6.672q-0.219 0-0.359-0.141t-0.141-0.359v-1.594q0-0.219 0.141-0.359t0.359-0.141h6.453q-0.891-1.766-4.188-1.766h-2.266q-0.203 0-0.352-0.148t-0.148-0.352v-2.078q0-0.219 0.141-0.359t0.359-0.141h13q0.219 0 0.359 0.141t0.141 0.359v1.594q0 0.219-0.141 0.359t-0.359 0.141h-3.641q0.734 0.953 1 2.25h2.672q0.219 0 0.359 0.141t0.141 0.359z"></path>
-</svg>  {{ order.shippingAmount }}</div>
+            </div>
+            <div class="col-xs-12  nopadding m-t-8px">
+                <div class="detail-text">Shipping</div>
+                <div class="detail-amt">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 14 28" class="icon">
+                        <path
+                            d="M14.031 7.344v1.594q0 0.219-0.141 0.359t-0.359 0.141h-2.625q-0.359 2.25-2.016 3.656t-4.312 1.719q2.609 2.781 7.172 8.375 0.219 0.25 0.063 0.531-0.125 0.281-0.453 0.281h-3.047q-0.25 0-0.391-0.187-4.781-5.734-7.781-8.922-0.141-0.141-0.141-0.344v-1.984q0-0.203 0.148-0.352t0.352-0.148h1.75q2.063 0 3.32-0.672t1.602-1.953h-6.672q-0.219 0-0.359-0.141t-0.141-0.359v-1.594q0-0.219 0.141-0.359t0.359-0.141h6.453q-0.891-1.766-4.188-1.766h-2.266q-0.203 0-0.352-0.148t-0.148-0.352v-2.078q0-0.219 0.141-0.359t0.359-0.141h13q0.219 0 0.359 0.141t0.141 0.359v1.594q0 0.219-0.141 0.359t-0.359 0.141h-3.641q0.734 0.953 1 2.25h2.672q0.219 0 0.359 0.141t0.141 0.359z"></path>
+                    </svg>
+                    {{ order.shippingAmount }}</div>
 
-		</div>
-		<div class="col-xs-12  nopadding m-t-8px m-b-10px">
-			<div class="detail-text color-black"><strong>Total Payable</strong></div>
-			<div class="detail-amt color-black">
-				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 14 28" class="icon">
-<path d="M14.031 7.344v1.594q0 0.219-0.141 0.359t-0.359 0.141h-2.625q-0.359 2.25-2.016 3.656t-4.312 1.719q2.609 2.781 7.172 8.375 0.219 0.25 0.063 0.531-0.125 0.281-0.453 0.281h-3.047q-0.25 0-0.391-0.187-4.781-5.734-7.781-8.922-0.141-0.141-0.141-0.344v-1.984q0-0.203 0.148-0.352t0.352-0.148h1.75q2.063 0 3.32-0.672t1.602-1.953h-6.672q-0.219 0-0.359-0.141t-0.141-0.359v-1.594q0-0.219 0.141-0.359t0.359-0.141h6.453q-0.891-1.766-4.188-1.766h-2.266q-0.203 0-0.352-0.148t-0.148-0.352v-2.078q0-0.219 0.141-0.359t0.359-0.141h13q0.219 0 0.359 0.141t0.141 0.359v1.594q0 0.219-0.141 0.359t-0.359 0.141h-3.641q0.734 0.953 1 2.25h2.672q0.219 0 0.359 0.141t0.141 0.359z"></path>
-</svg><strong> {{order.totalPayble}} </strong></div>
+            </div>
+            <div class="col-xs-12  nopadding m-t-8px m-b-10px">
+                <div class="detail-text color-black">
+                    <strong>Total Payable</strong>
+                </div>
+                <div class="detail-amt color-black">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 14 28" class="icon">
+                        <path
+                            d="M14.031 7.344v1.594q0 0.219-0.141 0.359t-0.359 0.141h-2.625q-0.359 2.25-2.016 3.656t-4.312 1.719q2.609 2.781 7.172 8.375 0.219 0.25 0.063 0.531-0.125 0.281-0.453 0.281h-3.047q-0.25 0-0.391-0.187-4.781-5.734-7.781-8.922-0.141-0.141-0.141-0.344v-1.984q0-0.203 0.148-0.352t0.352-0.148h1.75q2.063 0 3.32-0.672t1.602-1.953h-6.672q-0.219 0-0.359-0.141t-0.141-0.359v-1.594q0-0.219 0.141-0.359t0.359-0.141h6.453q-0.891-1.766-4.188-1.766h-2.266q-0.203 0-0.352-0.148t-0.148-0.352v-2.078q0-0.219 0.141-0.359t0.359-0.141h13q0.219 0 0.359 0.141t0.141 0.359v1.594q0 0.219-0.141 0.359t-0.359 0.141h-3.641q0.734 0.953 1 2.25h2.672q0.219 0 0.359 0.141t0.141 0.359z"></path>
+                    </svg>
+                    <strong>
+                        {{order.totalPayble}}
+                    </strong>
+                </div>
 
-		</div>
-	</div>
-	<div class="col-xs-12  nopadding details-cont p-b-10px">
-				<div class="col-xs-12  nopadding">
-			<div class="detail-text  ln-hgt-2-6">SHIPPING DETAILS</div>
-			</div>
-				<div class="col-xs-12  nopadding">
-			<div class="detail-text  font16 font14-xs  ln-hgt-2-6 gryeish-brown"><strong>{{shippingDetails.firstname}} {{shippingDetails.lastname}}</strong></div>
-			</div>
-			<div class="col-xs-12  nopadding">
-			<div class="detail-text  font16 font14-xs ">{{shippingDetails.company}},  {{shippingDetails.street}}, {{shippingDetails.city}}, {{shippingDetails.region}} 	 - {{order.postcode}}</div>
-			</div>
-			<div class="col-xs-12  nopadding">
-			<div class="detail-text  font16 font14-xs  ln-hgt-2-6">{{ shippingDetails.telephone }}</div>
-		</div>
-	</div>
+            </div>
+        </div>
+        <div class="col-xs-12  nopadding details-cont p-b-10px">
+            <div class="col-xs-12  nopadding">
+                <div class="detail-text  ln-hgt-2-6">SHIPPING DETAILS</div>
+            </div>
+            <div class="col-xs-12  nopadding">
+                <div class="detail-text  font16 font14-xs  ln-hgt-2-6 gryeish-brown">
+                    <strong>{{shippingDetails.firstname}}
+                        {{shippingDetails.lastname}}</strong>
+                </div>
+            </div>
+            <div class="col-xs-12  nopadding">
+                <div class="detail-text  font16 font14-xs ">{{shippingDetails.company}},
+                    {{shippingDetails.street}},
+                    {{shippingDetails.city}},
+                    {{shippingDetails.region}}
+                    -
+                    {{order.postcode}}</div>
+            </div>
+            <div class="col-xs-12  nopadding">
+                <div class="detail-text  font16 font14-xs  ln-hgt-2-6">{{ shippingDetails.telephone }}</div>
+            </div>
+        </div>
 
-		<div class="col-xs-12  nopadding details-cont p-b-10px">
-				<div class="col-xs-12  nopadding">
-			<div class="detail-text  ln-hgt-2-6">SHIPPING DETAILS</div>
-			</div>
-				<div class="col-xs-12  nopadding">
-			<div class="detail-text  font16 font14-xs  ln-hgt-2-6 gryeish-brown"><strong>Shruti Kartikey</strong></div>
-			</div>
-				<div class="col-xs-12  nopadding">
-			<div class="detail-text  font16 font14-xs ">G-1502, Craftsvilla,  Lotus Business Park, Goregaon East, Mumbai, Maharashtra - 400056</div>
-			</div>
-				<div class="col-xs-12  nopadding">
-			<div class="detail-text  font16 font14-xs  ln-hgt-2-6">+91 7738233261</div>
-		</div>
-	</div>
+        <div class="col-xs-12  nopadding details-cont p-b-10px">
+            <div class="col-xs-12  nopadding">
+                <div class="detail-text  ln-hgt-2-6">SHIPPING DETAILS</div>
+            </div>
+            <div class="col-xs-12  nopadding">
+                <div class="detail-text  font16 font14-xs  ln-hgt-2-6 gryeish-brown">
+                    <strong>Shruti Kartikey</strong>
+                </div>
+            </div>
+            <div class="col-xs-12  nopadding">
+                <div class="detail-text  font16 font14-xs ">G-1502, Craftsvilla, Lotus Business Park, Goregaon East, Mumbai, Maharashtra - 400056</div>
+            </div>
+            <div class="col-xs-12  nopadding">
+                <div class="detail-text  font16 font14-xs  ln-hgt-2-6">+91 7738233261</div>
+            </div>
+        </div>
 
-	<div class="note">Tracking details sent to you via email/SMS as they are shipped. Please allow 10 working days for domestic (India) & 21 days
-for delivery of international orders
-	</div>
-<!-- recommended  products start-->
-<div class="container-fluid nopadding">
-<div class="item-chunk-xtra-padding">
-<div class="col-xs-12 nopadding" id="view_recommended_products">
-<div class="clearfix"></div><h4 class="borderbottom product_name text-center">Recommended Products</h4><div class="flex-center"><div class="col-xs-6 col-md-3 product mob_padding"><div class="product-image-container"><a href="/catalog/product/view/id/2224370/s/clothsvilla-self-designed-attractive-choli-8" title="Clothsvilla Self Designed Attractive Choli-8" onclick="dataLayer.push({&quot;event&quot;:&quot;ProductDetailsViewedEvent&quot;,&quot;eventName&quot;:&quot;ProductDetailsViewed&quot;,&quot;eventAction&quot;:&quot;4999&quot;,&quot;eventLabel&quot;:&quot;2224370&quot;,&quot;discountPercentage&quot;:&quot;50&quot;,&quot;category&quot;:&quot;NA&quot;,&quot;subCategory&quot;:&quot;NA&quot;,&quot;price&quot;:&quot;4999&quot;,&quot;productId&quot;:&quot;2224370&quot;,&quot;positionOnPage&quot;:&quot;1&quot;});">
-								<img ng-src="{{IMGHOST}}/thumb/166x166/C/V/CV-MCLOT29669775060--Clothsvilla.com-Craftsvilla_1.jpg" alt="Clothsvilla Self Designed Attractive Choli-8" title="Clothsvilla Self Designed Attractive Choli-8" class="product-image"></a></div><div class="product-details-container col-xs-12"><a href="/catalog/product/view/id/2224370/s/clothsvilla-self-designed-attractive-choli-8"><div class="product-name truncate">Clothsvilla Self Designed..</div></a><a href="/clothsvilla" title="Clothsvilla.com" target="_blank"><div class="vendor-name">Clothsvilla.com</div></a><div class="price-container col-xs-12 nopadding"><div class="col-xs-6 col-md-8 nopadding"><div class="col-xs-12 col-md-6 discounted-price price nopadding">Rs 4,999</div><div class="col-xs-12 col-md-6 original-price price nopadding">Rs <s> 9,999</s> </div></div><div class="col-xs-6 col-md-4 save-percent nopadding">
-                            Save 50%
-                          </div></div></div><div class="wishit text-center" onclick="dataLayer.push({&quot;event&quot;:&quot;ProductBookmarkedEvent&quot;,&quot;eventName&quot;:&quot;ProductBookmarked&quot;,&quot;productId&quot;:&quot;2224370&quot;,&quot;type&quot;:&quot;addedToWishlist&quot;,&quot;category&quot;:&quot;NA&quot;,&quot;subCategory&quot;:&quot;NA&quot;,&quot;source&quot;:&quot;productDetailsPage&quot;});"><i class="fa fa-heart-o fa-2x" id="wishicon-2224370"></i></div>
+        <div class="note">Tracking details sent to you via email/SMS as they are shipped. Please allow 10 working days for domestic (India) & 21 days for delivery of international orders
+        </div>
+        <!-- recommended  products start-->
+        <div class="container-fluid nopadding">
+            <div class="item-chunk-xtra-padding">
+                <div class="col-xs-12 nopadding" id="view_recommended_products">
+                    <div class="clearfix"></div>
+                    <h4 class="borderbottom product_name text-center">Recommended Products</h4>
+                    <div class="flex-center">
+                        <div class="col-xs-6 col-md-3 product mob_padding">
+                            <div class="product-image-container">
+                                <a
+                                    href="/catalog/product/view/id/2224370/s/clothsvilla-self-designed-attractive-choli-8"
+                                    title="Clothsvilla Self Designed Attractive Choli-8"
+                                    onclick="dataLayer.push({&quot;event&quot;:&quot;ProductDetailsViewedEvent&quot;,&quot;eventName&quot;:&quot;ProductDetailsViewed&quot;,&quot;eventAction&quot;:&quot;4999&quot;,&quot;eventLabel&quot;:&quot;2224370&quot;,&quot;discountPercentage&quot;:&quot;50&quot;,&quot;category&quot;:&quot;NA&quot;,&quot;subCategory&quot;:&quot;NA&quot;,&quot;price&quot;:&quot;4999&quot;,&quot;productId&quot;:&quot;2224370&quot;,&quot;positionOnPage&quot;:&quot;1&quot;});">
+                                    <img ng-src="{{IMGHOST}}/thumb/166x166/C/V/CV-MCLOT29669775060--Clothsvilla.com-Craftsvilla_1.jpg" alt="Clothsvilla Self Designed Attractive Choli-8" title="Clothsvilla Self Designed Attractive Choli-8" class="product-image"></a>
+                            </div>
+                            <div class="product-details-container col-xs-12">
+                                <a href="/catalog/product/view/id/2224370/s/clothsvilla-self-designed-attractive-choli-8">
+                                    <div class="product-name truncate">Clothsvilla Self Designed..</div>
+                                </a>
+                                <a href="/clothsvilla" title="Clothsvilla.com" target="_blank">
+                                    <div class="vendor-name">Clothsvilla.com</div>
+                                </a>
+                                <div class="price-container col-xs-12 nopadding">
+                                    <div class="col-xs-6 col-md-8 nopadding">
+                                        <div class="col-xs-12 col-md-6 discounted-price price nopadding">Rs 4,999</div>
+                                        <div class="col-xs-12 col-md-6 original-price price nopadding">Rs
+                                            <s>
+                                                9,999</s>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-md-4 save-percent nopadding">
+                                        Save 50%
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="wishit text-center"
+                                onclick="dataLayer.push({&quot;event&quot;:&quot;ProductBookmarkedEvent&quot;,&quot;eventName&quot;:&quot;ProductBookmarked&quot;,&quot;productId&quot;:&quot;2224370&quot;,&quot;type&quot;:&quot;addedToWishlist&quot;,&quot;category&quot;:&quot;NA&quot;,&quot;subCategory&quot;:&quot;NA&quot;,&quot;source&quot;:&quot;productDetailsPage&quot;});">
+                                <i class="fa fa-heart-o fa-2x" id="wishicon-2224370"></i>
+                            </div>
 
-						</div><div class="col-xs-6 col-md-3 product mob_padding"><div class="product-image-container"><a href="/catalog/product/view/id/3327197/s/mindblowing-blue-color-jacquard-net-fabric-designer-embroidered-lahenga" title="Mindblowing Blue Color Jacquard &amp; Net Fabric Designer Embroidered Lahenga." onclick="dataLayer.push({&quot;event&quot;:&quot;ProductDetailsViewedEvent&quot;,&quot;eventName&quot;:&quot;ProductDetailsViewed&quot;,&quot;eventAction&quot;:&quot;6370&quot;,&quot;eventLabel&quot;:&quot;3327197&quot;,&quot;discountPercentage&quot;:&quot;63.7&quot;,&quot;category&quot;:&quot;NA&quot;,&quot;subCategory&quot;:&quot;NA&quot;,&quot;price&quot;:&quot;6370&quot;,&quot;productId&quot;:&quot;3327197&quot;,&quot;positionOnPage&quot;:&quot;2&quot;});">
-								<img ng-src="{{IMGHOST}}/thumb/166x166/C/V/CV-MSNH_98689417290--SNH_Export-Craftsvilla_1.jpg" alt="Mindblowing Blue Color Jacquard &amp; Net Fabric Designer Embroidered Lahenga." title="Mindblowing Blue Color Jacquard &amp; Net Fabric Designer Embroidered Lahenga." class="product-image"></a></div><div class="product-details-container col-xs-12"><a href="/catalog/product/view/id/3327197/s/mindblowing-blue-color-jacquard-net-fabric-designer-embroidered-lahenga"><div class="product-name truncate">Mindblowing Blue Color Ja..</div></a><a href="/SNHExport" title="Snh Export" target="_blank"><div class="vendor-name">Snh Export</div></a><div class="price-container col-xs-12 nopadding"><div class="col-xs-6 col-md-8 nopadding"><div class="col-xs-12 col-md-6 discounted-price price nopadding">Rs 6,370</div><div class="col-xs-12 col-md-6 original-price price nopadding">Rs <s> 12,740</s> </div></div><div class="col-xs-6 col-md-4 save-percent nopadding">
-                            Save 50%
-                          </div></div></div><div class="wishit text-center" onclick="dataLayer.push({&quot;event&quot;:&quot;ProductBookmarkedEvent&quot;,&quot;eventName&quot;:&quot;ProductBookmarked&quot;,&quot;productId&quot;:&quot;3327197&quot;,&quot;type&quot;:&quot;addedToWishlist&quot;,&quot;category&quot;:&quot;NA&quot;,&quot;subCategory&quot;:&quot;NA&quot;,&quot;source&quot;:&quot;productDetailsPage&quot;});"><i class="fa fa-heart-o fa-2x" id="wishicon-3327197"></i></div>
+                        </div>
+                        <div class="col-xs-6 col-md-3 product mob_padding">
+                            <div class="product-image-container">
+                                <a
+                                    href="/catalog/product/view/id/3327197/s/mindblowing-blue-color-jacquard-net-fabric-designer-embroidered-lahenga"
+                                    title="Mindblowing Blue Color Jacquard &amp; Net Fabric Designer Embroidered Lahenga."
+                                    onclick="dataLayer.push({&quot;event&quot;:&quot;ProductDetailsViewedEvent&quot;,&quot;eventName&quot;:&quot;ProductDetailsViewed&quot;,&quot;eventAction&quot;:&quot;6370&quot;,&quot;eventLabel&quot;:&quot;3327197&quot;,&quot;discountPercentage&quot;:&quot;63.7&quot;,&quot;category&quot;:&quot;NA&quot;,&quot;subCategory&quot;:&quot;NA&quot;,&quot;price&quot;:&quot;6370&quot;,&quot;productId&quot;:&quot;3327197&quot;,&quot;positionOnPage&quot;:&quot;2&quot;});">
+                                    <img
+                                        ng-src="{{IMGHOST}}/thumb/166x166/C/V/CV-MSNH_98689417290--SNH_Export-Craftsvilla_1.jpg"
+                                        alt="Mindblowing Blue Color Jacquard &amp; Net Fabric Designer Embroidered Lahenga."
+                                        title="Mindblowing Blue Color Jacquard &amp; Net Fabric Designer Embroidered Lahenga."
+                                        class="product-image"></a>
+                            </div>
+                            <div class="product-details-container col-xs-12">
+                                <a href="/catalog/product/view/id/3327197/s/mindblowing-blue-color-jacquard-net-fabric-designer-embroidered-lahenga">
+                                    <div class="product-name truncate">Mindblowing Blue Color Ja..</div>
+                                </a>
+                                <a href="/SNHExport" title="Snh Export" target="_blank">
+                                    <div class="vendor-name">Snh Export</div>
+                                </a>
+                                <div class="price-container col-xs-12 nopadding">
+                                    <div class="col-xs-6 col-md-8 nopadding">
+                                        <div class="col-xs-12 col-md-6 discounted-price price nopadding">Rs 6,370</div>
+                                        <div class="col-xs-12 col-md-6 original-price price nopadding">Rs
+                                            <s>
+                                                12,740</s>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-md-4 save-percent nopadding">
+                                        Save 50%
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="wishit text-center"
+                                onclick="dataLayer.push({&quot;event&quot;:&quot;ProductBookmarkedEvent&quot;,&quot;eventName&quot;:&quot;ProductBookmarked&quot;,&quot;productId&quot;:&quot;3327197&quot;,&quot;type&quot;:&quot;addedToWishlist&quot;,&quot;category&quot;:&quot;NA&quot;,&quot;subCategory&quot;:&quot;NA&quot;,&quot;source&quot;:&quot;productDetailsPage&quot;});">
+                                <i class="fa fa-heart-o fa-2x" id="wishicon-3327197"></i>
+                            </div>
 
-						</div><div class="col-xs-6 col-md-3 product mob_padding"><div class="product-image-container"><a href="/catalog/product/view/id/3450328/s/firstloot-green-designer-embroidery-lehenga" title="Firstloot Green Designer Embroidery Lehenga" onclick="dataLayer.push({&quot;event&quot;:&quot;ProductDetailsViewedEvent&quot;,&quot;eventName&quot;:&quot;ProductDetailsViewed&quot;,&quot;eventAction&quot;:&quot;2499&quot;,&quot;eventLabel&quot;:&quot;3450328&quot;,&quot;discountPercentage&quot;:&quot;10&quot;,&quot;category&quot;:&quot;NA&quot;,&quot;subCategory&quot;:&quot;NA&quot;,&quot;price&quot;:&quot;2499&quot;,&quot;productId&quot;:&quot;3450328&quot;,&quot;positionOnPage&quot;:&quot;3&quot;});">
-								<img ng-src="{{IMGHOST}}/thumb/166x166/C/V/CV-MFIRS56897129650--First_Loot-Craftsvilla_1.jpg" alt="Firstloot Green Designer Embroidery Lehenga" title="Firstloot Green Designer Embroidery Lehenga" class="product-image"></a></div><div class="product-details-container col-xs-12"><a href="/catalog/product/view/id/3450328/s/firstloot-green-designer-embroidery-lehenga"><div class="product-name truncate">Firstloot Green Designer ..</div></a><a href="/firstloot" title="First Loot" target="_blank"><div class="vendor-name">First Loot</div></a><div class="price-container col-xs-12 nopadding"><div class="col-xs-6 col-md-8 nopadding"><div class="col-xs-12 col-md-6 discounted-price price nopadding">Rs 2,499</div><div class="col-xs-12 col-md-6 original-price price nopadding">Rs <s> 3,499</s> </div></div><div class="col-xs-6 col-md-4 save-percent nopadding">
-                            Save 29%
-                          </div></div></div><div class="wishit text-center" onclick="dataLayer.push({&quot;event&quot;:&quot;ProductBookmarkedEvent&quot;,&quot;eventName&quot;:&quot;ProductBookmarked&quot;,&quot;productId&quot;:&quot;3450328&quot;,&quot;type&quot;:&quot;addedToWishlist&quot;,&quot;category&quot;:&quot;NA&quot;,&quot;subCategory&quot;:&quot;NA&quot;,&quot;source&quot;:&quot;productDetailsPage&quot;});"><i class="fa fa-heart-o fa-2x" id="wishicon-3450328"></i></div>
+                        </div>
+                        <div class="col-xs-6 col-md-3 product mob_padding">
+                            <div class="product-image-container">
+                                <a
+                                    href="/catalog/product/view/id/3450328/s/firstloot-green-designer-embroidery-lehenga"
+                                    title="Firstloot Green Designer Embroidery Lehenga"
+                                    onclick="dataLayer.push({&quot;event&quot;:&quot;ProductDetailsViewedEvent&quot;,&quot;eventName&quot;:&quot;ProductDetailsViewed&quot;,&quot;eventAction&quot;:&quot;2499&quot;,&quot;eventLabel&quot;:&quot;3450328&quot;,&quot;discountPercentage&quot;:&quot;10&quot;,&quot;category&quot;:&quot;NA&quot;,&quot;subCategory&quot;:&quot;NA&quot;,&quot;price&quot;:&quot;2499&quot;,&quot;productId&quot;:&quot;3450328&quot;,&quot;positionOnPage&quot;:&quot;3&quot;});">
+                                    <img ng-src="{{IMGHOST}}/thumb/166x166/C/V/CV-MFIRS56897129650--First_Loot-Craftsvilla_1.jpg" alt="Firstloot Green Designer Embroidery Lehenga" title="Firstloot Green Designer Embroidery Lehenga" class="product-image"></a>
+                            </div>
+                            <div class="product-details-container col-xs-12">
+                                <a href="/catalog/product/view/id/3450328/s/firstloot-green-designer-embroidery-lehenga">
+                                    <div class="product-name truncate">Firstloot Green Designer ..</div>
+                                </a>
+                                <a href="/firstloot" title="First Loot" target="_blank">
+                                    <div class="vendor-name">First Loot</div>
+                                </a>
+                                <div class="price-container col-xs-12 nopadding">
+                                    <div class="col-xs-6 col-md-8 nopadding">
+                                        <div class="col-xs-12 col-md-6 discounted-price price nopadding">Rs 2,499</div>
+                                        <div class="col-xs-12 col-md-6 original-price price nopadding">Rs
+                                            <s>
+                                                3,499</s>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-md-4 save-percent nopadding">
+                                        Save 29%
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="wishit text-center"
+                                onclick="dataLayer.push({&quot;event&quot;:&quot;ProductBookmarkedEvent&quot;,&quot;eventName&quot;:&quot;ProductBookmarked&quot;,&quot;productId&quot;:&quot;3450328&quot;,&quot;type&quot;:&quot;addedToWishlist&quot;,&quot;category&quot;:&quot;NA&quot;,&quot;subCategory&quot;:&quot;NA&quot;,&quot;source&quot;:&quot;productDetailsPage&quot;});">
+                                <i class="fa fa-heart-o fa-2x" id="wishicon-3450328"></i>
+                            </div>
 
-						</div><div class="col-xs-6 col-md-3 product mob_padding"><div class="product-image-container"><a href="/catalog/product/view/id/3723812/s/clothsvilla-self-designed-attractive-choli-2-lehengas-by-clothsvilla-com" title="Clothsvilla Self Designed Attractive Choli-2 - Lehengas By Shoping4all" onclick="dataLayer.push({&quot;event&quot;:&quot;ProductDetailsViewedEvent&quot;,&quot;eventName&quot;:&quot;ProductDetailsViewed&quot;,&quot;eventAction&quot;:&quot;5999&quot;,&quot;eventLabel&quot;:&quot;3723812&quot;,&quot;discountPercentage&quot;:&quot;10&quot;,&quot;category&quot;:&quot;NA&quot;,&quot;subCategory&quot;:&quot;NA&quot;,&quot;price&quot;:&quot;5999&quot;,&quot;productId&quot;:&quot;3723812&quot;,&quot;positionOnPage&quot;:&quot;4&quot;});">
-								<img ng-src="{{IMGHOST}}/thumb/166x166/C/V/CV-MSHOP67531894720--Shoping4all-Craftsvilla_1.jpg" alt="Clothsvilla Self Designed Attractive Choli-2 - Lehengas By Shoping4all" title="Clothsvilla Self Designed Attractive Choli-2 - Lehengas By Shoping4all" class="product-image"></a></div><div class="product-details-container col-xs-12"><a href="/catalog/product/view/id/3723812/s/clothsvilla-self-designed-attractive-choli-2-lehengas-by-clothsvilla-com"><div class="product-name truncate">Clothsvilla Self Designed..</div></a><a href="/shopping4all" title="Shoping4all" target="_blank"><div class="vendor-name">Shoping4all</div></a><div class="price-container col-xs-12 nopadding"><div class="col-xs-6 col-md-8 nopadding"><div class="col-xs-12 col-md-6 discounted-price price nopadding">Rs 5,999</div><div class="col-xs-12 col-md-6 original-price price nopadding">Rs <s> 6,999</s> </div></div><div class="col-xs-6 col-md-4 save-percent nopadding">
-                            Save 14%
-                          </div></div></div><div class="wishit text-center" onclick="dataLayer.push({&quot;event&quot;:&quot;ProductBookmarkedEvent&quot;,&quot;eventName&quot;:&quot;ProductBookmarked&quot;,&quot;productId&quot;:&quot;3723812&quot;,&quot;type&quot;:&quot;addedToWishlist&quot;,&quot;category&quot;:&quot;NA&quot;,&quot;subCategory&quot;:&quot;NA&quot;,&quot;source&quot;:&quot;productDetailsPage&quot;});"><i class="fa fa-heart-o fa-2x" id="wishicon-3723812"></i></div>
+                        </div>
+                        <div class="col-xs-6 col-md-3 product mob_padding">
+                            <div class="product-image-container">
+                                <a
+                                    href="/catalog/product/view/id/3723812/s/clothsvilla-self-designed-attractive-choli-2-lehengas-by-clothsvilla-com"
+                                    title="Clothsvilla Self Designed Attractive Choli-2 - Lehengas By Shoping4all"
+                                    onclick="dataLayer.push({&quot;event&quot;:&quot;ProductDetailsViewedEvent&quot;,&quot;eventName&quot;:&quot;ProductDetailsViewed&quot;,&quot;eventAction&quot;:&quot;5999&quot;,&quot;eventLabel&quot;:&quot;3723812&quot;,&quot;discountPercentage&quot;:&quot;10&quot;,&quot;category&quot;:&quot;NA&quot;,&quot;subCategory&quot;:&quot;NA&quot;,&quot;price&quot;:&quot;5999&quot;,&quot;productId&quot;:&quot;3723812&quot;,&quot;positionOnPage&quot;:&quot;4&quot;});">
+                                    <img
+                                        ng-src="{{IMGHOST}}/thumb/166x166/C/V/CV-MSHOP67531894720--Shoping4all-Craftsvilla_1.jpg"
+                                        alt="Clothsvilla Self Designed Attractive Choli-2 - Lehengas By Shoping4all"
+                                        title="Clothsvilla Self Designed Attractive Choli-2 - Lehengas By Shoping4all"
+                                        class="product-image"></a>
+                            </div>
+                            <div class="product-details-container col-xs-12">
+                                <a href="/catalog/product/view/id/3723812/s/clothsvilla-self-designed-attractive-choli-2-lehengas-by-clothsvilla-com">
+                                    <div class="product-name truncate">Clothsvilla Self Designed..</div>
+                                </a>
+                                <a href="/shopping4all" title="Shoping4all" target="_blank">
+                                    <div class="vendor-name">Shoping4all</div>
+                                </a>
+                                <div class="price-container col-xs-12 nopadding">
+                                    <div class="col-xs-6 col-md-8 nopadding">
+                                        <div class="col-xs-12 col-md-6 discounted-price price nopadding">Rs 5,999</div>
+                                        <div class="col-xs-12 col-md-6 original-price price nopadding">Rs
+                                            <s>
+                                                6,999</s>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-md-4 save-percent nopadding">
+                                        Save 14%
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="wishit text-center"
+                                onclick="dataLayer.push({&quot;event&quot;:&quot;ProductBookmarkedEvent&quot;,&quot;eventName&quot;:&quot;ProductBookmarked&quot;,&quot;productId&quot;:&quot;3723812&quot;,&quot;type&quot;:&quot;addedToWishlist&quot;,&quot;category&quot;:&quot;NA&quot;,&quot;subCategory&quot;:&quot;NA&quot;,&quot;source&quot;:&quot;productDetailsPage&quot;});">
+                                <i class="fa fa-heart-o fa-2x" id="wishicon-3723812"></i>
+                            </div>
 
-						</div></div></div>
-</div></div>
-<!-- recommended products ends -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- recommended products ends -->
 
-<div class="col-xs-12  nopadding">
-	<button class="shpng-contn" ng-click="continueShopping()">CONTINUE SHOPPING</button>
-</div>
+        <div class="col-xs-12  nopadding">
+            <a class="shpng-contn" href="/">CONTINUE SHOPPING</a>
+        </div>
 
-</div>
+    </div>
 </div>

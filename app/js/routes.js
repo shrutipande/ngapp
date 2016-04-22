@@ -12,42 +12,42 @@ define(['./app'], function (app) {
           url: "/login",
           templateUrl: 'partials/login.html',
           controller: 'loginCtrl',
-          title: 'login',
+          title: 'Login',
           authenticate: false
         })
         .state('shipping', {
           url: "/shipping",
           templateUrl: 'partials/shipping.html',
           controller: 'shippingCtrl',
-          title: 'shipping',
+          title: 'Shipping',
           authenticate: true
         })
         .state('payment', {
           url: "/payment/:platform/:quoteId",
           templateUrl: 'partials/payment.html',
           controller: 'paymentCtrl',
-          title: 'payments',
-          authenticate: true
+          title: 'Payment',
+          authenticate: false
         })
         .state('payments-error', {
           url: "/payment-error",
           templateUrl: 'partials/payment-error.html',
           controller: 'paymentErrorCtrl',
-          title: 'payments-error',
-          authenticate: true
+          title: 'Error',
+          authenticate: false
         })
         .state('payments-success', {
           url: "/payment-success",
           templateUrl: 'partials/payment-success.html',
           controller: 'paymentSuccessCtrl',
-          title: 'payments-success',
-          authenticate: true
+          title: 'Success',
+          authenticate: false
         })
         .state('cart', {
           url: "/cart",
           templateUrl: 'partials/checkout-cart.html',
           controller: 'checkoutCartCtrl',
-          title: 'checkout',
+          title: 'Shopping Cart',
           authenticate: false
         })
         .state('empty-cart', {
