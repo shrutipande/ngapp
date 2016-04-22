@@ -36,7 +36,8 @@ define(['./index'], function (services) {
       placeOrderCOD: placeOrderCOD,
       getSuccessData:getSuccessData,
       getAddressFromPincode : getAddressFromPincode,
-      socialAuth: socialAuth
+      socialAuth: socialAuth,
+      getRecommendation: getRecommendation
     };
 
     //////////////////////////////////////////
@@ -307,6 +308,11 @@ define(['./index'], function (services) {
         url: HOST + 'checkoutService/index/placeOrderCOD'
       });
     }
+    //final quote
+    function getRecommendation() {
+      return $http.get(HOST + 'checkoutService/index/getRecommendedProducts');
+    }
+    //final quote ends
 
     function socialAuth (json) {
       return $http({

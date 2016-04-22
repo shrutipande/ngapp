@@ -386,7 +386,7 @@ div[check-out] .right-panel .coupon-cont, .order-cont{border-radius: 2px;   back
 .procd-to-checkout:hover {
     color: #fff;
 }
-div[check-out] .left-panel .c-continue-shpng{float:left; padding:16px 0; height: 50px; font-size: 16px; line-height: 1.1; color: #971937;}
+div[check-out] .left-panel .c-continue-shpng{float:left; padding:16px 0; height: 50px; font-size: 16px; line-height: 1.1; color: #971937;  cursor: pointer;}
 div[check-out] .left-panel .c-continue-shpng .c-arrw{margin-right:5px; margin-bottom:1px; height:auto; width:16px;}
 div[check-out] .left-panel .order-total{float:right; padding:15px;  height: 50px; border-radius: 2px; background-color: #ffffff;  background-color: var(--white-four);  border: solid 1px #ebebeb;  font-size: 14px;
     letter-spacing: 0.6px;  color: #000000; font-weight: bold;}
@@ -667,7 +667,8 @@ div[order-success-cont] .detls-cont .ttl-no-ord{font-size: 11px;}
 div[order-success-cont] p{font-size: 14px;}
 div[order-success-cont] .font14-xs{font-size: 14px !important;}
 div[order-success-cont]  .p-b-10px{padding-bottom: 10px;}
-div[order-success-cont] .shpng-contn{position: fixed; bottom:0; left:0; z-index: 99; margin: 0;}
+div[order-success-cont] .shpng-contn{position: fixed; bottom:0; left:0; z-index: 99; margin: 0;    width: 100%;
+}
 div[order-success-cont]  .note{margin:20px 0 5px 0; padding: 0;}
 }
 .addressEditContainer .close-edit{float: right;

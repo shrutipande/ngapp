@@ -49,12 +49,23 @@ define(['./index'], function (controllers) {
 }
 
     $scope.continueShopping = function() {
-		console.log('click on continue shopping');
-	};
+		  console.log('click on continue shopping');
+	  };
 
-	$scope.initPaymentSuccess = function() {
-		console.log("Payment success Initialised");
-		$scope.getOrderDetails();
+      $scope.getRecommendation = function() {
+        craftsvillaService.getRecommendation()
+            .success(function (response) {
+              if (response.s==1)
+              $scope.recommendProducts = response.d;
+            })
+            .error(function (error) {
+                alert(error);
+            });
+      };
+
+      $scope.initPaymentSuccess = function() {
+     $scope.getOrderDetails();
+    $scope.getRecommendation();
 	};
 	$scope.initPaymentSuccess();
 

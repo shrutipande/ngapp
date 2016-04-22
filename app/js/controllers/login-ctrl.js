@@ -1,6 +1,6 @@
 define(['./index'], function (controllers) {
 	'use strict';
-	controllers.controller('loginCtrl', ['$scope', '$state', '$auth', '$localStorage', 'craftsvillaService', function ($scope, $state,$auth,$localStorage,craftsvillaService) {
+	controllers.controller('loginCtrl', ['$scope', '$state', '$auth', '$localStorage', 'craftsvillaService', function ($scope, $state ,$auth, $localStorage, craftsvillaService) {
 	$scope.guestUser = false;
 	$scope.forgotPasswd = false;
 	$scope.sendPasswd= false;
@@ -14,15 +14,17 @@ define(['./index'], function (controllers) {
 	};
 	$scope.changeGuestCheckout = function() {
 		if ($scope.guestUserForm.$valid ) {
-			var emailId = $scope.guest.guestUserEmail;
+      var emailId = $scope.guest.guestUserEmail;
 			craftsvillaService.continueAsGuest(emailId)
 			.success(function (response) {
-				if(response.s==0 )
+        console.log(response.s)
+        if(response.s==1 )
 				{
-					alert("Invalid email ID or Password!");
-				}
+          $localStorage.loginData = response.d;
+          $state.go('shipping');
+        }
 				else{
-				$state.go('shipping');
+          delete $localStorage.loginData;
 				}
 			})
 			.error(function (err) {
@@ -89,10 +91,7 @@ define(['./index'], function (controllers) {
 	$scope.sendPwdClose = function() {
 			$scope.sendPasswd = false;
 	};
-	$scope.initLogin = function() {
-		console.log("Login Initialised");
-	};
-	$scope.initLogin();
+
 
 
 	$scope.sendPassword = function() {
@@ -115,9 +114,7 @@ define(['./index'], function (controllers) {
 			})
 		}
 	};
-	$scope.initLogin = function() {
-		console.log("Login Initialised");
-	};
+
 	$scope.authenticate = function(provider) {
 		$auth.authenticate(provider)
 			.then(function(data) {
@@ -137,6 +134,9 @@ define(['./index'], function (controllers) {
 			});
 	};
 
+    $scope.initLogin = function() {
+      console.log("Login Initialised");
+    };
 	$scope.initLogin();
 
 	}]);
