@@ -1,6 +1,6 @@
 define(['./index'], function (controllers) {
 	'use strict';
-	controllers.controller('checkoutCartCtrl', ['$scope', 'craftsvillaService', '$state', '$window', function ($scope, craftsvillaService, $state, $window) {
+	controllers.controller('checkoutCartCtrl', ['$scope', '$localStorage', 'craftsvillaService', '$state', '$window', function ($scope, $localStorage, craftsvillaService, $state, $window) {
 		$scope.successCoupon = false;
 		$scope.showFormNote = false;
 		$scope.coupon = {};
@@ -61,9 +61,11 @@ define(['./index'], function (controllers) {
 			craftsvillaService.loginCheck()
 				.success(function (response) {
 					if (response.s == 0) {
+						delete $localStorage.loginData;
 						$state.go('login');
 					}
 					else {
+						$localStorage.loginData = response.d[0];
 						$state.go('shipping');
 					}
 				})
@@ -249,8 +251,10 @@ define(['./index'], function (controllers) {
 			craftsvillaService.loginCheck()
 			.success(function(response) {
 				if(response.s == 1) {
+					$localStorage.loginData = response.d[0];
 					$scope.isLoggedIn = true;
 				} else {
+					delete $localStorage.loginData;
 					$scope.isLoggedIn = false;
 				}
 			})

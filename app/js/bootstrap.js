@@ -11,7 +11,7 @@ define([
 ], function (require, ng, app) {
     'use strict';
 
-    app.run(['$rootScope', function ($rootScope) {
+    app.run(['$rootScope', '$state', 'Auth', function ($rootScope, $state, Auth) {
 
         // any functions or variables to declare at runtime
 
@@ -19,6 +19,15 @@ define([
         $rootScope.$on('$stateChangeSuccess', function(event, toState) {
             if(toState.title) {
                 $rootScope.pageTitle = toState.title;
+            }
+        });
+
+        $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
+            console.log(toState.authenticate, Auth.isLoggedIn(), fromState.authenticate);
+            if (toState.authenticate && !Auth.isLoggedIn()){
+              // User isn’t authenticated
+              $state.go("login");
+              event.preventDefault();
             }
         });
 

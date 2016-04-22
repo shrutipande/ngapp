@@ -3,6 +3,7 @@ define([
   'angular-sanitize',
   'angular-ui-router',
   'angular-credit-cards',
+  'ngstorage',
   'config',
   './controllers/index',
   './directives/index',
@@ -25,6 +26,7 @@ define([
     'ui.router',
     'credit-cards',
     'satellizer',
-      'ngAnimate'
+    'ngAnimate',
+    'ngStorage'
   ]);
 });

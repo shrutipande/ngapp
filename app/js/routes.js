@@ -12,43 +12,50 @@ define(['./app'], function (app) {
           url: "/login",
           templateUrl: 'partials/login.html',
           controller: 'loginCtrl',
-          title: 'login'
+          title: 'login',
+          authenticate: false
         })
         .state('shipping', {
           url: "/shipping",
           templateUrl: 'partials/shipping.html',
           controller: 'shippingCtrl',
-          title: 'shipping'
+          title: 'shipping',
+          authenticate: true
         })
         .state('payment', {
           url: "/payment/:platform/:quoteId",
           templateUrl: 'partials/payment.html',
           controller: 'paymentCtrl',
-          title: 'payments'
+          title: 'payments',
+          authenticate: true
         })
         .state('payments-error', {
           url: "/payment-error",
           templateUrl: 'partials/payment-error.html',
           controller: 'paymentErrorCtrl',
-          title: 'payments-error'
+          title: 'payments-error',
+          authenticate: true
         })
         .state('payments-success', {
           url: "/payment-success",
           templateUrl: 'partials/payment-success.html',
           controller: 'paymentSuccessCtrl',
-          title: 'payments-success'
+          title: 'payments-success',
+          authenticate: true
         })
         .state('cart', {
           url: "/cart",
           templateUrl: 'partials/checkout-cart.html',
           controller: 'checkoutCartCtrl',
-          title: 'checkout'
+          title: 'checkout',
+          authenticate: false
         })
         .state('empty-cart', {
           url: "/empty-cart",
           templateUrl: 'partials/empty-cart.html',
           controller: 'emptyCartCtrl',
-          title: 'Empty cart'
+          title: 'Empty cart',
+          authenticate: false
         });
     $urlRouterProvider.otherwise("/cart");
   }]);
