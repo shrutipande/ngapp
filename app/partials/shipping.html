@@ -5,7 +5,7 @@
         <div role-nav class="container">
             <div class="col-xs-6 nopadding" role="logo">
                 <img role="back" src="images/Shape.png" alt="" title="">
-                <a href="" title=""><img class="logo" src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/cv_logo.png" alt="" title="">
+                <a href="/" title=""><img class="logo" src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/cv_logo.png" alt="" title="">
                 </a>
                 <span class="hidden-xs">Call 022 288288281 for any assistance</span>
             </div>
@@ -176,10 +176,10 @@
                                                      <span ng-show="DeseditaddrForm.pincode.$error.maxlength" class="error">Pincode is too long .</span>
                                                 </div>
                                             </div>
-                                            <div class="col-xs-12 col-sm-2 m-padding hidden-xs mt28">                                
-                                
-                                             <img ng-show="citystateWait" src="images/loader.gif" class="loader"> 
-                                            
+                                            <div class="col-xs-12 col-sm-2 m-padding hidden-xs mt28">
+
+                                             <img ng-show="citystateWait" src="images/loader.gif" class="loader">
+
                                         </div>
 
 
@@ -428,7 +428,7 @@
                         <label>
                         <input type="checkbox" id="Guest"  ng-model="chkStatus" ng-change="checkStatus(chkStatus)" checked>
                         <span for="Guest"></span> This is also my Billing Address</label>
-                    </div>  
+                    </div>
                     <div class="col-xs-12 " style="padding-bottom:20px;">
 
                 <div class="alert alert-danger fade in" ng-show="noshippingSelected">
@@ -533,7 +533,7 @@
 
                                 <div class="form-group nopadding col-sm-8 col-xs-12"
                                     ng-class="{ 'error' : (addnewForm.firstname.$invalid && !addnewForm.firstname.$pristine && addnewForm.firstname.$touched )  || (addnewForm.$submitted && addnewForm.firstname.$error.required)  }">
-                             
+
 
                                     <label for="name">First Name</label>
                                     <input id="name"
@@ -548,7 +548,7 @@
                                         <span ng-show="addnewForm.firstname.$error.required" class="error">Please Enter your First Name.</span>
                                     </div>
                                         <span  ng-message="addnewForm.firstname.$error.minlength && !addnewForm.firstname.$pristine" ng-show="addnewForm.firstname.$invalid && addnewForm.firstname.$touched"  class="error">First Name is too short</span>
-                                  
+
                                 </div>
 
                                 <div class="form-group nopadding col-sm-8 col-xs-12"
@@ -562,12 +562,12 @@
                                     ng-model="shipping.lastName"
                                     ng-minlength="2"
                                     required>
-                                      
+
                                      <div ng-show="addnewForm.$submitted">
                                     <span ng-show="addnewForm.lastname.$error.required" class="error">Please Enter your Last Name.</span>
-                                    </div>   
+                                    </div>
                                      <span ng-message="addnewForm.lastname.$error.minlength && !addnewForm.lastname.$pristine" ng-show="addnewForm.lastname.$invalid && addnewForm.lastname.$touched"  class="error">last Name is too short</span>
-                                      
+
                                 </div>
 
 
@@ -588,8 +588,8 @@
                                     </div>
                                     <span ng-message="addnewForm.address.$error.minlength && !addnewForm.address.$pristine" ng-show="addnewForm.address.$invalid && addnewForm.address.$touched"  class="error">Address is too short.</span>
 
-                                     
-                                     
+
+
 
                                 </div>
 
@@ -622,14 +622,14 @@
                                         <div ng-show="addnewForm.$submitted ">
                                         <span ng-show="addnewForm.pincode.$error.required" class="error">Tell us your Pincode.</span>
                                         </div>
-                                   
-                                        
+
+
                                     </div>
 
                                 </div>
 
-                                <div class="col-xs-12 col-sm-1 m-padding hidden-lg">                                
-                                     <img ng-show="citystateWait" src="images/loader.gif" class="loader m-loAd"> 
+                                <div class="col-xs-12 col-sm-1 m-padding hidden-lg">
+                                     <img ng-show="citystateWait" src="images/loader.gif" class="loader m-loAd">
                                 </div>
 
                                 <div class="col-xs-12 col-sm-6 m-padding">
@@ -656,13 +656,13 @@
 
 
                                 <span class="error" ng-show="addnewForm.$submitted && addnewForm.city.$error.required">Please Select City</span>
-                                    </div> 
+                                    </div>
                                 </div>
 
-                                <div class="col-xs-12 col-sm-2 m-padding hidden-xs mt28">                                
-                                
-                                     <img ng-show="citystateWait" src="images/loader.gif" class="loader"> 
-                                    
+                                <div class="col-xs-12 col-sm-2 m-padding hidden-xs mt28">
+
+                                     <img ng-show="citystateWait" src="images/loader.gif" class="loader">
+
                                 </div>
 
                                 <div class="form-group nopadding col-xs-12"
@@ -711,7 +711,7 @@
                                         <span ng-show="addnewForm.phonenumber.$error.required" class="error">Tell us your phonenumber.</span>
                                         </div>
 
-                                        
+
                                 </div>
 
 
@@ -783,7 +783,7 @@
                                     <span ng-show="BillingADDForm.firstname.$error.required" class="error">Please Enter your First Name.</span>
                                     </div>
                                      <span  ng-message="BillingADDForm.firstname.$error.minlength && !BillingADDForm.firstname.$pristine" ng-show="BillingADDForm.firstname.$invalid && BillingADDForm.firstname.$touched"  class="error">First Name is too short</span>
-                                  
+
                                 </div>
 
                                 <div class="form-group nopadding col-sm-8 col-xs-12"
@@ -801,7 +801,7 @@
                                     <span ng-show="BillingADDForm.lastname.$error.required" class="error">Please Enter your Last Name.</span>
                                     </div>
                                      <span ng-message="BillingADDForm.lastname.$error.minlength && !BillingADDForm.lastname.$pristine" ng-show="BillingADDForm.lastname.$invalid && BillingADDForm.lastname.$touched"  class="error">last Name is too short</span>
-                                      
+
                                 </div>
 
 
