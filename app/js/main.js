@@ -12,7 +12,8 @@ require.config({
         'angular-animate' : '../bower_components/angular-animate/angular-animate.min',
         'angular-ui-router' : '../bower_components/angular-ui-router/release/angular-ui-router.min',
         'angular-credit-cards' : '../bower_components/angular-credit-cards/release/angular-credit-cards',
-        'satellizer' : '../bower_components/satellizer/satellizer'
+        'satellizer' : '../bower_components/satellizer/satellizer',
+        'ngstorage' : '../bower_components/ngstorage/ngstorage.min'
     },
 
     shim: {
@@ -28,9 +29,12 @@ require.config({
         'satellizer': {
             dep: ['angular']
         },
-          'angular-animate': {
-             deps: ['angular']
-         }
+        'angular-animate': {
+            deps: ['angular']
+        },
+        'ngstorage': {
+            deps: ['angular']
+        }
     }
 });
 

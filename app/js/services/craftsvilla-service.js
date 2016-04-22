@@ -317,4 +317,12 @@ define(['./index'], function (services) {
       });
     }
   }]);
+
+  services.service('Auth', ['$localStorage', function($localStorage) {
+    return {
+      isLoggedIn: function () {
+        return $localStorage.loginData !== null && $localStorage.loginData !== undefined && $localStorage.loginData !== {};
+      }
+    }
+  }]);
 });

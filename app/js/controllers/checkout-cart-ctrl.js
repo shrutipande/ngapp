@@ -1,6 +1,6 @@
 define(['./index'], function (controllers) {
 	'use strict';
-	controllers.controller('checkoutCartCtrl', ['$scope', 'craftsvillaService', '$state', '$window', function ($scope, craftsvillaService, $state, $window) {
+	controllers.controller('checkoutCartCtrl', ['$scope', '$localStorage', 'craftsvillaService', '$state', '$window', function ($scope, $localStorage, craftsvillaService, $state, $window) {
 		$scope.successCoupon = false;
 		$scope.showFormNote = false;
 		$scope.coupon = {};
@@ -61,9 +61,11 @@ define(['./index'], function (controllers) {
 			craftsvillaService.loginCheck()
 				.success(function (response) {
 					if (response.s == 0) {
+						delete $localStorage.loginData;
 						$state.go('login');
 					}
 					else {
+						$localStorage.loginData = response.d[0];
 						$state.go('shipping');
 					}
 				})
@@ -86,6 +88,7 @@ define(['./index'], function (controllers) {
 				$scope.itemRemoved = 1;
 				$scope.latestRemovedItem = product_id;
 				updateTotals(response);
+				document.body.scrollTop = 0;
 			})
 			.error(function(error) {
         data.waitingCartItem = false;
@@ -152,6 +155,8 @@ define(['./index'], function (controllers) {
 		};
 
 		$scope.removeNoteToSeller = function(data) {
+			if(!data) return;
+
 			craftsvillaService.removeNoteToSeller(data.product_id)
 			.success(function(response) {
 				data.seller_note = null;
@@ -215,7 +220,7 @@ define(['./index'], function (controllers) {
       craftsvillaService.updateQty(product_id, quantity.id)
 			.success(function(response) {
         data.waitingCartItem = true;
-
+				document.body.scrollTop = 0;
         $scope.getCartDetails();
 			})
 			.error(function(error) {
@@ -247,8 +252,10 @@ define(['./index'], function (controllers) {
 			craftsvillaService.loginCheck()
 			.success(function(response) {
 				if(response.s == 1) {
+					$localStorage.loginData = response.d[0];
 					$scope.isLoggedIn = true;
 				} else {
+					delete $localStorage.loginData;
 					$scope.isLoggedIn = false;
 				}
 			})

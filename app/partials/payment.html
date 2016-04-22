@@ -2,7 +2,7 @@
 	<div role-nav class="container">
 		<div class="col-xs-6 nopadding" role="logo">
 			<img role="back" src="images/Shape.png" alt="" title="">
-			<a href="#" title=""><img class="logo" src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/cv_logo.png" alt="" title=""></a>
+			<a href="/" title=""><img class="logo" src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/cv_logo.png" alt="" title=""></a>
 			<span class="hidden-xs">Call 022 288288281 for any assistance</span>
 		</div>
 		<div class="col-xs-6 nopadding buyerProtection">
@@ -57,7 +57,7 @@
 								<h5 ng-show="!showDetails">You Pay <span><a ng-click="showDetails = !showDetails" ng-show="!showDetails">View Details</a></span></h5>
 								<h5 ng-show="showDetails">You Pay <span><a ng-click="showDetails = !showDetails" >Hide Details</a></span></h5>
 							</div>
-							<div class="col-xs-4 nopadding text-right"><span class="total-amount">&#8377; {{shippingAdressData.grand_total}}</span></div>
+							<div class="col-xs-4 nopadding text-right"><span class="total-amount">&#8377; {{shippingAdressData.grand_total | number : 2}}</span></div>
 						</div>
 					</div>
 				</div>
@@ -69,7 +69,7 @@
                                 <a href="javascript:void(0)" ng-click="showDetails = !showDetails" ng-show="showDetails">Hide Details</a>
                             </span></h5>
 						</div>
-						<div class="col-xs-4 nopadding text-right"><span class="total-amount">&#8377; {{shippingAdressData.grand_total}}</span></div>
+						<div class="col-xs-4 nopadding text-right"><span class="total-amount">&#8377; {{shippingAdressData.grand_total | number : 2}}</span></div>
 					</div>
 					<!--// -->
 					<div class="col-xs-12 items-list" ng-repeat = "quotedata in finalQuoteData" ng-show="showDetails">

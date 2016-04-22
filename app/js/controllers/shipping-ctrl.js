@@ -57,7 +57,7 @@ define(['./index'], function (controllers) {
     //Checkbox view address hide address
     $scope.checkStatus=function(value){
       //$scope.selectedBillingID = addId;
-      console.log("** ---  ---**");
+      console.log("** ---  ---**", value);
 
       if (value) {
        // alert('checked:show');
@@ -65,6 +65,7 @@ define(['./index'], function (controllers) {
                 $scope.displayAddresscheckbox=false;
 
         $scope.selectedShippingID = $scope.shippingID;
+        $scope.billingID = $scope.selectedShippingID;
 
       }
       else
@@ -156,7 +157,7 @@ define(['./index'], function (controllers) {
         craftsvillaService.getAddressFromPincode(pincode)
             .success(function(response)
             {
-               $scope.citystateWait=false;  
+               $scope.citystateWait=false;
               console.log(response);
               if (response.s == 1 )
               {

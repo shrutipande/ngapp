@@ -1,6 +1,6 @@
 define(['./index'], function (controllers) {
 	'use strict';
-	controllers.controller('loginCtrl', ['$scope', '$state', '$auth', 'craftsvillaService', function ($scope, $state,$auth,craftsvillaService) {
+	controllers.controller('loginCtrl', ['$scope', '$state', '$auth', '$localStorage', 'craftsvillaService', function ($scope, $state,$auth,$localStorage,craftsvillaService) {
 	$scope.guestUser = false;
 	$scope.forgotPasswd = false;
 	$scope.sendPasswd= false;
@@ -56,9 +56,11 @@ define(['./index'], function (controllers) {
 			.success(function (response) {
 				if(response.s==0 )
 				{
+					delete $localStorage.loginData;
 					$scope.invalidCred=true;
 				}
 				else{
+					$localStorage.loginData = response.d[0];
 					$state.go('shipping');
 				}
 			})
@@ -92,24 +94,7 @@ define(['./index'], function (controllers) {
 	};
 	$scope.initLogin();
 
-	$scope.loginCred = function() {
-		console.log($scope.userLoginForm);
-		if ($scope.userLoginForm.$valid) {
-			console.log($scope.userLogin);
-			var emailId = $scope.userLogin.email;
-			var password = $scope.userLogin.password;
-			craftsvillaService.getLogin(emailId, password)
-			.success(function (response) {
-				console.log('test login');
-				console.log(response);
-				$state.go('shipping');
-			})
-			.error(function (err) {
-				console.log('error');
-				throw new Error(err);
-			})
-		}
-	};
+
 	$scope.sendPassword = function() {
 		console.log("send paswword");
 		console.log($scope.userForgot.forgotEmail);
@@ -141,7 +126,7 @@ define(['./index'], function (controllers) {
 					"sourceType": provider
 				})
 				.success(function (_data) {
-					console.log(_data);
+					$state.go('shipping');
 				})
 				.error(function (_err) {
 					console.log(_err);
