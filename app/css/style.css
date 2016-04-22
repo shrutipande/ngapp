@@ -554,7 +554,7 @@ span[role="division"] { margin-left: 5%; }
     .open-cont .b-border{ border-radius: 2px; border: solid 1px #dec6cc;}
 
     .coupon-cont .cc-header{padding:10px 0 5px 0;}
-    .order-cont  .o-right-cont .ord-amt{width:75%; margin-bottom: 17px;}
+    .order-cont  .o-right-cont .ord-amt{width:75%; margin-bottom: 13px;}
     .order-cont .pad-t-7{padding-top:7px;}
     div[check-out] .overlay-out-stock{ background: #222222; opacity: 0.5; width:100%;/* 310px;*/ height:211px; position:relative; top:0px; left:0px;border: solid 1px #981937;}
 
