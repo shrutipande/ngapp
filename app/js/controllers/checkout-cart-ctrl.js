@@ -31,7 +31,7 @@ define(['./index'], function (controllers) {
       $scope.waitingCartDatails=true;
 			craftsvillaService.loadQuote()
 			.success(function(response) {
-        //$scope.waitingCartDatails=false;
+        $scope.waitingCartDatails=false;
         var _outOfStockProducts = [];
 				var _inStockCod = [];
 				var _inStockNotCod = [];
@@ -55,7 +55,7 @@ define(['./index'], function (controllers) {
 				updateTotals(response);
 			})
 			.error(function (err) {
-        //$scope.waitingCartDatails=false;
+        $scope.waitingCartDatails=false;
         throw new Error(err);
 			})
 		};
