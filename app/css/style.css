@@ -737,3 +737,7 @@ span.error{
     display: block;
 }
 .mt28{margin-top: 28px;}
+
+.textloading{
+    margin-top: -10px;
+}
