@@ -79,6 +79,7 @@
 					<!--// -->
 					<div class="col-xs-12 items-list" ng-repeat = "quotedata in finalQuoteData" ng-show="showDetails">
 						<div class="media">
+							<span role="close" ng-click="removeFromCart(quotedata.product_id, quotedata)"><a  ><img src="images/delete-icon.png" alt="" title=""></a></span>
 							<div class="media-left">
 								<a href="{{prdctUrl + quotedata.product_id}}">
 									<img class="media-object" src=" {{imgHost + quotedata.product_image}}" alt=""  width="100px" height="100px" title="">
@@ -89,6 +90,9 @@
 								<p>Quantity: <span>{{quotedata.product_qty}}</span></p>
 								<h4 class="items-price">&#8377; {{quotedata.product_price | number : 2}}</h4>
 							</div>
+							<div class="overlay-out-stock" ng-show="quotedata.waitingCartItem">
+                  <img src="images/loader.gif" class="loader-cartitem">
+              </div>
 						</div>
 					</div>
 					<!--// -->
@@ -109,8 +113,8 @@
               <div class="o-heading">order summary</div>
               <div class="o-left-cont">
                   <p>Sub Total</p>
-                  <p ng-show="successCoupon">Coupon Applied ({{couponCode}})</p>
-                  <p class="green" ng-show="successCoupon">You saved {{discount | number: 2}}%</p>
+                  <p ng-show="shippingAdressData.discount_amount > 0">Coupon Applied ({{couponCode}})</p>
+                  <p class="green" ng-show="shippingAdressData.discount_amount > 0">You saved {{discount | number: 2}}%</p>
                   <p>Shipping</p>
                   <p class="total pad-t-7"><b>Total Payable</b></p>
               </div>
@@ -122,7 +126,6 @@
                       <div class="pull-right">{{ shippingAmountData.sub_total | number: 2 }}</div>
                   </div>
                   <div class="ord-amt" ng-show="waitingCartDatails"><img src="images/textloading.gif" class="textloading"></div>
-
                   <div class="ord-amt" ng-show="successCoupon && !waitingCartDatails">
                       <span class="pull-left"> &#45; </span>
                       <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 14 28" class="icon">
@@ -130,10 +133,8 @@
                       </svg>
                       {{ shippingAdressData.discount_amount | number: 2 }}
                   </div>
-                  <div class="ord-amt icon width100" ng-show="successCoupon"> </div>
                   <div class="ord-amt" ng-show="waitingCartDatails && successCoupon"><img src="images/textloading.gif" class="textloading"></div>
-
-                  <div class="ord-amt" ng-show="!waitingCartDatails">
+                  <div class="ord-amt" ng-show="!waitingCartDatails" style="margin-top:{{shippingAdressData.discount_amount > 0 ? '26px' : '0px'}}">
                       <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 14 28" class="icon">
                           <path d="M14.031 7.344v1.594q0 0.219-0.141 0.359t-0.359 0.141h-2.625q-0.359 2.25-2.016 3.656t-4.312 1.719q2.609 2.781 7.172 8.375 0.219 0.25 0.063 0.531-0.125 0.281-0.453 0.281h-3.047q-0.25 0-0.391-0.187-4.781-5.734-7.781-8.922-0.141-0.141-0.141-0.344v-1.984q0-0.203 0.148-0.352t0.352-0.148h1.75q2.063 0 3.32-0.672t1.602-1.953h-6.672q-0.219 0-0.359-0.141t-0.141-0.359v-1.594q0-0.219 0.141-0.359t0.359-0.141h6.453q-0.891-1.766-4.188-1.766h-2.266q-0.203 0-0.352-0.148t-0.148-0.352v-2.078q0-0.219 0.141-0.359t0.359-0.141h13q0.219 0 0.359 0.141t0.141 0.359v1.594q0 0.219-0.141 0.359t-0.359 0.141h-3.641q0.734 0.953 1 2.25h2.672q0.219 0 0.359 0.141t0.141 0.359z"></path>
                       </svg>
@@ -183,6 +184,14 @@
 								<p>You will be redirected to PayU to complete the order</p>
 								<div class="col-xs-12 col-sm-7 nopadding">
 									<button ng-click="submitPayUForm()" class="btn btn-newStyle bg-green">PAY <span><i>&#x20B9;</i>{{shippingAmountData.grand_total || 0}}</span> SECURELY</button>
+								</div>
+							</div>
+							<!-- show on paypal -->
+							<div class="col-xs-12 payuform" ng-if = "item.method == 'PayPal'">
+								<h3>Pay Using PayPal</h3>
+								<p>You will be redirected to PayPal to complete the order</p>
+								<div class="col-xs-12 col-sm-7 nopadding">
+									<button ng-click="submitPaypalForm()" class="btn btn-newStyle bg-green">PAY <span><i>&#x20B9;</i>{{shippingAmountData.grand_total || 0}}</span> SECURELY</button>
 								</div>
 							</div>
 							<!-- show on creditcard -->
@@ -371,7 +380,7 @@
 							<form class="col-xs-12 NetBanking" name="forms.NBForm" novalidate ng-if = "item.method == 'Net Banking'">
 								<ul role="nasted-list">
 									<li ng-repeat = "bank in item.content.priority">
-										<input id="{{bank.bank_code}}" type="radio" name="bank" value="{{bank.bank_code}}" ng-model="netbanking.bank_code">
+										<input id="{{bank.bank_code}}" type="radio" name="bank" value="{{bank.bank_code}}" ng-model="nb.netbanking.bank_code">
 										<label for="{{bank.bank_code}}"><span></span><img ng-src="{{bank.logo_url}}" alt="{{bank.bank_name}}" /></label>
 									</li>
 
@@ -379,7 +388,7 @@
 								<div class="col-xs-12 nopadding">
 									<span class="pull-left or">OR</span>
 									<div class="select-style">
-										<select ng-model="netbanking" name="bank" ng-options="item as item.bank_name for item in item.content.others"></select>
+										<select ng-model="nb.netbanking" name="bank" ng-options="item as item.bank_name for item in item.content.others"></select>
 									</div>
 								</div>
 								<div class="col-xs-12 col-sm-8 nopadding">
@@ -419,6 +428,14 @@
 											<h3>Pay Using PayU Money</h3>
 											<div class="col-xs-12 col-sm-7 nopadding">
 												<button ng-click="submitPayUForm()" class="btn btn-newStyle bg-green">PAY <span><i>&#x20B9;</i>{{shippingAmountData.grand_total || 0}}</span> SECURELY</button>
+											</div>
+										</div>
+										<!-- show on paypal -->
+										<div class="col-xs-12 payuform" ng-if = "item.method == 'PayPal'">
+											<h3>Pay Using PayPal</h3>
+											<p>You will be redirected to PayPal to complete the order</p>
+											<div class="col-xs-12 col-sm-7 nopadding">
+												<button ng-click="submitPaypalForm()" class="btn btn-newStyle bg-green">PAY <span><i>&#x20B9;</i>{{shippingAmountData.grand_total || 0}}</span> SECURELY</button>
 											</div>
 										</div>
 										<!-- show on creditcard -->
@@ -607,7 +624,7 @@
 										<form class="col-xs-12 NetBanking" name="forms.NBForm" novalidate ng-if = "item.method == 'Net Banking'">
 											<ul role="nasted-list">
 												<li ng-repeat = "bank in item.content.priority">
-													<input id="{{bank.bank_code}}" type="radio" name="bank" value="{{bank.bank_code}}" ng-model="netbanking.bank_code">
+													<input id="{{bank.bank_code}}" type="radio" name="bank" value="{{bank.bank_code}}" ng-model="nb.netbanking.bank_code">
 													<label for="{{bank.bank_code}}"><span></span><img ng-src="{{bank.logo_url}}" alt="{{bank.bank_name}}" /></label>
 												</li>
 
@@ -615,7 +632,7 @@
 											<div class="col-xs-12 nopadding">
 												<span class="pull-left or">OR</span>
 												<div class="select-style">
-													<select ng-model="netbanking" name="bank" ng-options="item as item.bank_name for item in item.content.others"></select>
+													<select ng-model="nb.netbanking" name="bank" ng-options="item as item.bank_name for item in item.content.others"></select>
 												</div>
 											</div>
 											<div class="col-xs-12 col-sm-8 nopadding">
