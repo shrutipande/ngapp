@@ -142,6 +142,7 @@ define(['./index'], function (controllers) {
     $scope.addnewsubmit = function(chkStatusBilling) {
       if ($scope.addnewForm.$valid) {
       if (chkStatusBilling == true) {
+        $scope.shipping.isSame=1;
         $scope.shipping.countryName = $scope.addnewcountry.country_name;
         craftsvillaService.addAddress($scope.shipping, $scope.shipping)
             .success(function (response) {
