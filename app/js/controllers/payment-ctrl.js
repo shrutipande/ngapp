@@ -1,6 +1,6 @@
 define(['./index'], function (controllers) {
     'use strict';
-    controllers.controller('paymentCtrl', ['$scope', '$state', '$stateParams', '$timeout', 'craftsvillaService','PRODUCTURL', function ($scope,$state,$stateParams,$timeout,craftsvillaService,PRODUCTURL) {
+    controllers.controller('paymentCtrl', ['$scope', '$state', '$stateParams', '$timeout', '$sce', 'craftsvillaService','PRODUCTURL', function ($scope,$state,$stateParams,$timeout,$sce,craftsvillaService,PRODUCTURL) {
 			var controllerRef = this;
 			$scope.forms = {};
 			$scope.credit = {};
@@ -420,6 +420,60 @@ define(['./index'], function (controllers) {
 	        console.log(error);
 				});
 			}
+
+			$scope.placeOrder = function () {
+				if(!$scope.changeName) return;
+				switch($scope.changeName.toLowerCase()) {
+					case 'cash on delivery':
+						$scope.submitCOD();
+						break;
+					case 'credit card':
+						$scope.submitCreditForm();
+						break;
+					case 'debit card':
+						$scope.submitDebitForm();
+						break;
+					case 'net banking':
+						$scope.submitNBForm();
+						break;
+					case 'payu money':
+						$scope.submitPayUForm();
+						break;
+					case 'paypal':
+						$scope.submitPaypalForm();
+						break;
+				}
+			}
+
+			$scope.isPaymentAllowed = function () {
+				if(!$scope.changeName || !$scope.shippingAmountData) return true;
+				switch($scope.changeName.toLowerCase()) {
+					case 'cash on delivery':
+						return !($scope.shippingAmountData && $scope.shippingAmountData.showCod == 1);
+					case 'credit card':
+						return $scope.validate('payment', $scope.forms.creditForm);
+					case 'debit card':
+						return $scope.validate('payment', $scope.forms.debitForm);
+					case 'net banking':
+						return !($scope.nb.netbanking.bank_code);
+					case 'payu money':
+						return false;
+					case 'paypal':
+						return false;
+					default:
+						return true;
+				}
+			}
+
+			$scope.getPlaceOrderText = function () {
+				if(!$scope.changeName) return 'LOADING...';
+				switch($scope.changeName.toLowerCase()) {
+					case 'cash on delivery':
+						return 'PLACE ORDER';
+					default:
+						return $sce.trustAsHtml('PAY <span><i>&#x20B9;</i>' + (($scope.shippingAmountData || {}).grand_total || 0) + '</span> SECURELY');
+					}
+				}
 
 			$scope.initPayment();
 
