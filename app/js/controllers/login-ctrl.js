@@ -62,7 +62,7 @@ define(['./index'], function (controllers) {
 					$scope.invalidCred=true;
 				}
 				else{
-					$localStorage.loginData = response.d[0];
+					$localStorage.loginData = response.d;
 					$state.go('shipping');
 				}
 			})
@@ -119,7 +119,7 @@ define(['./index'], function (controllers) {
 		$auth.authenticate(provider)
 			.then(function(data) {
 				craftsvillaService.socialAuth({
-					"accessToken": data.access_token,
+					"accessToken": data.access_token || data.code,
 					"sourceType": provider
 				})
 				.success(function (_data) {

@@ -68,7 +68,7 @@ define(['./index'], function (controllers) {
 						$state.go('login');
 					}
 					else {
-						$localStorage.loginData = response.d[0];
+						$localStorage.loginData = response.d;
 						$state.go('shipping');
 					}
 				})
@@ -251,7 +251,7 @@ define(['./index'], function (controllers) {
 			craftsvillaService.loginCheck()
 			.success(function(response) {
 				if(response.s == 1) {
-					$localStorage.loginData = response.d[0];
+					$localStorage.loginData = response.d;
 					$scope.isLoggedIn = true;
 				} else {
 					delete $localStorage.loginData;

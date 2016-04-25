@@ -1,11 +1,11 @@
 define(['./index'], function (controllers) {
     'use strict';
-    controllers.controller('paymentCtrl', ['$scope', '$state', '$stateParams', '$timeout', 'craftsvillaService','PRODUCTURL', function ($scope,$state,$stateParams,$timeout,craftsvillaService,PRODUCTURL) {
+    controllers.controller('paymentCtrl', ['$scope', '$state', '$stateParams', '$timeout', '$sce', 'craftsvillaService','PRODUCTURL', function ($scope,$state,$stateParams,$timeout,$sce,craftsvillaService,PRODUCTURL) {
 			var controllerRef = this;
 			$scope.forms = {};
 			$scope.credit = {};
 			$scope.debit = {};
-			$scope.netbanking = {};
+			$scope.nb = { netbanking : {} };
 			$scope.imgHost = $scope.IMGHOST + '/thumb/166x166';
 			$scope.prdctUrl = PRODUCTURL;
 			$scope.showDetails = false;
@@ -96,7 +96,8 @@ define(['./index'], function (controllers) {
 					"ccname": $scope.credit.cardName,
 					"ccvv": $scope.credit.cardCvv,
 					"ccexpmon":$scope.credit.cardMonth,
-					"ccexpyr": $scope.credit.cardYear
+					"ccexpyr": $scope.credit.cardYear,
+					// "gateway": 'payu'
 				})
 				.success(function(data){
 					// console.log(data);
@@ -140,7 +141,8 @@ define(['./index'], function (controllers) {
 					"ccname": $scope.debit.cardName,
 					"ccvv": $scope.debit.cardCvv,
 					"ccexpmon":$scope.debit.cardMonth,
-					"ccexpyr": $scope.debit.cardYear
+					"ccexpyr": $scope.debit.cardYear,
+					// "gateway": 'payu'
 				})
 				.success(function(data){
 					// console.log(data);
@@ -178,7 +180,55 @@ define(['./index'], function (controllers) {
 			$scope.submitNBForm = function() {
 				craftsvillaService.placeOrder({
 					"pg": $scope.pg,
-					"bankcode":$scope.netbanking.bank_code,
+					"bankcode":$scope.nb.netbanking.bank_code,
+					"ccnum": '',
+					"ccname": '',
+					"ccvv": '',
+					"ccexpmon": '',
+					"ccexpyr": '',
+					// "gateway": 'payu'
+				})
+				.success(function(data){
+					var form = document.createElement("form");
+			    form.setAttribute("method", 'POST');
+			    form.setAttribute("action", data.url);
+
+			    for(var key in data.parameter) {
+		        if(data.parameter.hasOwnProperty(key)) {
+	            var hiddenField = document.createElement("input");
+	            hiddenField.setAttribute("type", "hidden");
+	            hiddenField.setAttribute("name", key);
+	            hiddenField.setAttribute("value", data.parameter[key]);
+
+	            form.appendChild(hiddenField);
+		         }
+			    }
+
+					document.body.appendChild(form);
+    			form.submit();
+
+					// craftsvillaService.paymentRedirect(payUData.url, payUData.parameter)
+					// .success(function(data) {
+					//
+					// })
+					// .error(function(err){
+					// 	console.log(err);
+					// })
+				})
+				.error(function(err){
+					console.log(err);
+				});
+			};
+			$scope.submitPayUForm = function() {
+				craftsvillaService.placeOrder({
+					"pg": 'Wallet',
+					"bankcode": 'payuw',
+					"ccnum": '',
+					"ccname": '',
+					"ccvv": '',
+					"ccexpmon": '',
+					"ccexpyr": '',
+					// "gateway": 'payu'
 				})
 				.success(function(data){
 					// console.log(data);
@@ -213,10 +263,17 @@ define(['./index'], function (controllers) {
 					console.log(err);
 				});
 			};
-			$scope.submitPayUForm = function() {
+
+			$scope.submitPaypalForm = function() {
 				craftsvillaService.placeOrder({
-					"pg": 'Wallet',
-					"bankcode": 'payuw'
+					"pg": '',
+					"bankcode": '',
+					"ccnum": '',
+					"ccname": '',
+					"ccvv": '',
+					"ccexpmon": '',
+					"ccexpyr": '',
+					// "gateway": 'paypal'
 				})
 				.success(function(data){
 					// console.log(data);
@@ -283,7 +340,7 @@ define(['./index'], function (controllers) {
         craftsvillaService.loadFinalQuote($stateParams.platform, $stateParams.quoteId)
 				.success(function(response) {
           $scope.waitingCartDatails = false;
-          console.log(response);
+					if(response.d.product_list.length === 0) $state.go('cart');
 					$scope.finalQuoteData = response.d.product_list;
 					$scope.shippingAdressData = response.d.shippingAddress;
 					$scope.shippingAmountData = response.d;
@@ -337,6 +394,7 @@ define(['./index'], function (controllers) {
 			}
 
 			$scope.getCCTypeImage = function (ccType) {
+				if(!$scope.cardTypes[ccType]) return '';
 				return $scope.cardTypes[ccType].img;
 			}
 
@@ -349,6 +407,73 @@ define(['./index'], function (controllers) {
 			$scope.isValidDate = function(year, month) {
 				return new Date(year, month) < new Date();
 			}
+
+			$scope.removeFromCart = function (product_id, product) {
+				product.waitingCartItem = true;
+				craftsvillaService.removeQuoteItems([{
+					productID: product_id
+				}])
+				.success(function(response) {
+					$scope.finalQuoteDetails()
+				})
+				.error(function(error) {
+	        console.log(error);
+				});
+			}
+
+			$scope.placeOrder = function () {
+				if(!$scope.changeName) return;
+				switch($scope.changeName.toLowerCase()) {
+					case 'cash on delivery':
+						$scope.submitCOD();
+						break;
+					case 'credit card':
+						$scope.submitCreditForm();
+						break;
+					case 'debit card':
+						$scope.submitDebitForm();
+						break;
+					case 'net banking':
+						$scope.submitNBForm();
+						break;
+					case 'payu money':
+						$scope.submitPayUForm();
+						break;
+					case 'paypal':
+						$scope.submitPaypalForm();
+						break;
+				}
+			}
+
+			$scope.isPaymentAllowed = function () {
+				if(!$scope.changeName || !$scope.shippingAmountData) return true;
+				switch($scope.changeName.toLowerCase()) {
+					case 'cash on delivery':
+						return !($scope.shippingAmountData && $scope.shippingAmountData.showCod == 1);
+					case 'credit card':
+						return $scope.validate('payment', $scope.forms.creditForm);
+					case 'debit card':
+						return $scope.validate('payment', $scope.forms.debitForm);
+					case 'net banking':
+						return !($scope.nb.netbanking.bank_code);
+					case 'payu money':
+						return false;
+					case 'paypal':
+						return false;
+					default:
+						return true;
+				}
+			}
+
+			$scope.getPlaceOrderText = function () {
+				if(!$scope.changeName) return 'LOADING...';
+				switch($scope.changeName.toLowerCase()) {
+					case 'cash on delivery':
+						return 'PLACE ORDER';
+					default:
+						return $sce.trustAsHtml('PAY <span><i>&#x20B9;</i>' + (($scope.shippingAmountData || {}).grand_total || 0) + '</span> SECURELY');
+					}
+				}
 
 			$scope.initPayment();
 

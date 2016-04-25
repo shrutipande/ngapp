@@ -278,7 +278,7 @@ define(['./index'], function (services) {
     // Place order (Prepaid)
     function placeOrder(json) {
       return $http({
-        method: 'GET',
+        method: 'POST',
         url: HOST + 'checkoutService/index/placeOrderPrepaid',
         params: json
       });
