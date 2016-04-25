@@ -112,7 +112,7 @@ h4[role="headding"] { color: #747474; font-size: 18px; margin-bottom: 15px; font
 h4[role="headding"] a { text-decoration: none; color: #888888; outline: none; }
 h4[role="headding"] small a { color: #981937; font-size: 14px; }
 h4[role="headding"] a span { display: none; }
-.addressCard { border: solid 1px #e9e9e9; background: #ffffff; padding: 10px; margin-bottom: 15px; cursor: pointer; height: 180px;}
+.addressCard { border: solid 1px #e9e9e9; background: #ffffff; padding: 10px; margin-bottom: 15px; cursor: pointer; height: 180px;   box-shadow: 1px 1px 4px 0 rgba(170, 170, 170, 0.3);  }
 /*.customer-address > div:nth-of-type(1) { width: 15%; }
 .customer-address > div:nth-of-type(1) img { margin-top: -4px; visibility: hidden; }
 .customer-address > div:nth-of-type(2) { width: 85%; }

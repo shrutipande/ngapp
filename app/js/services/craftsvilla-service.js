@@ -245,6 +245,7 @@ define(['./index'], function (services) {
           "state":shipping.state,
           "pincode":shipping.pincode,
           "country":shipping.countryName,
+          "isSame":shipping.isSame,
           "phoneNo":shipping.phoneNo
         },
         "billingAddreess":{
@@ -255,6 +256,7 @@ define(['./index'], function (services) {
           "state":billing.state,
           "pincode":billing.pincode,
           "country":billing.countryName,
+          "isSame":shipping.isSame,
           "phoneNo":billing.phoneNo
         }
       });
