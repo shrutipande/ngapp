@@ -426,18 +426,18 @@
 												<input type="button" value="PLACE ORDER" class="btn btn-newStyle bg-green" ng-click="cashOn()">
 											</div>
 										</div>
-										<div class="col-xs-12 cashondelivery" ng-if = "changeName == 'Cash On Delivery' && shippingAmountData.showCod == 0">
+										<div class="col-xs-12 cashondelivery" ng-if = "item.method == 'Cash On Delivery' && shippingAmountData.showCod == 0">
 											<p>Your order is not eligible for Cash On Delivery</p>
 										</div>
 										<!-- show on payu -->
-										<div class="col-xs-12 payuform" ng-if = "changeName == 'PayU Money'">
+										<div class="col-xs-12 payuform" ng-if = "item.method == 'PayU Money'">
 											<p>You will be redirected to PayU to complete the order</p>
 											<div class="col-xs-12 col-sm-7 nopadding hidden-xs">
 												<button ng-click="submitPayUForm()" class="btn btn-newStyle bg-green">PAY <span><i>&#x20B9;</i>{{shippingAmountData.grand_total || 0}}</span> SECURELY</button>
 											</div>
 										</div>
 										<!-- show on paypal -->
-										<div class="col-xs-12 payuform" ng-if = "changeName == 'PayPal'">
+										<div class="col-xs-12 payuform" ng-if = "item.method == 'PayPal'">
 											<h3>Pay Using PayPal</h3>
 											<p>You will be redirected to PayPal to complete the order</p>
 											<div class="col-xs-12 col-sm-7 nopadding hidden-xs">
@@ -445,7 +445,7 @@
 											</div>
 										</div>
 										<!-- show on creditcard -->
-										<div class="col-xs-12 col-sm-8 creditcard" ng-if = "changeName == 'Credit card'">
+										<div class="col-xs-12 col-sm-8 creditcard" ng-if = "item.method == 'Credit card'">
 											<form name="forms.creditForm_mobile" ng-submit="submitCreditForm()" novalidate>
 												<div class="col-xs-12 nopadding">
 													<fieldset class="form-group" ng-class="{ 'error' : validate('cardNumber', forms.creditForm_mobile)}">
@@ -539,7 +539,7 @@
 											</form>
 										</div>
 										<!-- show on Debit card -->
-										<div class="col-xs-12 col-sm-8 creditcard" ng-if = "changeName == 'Debit Card'">
+										<div class="col-xs-12 col-sm-8 creditcard" ng-if = "item.method == 'Debit Card'">
 											<form name="forms.debitForm_mobile" ng-submit="submitDebitForm()" novalidate>
 												<div class="col-xs-12 nopadding">
 													<fieldset class="form-group" ng-class="{ 'error' : validate('cardNumber', forms.debitForm_mobile)}">
@@ -633,7 +633,7 @@
 											</form>
 										</div>
 										<!-- show on Net Banking -->
-										<div class="col-xs-12 creditcard" ng-if = "changeName == 'Net Banking'">
+										<div class="col-xs-12 creditcard" ng-if = "item.method == 'Net Banking'">
 											<form name="forms.NBForm" novalidate >
 												<ul role="nasted-list">
 													<li ng-repeat = "bank in item.content.priority">
@@ -661,7 +661,7 @@
 				</div>
 			</div>
 			<div class="col-xs-12 nopadding visible-xs fixed-button">
-				<button type="button" class="btn btn-newStyle bg-green" ng-click="placeOrder()" ng-disabled="isPaymentAllowed()" ng-bind-html="getPlaceOrderText()"></button>
+				<button type="button" class="btn btn-newStyle bg-green" ng-click="placeOrder()" ng-bind-html="getPlaceOrderText()"></button>
 			</div>
 			<!--// -->
 		</div>

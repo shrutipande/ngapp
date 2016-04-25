@@ -4,6 +4,7 @@ define(['./index'], function (controllers) {
 			var controllerRef = this;
 			$scope.forms = {};
 			$scope.credit = {};
+			$scope.credit_mobile = {};
 			$scope.debit = {};
 			$scope.nb = { netbanking : {} };
 			$scope.imgHost = $scope.IMGHOST + '/thumb/166x166';
@@ -388,6 +389,8 @@ define(['./index'], function (controllers) {
 					return form[element].$invalid && !form[element].$pristine && form[element].$xblur
 				case 'payment':
 					return form.$invalid || $scope.validate('cardExp', form);
+				case 'nb':
+					return $scope.nb.netbanking.bank_code;
 				default:
 					return false;
 				}
@@ -423,37 +426,43 @@ define(['./index'], function (controllers) {
 
 			$scope.placeOrder = function () {
 				if(!$scope.changeName) return;
+				var toSubmit = true;
+				if($scope.isPaymentNotAllowed()){
+					toSubmit = false;
+				}
 				switch($scope.changeName.toLowerCase()) {
 					case 'cash on delivery':
-						$scope.submitCOD();
+						if(toSubmit) $scope.submitCOD();
 						break;
 					case 'credit card':
-						$scope.submitCreditForm();
+						if(toSubmit) $scope.submitCreditForm();
+						else { $scope.forms.creditForm.$setSubmitted(); $scope.forms.creditForm_mobile.$setSubmitted(); }
 						break;
 					case 'debit card':
-						$scope.submitDebitForm();
+						if(toSubmit) $scope.submitDebitForm();
+						else { $scope.forms.debitForm.$setSubmitted(); $scope.forms.debitForm_mobile.$setSubmitted(); }
 						break;
 					case 'net banking':
-						$scope.submitNBForm();
+						if(toSubmit) $scope.submitNBForm();
 						break;
 					case 'payu money':
-						$scope.submitPayUForm();
+						if(toSubmit) $scope.submitPayUForm();
 						break;
 					case 'paypal':
-						$scope.submitPaypalForm();
+						if(toSubmit) $scope.submitPaypalForm();
 						break;
 				}
 			}
 
-			$scope.isPaymentAllowed = function () {
+			$scope.isPaymentNotAllowed = function () {
 				if(!$scope.changeName || !$scope.shippingAmountData) return true;
 				switch($scope.changeName.toLowerCase()) {
 					case 'cash on delivery':
 						return !($scope.shippingAmountData && $scope.shippingAmountData.showCod == 1);
 					case 'credit card':
-						return $scope.validate('payment', $scope.forms.creditForm);
+						return $scope.validate('payment', $scope.forms.creditForm_mobile);
 					case 'debit card':
-						return $scope.validate('payment', $scope.forms.debitForm);
+						return $scope.validate('payment', $scope.forms.debitForm_mobile);
 					case 'net banking':
 						return !($scope.nb.netbanking.bank_code);
 					case 'payu money':
