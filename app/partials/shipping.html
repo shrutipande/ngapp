@@ -443,7 +443,7 @@
 
                     <!--// -->
                     <div ng-hide="displayAddress" >
-                    <div class="col-xs-12 ">
+                    <div class="col-xs-12 m-left-m ">
                      <h4 role="headding">SELECT BILLING ADDRESS</h4>
                      </div>
                    <div class="col-xs-12 col-sm-6 col-md-4 slideInLeft enter-slideInLeft exit-fadeOut speed-0 stagger-3 nopad-xs" ng-repeat="address in addresses"  ng-click="setbillingID(address.entity_id)" ng-if= "address.entity_id !== shippingID">
@@ -617,7 +617,7 @@
 
                                         <div ng-show="addnewForm.pincode.$error.maxlength && !addnewForm.pincode.$pristine" class="error">
 
-                                        <span ng-message="addnewForm.pincode.$invalid" ng-show="addnewForm.pincode.$touched"   >Pincode number is too long .</span>
+                                        <span ng-message="addnewForm.pincode.$invalid" ng-show="addnewForm.pincode.$touched">Pincode number is too long .</span>
                                         </div>
 
                                         <div ng-show="addnewForm.$submitted ">
