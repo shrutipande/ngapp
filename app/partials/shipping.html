@@ -54,11 +54,11 @@
     <div class="container-fluid nopadding">
         <div class="container">
             <!--// login Container Start -->
-            <div class="col-xs-12 nopadding shippingContainer" ng-class="{'hidden-xs': mform }">
+            <div class="col-xs-12 nopadding shippingContainer" ng-class="{'hidden-xs': mform }" ng-show="addressExists">
                 <h4 role="headding">SELECT SHIPPING ADDRESS </h4>
                 <!--// -->
                 <div class="row" ng-show="addressExists">
-                    <div class="col-xs-12 col-sm-6 col-md-4 fadeIn enter-fadeIn exit-fadeOut speed-0 stagger-3 nopad-xs"  ng-repeat="address in addresses" ng-click="checkSameOrNot(address.entity_id);" ng-class="{'hideAddressCard': address.entity_id !== shippingID && selectedShippingID !== null}">
+                    <div class="col-xs-12 col-sm-6 col-md-4 fadeIn enter-fadeIn exit-fadeOut speed-0 stagger-3 nopad-xs"  ng-repeat="address in addresses" ng-click="checkSameOrNot(address.entity_id,chkStatus);" ng-class="{'hideAddressCard': address.entity_id !== shippingID && selectedShippingID !== null}">
 
                     <div class="col-xs-12 addressCard " ng-class="{'addressCardActive': address.entity_id == shippingID}" ng-hide="displayAddresscheckbox == true && address.entity_id !== shippingID">
 
