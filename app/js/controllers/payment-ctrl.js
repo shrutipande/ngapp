@@ -96,7 +96,8 @@ define(['./index'], function (controllers) {
 					"ccname": $scope.credit.cardName,
 					"ccvv": $scope.credit.cardCvv,
 					"ccexpmon":$scope.credit.cardMonth,
-					"ccexpyr": $scope.credit.cardYear
+					"ccexpyr": $scope.credit.cardYear,
+					// "gateway": 'payu'
 				})
 				.success(function(data){
 					// console.log(data);
@@ -140,7 +141,8 @@ define(['./index'], function (controllers) {
 					"ccname": $scope.debit.cardName,
 					"ccvv": $scope.debit.cardCvv,
 					"ccexpmon":$scope.debit.cardMonth,
-					"ccexpyr": $scope.debit.cardYear
+					"ccexpyr": $scope.debit.cardYear,
+					// "gateway": 'payu'
 				})
 				.success(function(data){
 					// console.log(data);
@@ -183,7 +185,8 @@ define(['./index'], function (controllers) {
 					"ccname": '',
 					"ccvv": '',
 					"ccexpmon": '',
-					"ccexpyr": ''
+					"ccexpyr": '',
+					// "gateway": 'payu'
 				})
 				.success(function(data){
 					var form = document.createElement("form");
@@ -225,7 +228,7 @@ define(['./index'], function (controllers) {
 					"ccvv": '',
 					"ccexpmon": '',
 					"ccexpyr": '',
-					"gateway": 'payu'
+					// "gateway": 'payu'
 				})
 				.success(function(data){
 					// console.log(data);
@@ -270,7 +273,7 @@ define(['./index'], function (controllers) {
 					"ccvv": '',
 					"ccexpmon": '',
 					"ccexpyr": '',
-					"gateway": 'paypal'
+					// "gateway": 'paypal'
 				})
 				.success(function(data){
 					// console.log(data);

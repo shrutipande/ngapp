@@ -119,7 +119,7 @@ define(['./index'], function (controllers) {
 		$auth.authenticate(provider)
 			.then(function(data) {
 				craftsvillaService.socialAuth({
-					"accessToken": data.access_token,
+					"accessToken": data.access_token || data.code,
 					"sourceType": provider
 				})
 				.success(function (_data) {
