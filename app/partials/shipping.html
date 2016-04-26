@@ -97,7 +97,7 @@
 
                                                 <label>Country:
                                                     <span role="country">India</span>
-                                                    <a href="#change-country">Change</a>
+                                                    <a   >Change</a>
                                                 </label>
 
                                                 <select class="form-control"
@@ -179,8 +179,8 @@
                                                     class="form-control"
                                                     name="pincode"
                                                     ng-model="editAddr.postcode"
-                                                    ng-minlength="4"
-                                                    ng-maxlength="9"
+                                                    ng-minlength="6"
+                                                    ng-maxlength="6"
                                                     placeholder="Pincode">
                                                     
                                                     <div ng-show="DeseditaddrForm.pincode.$error.minlength && !DeseditaddrForm.pincode.$pristine"  class="error">
@@ -305,18 +305,21 @@
 
                                             <div class="form-group nopadding col-sm-8 col-xs-12">
 
-                                                <label>Country:
-                                                    <span role="country">India</span>
-                                                    <a href="#change-country">Change</a>
-                                                </label>
+                                                  <label>
+                                        Country:
+                                        <span role="country">{{addnewcountry.country_name}}</span>
+                                         <a href="javascript:void(0)" ng-click="changecountry = true"><span ng-hide="changecountry">Change</span></a>
+                                    </label>
 
-                                                <select class="form-control"
-                                                id="change-country"
-                                                name="country"
-                                                ng-model="editAddr.country"
-                                                ng-option="item as item in country"
-                                                style="display:none;">
-                                                </select>
+                                                <div class="select-style" ng-show="changecountry">
+                                        <select ng-model="addnewcountry"
+                                        name="state"
+                                                ng-options="item as item.country_name for item in countries track by item.country_code"
+                                        required >
+
+                                        <option value>Select Country</option>
+                                          </select>
+                                    </div>
 
                                             </div>
 
@@ -379,22 +382,23 @@
                                     </div>
                                     <span ng-message="DeseditaddrForm.address.$error.minlength && !DeseditaddrForm.address.$pristine" ng-show="DeseditaddrForm.address.$invalid && DeseditaddrForm.address.$touched"  class="error">Address is too short.</span>                                            </div>
 
-
-                                            <div class="col-xs-12 col-sm-4 nopadding">
-
-                                               <div class="form-group"
+<!--- pincode-->  
+                                   <div class="col-xs-12 col-sm-4 nopadding" >
+                                    <div class="form-group"
                                      ng-class="{ 'error' : (DeseditaddrForm.pincode.$invalid && !DeseditaddrForm.pincode.$pristine && DeseditaddrForm.pincode.$touched)  || (DeseditaddrForm.$submitted && DeseditaddrForm.pincode.$error.required)  }">
-                                                    <label for="Pincode">Pincode</label>
-                                                    <input id="Pincode"
-                                                    type="text"
-                                                    class="form-control"
-                                                    name="pincode"
-                                                    ng-model="editAddr.postcode"
-                                                    ng-minlength="4"
-                                                    ng-maxlength="9"
-                                                    ng-change="changePincode($scope.editAddr.pincode)"
-                                                    placeholder="Pincode">
-                                                      <div ng-show="DeseditaddrForm.pincode.$error.minlength && !DeseditaddrForm.pincode.$pristine"  class="error">
+                                        <label for="Pincode">Pincode</label>
+                                        <input id="Pincode"
+                                        name="pincode"
+                                        type="number"
+                                        class="form-control"
+                                        placeholder="Pincode"
+                                        ng-maxlength="6"
+                                        ng-minlength="6"
+                                        ng-model="editAddr.postcode"
+                                        ng-blur="changePincodeMobile(editAddr.postcode)"
+                                        required>
+
+                                         <div ng-show="DeseditaddrForm.pincode.$error.minlength && !DeseditaddrForm.pincode.$pristine"  class="error">
 
                                         <span ng-message="DeseditaddrForm.pincode.$invalid" ng-show="DeseditaddrForm.pincode.$touched" >Pincode is too short.</span>
                                         </div>
@@ -407,20 +411,27 @@
                                         <div ng-show="DeseditaddrForm.$submitted ">
                                         <span ng-show="DeseditaddrForm.pincode.$error.required" class="error">Tell us your Pincode.</span>
                                         </div>
-                                                </div>
-                                            </div>
 
 
-                                            <div class="col-xs-12 col-sm-7 m-padding">
-                                               <div class="form-group" ng-class="{ 'error' : (DeseditaddrForm.city.$invalid && !DeseditaddrForm.city.$pristine && DeseditaddrForm.city.$touched) || (DeseditaddrForm.$submitted && DeseditaddrForm.city.$error.required) }">
-                                                    <label for="City">City</label>
-                                                    <input id="City"
-                                                    type="text"
-                                                    name="city"
-                                                    ng-model="editAddr.city"
-                                                    class="form-control"
-                                                    placeholder="Select City">
-                                                     <!-- <select ng-model="addnew.city"
+                                    </div>
+
+                                </div>
+
+                                <div class="col-xs-12 col-sm-1 m-padding hidden-lg">
+                                     <img ng-show="citystateWait" src="images/loader.gif" class="loader m-loAd">
+                                </div>
+
+                                <div class="col-xs-12 col-sm-6 m-padding">
+                                    <div class="form-group" ng-class="{ 'error' : (DeseditaddrForm.city.$invalid && !DeseditaddrForm.city.$pristine && DeseditaddrForm.city.$touched) || (DeseditaddrForm.$submitted && DeseditaddrForm.city.$error.required) }">
+                                        <label for="City">City</label>
+                                        <input type="text"
+                                          ng-model="editAddr.city"
+                                           name="city"
+                                           required
+                                           class="form-control"
+                                            placeholder="City"
+                                          >
+                                            <!-- <select ng-model="addnew.city"
                                             name="city"
                                             required
                                             ng-options="obj for obj in city track by obj.value">
@@ -428,31 +439,33 @@
 
 
                                             </select> -->
-                                                </div>
-                                            </div>
 
 
-                                            <div class="form-group  col-xs-12 nopadding"
-                                             ng-class="{ 'error' : DeseditaddrForm.state.$invalid && !DeseditaddrForm.state.$pristine }">
-                                                <label for="State">State</label>
-                                                <input id="State"
-                                                type="text"
-                                                class="form-control"
-                                                name="state"
-                                                ng-model="editAddr.region"
-                                                placeholder="Select State">
-                                            </div>
+                                <span class="error" ng-show="DeseditaddrForm.$submitted && DeseditaddrForm.city.$error.required">Please Select City</span>
+                                    </div>
+                                </div>
 
-                                            <div class="form-group col-sm-8 col-xs-12 nopadding"
-                                             ng-class="{ 'error' : DeseditaddrForm.country.$invalid && !DeseditaddrForm.country.$pristine }">
-                                                <label for="Country">Country</label>
-                                                <input id="Country"
-                                                type="text"
-                                                class="form-control"
-                                                name="country"
-                                                ng-model="editAddr.country"
-                                                placeholder="Select Country">
-                                            </div>
+                                <div class="col-xs-12 col-sm-2 m-padding hidden-xs mt28">
+
+                                     <img ng-show="citystateWait" src="images/loader.gif" class="loader">
+
+                                </div>
+
+                                <div class="form-group nopadding col-xs-12"
+                                ng-class="{ 'error' : (DeseditaddrForm.state.$invalid && !DeseditaddrForm.state.$pristine && DeseditaddrForm.state.$touched) || (DeseditaddrForm.$submitted && DeseditaddrForm.state.$error.required) }">
+                                    <label for="State">State</label>
+                                        <input type="text"
+                                          ng-model="editAddr.region"
+                                           name="state"
+                                           required
+                                           class="form-control"
+                                            placeholder="State"
+                                          >
+                                        <!-- <span ng-show="DeseditaddrForm.state.$error.minlength" class="error">State is too short.</span> -->
+                                    <span class="error" ng-show="DeseditaddrForm.$submitted && DeseditaddrForm.state.$error.required">Please Select State</span>
+
+                                </div>
+<!----end pincode-->         
 
                              
                              <div class="form-group col-sm-8 col-xs-12 nopadding"
@@ -462,10 +475,10 @@
                                         <div class="input-group-addon">+91</div>
                                         <input type="number"
                                         name="phonenumber"
-                                        class="form-control"
+                                        class="form-control" 
                                         id="Number"
                                         placeholder="Phone Number"
-                                        ng-model="shipping.phoneNo"
+                                        ng-model="editAddr.telephone"
                                         ng-minlength="10"
                                         ng-maxlength="10"
                                         ng-required="true">
@@ -689,7 +702,7 @@
                                         class="form-control"
                                         placeholder="Pincode"
                                         ng-maxlength="6"
-                                        ng-minlength="3"
+                                        ng-minlength="6"   
                                         ng-model="shipping.pincode"
                                         ng-blur="changePincode(shipping.pincode)"
                                         required>
@@ -831,7 +844,7 @@
                                     <label>
                                         Country:
                                         <span role="country">India</span>
-                                        <a href="#change-country">Change</a>
+                                        <a   >Change</a>
                                     </label>
 
                                     <div class="select-style" >
@@ -917,7 +930,7 @@
                                         type="number"
                                         class="form-control"
                                         placeholder="Pincode"
-                                        ng-minlength="4"
+                                        ng-minlength="6"
                                         ng-maxlength="6"
                                         ng-model="addNewBilling.pincode"
                                                ng-blur="changePincodeBilling(addNewBilling.pincode)"
@@ -941,7 +954,7 @@
 
 
                                     <div class="col-xs-12 col-sm-7 m-padding">
-                                        <div class="form-group">
+                                        <div class="form-group"  ng-class="{ 'error' : (BillingADDForm.city.$invalid && !BillingADDForm.city.$pristine ) || (BillingADDForm.$submitted && BillingADDForm.city.$error.required) }">
                                             <label for="City">City</label>
                                             {{addnew.city}}
 
