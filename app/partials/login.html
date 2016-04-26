@@ -69,7 +69,8 @@
 					<div class="mobile-seperator visible-xs" ng-hide="guestUser">
 						<span class="Mseperator">OR</span>
 					</div>
-					<h4 class="guest-checkout">GUEST CHECKOUT</h4>
+					<h4 class="guest-checkout"  ng-show="guestUser">GUEST CHECKOUT</h4>
+					<h4 class="guest-checkout" ng-hide="guestUser">HAVE AN ACCOUNT? SIGN IN</h4>
 					<div class="existingUser" ng-hide="guestUser">
 						<form name="userLoginForm" ng-submit =" loginCred()" novalidate>
 							<fieldset class="form-group" ng-class="{ 'error' : (userLoginForm.email.$invalid && !userLoginForm.email.$pristine && userLoginForm.email.$touched) || (userLoginForm.$submitted && userLoginForm.email.$error.required)}" >
