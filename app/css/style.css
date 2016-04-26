@@ -628,6 +628,10 @@ a.signup-g{margin-left:10px;}
     border-left: solid 5px #B9BBB5 !important;
 }
 
+.wrap {
+    word-wrap: break-word;
+}
+
 /****** added by rupali for order-success page **/
 
 div[order-success-cont]{float:left;width:770px; margin: 5px 200px; }
