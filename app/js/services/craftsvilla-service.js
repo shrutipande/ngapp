@@ -44,20 +44,20 @@ define(['./index'], function (services) {
 
 
     /*function getCartData(){
-      return $http.get('https://api.myjson.com/bins/u3o4');
-      //https://api.myjson.com/bins/36aj8
-    }
+     return $http.get('https://api.myjson.com/bins/u3o4');
+     //https://api.myjson.com/bins/36aj8
+     }
 
-    function getApplyCoupon(c) {
-      return $http.get( 'https://api.myjson.com/bins/3md8k');
-      //https://api.myjson.com/bins/22n2c
-      //https://api.myjson.com/bins/3md8k
-    }
+     function getApplyCoupon(c) {
+     return $http.get( 'https://api.myjson.com/bins/3md8k');
+     //https://api.myjson.com/bins/22n2c
+     //https://api.myjson.com/bins/3md8k
+     }
 
-    function getRemoveCoupon(c) {
-      return $http.get( 'https://api.myjson.com/bins/2wv10');
+     function getRemoveCoupon(c) {
+     return $http.get( 'https://api.myjson.com/bins/2wv10');
 
-    }*/
+     }*/
 
     //demo apis ends here
     function loginCheck () {
@@ -75,7 +75,7 @@ define(['./index'], function (services) {
       });
     }
 
-      //remove items
+    //remove items
     function removeQuoteItems(productIds) {
       return $http.post( HOST + 'checkoutService/index/removeQuoteItems', {
         "productIds": productIds
@@ -117,7 +117,7 @@ define(['./index'], function (services) {
       });
     }
 
-      // undo remove from cart
+    // undo remove from cart
     function addToQuote(productId, qty) {
       return $http.post( HOST + 'checkoutService/index/addToQuote', {
         "productId": productId,
@@ -125,9 +125,9 @@ define(['./index'], function (services) {
       });
     }
 
-  //cart page ends
+    //cart page ends
 
-  //login page
+    //login page
 
     function getLogin(emailId, password) {
       return $http.post( HOST + 'checkoutService/index/getLogin', {
@@ -142,10 +142,10 @@ define(['./index'], function (services) {
       });
     }
 
-  //login page ends
+    //login page ends
 
 
-  //register page
+    //register page
 
     function getRegister(firstName, lastName, emailId, phoneNo, password) {
       return $http.post( HOST + 'checkoutService/index/getRegister', {
@@ -157,45 +157,57 @@ define(['./index'], function (services) {
       });
     }
 
-  //register page ends
+    //register page ends
 
-  //logout
+    //logout
 
     function getLogout() {
       return $http.get( HOST + 'checkoutService/index/getLogout');
     }
 
-  //logout ends
+    //logout ends
 
-  //continue as guest
+    //continue as guest
     function continueAsGuest(emailId) {
       return $http.post( HOST + 'checkoutService/index/continueAsGuest', {
         "customerEmail" : emailId
       });
     }
-  //continue as guest ends
+    //continue as guest ends
 
-  //final quote
-    function loadFinalQuote(platform, quoteId) {
+    //final quote
+    function loadFinalQuote(platform, Authorization,XSession,customerId,quoteId) {
       if(platform === 'web') {
         return $http.get( HOST + 'checkoutService/index/loadFinalQuote');
       }
       else {
-        return $http({
-          url: HOST + 'checkoutService/index/loadFinalQuote',
-          method: 'POST',
-          data: {
-            quoteId: quoteId
-          }
-        });
+        if (XSession)
+          return $http({
+            url: HOST + 'checkoutService/index/loadAppQuote',
+            method: 'POST',
+            data: {
+              "quoteId":quoteId,
+              "XSession":XSession
+            }
+          });
+        else
+          return $http({
+            url: HOST + 'checkoutService/index/loadAppQuote',
+            method: 'POST',
+            data: {
+              "quoteId":quoteId,
+              "customerId":customerId,
+              "Authorization":Authorization
+            }
+          });
       }
     }
-  //final quote ends
+    //final quote ends
 
 
 
 
-  //shipping page
+    //shipping page
 
     function getAddress() {
       return $http.get( HOST + 'checkoutService/index/getAddress');
@@ -241,7 +253,7 @@ define(['./index'], function (services) {
           "firstName":shipping.firstName,
           "lastName":shipping.lastName,
           "address1":shipping.address1,
-           "city":shipping.city,
+          "city":shipping.city,
           "state":shipping.state,
           "pincode":shipping.pincode,
           "country":shipping.countryName,
@@ -252,7 +264,7 @@ define(['./index'], function (services) {
           "firstName":billing.firstName,
           "lastName":billing.lastName,
           "address1":billing.address1,
-           "city":billing.city,
+          "city":billing.city,
           "state":billing.state,
           "pincode":billing.pincode,
           "country":billing.countryName,
@@ -261,15 +273,15 @@ define(['./index'], function (services) {
         }
       });
     }
-  //shipping page ends
+    //shipping page ends
 
-  //payment methods
+    //payment methods
 
     function getPaymentMethods() {
       return $http.get(HOST + 'checkoutService/index/getPaymentMethods');
     }
 
-  //payment methods ends
+    //payment methods ends
 
     function postQuote (customerId, quoteId) {
       return $http.post(HOST + 'checkoutService/index/loadQuote', {
@@ -286,10 +298,10 @@ define(['./index'], function (services) {
       });
     }
 
-  //final quote
+    //final quote
     function getSuccessData() {
       return $http.get( HOST + 'checkoutService/index/loadFinalQuote');
-     //return $http.get( 'https://api.myjson.com/bins/3wu38');
+      //return $http.get( 'https://api.myjson.com/bins/3wu38');
 
 
 
