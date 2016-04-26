@@ -44,6 +44,9 @@ define(['./index'], function (controllers) {
       console.log(address);
       $scope.popupEditAddress=false;
       $scope.editAddr = angular.copy(address);
+      $scope.editAddr.postcode = +$scope.editAddr.postcode;
+      $scope.editAddr.telephone = +$scope.editAddr.telephone;
+     
       if ($scope.DeseditaddrForm) {
         //alert('Edit Address');
         console.log($scope.editAddr);
@@ -185,6 +188,7 @@ define(['./index'], function (controllers) {
                 $scope.shipping.city = response.d[0].city;
                 $scope.shipping.state = response.d[0].state;
 
+
               }
             })
             .error (function (error) {
@@ -192,7 +196,27 @@ define(['./index'], function (controllers) {
             });
       }
     }
+//Edit address
+    $scope.changePincodeMobile = function(pincode){
+      console.log($scope.addnewcountry.country_name)
+      if ($scope.addnewcountry.country_name == "India") {
+        $scope.citystateWait = true;
 
+        craftsvillaService.getAddressFromPincode(pincode)
+            .success(function (response) {
+              $scope.citystateWait = false;
+              console.log(response);
+              if (response.s == 1) {
+                $scope.editAddr.city = response.d[0].city;
+                $scope.editAddr.state = response.d[0].state;
+
+              }
+            })
+            .error (function (error) {
+              console.log('Error');
+            });
+      }
+    }
     $scope.changePincodeBilling = function(pincode){
       console.log("&&&&& ----- -&&&&&")
       console.log($scope.addnewcountry.country_name)
