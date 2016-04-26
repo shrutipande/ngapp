@@ -160,7 +160,7 @@
 					<div class="col-xs-12 col-sm-3 nopadding payment-list"> <!-- required for floating -->
 					    <!-- Nav tabs -->
 						<ul class="nav nav-tabs tabs-left">
-							<li ng-repeat="item in paymentMethods" ng-class="{ active: changeName == '{{item.method}}' }">
+							<li ng-repeat="item in paymentMethods" ng-class="{ active: changeName == '{{item.method}}', grey: (changeName == 'Cash On Delivery' && shippingAmountData.showCod == 0) }">
 								<a href="javascript:void(0)" data-toggle="tab" ng-click="changeSlide(item)">{{ item.method }}</a>
 							</li>
 						</ul>
@@ -177,7 +177,7 @@
 								</div>
 							</div>
 							<div class="col-xs-12 cashondelivery" ng-if = "item.method == 'Cash On Delivery' && shippingAmountData.showCod == 0">
-								<p>Your order is not eligible for Cash On Delivery</p>
+								<p>Your order is not eligible for Cash On Delivery. Please pay Online.</p>
 							</div>
 							<!-- show on payu -->
 							<div class="col-xs-12 payuform" ng-if = "item.method == 'PayU Money'">
@@ -416,7 +416,7 @@
 						<div class="col-xs-12 nopadding payment-list"> <!-- required for floating -->
 						    <!-- Nav tabs -->
 							<ul data-payment-mobile class="nav nav-tabs tabs-left">
-								<li ng-repeat="item in paymentMethods" ng-class="{ active: changeName == '{{item.method}}' }">
+								<li ng-repeat="item in paymentMethods" ng-class="{ active: changeName == '{{item.method}}', grey: (changeName == 'Cash On Delivery' && shippingAmountData.showCod == 0)}">
 									<a href="javascript:void(0)" data-toggle="tab" ng-click="changeSlide(item)">{{ item.method }}</a>
 										<!-- show on cod -->
 										<div class="col-xs-12 cashondelivery" ng-if = "item.method == 'Cash On Delivery' && shippingAmountData.showCod == 1">
@@ -427,7 +427,7 @@
 											</div>
 										</div>
 										<div class="col-xs-12 cashondelivery" ng-if = "item.method == 'Cash On Delivery' && shippingAmountData.showCod == 0">
-											<p>Your order is not eligible for Cash On Delivery</p>
+											<p>Your order is not eligible for Cash On Delivery. Please pay Online.</p>
 										</div>
 										<!-- show on payu -->
 										<div class="col-xs-12 payuform" ng-if = "item.method == 'PayU Money'">

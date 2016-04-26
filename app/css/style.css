@@ -620,7 +620,10 @@ a.signup-g{margin-left:10px;}
      right: 10px;
      top: 32px;
      color: #aaa;
- }
+}
+.tabs-left>li.active.grey>a, .tabs-left>li.active.grey > a + div{
+    border-left: solid 5px #B9BBB5 !important;
+}
 
 /****** added by rupali for order-success page **/
 
