@@ -4,6 +4,7 @@ define([
   'angular-ui-router',
   'angular-credit-cards',
   'ngstorage',
+  'angular-cookies',
   'config',
   './controllers/index',
   './directives/index',
@@ -27,6 +28,7 @@ define([
     'credit-cards',
     'satellizer',
     'ngAnimate',
-    'ngStorage'
+    'ngStorage',
+    'ngCookies'
   ]);
 });

@@ -1,6 +1,6 @@
 define(['./index'], function (controllers) {
     'use strict';
-    controllers.controller('paymentCtrl', ['$scope', '$state', '$stateParams', '$timeout', '$sce', 'craftsvillaService','PRODUCTURL', function ($scope,$state,$stateParams,$timeout,$sce,craftsvillaService,PRODUCTURL) {
+    controllers.controller('paymentCtrl', ['$scope', '$state', '$stateParams', '$timeout', '$sce', 'craftsvillaService','PRODUCTURL','$cookies', function ($scope,$state,$stateParams,$timeout,$sce,craftsvillaService,PRODUCTURL,$cookies) {
 			var controllerRef = this;
 			$scope.forms = {};
 			$scope.credit = {};
@@ -274,7 +274,7 @@ define(['./index'], function (controllers) {
 					"ccvv": '',
 					"ccexpmon": '',
 					"ccexpyr": '',
-					// "gateway": 'paypal'
+					"gateway": 'paypal'
 				})
 				.success(function(data){
 					// console.log(data);
@@ -337,8 +337,18 @@ define(['./index'], function (controllers) {
 
 
 			$scope.finalQuoteDetails = function() {
+        var Authorization, XSession, customerId, quoteId;
+
+        if($stateParams.platform !== "web")
+        {
+            Authorization = $cookies.get('Authorization');
+            XSession = $cookies.get('X-Session');
+            customerId = $cookies.get('customerId');
+            quoteId = $cookies.get('quoteId');
+        };
+
         $scope.waitingCartDatails = true;
-        craftsvillaService.loadFinalQuote($stateParams.platform, $stateParams.quoteId)
+        craftsvillaService.loadFinalQuote($stateParams.platform, Authorization,XSession,customerId,quoteId)
 				.success(function(response) {
           $scope.waitingCartDatails = false;
 					if(response.d.product_list.length === 0) $state.go('cart');

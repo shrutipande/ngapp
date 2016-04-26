@@ -106,10 +106,7 @@
 								</p>
 							</div>
 						</div>
-						<!--// Shipping End -->
-					</div>
-						<!--// Order Summary -->
-						<div class="col-xs-12 order-summary" ng-if="items != '0'" ng-class="{ 'hidden-xs': showDetails == false }">
+						<div class="col-xs-12 order-summary nopadding" ng-if="items != '0'" ng-class="{ 'hidden-xs': showDetails == false }">
 							<div class="col-xs-12 nopadding border-bottom">
 								<h5>ORDER SUMMARY</h5>
 							</div>
@@ -177,6 +174,9 @@
 								</div>
 							</div>
 						</div>
+						<!--// Shipping End -->
+					</div>
+						<!--// Order Summary -->
 					<!--// -->
 
 				</div>
@@ -413,7 +413,7 @@
 								<ul role="nasted-list">
 									<li ng-repeat = "bank in item.content.priority">
 										<input id="{{bank.bank_code}}" type="radio" name="bank" value="{{bank.bank_code}}" ng-model="nb.netbanking.bank_code">
-										<label for="{{bank.bank_code}}"><span></span><img ng-src="{{bank.logo_url}}" alt="{{bank.bank_name}}" /></label>
+										<label for="{{bank.bank_code}}"><span></span><img ng-src="/images/{{bank.logo_url}}" alt="{{bank.bank_name}}" /></label>
 									</li>
 
 								</ul>
