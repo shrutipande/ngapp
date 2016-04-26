@@ -480,9 +480,6 @@ ul.choose-payment .not-eligible { position: inherit; left: 0; padding: 0; top: 3
 .cvv-code .form-control { width: 110px; }
 .or { margin: 0 15px 15px 0; }
 span[role="division"] { margin-left: 5%; }
-<<<<<<< HEAD
-/*===============*/
-=======
     .m-padding { padding: 0px; }
     div[role="logo"] img { float: left;}
     div[role="logo"] img.logo { margin-top: 4px; width: 130px; }
