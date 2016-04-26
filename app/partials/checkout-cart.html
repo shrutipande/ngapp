@@ -251,10 +251,10 @@
             </div>
             <div class="col-xs-12 nopadding left-panel" ng-if="items != '0'">
                 <div class="cart-items-card out-of-stock-items" ng-repeat="product in outOfStockProducts">
-                    <a href="javascript:void(0)" class="cart-details-close" ng-click="removeProductFromCart(product.product_id,data)"><img src="images/delete-icon.png" width:'100%'></a>
+                    <a href="javascript:void(0)" class="cart-details-close" ng-click="removeProductFromCart(product.product_id,product)"><img src="images/delete-icon.png" width:'100%'></a>
                     <div class="cart-items-cont">
                         <div class="cart-img-cont">
-                            <img ng-src="{{IMGHOST}}/thumb/216x216{{ product.product_image }}" class="img-responsive">
+                            <a ng-href="{{product.url}}"><img ng-src="{{IMGHOST}}/thumb/216x216{{ product.product_image }}" class="img-responsive"></a>
                         </div>
                         <div class="cart-details-cont">
                             <div class="col-xs-12 nopadding  c-itm-name">{{ product.product_name }}</div>
@@ -319,7 +319,7 @@
                     <a href="javascript:void(0)" class="cart-details-close" ng-click="removeProductFromCart(data.product_id,data)"><img src="images/delete-icon.png" width:'100%'></a>
                     <div class="cart-items-cont">
                         <div class="cart-img-cont">
-                            <img ng-src="{{IMGHOST}}/thumb/216x216{{data.product_image}}" class="img-responsive">
+                            <a ng-href="{{data.url}}"><img ng-src="{{IMGHOST}}/thumb/216x216{{data.product_image}}" class="img-responsive"></a>
                         </div>
                         <div class="cart-details-cont">
                             <div class="col-xs-12 nopadding c-itm-name">{{data.product_name}}</div>
@@ -381,7 +381,7 @@
                     <a href="javascript:void(0)" class="cart-details-close" ng-click="removeProductFromCart(data.product_id,data)"><img src="images/delete-icon.png" width:100%></a>
                     <div class="cart-items-cont">
                         <div class="cart-img-cont">
-                            <img ng-src="{{IMGHOST}}/thumb/216x216{{data.product_image}}" class="img-responsive">
+                            <a ng-href="{{data.url}}"><img ng-src="{{IMGHOST}}/thumb/216x216{{data.product_image}}" class="img-responsive"></a>
                         </div>
                         <div class="cart-details-cont">
                             <div class="col-xs-12 nopadding c-itm-name">{{data.product_name}}</div>
