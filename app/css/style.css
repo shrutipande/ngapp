@@ -500,7 +500,7 @@ span[role="division"] { margin-left: 5%; }
     .mobile-seperator .Mseperator { width: 30px; height: 25px; border-radius: 50%; position: absolute; left: 0; right: 0; top: 13px; margin: auto; background: #fff; font-size: 12px; text-align: center; color: #e8e8e8;  }
     .Width60, .input-group .form-control.Width60 { width: 100%; }
     h4[role="headding"] { margin: 15px 0px; font-size: 12px; }
-    h4[role="headding"].M-add-new-address { border: solid 1px #ccc; padding: 15px 25px; margin-bottom: 15px;     background: white; }
+    h4[role="headding"].M-add-new-address { border: solid 1px #ccc; padding: 15px 25px; margin-bottom: 15px; }
     h4[role="headding"].M-add-new-address a, h4[role="headding"].M-add-new-address a:hover { display: block; text-align: left; color: #4c4c4c; text-decoration: none; font-weight: 700; outline: none; font-size: 14px; }
     h4[role="headding"].M-add-new-address a span { display: block; float: right; width: 15px; text-align: center; }
     h4[role="headding"].M-add-new-address a span img { margin-top: -4px; }
