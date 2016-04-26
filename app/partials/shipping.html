@@ -97,7 +97,7 @@
 
                                                 <label>Country:
                                                     <span role="country">India</span>
-                                                    <a href="#change-country">Change</a>
+                                                    <a   >Change</a>
                                                 </label>
 
                                                 <select class="form-control"
@@ -305,18 +305,21 @@
 
                                             <div class="form-group nopadding col-sm-8 col-xs-12">
 
-                                                <label>Country:
-                                                    <span role="country">India</span>
-                                                    <a href="#change-country">Change</a>
-                                                </label>
+                                                  <label>
+                                        Country:
+                                        <span role="country">{{addnewcountry.country_name}}</span>
+                                         <a href="javascript:void(0)" ng-click="changecountry = true"><span ng-hide="changecountry">Change</span></a>
+                                    </label>
 
-                                                <select class="form-control"
-                                                id="change-country"
-                                                name="country"
-                                                ng-model="editAddr.country"
-                                                ng-option="item as item in country"
-                                                style="display:none;">
-                                                </select>
+                                                <div class="select-style" ng-show="changecountry">
+                                        <select ng-model="addnewcountry"
+                                        name="state"
+                                                ng-options="item as item.country_name for item in countries track by item.country_code"
+                                        required >
+
+                                        <option value>Select Country</option>
+                                          </select>
+                                    </div>
 
                                             </div>
 
@@ -842,7 +845,7 @@
                                     <label>
                                         Country:
                                         <span role="country">India</span>
-                                        <a href="#change-country">Change</a>
+                                        <a   >Change</a>
                                     </label>
 
                                     <div class="select-style" >
