@@ -84,7 +84,7 @@
 							</fieldset>
 							<fieldset class="form-group " ng-class="{'error': (userLoginForm.password.$invalid && !userLoginForm.password.$pristine && userLoginForm.password.$touched) || (userLoginForm.$submitted && userLoginForm.password.$error.required)}">
 								<label>Password</label>
-								<input type="password" name ="password" class="form-control" placeholder="password"   ng-minlength="6" ng-model="userLogin.password" required>
+								<input type="password" name ="password" class="form-control" placeholder="Enter password"   ng-minlength="6" ng-model="userLogin.password" required>
 								<span ng-message="userLoginForm.password.$error.minlength &&  !userLoginForm.password.$pristine" ng-show="userLoginForm.password.$invalid &&  userLoginForm.password.$touched" class="error">Password needs to be minimum 6 characters.</span>
 								 <div ng-show="userLoginForm.$submitted" >
 								<span ng-show="userLoginForm.password.$error.required" class="error">Please enter password.</p>
