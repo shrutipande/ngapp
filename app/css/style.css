@@ -666,8 +666,8 @@ div[order-success-cont]  .m-t-8px{margin-top: 8px;}
 div[order-success-cont]  .m-b-10px{margin-bottom: 10px;}
 div[order-success-cont]  .p-b-10px{padding-bottom: 10px;}
 div[order-success-cont] .gryeish-brown{color:#4c4c4c !important;}
-div[order-success-cont]  .note{float:left; padding: 20px 0  !important; font-size: 14px;  letter-spacing: 0.2px;  color: #4c4c4c;}
-div[order-success-cont] .shpng-contn{padding:15px 0;margin:0 0 20px 0; width: 350px; height: 50px; background-color: #981937;font-size: 16px; font-weight: bold; text-align: center; line-height: 1.1; color: #ffffff;}
+div[order-success-cont]  .note{float:left; padding: 20px 0  !important; font-size: 14px;  letter-spacing: 0.2px;  color: #4c4c4c; margin-bottom:19px;}
+div[order-success-cont] .shpng-contn{padding:15px 90px;margin:0 0 20px 0; width: 350px; height: 50px; background-color: #981937;font-size: 16px; font-weight: bold; text-align: center; line-height: 1.1; color: #ffffff;}
 .icon {
     float:left;
     margin-top:3px;
@@ -693,13 +693,13 @@ div[order-thank-cont] .order-header .thnku .t-txt{float:left; margin: 2% 0 0 2%;
 
 div[order-success-cont]{width:100%; margin:0; padding:0 15px; }
 div[order-thank-cont]{width:100%; margin:0; }
-div[order-success-cont] .details-cont{    padding: 16px 12px 0 13px;    border-bottom: 1px solid #f0f0f0;}
+div[order-success-cont] .details-cont{    padding: 16px 12px 0 13px !important;    border-bottom: 1px solid #f0f0f0;}
 div[order-thank-cont] .order-header{border:none; padding:15px !important; }
 div[order-thank-cont] .order-header .thnku{float:left; width: 100%;  }
 div[order-thank-cont] .order-header .thnku .t-img{float:left; width:4%;}
 div[order-thank-cont] .order-header .thnku .t-txt{float:left; margin: 2% 0 0 2%; width:93%; font-size: 18px; font-weight: bold;}
 div[order-thank-cont] .order-header .succ-txt{float:left;padding:5px 0; font-size: 16px;}
-div[order-success-cont] .details-cont .detail-text{width:171px; font-size: 12px;}
+div[order-success-cont] .details-cont .detail-text{width:171px; font-size: 12px; letter-spacing: 0.9px;}
 div[order-success-cont] .details-cont  .detail-amt{font-size: 14px;}
 div[order-success-cont] .details-cont .detail-qty{font-size: 12px;}
 div[order-success-cont] .detls-cont .dtl-txt{font-size: 14px;}
