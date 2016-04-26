@@ -669,7 +669,7 @@
 												<ul role="nasted-list">
 													<li ng-repeat = "bank in item.content.priority">
 														<input id="{{bank.bank_code}}" type="radio" name="bank" value="{{bank.bank_code}}" ng-model="nb.netbanking.bank_code" required>
-														<label for="{{bank.bank_code}}"><span></span><img ng-src="{{bank.logo_url}}" alt="{{bank.bank_name}}" /></label>
+														<label for="{{bank.bank_code}}"><span></span><img ng-src="/images/{{bank.logo_url}}" alt="{{bank.bank_name}}" /></label>
 													</li>
 
 												</ul>
