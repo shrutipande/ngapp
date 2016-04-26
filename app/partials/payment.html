@@ -398,7 +398,7 @@
 									</div>
 								</div>
 								<div class="col-xs-12 col-sm-8 nopadding">
-									<button class="btn btn-newStyle bg-green" href="javascript:void(0)" ng-click="submitNBForm()">PAY <span><i>&#x20B9;</i>{{shippingAmountData.grand_total || 0}}</span> SECURELY</button>
+									<button class="btn btn-newStyle bg-green" href="javascript:void(0)" ng-click="submitNBForm()" ng-disabled="isPaymentNotAllowed()">PAY <span><i>&#x20B9;</i>{{shippingAmountData.grand_total || 0}}</span> SECURELY</button>
 								</div>
 							</div>
 						</form>
@@ -640,10 +640,10 @@
 										</div>
 										<!-- show on Net Banking -->
 										<div class="col-xs-12 creditcard" ng-if = "item.method == 'Net Banking'">
-											<form name="forms.NBForm" novalidate >
+											<form name="forms.NBForm_mobile" novalidate >
 												<ul role="nasted-list">
 													<li ng-repeat = "bank in item.content.priority">
-														<input id="{{bank.bank_code}}" type="radio" name="bank" value="{{bank.bank_code}}" ng-model="nb.netbanking.bank_code">
+														<input id="{{bank.bank_code}}" type="radio" name="bank" value="{{bank.bank_code}}" ng-model="nb.netbanking.bank_code" required>
 														<label for="{{bank.bank_code}}"><span></span><img ng-src="{{bank.logo_url}}" alt="{{bank.bank_name}}" /></label>
 													</li>
 
@@ -651,9 +651,12 @@
 												<div class="col-xs-12 nopadding">
 													<span class="pull-left or">OR</span>
 													<div class="select-style">
-														<select ng-model="nb.netbanking" name="bank" ng-options="item as item.bank_name for item in item.content.others"></select>
+														<select ng-model="nb.netbanking" name="bank" ng-options="item as item.bank_name for item in item.content.others" required></select>
 													</div>
 												</div>
+												<div ng-show="forms.NBForm_mobile.$submitted && forms.NBForm_mobile.$invalid">
+				                	<span class="error">Please provide correct information</span>
+				                </div>
 												<div class="col-xs-12 col-sm-8 nopadding hidden-xs">
 													<a class="btn btn-newStyle bg-green" href="javascript:void(0)" ng-click="submitNBForm()">PAY <span><i>&#x20B9;</i>{{shippingAmountData.grand_total || 0}}</span> SECURELY</a>
 												</div>
@@ -666,7 +669,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-xs-12 nopadding visible-xs fixed-button">
+			<div class="col-xs-12 nopadding visible-xs fixed-button" ng-if="!(changeName == 'Cash On Delivery' && shippingAmountData.showCod == 0)">
 				<button type="button" class="btn btn-newStyle bg-green" ng-click="placeOrder()" ng-bind-html="getPlaceOrderText()"></button>
 			</div>
 			<!--// -->

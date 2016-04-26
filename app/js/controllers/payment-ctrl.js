@@ -444,6 +444,7 @@ define(['./index'], function (controllers) {
 						break;
 					case 'net banking':
 						if(toSubmit) $scope.submitNBForm();
+						else { $scope.forms.NBForm.$setSubmitted(); $scope.forms.NBForm_mobile.$setSubmitted(); }
 						break;
 					case 'payu money':
 						if(toSubmit) $scope.submitPayUForm();
