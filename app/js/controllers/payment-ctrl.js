@@ -274,7 +274,7 @@ define(['./index'], function (controllers) {
 					"ccvv": '',
 					"ccexpmon": '',
 					"ccexpyr": '',
-					// "gateway": 'paypal'
+					"gateway": 'paypal'
 				})
 				.success(function(data){
 					// console.log(data);
