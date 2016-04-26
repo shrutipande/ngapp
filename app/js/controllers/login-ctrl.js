@@ -118,11 +118,14 @@ define(['./index'], function (controllers) {
 	$scope.authenticate = function(provider) {
 		$auth.authenticate(provider)
 			.then(function(data) {
-				var token = provider === 'facebook' ? data.access_token : data.config.data.code;
-				craftsvillaService.socialAuth({
-					"accessToken": token,
-					"sourceType": provider
-				})
+
+				var json = {};
+				json.sourceType = provider;
+				json.accessToken = provider === 'facebook' ? data.access_token : undefined;
+				json.clientCode = provider === 'google' ? data.config.data.code : undefined;
+				json.clientId = provider === 'google' ? data.config.data.clientId : undefined;
+
+				craftsvillaService.socialAuth(json)
 				.success(function (_data) {
 					if(_data.s === 1) {
 						$localStorage.loginData = _data.d[0];
