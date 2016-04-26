@@ -380,8 +380,8 @@ div[check-out] .right-panel .coupon-cont, .order-cont{border-radius: 2px;   back
 .coupon-cont .coupon-input{float:left; margin-bottom: 5px; font-size: 13.1px; line-height: 1.5; height: 42px; background-color: #ffffff; border: solid 1px #ebebeb;}
 .coupon-cont .coupon-c-button{float:left; margin-bottom: 5px; height: 42px; border-radius: 2px; background-color: #f5f3e8; border: solid 1px #e4d2be; font-size: 13.1px; font-weight: bold; line-height: 1.5; color: #971937;}
 .order-cont .o-heading{padding:16px 0 12px 0;font-size: 16px; line-height: 1.9; letter-spacing: 1.2px; color: #000000; text-transform: uppercase;}
-.order-cont  .o-left-cont{float:left;margin:2px 0; width:60%; text-align:left;font-size: 14px; line-height: 1.4; color: #747474;}
-.order-cont  .o-right-cont{float:left;margin:2px 0;  width:40%; text-align: right;  font-size: 14px; line-height: 1.4; color: #747474; font-weight: bold;}
+.order-cont  .o-left-cont{float:left;margin:2px 0; width:57%; text-align:left;font-size: 14px; line-height: 1.4; color: #747474;}
+.order-cont  .o-right-cont{float:left;margin:2px 0;  width:43%; text-align: right;  font-size: 14px; line-height: 1.4; color: #747474; font-weight: bold;}
 .order-cont  .o-right-cont .ord-amt{float:right; width:auto; margin-bottom: 10px;}
 .total{color:#000000;}
 .procd-to-checkout{padding:16px 0; margin-bottom:15px; height: 50px; background-color: #6da40e;font-size: 16px;  line-height: 1.1;  color: #ffffff; font-weight: bold; text-transform: uppercase; text-align: center; }
@@ -534,6 +534,9 @@ a.signup-g{margin-left:10px;}
 
    .nopad-xs{padding: 0px;}
    .m-loAd{width:30px;}
+   .nopadding-xs {
+       padding: 0;
+   }
 }
 
 /* Check out media start */

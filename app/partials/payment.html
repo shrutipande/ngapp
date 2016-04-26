@@ -43,7 +43,7 @@
 </div>
 
 <div class="container-fluid nopadding">
-	<div class="container">
+	<div class="container nopadding-xs">
 		<!--// -->
 		<div class="row paymentContainer">
 			<div class="col-xs-12 hidden-xs">
@@ -188,7 +188,6 @@
 							</div>
 							<!-- show on paypal -->
 							<div class="col-xs-12 payuform" ng-if = "item.method == 'PayPal'">
-								<h3>Pay Using PayPal</h3>
 								<p>You will be redirected to PayPal to complete the order</p>
 								<div class="col-xs-12 col-sm-7 nopadding">
 									<button ng-click="submitPaypalForm()" class="btn btn-newStyle bg-green">PAY <span><i>&#x20B9;</i>{{shippingAmountData.grand_total || 0}}</span> SECURELY</button>
@@ -438,7 +437,6 @@
 										</div>
 										<!-- show on paypal -->
 										<div class="col-xs-12 payuform" ng-if = "item.method == 'PayPal'">
-											<h3>Pay Using PayPal</h3>
 											<p>You will be redirected to PayPal to complete the order</p>
 											<div class="col-xs-12 col-sm-7 nopadding hidden-xs">
 												<button ng-click="submitPaypalForm()" class="btn btn-newStyle bg-green">PAY <span><i>&#x20B9;</i>{{shippingAmountData.grand_total || 0}}</span> SECURELY</button>
@@ -485,7 +483,7 @@
 													</fieldset>
 												</div>
 												<div class="col-xs-12 nopadding">
-													<div class="col-xs-7 valid-upto">
+													<div class="col-xs-12 valid-upto">
 														<fieldset class="form-group" ng-class="{ 'error' : validate('cardExp', forms.creditForm_mobile) }">
 															<label>Valid Upto</label>
 															<input
@@ -582,7 +580,7 @@
 													</fieldset>
 												</div>
 												<div class="col-xs-12 nopadding">
-													<div class="col-xs-7 valid-upto">
+													<div class="col-xs-12 valid-upto">
 														<fieldset class="form-group" ng-class="{ 'error' : validate('cardExp', forms.debitForm_mobile) }">
 															<label>Valid Upto</label>
 															<input
