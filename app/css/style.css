@@ -112,7 +112,7 @@ h4[role="headding"] { color: #747474; font-size: 18px; margin-bottom: 15px; font
 h4[role="headding"] a { text-decoration: none; color: #888888; outline: none; }
 h4[role="headding"] small a { color: #981937; font-size: 14px; }
 h4[role="headding"] a span { display: none; }
-.addressCard { border: solid 1px #e9e9e9; background: #ffffff; padding: 10px; margin-bottom: 15px; cursor: pointer; height: 180px;   box-shadow: 1px 1px 4px 0 rgba(170, 170, 170, 0.3);  }
+.addressCard { border: solid 1px #e9e9e9; background: #ffffff; padding: 10px; margin-bottom: 15px; cursor: pointer; height: 180px;  }
 /*.customer-address > div:nth-of-type(1) { width: 15%; }
 .customer-address > div:nth-of-type(1) img { margin-top: -4px; visibility: hidden; }
 .customer-address > div:nth-of-type(2) { width: 85%; }
@@ -134,7 +134,7 @@ h4[role="headding"] a span { display: none; }
 .pincode { width: 30%; }
 .Width60 { max-width: 435px; width: 100%; }
 
-.addressCardActive, .addressCard:hover { border: solid 1px #6da40e; }
+.addressCardActive, .addressCard:hover { border: solid 1px #6da40e; box-shadow: 1px 1px 4px 0 rgba(170, 170, 170, 0.3); }
 .addressCardActive .btn-newStyle, .addressCard:hover .btn-newStyle, .btn-newStyleActive { background: #6da40e; }
 .addressCardActive > div:nth-of-type(1) img, .addressCard:hover > div:nth-of-type(1) img { visibility: visible; }
 
