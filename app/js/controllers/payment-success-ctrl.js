@@ -2,7 +2,7 @@ define(['./index'], function (controllers) {
     'use strict';
     controllers.controller('paymentSuccessCtrl', ['$scope', '$state' ,'craftsvillaService', function ($scope, $state, craftsvillaService) {
 
-
+      $scope.norecommendation = false;
 
     $scope.getOrderDetails = function() {
     	console.log("details");
@@ -57,6 +57,8 @@ define(['./index'], function (controllers) {
             .success(function (response) {
               if (response.s==1)
               $scope.recommendProducts = response.d;
+              else
+                $scope.norecommendation = true
             })
             .error(function (error) {
                 alert(error);
