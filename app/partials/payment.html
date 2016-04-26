@@ -446,7 +446,6 @@
 									<a href="javascript:void(0)" data-toggle="tab" ng-click="changeSlide(item)">{{ item.method }}</a>
 										<!-- show on cod -->
 										<div class="col-xs-12 cashondelivery" ng-if = "item.method == 'Cash On Delivery' && shippingAmountData.showCod == 1">
-											<h3>Pay Using Cash on Delivery</h3>
 											<p>Please keep a total of Rs {{shippingAmountData.grand_total || 0}} to pay on delivery </p>
 											<div class="col-xs-12 col-sm-7 nopadding hidden-xs">
 												<input type="button" value="PLACE ORDER" class="btn btn-newStyle bg-green" ng-click="cashOn()">
