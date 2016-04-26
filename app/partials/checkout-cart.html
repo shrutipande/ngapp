@@ -217,278 +217,284 @@
 			<img class="buyer-icon" src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/img/sheild.png">
 			<span class="buyer-text"><b>100%</b> <span class="buyer-regular-text regular-text">Buyer Protection</span> |
 			<span class="secure-text regular-text">Secure Payments &amp; Easy Returns | <span class="learn-text regular-text">Learn More</span></span></span>
-		</div>
+        </div>
 
-		<div class="col-xs-12 nopadding" check-out="">
-			<div class="header"> my cart |  {{ items }} item(s) </div>
-			<!-- checkout header ends -->
+        <div class="col-xs-12 nopadding" check-out="">
+            <div class="header"> my cart |  {{ items }} item(s) </div>
+            <!-- checkout header ends -->
 
-			<div class="col-xs-12 check-out-msg" ng-if="outOfStockProducts.length">
-				<div class="check-out-msg-txt">Some itmes in your cart are <strong>'out of stock'</strong></div>
-				<a href="javascript:void(0)" class="check-out-msg-btn" ng-click="removeOutOfStockProducts()">Remove</a>
-			</div>
-			<div class="col-xs-12 check-out-msg" ng-if="inStockNotCod.length">
-				<div class="check-out-msg-txt-lrg">If you proceed, <strong>Cash on Delivery</strong> will not be available as a payment option.</div>
-			</div>
+            <div class="col-xs-12 check-out-msg" ng-if="outOfStockProducts.length">
+                <div class="check-out-msg-txt">Some itmes in your cart are <strong>'out of stock'</strong></div>
+                <a href="javascript:void(0)" class="check-out-msg-btn" ng-click="removeOutOfStockProducts()">Remove</a>
+            </div>
+            <div class="col-xs-12 check-out-msg" ng-if="inStockNotCod.length">
+                <div class="check-out-msg-txt-lrg">If you proceed, <strong>Cash on Delivery</strong> will not be available as a payment option.</div>
+            </div>
 
 
-			<div class="col-xs-12 check-out-msg" ng-if="itemRemoved == 1">
-				<div class="check-out-msg-txt"> Item removed from your cart</div>
-				<div class="check-out-msg-btn" ng-click="addToCart()">undo</div>
-			</div>
-			<div empt-cart="" ng-if="items == '0'">
-				<div class="empty-head">YOUR CART IS EMPTY</div>
-				<div class="empty-txt">Start shopping with options below.</div>
-				<div class="empty-lst">
-					<ul>
-						<li><a href="/sarees-sari.html">Sarees</a></li>
-						<li><a href="/clothing/salwar-suit.html">Salwar Suits</a></li>
-						<li><a href="/clothing/lehnga.html">Lehengas</a></li>
-						<li><a href="/jewellery-jewelry.html">Jewellery</a></li>
-					</ul>
-				</div>
-				<div class="contn-shpng" ng-click="continueShopping()">CONTINUE SHOPPING</div>
-			</div>
-			<div class="col-xs-12 nopadding left-panel" ng-if="items != '0'">
-				<div class="cart-items-card out-of-stock-items" ng-repeat="product in outOfStockProducts">
-					<a href="javascript:void(0)" class="cart-details-close" ng-click="removeProductFromCart(product.product_id)"><img src="images/delete-icon.png" width:'100%'></a>
-					<div class="cart-items-cont">
-						<div class="cart-img-cont">
-							<img ng-src="{{IMGHOST}}/thumb/216x216{{ product.product_image }}" class="img-responsive">
-						</div>
-						<div class="cart-details-cont">
-							<div class="col-xs-12 nopadding  c-itm-name">{{ product.product_name }}</div>
-							<div class="col-xs-12 nopadding  c-itm-price">
-								<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 14 28" class="icon">
-									<path d="M14.031 7.344v1.594q0 0.219-0.141 0.359t-0.359 0.141h-2.625q-0.359 2.25-2.016 3.656t-4.312 1.719q2.609 2.781 7.172 8.375 0.219 0.25 0.063 0.531-0.125 0.281-0.453 0.281h-3.047q-0.25 0-0.391-0.187-4.781-5.734-7.781-8.922-0.141-0.141-0.141-0.344v-1.984q0-0.203 0.148-0.352t0.352-0.148h1.75q2.063 0 3.32-0.672t1.602-1.953h-6.672q-0.219 0-0.359-0.141t-0.141-0.359v-1.594q0-0.219 0.141-0.359t0.359-0.141h6.453q-0.891-1.766-4.188-1.766h-2.266q-0.203 0-0.352-0.148t-0.148-0.352v-2.078q0-0.219 0.141-0.359t0.359-0.141h13q0.219 0 0.359 0.141t0.141 0.359v1.594q0 0.219-0.141 0.359t-0.359 0.141h-3.641q0.734 0.953 1 2.25h2.672q0.219 0 0.359 0.141t0.141 0.359z"></path>
-								</svg>
-								<div style="float:left;">{{ product.product_price | number: 2 }}</div>
-							</div>
-							<div class="col-xs-12 nopadding  c-itm-qty">
-								<div class="text">Qty:</div>
-								<!-- <div class="dropdown chck-drpdwn">
-									<button class="btn btn-default dropdown-toggle chck-drpdwn-btn" style="border-radius:2px;" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> 1 <span class="caret chck-caret" style=""></span> </button>
-									<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-										<li><a href="#">1</a></li>
-										<li><a href="#">2</a></li>
-										<li><a href="#">3</a></li>
-									</ul>
-								</div> -->
-								<select ng-model="product.quantity" class="form-control width-auto" ng-options="opt as opt.id for opt in options" ng-change="updateQuantity(product.quantity, product.product_id)">
-								</select>
-							</div>
-							<div class="seller-note hidden-xs" ng-click="showNoteToSeller(product)" ng-if="!product.seller_note">add a seller note</div>
-						</div>
-					</div>
-					<div class="cart-seller-cont hidden-lg">
-						<form >
-							<div class="text out-o-stk">out of stock</div>
-						</form>
-					</div>
-					<div class="cart-seller-cont">
-						<div class="text hidden-lg" ng-click="showNoteToSeller(product)" ng-if="!product.seller_note">add a seller note</div>
-						<div class="open-cont" ng-show= "product.showFormNote">
-							<form name="sellerForm{{$index}}" ng-submit="addNoteToSeller($index, product.product_id, product.sellernote, product)" novalidate>
-								<div ng-class="{ 'error' : (sellerForm{{$index}}.sellernote.$invalid && !sellerForm{{$index}}.sellernote.$pristine) || (sellerForm{{$index}}.$submitted && sellerForm{{$index}}.sellernote.$error.required) }">
-									<p> Add note to seller </p>
-									<textarea class="seller-texta" ng-model="product.sellernote" name="sellernote" placeholder="Add a note here" ng-minlength="5" required></textarea>
-									<div ng-show="sellerForm{{$index}}.$submitted || sellerForm{{$index}}.sellernote.$touched">
-										<span ng-show="sellerForm{{$index}}.sellernote.$error.required" class="error">Seller note required.</span>
-									</div>
-								</div>
-								<button type="submit" class="buttons b-border t-m-10">save</button>
-							</form>
-							<span class="buttons l-m-20 t-m-10 m-right-20" ng-click="hideNoteToSeller(product)">cancel</span>
-						</div>
-						<div class="open-cont" ng-if="!!product.seller_note">
-							<p>{{product.seller_note}}</p>
-							<button class="buttons  b-border t-m-10" ng-click="updateNoteToSeller(product,product.seller_note)">edit</button>
-							<a href="javascript:void(0)" class="buttons l-m-20 t-m-10 m-left-20" ng-click="removeNoteToSeller(product)">remove</a>
-						</div>
-					</div>
-				</div>
-				<!-- cart-items-card ends -->
+            <div class="col-xs-12 check-out-msg" ng-if="itemRemoved == 1">
+                <div class="check-out-msg-txt"> Item removed from your cart</div>
+                <div class="check-out-msg-btn" ng-click="addToCart()">undo</div>
+            </div>
+            <div empt-cart="" ng-if="items == '0'">
+                <div class="empty-head">YOUR CART IS EMPTY</div>
+                <div class="empty-txt">Start shopping with options below.</div>
+                <div class="empty-lst">
+                    <ul>
+                        <li><a href="/sarees-sari.html">Sarees</a></li>
+                        <li><a href="/clothing/salwar-suit.html">Salwar Suits</a></li>
+                        <li><a href="/clothing/lehnga.html">Lehengas</a></li>
+                        <li><a href="/jewellery-jewelry.html">Jewellery</a></li>
+                    </ul>
+                </div>
+                <div class="contn-shpng" ng-click="continueShopping()">CONTINUE SHOPPING</div>
+            </div>
+            <div class="col-xs-12 nopadding left-panel" ng-if="items != '0'">
+                <div class="cart-items-card out-of-stock-items" ng-repeat="product in outOfStockProducts">
+                    <a href="javascript:void(0)" class="cart-details-close" ng-click="removeProductFromCart(product.product_id,data)"><img src="images/delete-icon.png" width:'100%'></a>
+                    <div class="cart-items-cont">
+                        <div class="cart-img-cont">
+                            <img ng-src="{{IMGHOST}}/thumb/216x216{{ product.product_image }}" class="img-responsive">
+                        </div>
+                        <div class="cart-details-cont">
+                            <div class="col-xs-12 nopadding  c-itm-name">{{ product.product_name }}</div>
+                            <div class="col-xs-12 nopadding  c-itm-price">
+                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 14 28" class="icon">
+                                    <path d="M14.031 7.344v1.594q0 0.219-0.141 0.359t-0.359 0.141h-2.625q-0.359 2.25-2.016 3.656t-4.312 1.719q2.609 2.781 7.172 8.375 0.219 0.25 0.063 0.531-0.125 0.281-0.453 0.281h-3.047q-0.25 0-0.391-0.187-4.781-5.734-7.781-8.922-0.141-0.141-0.141-0.344v-1.984q0-0.203 0.148-0.352t0.352-0.148h1.75q2.063 0 3.32-0.672t1.602-1.953h-6.672q-0.219 0-0.359-0.141t-0.141-0.359v-1.594q0-0.219 0.141-0.359t0.359-0.141h6.453q-0.891-1.766-4.188-1.766h-2.266q-0.203 0-0.352-0.148t-0.148-0.352v-2.078q0-0.219 0.141-0.359t0.359-0.141h13q0.219 0 0.359 0.141t0.141 0.359v1.594q0 0.219-0.141 0.359t-0.359 0.141h-3.641q0.734 0.953 1 2.25h2.672q0.219 0 0.359 0.141t0.141 0.359z"></path>
+                                </svg>
+                                <div style="float:left;">{{ product.product_price | number: 2 }}</div>
+                            </div>
+                            <div class="col-xs-12 nopadding  c-itm-qty">
+                                <div class="text">Qty:</div>
+                                <!-- <div class="dropdown chck-drpdwn">
+                                    <button class="btn btn-default dropdown-toggle chck-drpdwn-btn" style="border-radius:2px;" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> 1 <span class="caret chck-caret" style=""></span> </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                        <li><a href="#">1</a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li><a href="#">3</a></li>
+                                    </ul>
+                                </div> -->
+                                <select ng-model="product.quantity" class="form-control width-auto" ng-options="opt as opt.id for opt in options" ng-change="updateQuantity(product.quantity, product.product_id)">
+                                </select>
+                            </div>
+                            <div class="seller-note hidden-xs" ng-click="showNoteToSeller(product)" ng-if="!product.seller_note">add a seller note</div>
+                        </div>
+                    </div>
+                    <div class="cart-seller-cont hidden-lg">
+                        <form >
+                            <div class="text out-o-stk">out of stock</div>
+                        </form>
+                    </div>
+                    <div class="cart-seller-cont">
+                        <div class="text hidden-lg" ng-click="showNoteToSeller(product)" ng-if="!product.seller_note">add a seller note</div>
+                        <div class="open-cont" ng-show= "product.showFormNote">
+                            <form name="sellerForm{{$index}}" ng-submit="addNoteToSeller($index, product.product_id, product.sellernote, product)" novalidate>
+                                <div ng-class="{ 'error' : (sellerForm{{$index}}.sellernote.$invalid && !sellerForm{{$index}}.sellernote.$pristine) || (sellerForm{{$index}}.$submitted && sellerForm{{$index}}.sellernote.$error.required) }">
+                                    <p> Add note to seller </p>
+                                    <textarea class="seller-texta" ng-model="product.sellernote" name="sellernote" placeholder="Add a note here" ng-minlength="5" required></textarea>
+                                    <div ng-show="sellerForm{{$index}}.$submitted || sellerForm{{$index}}.sellernote.$touched">
+                                        <span ng-show="sellerForm{{$index}}.sellernote.$error.required" class="error">Seller note required.</span>
+                                    </div>
+                                </div>
+                                <button type="submit" class="buttons b-border t-m-10">save</button>
+                            </form>
+                            <span class="buttons l-m-20 t-m-10 m-right-20" ng-click="hideNoteToSeller(product)">cancel</span>
+                        </div>
+                        <div class="open-cont" ng-if="!!product.seller_note">
+                            <p>{{product.seller_note}}</p>
+                            <button class="buttons  b-border t-m-10" ng-click="updateNoteToSeller(product,product.seller_note)">edit</button>
+                            <a href="javascript:void(0)" class="buttons l-m-20 t-m-10 m-left-20" ng-click="removeNoteToSeller(product)">remove</a>
+                        </div>
+                    </div>
+                    <div class="overlay-out-stock" ng-show="product.waitingCartItem">
+                        <img src="images/loader.gif" class="loader-cartitem">
+                    </div>
 
-				<!--ng repeat for cod products : 0 for cod as in api call-->
+                </div>
+                <!-- cart-items-card ends -->
 
-				<div class="cart-items-card t-m-10" ng-repeat="data in inStockCod">
-					<a href="javascript:void(0)" class="cart-details-close" ng-click="removeProductFromCart(data.product_id,data)"><img src="images/delete-icon.png" width:'100%'></a>
-					<div class="cart-items-cont">
-						<div class="cart-img-cont">
-							<img ng-src="{{IMGHOST}}/thumb/216x216{{data.product_image}}" class="img-responsive">
-						</div>
-						<div class="cart-details-cont">
-							<div class="col-xs-12 nopadding c-itm-name">{{data.product_name}}</div>
-							<div class="col-xs-12 nopadding c-itm-price">
-								<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 14 28" class="icon">
-									<path d="M14.031 7.344v1.594q0 0.219-0.141 0.359t-0.359 0.141h-2.625q-0.359 2.25-2.016 3.656t-4.312 1.719q2.609 2.781 7.172 8.375 0.219 0.25 0.063 0.531-0.125 0.281-0.453 0.281h-3.047q-0.25 0-0.391-0.187-4.781-5.734-7.781-8.922-0.141-0.141-0.141-0.344v-1.984q0-0.203 0.148-0.352t0.352-0.148h1.75q2.063 0 3.32-0.672t1.602-1.953h-6.672q-0.219 0-0.359-0.141t-0.141-0.359v-1.594q0-0.219 0.141-0.359t0.359-0.141h6.453q-0.891-1.766-4.188-1.766h-2.266q-0.203 0-0.352-0.148t-0.148-0.352v-2.078q0-0.219 0.141-0.359t0.359-0.141h13q0.219 0 0.359 0.141t0.141 0.359v1.594q0 0.219-0.141 0.359t-0.359 0.141h-3.641q0.734 0.953 1 2.25h2.672q0.219 0 0.359 0.141t0.141 0.359z"></path>
-								</svg>
-								<div style="float:left;">{{data.product_price | number: 2}}</div>
-							</div>
-							<div class="col-xs-12 nopadding c-itm-qty">
-								<div class="text">Qty:</div>
-								<!-- <div class="dropdown chck-drpdwn">
-									<button class="btn btn-default dropdown-toggle chck-drpdwn-btn sdsd" style="border-radius:2px;" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{ data.product_qty }} <span class="caret chck-caret"></span> </button>
-									<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-										<li><a href="#">1</a></li>
-										<li><a href="#">2</a></li>
-										<li><a href="#">3</a></li>
-									</ul>
-								</div> -->
+                <!--ng repeat for cod products : 0 for cod as in api call-->
 
-								<select ng-init="initializeQuantity(data)" ng-model="data.quantity" class="form-control width-auto" ng-options="opt as opt.id for opt in options" ng-change="updateQuantity(data.quantity, data.product_id,data)">
-								</select>
+                <div class="cart-items-card t-m-10" ng-repeat="data in inStockCod">
+                    <a href="javascript:void(0)" class="cart-details-close" ng-click="removeProductFromCart(data.product_id,data)"><img src="images/delete-icon.png" width:'100%'></a>
+                    <div class="cart-items-cont">
+                        <div class="cart-img-cont">
+                            <img ng-src="{{IMGHOST}}/thumb/216x216{{data.product_image}}" class="img-responsive">
+                        </div>
+                        <div class="cart-details-cont">
+                            <div class="col-xs-12 nopadding c-itm-name">{{data.product_name}}</div>
+                            <div class="col-xs-12 nopadding c-itm-price">
+                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 14 28" class="icon">
+                                    <path d="M14.031 7.344v1.594q0 0.219-0.141 0.359t-0.359 0.141h-2.625q-0.359 2.25-2.016 3.656t-4.312 1.719q2.609 2.781 7.172 8.375 0.219 0.25 0.063 0.531-0.125 0.281-0.453 0.281h-3.047q-0.25 0-0.391-0.187-4.781-5.734-7.781-8.922-0.141-0.141-0.141-0.344v-1.984q0-0.203 0.148-0.352t0.352-0.148h1.75q2.063 0 3.32-0.672t1.602-1.953h-6.672q-0.219 0-0.359-0.141t-0.141-0.359v-1.594q0-0.219 0.141-0.359t0.359-0.141h6.453q-0.891-1.766-4.188-1.766h-2.266q-0.203 0-0.352-0.148t-0.148-0.352v-2.078q0-0.219 0.141-0.359t0.359-0.141h13q0.219 0 0.359 0.141t0.141 0.359v1.594q0 0.219-0.141 0.359t-0.359 0.141h-3.641q0.734 0.953 1 2.25h2.672q0.219 0 0.359 0.141t0.141 0.359z"></path>
+                                </svg>
+                                <div style="float:left;">{{data.product_price | number: 2}}</div>
+                            </div>
+                            <div class="col-xs-12 nopadding c-itm-qty">
+                                <div class="text">Qty:</div>
+                                <!-- <div class="dropdown chck-drpdwn">
+                                    <button class="btn btn-default dropdown-toggle chck-drpdwn-btn sdsd" style="border-radius:2px;" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{ data.product_qty }} <span class="caret chck-caret"></span> </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                        <li><a href="#">1</a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li><a href="#">3</a></li>
+                                    </ul>
+                                </div> -->
 
-							</div>
-							<div class="seller-note hidden-xs" ng-click="showNoteToSeller(data)" ng-if="!data.seller_note">add a seller note</div>
-						</div>
-					</div>
-					<div class="cart-seller-cont">
-						<div class="text hidden-lg" ng-click="showNoteToSeller(data)" ng-if="!data.seller_note">add a seller note</div>
-						<div class="open-cont" ng-show= "data.showFormNote">
-							<form name="sellerForm{{$index}}" ng-submit="addNoteToSeller($index, data.product_id, data.sellernote, data)" novalidate>
-								<div ng-class="{ 'error' : (sellerForm{{$index}}.sellernote.$invalid && !sellerForm{{$index}}.sellernote.$pristine) || (sellerForm{{$index}}.$submitted && sellerForm{{$index}}.sellernote.$error.required) }">
-									<p> Add note to seller </p>
-									<textarea class="seller-texta" ng-model="data.sellernote" name="sellernote" placeholder="Add a note here" ng-minlength="5" required></textarea>
-									<div ng-show="sellerForm{{$index}}.$submitted || sellerForm{{$index}}.sellernote.$touched">
-										<span ng-show="sellerForm{{$index}}.sellernote.$error.required" class="error">Seller note required.</span>
-									</div>
-								</div>
-								<button type="submit" class="buttons b-border t-m-10">save</button>
-							</form>
-							<span class="buttons l-m-20 t-m-10 m-right-20" ng-click="hideNoteToSeller(data)">cancel</span>
-						</div>
-						<div class="open-cont" ng-if="!!data.seller_note" ng-hide="data.showFormNote">
-							<p>{{data.seller_note}}</p>
-							<button class="buttons  b-border t-m-10" ng-click="updateNoteToSeller(data,data.seller_note)">edit</button>
-							<a href="javascript:void(0)" class="buttons l-m-20 t-m-10 m-left-20" ng-click="removeNoteToSeller(data)">remove</a>
-						</div>
-					</div>
+                                <select ng-init="initializeQuantity(data)" ng-model="data.quantity" class="form-control width-auto" ng-options="opt as opt.id for opt in options" ng-change="updateQuantity(data.quantity, data.product_id,data)">
+                                </select>
 
-					<div class="overlay-out-stock" ng-show="data.waitingCartItem">
-						<img src="images/loader.gif" class="loader-cartitem">
-					</div>
-				</div>
+                            </div>
+                            <div class="seller-note hidden-xs" ng-click="showNoteToSeller(data)" ng-if="!data.seller_note">add a seller note</div>
+                        </div>
+                    </div>
+                    <div class="cart-seller-cont">
+                        <div class="text hidden-lg" ng-click="showNoteToSeller(data)" ng-if="!data.seller_note">add a seller note</div>
+                        <div class="open-cont" ng-show= "data.showFormNote">
+                            <form name="sellerForm{{$index}}" ng-submit="addNoteToSeller($index, data.product_id, data.sellernote, data)" novalidate>
+                                <div ng-class="{ 'error' : (sellerForm{{$index}}.sellernote.$invalid && !sellerForm{{$index}}.sellernote.$pristine) || (sellerForm{{$index}}.$submitted && sellerForm{{$index}}.sellernote.$error.required) }">
+                                    <p> Add note to seller </p>
+                                    <textarea class="seller-texta" ng-model="data.sellernote" name="sellernote" placeholder="Add a note here" ng-minlength="5" required></textarea>
+                                    <div ng-show="sellerForm{{$index}}.$submitted || sellerForm{{$index}}.sellernote.$touched">
+                                        <span ng-show="sellerForm{{$index}}.sellernote.$error.required" class="error">Seller note required.</span>
+                                    </div>
+                                </div>
+                                <button type="submit" class="buttons b-border t-m-10">save</button>
+                            </form>
+                            <span class="buttons l-m-20 t-m-10 m-right-20" ng-click="hideNoteToSeller(data)">cancel</span>
+                        </div>
+                        <div class="open-cont" ng-if="!!data.seller_note" ng-hide="data.showFormNote">
+                            <p>{{data.seller_note}}</p>
+                            <button class="buttons  b-border t-m-10" ng-click="updateNoteToSeller(data,data.seller_note)">edit</button>
+                            <a href="javascript:void(0)" class="buttons l-m-20 t-m-10 m-left-20" ng-click="removeNoteToSeller(data)">remove</a>
+                        </div>
+                    </div>
 
-				<!--ng repeat for non cod products : 1 for non cod as in api call-->
-				<div class="col-xs-6 nopadding red t-m-10" ng-if="inStockNotCod.length">Items without cash on delivery</div>
-				<a href="javascript:void(0)" ng-if="inStockNotCod.length" class="nopadding clrrouge t-m-10 text-right" ng-class="inStockNotCod.length? 'col-xs-6':'col-xs-12'" ng-click="removeAllNonCodItems()">Remove All</a>
-				<div class="cart-items-card t-m-10" ng-repeat="data in inStockNotCod">
-					<a href="javascript:void(0)" class="cart-details-close" ng-click="removeProductFromCart(data.product_id)"><img src="images/delete-icon.png" width:100%></a>
-					<div class="cart-items-cont">
-						<div class="cart-img-cont">
-							<img ng-src="{{IMGHOST}}/thumb/216x216{{data.product_image}}" class="img-responsive">
-						</div>
-						<div class="cart-details-cont">
-							<div class="col-xs-12 nopadding c-itm-name">{{data.product_name}}</div>
-							<div class="col-xs-12 nopadding c-itm-price">
-								<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 14 28" class="icon">
-									<path d="M14.031 7.344v1.594q0 0.219-0.141 0.359t-0.359 0.141h-2.625q-0.359 2.25-2.016 3.656t-4.312 1.719q2.609 2.781 7.172 8.375 0.219 0.25 0.063 0.531-0.125 0.281-0.453 0.281h-3.047q-0.25 0-0.391-0.187-4.781-5.734-7.781-8.922-0.141-0.141-0.141-0.344v-1.984q0-0.203 0.148-0.352t0.352-0.148h1.75q2.063 0 3.32-0.672t1.602-1.953h-6.672q-0.219 0-0.359-0.141t-0.141-0.359v-1.594q0-0.219 0.141-0.359t0.359-0.141h6.453q-0.891-1.766-4.188-1.766h-2.266q-0.203 0-0.352-0.148t-0.148-0.352v-2.078q0-0.219 0.141-0.359t0.359-0.141h13q0.219 0 0.359 0.141t0.141 0.359v1.594q0 0.219-0.141 0.359t-0.359 0.141h-3.641q0.734 0.953 1 2.25h2.672q0.219 0 0.359 0.141t0.141 0.359z"></path>
-								</svg>
-								<div style="float:left;">{{data.product_price | number: 2}}</div>
-							</div>
-							<div class="col-xs-12 nopadding c-itm-qty">
-								<div class="text">Qty:</div>
-								<!-- <div class="dropdown chck-drpdwn">
-									<button class="btn btn-default dropdown-toggle chck-drpdwn-btn sdsd" style="border-radius:2px;" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{ data.product_qty }} <span class="caret chck-caret"></span> </button>
-									<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-										<li><a href="#">1</a></li>
-										<li><a href="#">2</a></li>
-										<li><a href="#">3</a></li>
-									</ul>
-								</div> -->
-								<select ng-init="initializeQuantity(data)" ng-model="data.quantity" class="form-control width-auto" ng-options="opt as opt.id for opt in options" ng-change="updateQuantity(data.quantity, data.product_id)">
-								</select>
+                    <div class="overlay-out-stock" ng-show="data.waitingCartItem">
+                        <img src="images/loader.gif" class="loader-cartitem">
+                    </div>
+                </div>
 
-							</div>
-							<div class="seller-note hidden-xs" ng-click="showNoteToSeller(data)" ng-if="!data.seller_note">add a seller note</div>
+                <!--ng repeat for non cod products : 1 for non cod as in api call-->
+                <div class="col-xs-6 nopadding red t-m-10" ng-if="inStockNotCod.length">Items without cash on delivery</div>
+                <a href="javascript:void(0)" ng-if="inStockNotCod.length" class="nopadding clrrouge t-m-10 text-right" ng-class="inStockNotCod.length? 'col-xs-6':'col-xs-12'" ng-click="removeAllNonCodItems()">Remove All</a>
+                <div class="cart-items-card t-m-10" ng-repeat="data in inStockNotCod">
+                    <a href="javascript:void(0)" class="cart-details-close" ng-click="removeProductFromCart(data.product_id,data)"><img src="images/delete-icon.png" width:100%></a>
+                    <div class="cart-items-cont">
+                        <div class="cart-img-cont">
+                            <img ng-src="{{IMGHOST}}/thumb/216x216{{data.product_image}}" class="img-responsive">
+                        </div>
+                        <div class="cart-details-cont">
+                            <div class="col-xs-12 nopadding c-itm-name">{{data.product_name}}</div>
+                            <div class="col-xs-12 nopadding c-itm-price">
+                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 14 28" class="icon">
+                                    <path d="M14.031 7.344v1.594q0 0.219-0.141 0.359t-0.359 0.141h-2.625q-0.359 2.25-2.016 3.656t-4.312 1.719q2.609 2.781 7.172 8.375 0.219 0.25 0.063 0.531-0.125 0.281-0.453 0.281h-3.047q-0.25 0-0.391-0.187-4.781-5.734-7.781-8.922-0.141-0.141-0.141-0.344v-1.984q0-0.203 0.148-0.352t0.352-0.148h1.75q2.063 0 3.32-0.672t1.602-1.953h-6.672q-0.219 0-0.359-0.141t-0.141-0.359v-1.594q0-0.219 0.141-0.359t0.359-0.141h6.453q-0.891-1.766-4.188-1.766h-2.266q-0.203 0-0.352-0.148t-0.148-0.352v-2.078q0-0.219 0.141-0.359t0.359-0.141h13q0.219 0 0.359 0.141t0.141 0.359v1.594q0 0.219-0.141 0.359t-0.359 0.141h-3.641q0.734 0.953 1 2.25h2.672q0.219 0 0.359 0.141t0.141 0.359z"></path>
+                                </svg>
+                                <div style="float:left;">{{data.product_price | number: 2}}</div>
+                            </div>
+                            <div class="col-xs-12 nopadding c-itm-qty">
+                                <div class="text">Qty:</div>
+                                <!-- <div class="dropdown chck-drpdwn">
+                                    <button class="btn btn-default dropdown-toggle chck-drpdwn-btn sdsd" style="border-radius:2px;" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{ data.product_qty }} <span class="caret chck-caret"></span> </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                        <li><a href="#">1</a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li><a href="#">3</a></li>
+                                    </ul>
+                                </div> -->
+                                <select ng-init="initializeQuantity(data)" ng-model="data.quantity" class="form-control width-auto" ng-options="opt as opt.id for opt in options" ng-change="updateQuantity(data.quantity, data.product_id,data)">
+                                </select>
 
-						</div>
-					</div>
-					<div class="cart-seller-cont">
-						<div class="text hidden-lg" ng-click="showNoteToSeller(data)" ng-if="!data.seller_note">add a seller note</div>
-						<div class="open-cont" ng-show= "data.showFormNote">
-							<form name="sellerForm{{$index}}" ng-submit="addNoteToSeller($index, data.product_id, data.sellernote,data)" novalidate>
-								<div ng-class="{ 'error' : (sellerForm{{$index}}.sellernote.$invalid && !sellerForm{{$index}}.sellernote.$pristine) || (sellerForm{{$index}}.$submitted && sellerForm{{$index}}{{$index}}.sellernote.$error.required) }">
-									<p> Add note to seller </p>
-									<textarea class="seller-texta" ng-model="data.sellernote" name="sellernote" placeholder="Add a note here"  required></textarea>
-									<div ng-show="sellerForm{{$index}}.$submitted || sellerForm{{$index}}.sellernote.$touched">
-										<span ng-show="sellerForm{{$index}}.sellernote.$error.required" class="error">Seller note required.</span>
-									</div>
-								</div>
-								<button type="submit" class="buttons b-border t-m-10">save</button>
-							</form>
-							<span class="buttons l-m-20 t-m-10 m-right-20 close-note" ng-click="hideNoteToSeller(data)">cancel</span>
-						</div>
-						<div class="open-cont" ng-if="!!data.seller_note" ng-hide="data.showFormNote">
-							<p>{{data.seller_note}}</p>
-							<button class="buttons  b-border t-m-10" ng-click="updateNoteToSeller(data,data.seller_note)">edit</button>
-							<a href="javascript:void(0)" class="buttons l-m-20 t-m-10 m-left-20" ng-click="removeNoteToSeller(data)">remove</a>
-						</div>
-					</div>
+                            </div>
+                            <div class="seller-note hidden-xs" ng-click="showNoteToSeller(data)" ng-if="!data.seller_note">add a seller note</div>
 
-				</div>
-				<!--ng repeat for cod products : 0 for cod as in api call ends here-->
+                        </div>
+                    </div>
+                    <div class="cart-seller-cont">
+                        <div class="text hidden-lg" ng-click="showNoteToSeller(data)" ng-if="!data.seller_note">add a seller note</div>
+                        <div class="open-cont" ng-show= "data.showFormNote">
+                            <form name="sellerForm{{$index}}" ng-submit="addNoteToSeller($index, data.product_id, data.sellernote,data)" novalidate>
+                                <div ng-class="{ 'error' : (sellerForm{{$index}}.sellernote.$invalid && !sellerForm{{$index}}.sellernote.$pristine) || (sellerForm{{$index}}.$submitted && sellerForm{{$index}}{{$index}}.sellernote.$error.required) }">
+                                    <p> Add note to seller </p>
+                                    <textarea class="seller-texta" ng-model="data.sellernote" name="sellernote" placeholder="Add a note here"  required></textarea>
+                                    <div ng-show="sellerForm{{$index}}.$submitted || sellerForm{{$index}}.sellernote.$touched">
+                                        <span ng-show="sellerForm{{$index}}.sellernote.$error.required" class="error">Seller note required.</span>
+                                    </div>
+                                </div>
+                                <button type="submit" class="buttons b-border t-m-10">save</button>
+                            </form>
+                            <span class="buttons l-m-20 t-m-10 m-right-20 close-note" ng-click="hideNoteToSeller(data)">cancel</span>
+                        </div>
+                        <div class="open-cont" ng-if="!!data.seller_note" ng-hide="data.showFormNote">
+                            <p>{{data.seller_note}}</p>
+                            <button class="buttons  b-border t-m-10" ng-click="updateNoteToSeller(data,data.seller_note)">edit</button>
+                            <a href="javascript:void(0)" class="buttons l-m-20 t-m-10 m-left-20" ng-click="removeNoteToSeller(data)">remove</a>
+                        </div>
+                    </div>
+                    <div class="overlay-out-stock" ng-show="data.waitingCartItem">
+                        <img src="images/loader.gif" class="loader-cartitem">
+                    </div>
+                </div>
+                <!--ng repeat for cod products : 0 for cod as in api call ends here-->
 
-				<!-- cart-items-card ends -->
+                <!-- cart-items-card ends -->
 
-				<div class="col-xs-12 nopadding hidden-xs" ng-if="items != '0'">
-					<div class="c-continue-shpng button" ng-click="continueShopping()"> <img class="c-arrw" src="images/back-CTA-icon.png"> Continue Shopping    </div>
-					<div class="order-total">
-						<div class="pulll-left inln-blck">Total Payable( {{ items }} Item(s))</div>
-						<div class="o-t-amt pull-right inln-blck">
-							<div class="pull-right inln-blck"> {{ grandTotal | number: 2}}</div>
-							<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 14 28" class="icon">
-								<path d="M14.031 7.344v1.594q0 0.219-0.141 0.359t-0.359 0.141h-2.625q-0.359 2.25-2.016 3.656t-4.312 1.719q2.609 2.781 7.172 8.375 0.219 0.25 0.063 0.531-0.125 0.281-0.453 0.281h-3.047q-0.25 0-0.391-0.187-4.781-5.734-7.781-8.922-0.141-0.141-0.141-0.344v-1.984q0-0.203 0.148-0.352t0.352-0.148h1.75q2.063 0 3.32-0.672t1.602-1.953h-6.672q-0.219 0-0.359-0.141t-0.141-0.359v-1.594q0-0.219 0.141-0.359t0.359-0.141h6.453q-0.891-1.766-4.188-1.766h-2.266q-0.203 0-0.352-0.148t-0.148-0.352v-2.078q0-0.219 0.141-0.359t0.359-0.141h13q0.219 0 0.359 0.141t0.141 0.359v1.594q0 0.219-0.141 0.359t-0.359 0.141h-3.641q0.734 0.953 1 2.25h2.672q0.219 0 0.359 0.141t0.141 0.359z"></path>
-							</svg>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- checkout left panel ends -->
+                <div class="col-xs-12 nopadding hidden-xs" ng-if="items != '0'">
+                    <div class="c-continue-shpng button" ng-click="continueShopping()"> <img class="c-arrw" src="images/back-CTA-icon.png"> Continue Shopping    </div>
+                    <div class="order-total">
+                        <div class="pulll-left inln-blck">Total Payable( {{ items }} Item(s))</div>
+                        <div class="o-t-amt pull-right inln-blck">
+                            <div class="pull-right inln-blck"> {{ grandTotal | number: 2}}</div>
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 14 28" class="icon">
+                                <path d="M14.031 7.344v1.594q0 0.219-0.141 0.359t-0.359 0.141h-2.625q-0.359 2.25-2.016 3.656t-4.312 1.719q2.609 2.781 7.172 8.375 0.219 0.25 0.063 0.531-0.125 0.281-0.453 0.281h-3.047q-0.25 0-0.391-0.187-4.781-5.734-7.781-8.922-0.141-0.141-0.141-0.344v-1.984q0-0.203 0.148-0.352t0.352-0.148h1.75q2.063 0 3.32-0.672t1.602-1.953h-6.672q-0.219 0-0.359-0.141t-0.141-0.359v-1.594q0-0.219 0.141-0.359t0.359-0.141h6.453q-0.891-1.766-4.188-1.766h-2.266q-0.203 0-0.352-0.148t-0.148-0.352v-2.078q0-0.219 0.141-0.359t0.359-0.141h13q0.219 0 0.359 0.141t0.141 0.359v1.594q0 0.219-0.141 0.359t-0.359 0.141h-3.641q0.734 0.953 1 2.25h2.672q0.219 0 0.359 0.141t0.141 0.359z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- checkout left panel ends -->
 
-			<!--coupon code proceed to checkout starts here-->
-			<div class="col-xs-12 nopadding right-panel" ng-if="items != '0'">
-				<div class="col-xs-12 coupon-cont">
-					<div class="coupon-text" ng-show="successCoupon">Coupon
-						<span class="colorblack"><strong>"{{couponCode}}"</strong></span> applied
-						<!--<span class="clrrouge">Remove</span>-->
-						<a href="javascript:void(0)" ng-click="removeCoupon(couponCode)"><span class="clrrouge">Remove</span></a>
-					</div>
-					<div ng-hide="successCoupon">
-						<div class="cc-header">Enter Coupon Code</div>
-						<div class="col-xs-12 nopadding">
-							<form class="coupon-cont-form" name="couponForm" ng-submit="applyCoupon()" novalidate>
-								<div>
-									<input type="text" class="col-xs-8 coupon-input" name="couponcode" ng-model="coupon.couponcode" ng-class="{ 'red-border' : (couponForm.couponcode.$invalid && !couponForm.couponcode.$pristine) || (couponForm.$submitted && couponForm.couponcode.$error.required) }" required>
-								</div>
-								<button type="submit" class="col-xs-4 coupon-c-button">
-									<span ng-show="!couponWait">APPLY</span>
-									<img ng-show="couponWait"  src="images/loader.gif" class="loader"/>
-								</button>
-								<div ng-show="couponForm.$submitted || couponForm.$invalid" class="col-xs-12">
-									<span class="red">{{couponMessage}}</span>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-12 order-cont" ng-if="items != '0'">
-					<div class="o-heading">order summary</div>
-					<!-- order summary new change -->
-					<div>
-	<div class="o-left-cont">
-		<p>Sub Total</p>
-	</div>
-	<div class="o-right-cont">
-		<div class="ord-amt" ng-show="!waitingCartDatails">
-			<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 14 28" class="icon">
-				<path d="M14.031 7.344v1.594q0 0.219-0.141 0.359t-0.359 0.141h-2.625q-0.359 2.25-2.016 3.656t-4.312 1.719q2.609 2.781 7.172 8.375 0.219 0.25 0.063 0.531-0.125 0.281-0.453 0.281h-3.047q-0.25 0-0.391-0.187-4.781-5.734-7.781-8.922-0.141-0.141-0.141-0.344v-1.984q0-0.203 0.148-0.352t0.352-0.148h1.75q2.063 0 3.32-0.672t1.602-1.953h-6.672q-0.219 0-0.359-0.141t-0.141-0.359v-1.594q0-0.219 0.141-0.359t0.359-0.141h6.453q-0.891-1.766-4.188-1.766h-2.266q-0.203 0-0.352-0.148t-0.148-0.352v-2.078q0-0.219 0.141-0.359t0.359-0.141h13q0.219 0 0.359 0.141t0.141 0.359v1.594q0 0.219-0.141 0.359t-0.359 0.141h-3.641q0.734 0.953 1 2.25h2.672q0.219 0 0.359 0.141t0.141 0.359z"></path>
-			</svg>
-			<div class="pull-right">{{ subTotal | number: 2 }}</div>
-		</div>
-		<div class="ord-amt" ng-show="waitingCartDatails"><img src="images/textloading.gif" class="textloading"></div>
-	</div>
+            <!--coupon code proceed to checkout starts here-->
+            <div class="col-xs-12 nopadding right-panel" ng-if="items != '0'">
+                <div class="col-xs-12 coupon-cont">
+                    <div class="coupon-text" ng-show="successCoupon">Coupon
+                        <span class="colorblack"><strong>"{{couponCode}}"</strong></span> applied
+                        <!--<span class="clrrouge">Remove</span>-->
+                        <a href="javascript:void(0)" ng-click="removeCoupon(couponCode)"><span class="clrrouge">Remove</span></a>
+                    </div>
+                    <div ng-hide="successCoupon">
+                        <div class="cc-header">Enter Coupon Code</div>
+                        <div class="col-xs-12 nopadding">
+                            <form class="coupon-cont-form" name="couponForm" ng-submit="applyCoupon()" novalidate>
+                                <div>
+                                    <input type="text" class="col-xs-8 coupon-input" name="couponcode" ng-model="coupon.couponcode" ng-class="{ 'red-border' : (couponForm.couponcode.$invalid && !couponForm.couponcode.$pristine) || (couponForm.$submitted && couponForm.couponcode.$error.required) }" required>
+                                </div>
+                                <button type="submit" class="col-xs-4 coupon-c-button">
+                                    <span ng-show="!couponWait">APPLY</span>
+                                    <img ng-show="couponWait"  src="images/loader.gif" class="loader"/>
+                                </button>
+                                <div ng-show="couponForm.$submitted || couponForm.$invalid" class="col-xs-12">
+                                    <span class="red">{{couponMessage}}</span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 order-cont" ng-if="items != '0'">
+                    <div class="o-heading">order summary</div>
+                    <!-- order summary new change -->
+                    <div>
+    <div class="o-left-cont">
+        <p>Sub Total</p>
+    </div>
+    <div class="o-right-cont">
+        <div class="ord-amt" ng-show="!waitingCartDatails">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 14 28" class="icon">
+                <path d="M14.031 7.344v1.594q0 0.219-0.141 0.359t-0.359 0.141h-2.625q-0.359 2.25-2.016 3.656t-4.312 1.719q2.609 2.781 7.172 8.375 0.219 0.25 0.063 0.531-0.125 0.281-0.453 0.281h-3.047q-0.25 0-0.391-0.187-4.781-5.734-7.781-8.922-0.141-0.141-0.141-0.344v-1.984q0-0.203 0.148-0.352t0.352-0.148h1.75q2.063 0 3.32-0.672t1.602-1.953h-6.672q-0.219 0-0.359-0.141t-0.141-0.359v-1.594q0-0.219 0.141-0.359t0.359-0.141h6.453q-0.891-1.766-4.188-1.766h-2.266q-0.203 0-0.352-0.148t-0.148-0.352v-2.078q0-0.219 0.141-0.359t0.359-0.141h13q0.219 0 0.359 0.141t0.141 0.359v1.594q0 0.219-0.141 0.359t-0.359 0.141h-3.641q0.734 0.953 1 2.25h2.672q0.219 0 0.359 0.141t0.141 0.359z"></path>
+            </svg>
+            <div class="pull-right">{{ subTotal | number: 2 }}</div>
+        </div>
+        <div class="ord-amt" ng-show="waitingCartDatails"><img src="images/textloading.gif" class="textloading"></div>
+    </div>
 </div>
 
 <div>
