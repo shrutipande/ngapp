@@ -1,25 +1,16 @@
 <!--// Header -->
 <div role-header class="container-fluid nopadding">
-    <div class="h-space hidden-xs hidden-sm"></div>
-    <div role-nav class="container nopadding">
-        <div class="col-xs-12 col-sm-5 nopadding" role="logo">
+    <div role-nav class="container">
+        <div class="col-xs-6 nopadding" role="logo">
             <img role="back" src="images/Shape.png" alt="" title="">
-            <img src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/cv_logo.png" alt="" title="">
+            <a href="/" title=""><img class="logo" src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/cv_logo.png" alt="" title=""></a>
+            <span class="hidden-xs">Call 022 288288281 for any assistance</span>
         </div>
-        <div class="col-xs-12 col-sm-7 nopadding buyerProtection hidden-xs">
+        <div class="col-xs-6 nopadding buyerProtection">
             <ul>
-                <li>
-                    <a href="#">
-                        <span><img src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/img/sheild.png"></span>
-                        <strong>100%</strong>
-                        Buyer Protection</a>
-                </li>
-                <li>|</li>
-                <li>
-                    <a href="#">
-                        <span>Learn More</span>
-                    </a>
-                </li>
+                <li class="visible-xs">100% Buyer Protection<br>Secure Payments</li>
+                <li class="hidden-xs">100% BUYER<br>PROTECTION</li>
+                <li class="hidden-xs"><strong>SECURE</strong><br>PAYMENTS</li>
             </ul>
         </div>
     </div>
@@ -39,7 +30,7 @@
     </div>
 
     <!-- recommended  products start-->
-    <div class="container-fluid nopadding" order-success-cont>
+    <div class="container-fluid nopadding" order-success-cont ng-hide="norecommendation">
         <div class="item-chunk-xtra-padding">
             <div class="col-xs-12 nopadding" id="view_recommended_products">
                 <div class="clearfix"></div>
@@ -85,10 +76,10 @@
         </div>
     </div>
     <!-- recommended products ends -->
-    <div class="col-xs-12  " order-success-cont="" ng-hide="norecommendation">
+    <div class="col-xs-12  " order-success-cont="">
         <div class="col-xs-12 nopadding detls-cont">
             <div class="dtl-txt">Details</div>
-            <div class="ttl-no-ord">Order number
+            <div class="ttl-no-ord">Order number:
                 {{ orderNo }}
             </div>
         </div>
@@ -178,23 +169,6 @@
             </div>
             <div class="col-xs-12  nopadding">
                 <div class="detail-text  font16 font14-xs  ln-hgt-2-6">{{ shippingDetails.telephone }}</div>
-            </div>
-        </div>
-
-        <div class="col-xs-12  nopadding details-cont p-b-10px">
-            <div class="col-xs-12  nopadding">
-                <div class="detail-text  ln-hgt-2-6">SHIPPING DETAILS</div>
-            </div>
-            <div class="col-xs-12  nopadding">
-                <div class="detail-text  font16 font14-xs  ln-hgt-2-6 gryeish-brown">
-                    <strong>Shruti Kartikey</strong>
-                </div>
-            </div>
-            <div class="col-xs-12  nopadding">
-                <div class="detail-text  font16 font14-xs ">G-1502, Craftsvilla, Lotus Business Park, Goregaon East, Mumbai, Maharashtra - 400056</div>
-            </div>
-            <div class="col-xs-12  nopadding">
-                <div class="detail-text  font16 font14-xs  ln-hgt-2-6">+91 7738233261</div>
             </div>
         </div>
 
