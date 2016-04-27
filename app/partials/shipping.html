@@ -171,30 +171,30 @@
                                             <div class="col-xs-12 col-sm-4 nopadding">
 
                                                 <div class="form-group"
-                                     ng-class="{ 'error' : (DeseditaddrForm.pincode.$invalid && !DeseditaddrForm.pincode.$pristine && DeseditaddrForm.pincode.$touched)  || (DeseditaddrForm.$submitted && DeseditaddrForm.pincode.$error.required)  }">
+                                     ng-class="{ 'error' : (DeseditaddrForm.postcode.$invalid && !DeseditaddrForm.postcode.$pristine && DeseditaddrForm.postcode.$touched)  || (DeseditaddrForm.$submitted && DeseditaddrForm.postcode.$error.required)  }">
 
                                                     <label for="Pincode">Pincode</label>
                                                     <input id="Pincode"
                                                     type="number"
                                                     class="form-control"
-                                                    name="pincode"
+                                                    name="postcode"
                                                     ng-model="editAddr.postcode"
                                                     ng-minlength="6"
                                                     ng-maxlength="6"
                                                     placeholder="Pincode">
-                                                    
-                                                    <div ng-show="DeseditaddrForm.pincode.$error.minlength && !DeseditaddrForm.pincode.$pristine"  class="error">
 
-                                        <span ng-message="DeseditaddrForm.pincode.$invalid" ng-show="DeseditaddrForm.pincode.$touched" >Pincode is too short.</span>
+                                                    <div ng-show="DeseditaddrForm.postcode.$error.minlength && !DeseditaddrForm.postcode.$pristine"  class="error">
+
+                                        <span ng-message="DeseditaddrForm.postcode.$invalid" ng-show="DeseditaddrForm.postcode.$touched" >Pincode is too short.</span>
                                         </div>
 
-                                        <div ng-show="DeseditaddrForm.pincode.$error.maxlength && !DeseditaddrForm.pincode.$pristine" class="error">
+                                        <div ng-show="DeseditaddrForm.postcode.$error.maxlength && !DeseditaddrForm.postcode.$pristine" class="error">
 
-                                        <span ng-message="DeseditaddrForm.pincode.$invalid" ng-show="DeseditaddrForm.pincode.$touched">Pincode number is too long .</span>
+                                        <span ng-message="DeseditaddrForm.postcode.$invalid" ng-show="DeseditaddrForm.postcode.$touched">Pincode number is too long .</span>
                                         </div>
 
                                         <div ng-show="DeseditaddrForm.$submitted ">
-                                        <span ng-show="DeseditaddrForm.pincode.$error.required" class="error">Tell us your Pincode.</span>
+                                        <span ng-show="DeseditaddrForm.postcode.$error.required" class="error">Tell us your Pincode.</span>
                                         </div>
                                                 </div>
                                             </div>
@@ -382,13 +382,13 @@
                                     </div>
                                     <span ng-message="DeseditaddrForm.address.$error.minlength && !DeseditaddrForm.address.$pristine" ng-show="DeseditaddrForm.address.$invalid && DeseditaddrForm.address.$touched"  class="error">Address is too short.</span>                                            </div>
 
-<!--- pincode-->  
+<!--- postcode-->
                                    <div class="col-xs-12 col-sm-4 nopadding" >
                                     <div class="form-group"
-                                     ng-class="{ 'error' : (DeseditaddrForm.pincode.$invalid && !DeseditaddrForm.pincode.$pristine && DeseditaddrForm.pincode.$touched)  || (DeseditaddrForm.$submitted && DeseditaddrForm.pincode.$error.required)  }">
+                                     ng-class="{ 'error' : (DeseditaddrForm.postcode.$invalid && !DeseditaddrForm.postcode.$pristine && DeseditaddrForm.postcode.$touched)  || (DeseditaddrForm.$submitted && DeseditaddrForm.postcode.$error.required)  }">
                                         <label for="Pincode">Pincode</label>
                                         <input id="Pincode"
-                                        name="pincode"
+                                        name="postcode"
                                         type="number"
                                         class="form-control"
                                         placeholder="Pincode"
@@ -398,18 +398,18 @@
                                         ng-blur="changePincodeMobile(editAddr.postcode)"
                                         required>
 
-                                         <div ng-show="DeseditaddrForm.pincode.$error.minlength && !DeseditaddrForm.pincode.$pristine"  class="error">
+                                         <div ng-show="DeseditaddrForm.postcode.$error.minlength && !DeseditaddrForm.postcode.$pristine"  class="error">
 
-                                        <span ng-message="DeseditaddrForm.pincode.$invalid" ng-show="DeseditaddrForm.pincode.$touched" >Pincode is too short.</span>
+                                        <span ng-message="DeseditaddrForm.postcode.$invalid" ng-show="DeseditaddrForm.postcode.$touched" >Pincode is too short.</span>
                                         </div>
 
-                                        <div ng-show="DeseditaddrForm.pincode.$error.maxlength && !DeseditaddrForm.pincode.$pristine" class="error">
+                                        <div ng-show="DeseditaddrForm.postcode.$error.maxlength && !DeseditaddrForm.postcode.$pristine" class="error">
 
-                                        <span ng-message="DeseditaddrForm.pincode.$invalid" ng-show="DeseditaddrForm.pincode.$touched">Pincode number is too long .</span>
+                                        <span ng-message="DeseditaddrForm.postcode.$invalid" ng-show="DeseditaddrForm.postcode.$touched">Pincode number is too long .</span>
                                         </div>
 
                                         <div ng-show="DeseditaddrForm.$submitted ">
-                                        <span ng-show="DeseditaddrForm.pincode.$error.required" class="error">Tell us your Pincode.</span>
+                                        <span ng-show="DeseditaddrForm.postcode.$error.required" class="error">Tell us your Pincode.</span>
                                         </div>
 
 
@@ -465,9 +465,9 @@
                                     <span class="error" ng-show="DeseditaddrForm.$submitted && DeseditaddrForm.state.$error.required">Please Select State</span>
 
                                 </div>
-<!----end pincode-->         
+<!----end postcode-->
 
-                             
+
                              <div class="form-group col-sm-8 col-xs-12 nopadding"
                                      ng-class="{ 'error' : (DeseditaddrForm.phonenumber.$invalid && !DeseditaddrForm.phonenumber.$pristine && DeseditaddrForm.phonenumber.$touched)  || (DeseditaddrForm.$submitted && DeseditaddrForm.phonenumber.$error.required)  }">
                                         <label for="Number">Phone Number</label>
@@ -475,7 +475,7 @@
                                         <div class="input-group-addon">+91</div>
                                         <input type="number"
                                         name="phonenumber"
-                                        class="form-control" 
+                                        class="form-control"
                                         id="Number"
                                         placeholder="Phone Number"
                                         ng-model="editAddr.telephone"
@@ -694,31 +694,31 @@
 
                                 <div class="col-xs-12 col-sm-4 nopadding" >
                                     <div class="form-group"
-                                     ng-class="{ 'error' : (addnewForm.pincode.$invalid && !addnewForm.pincode.$pristine && addnewForm.pincode.$touched)  || (addnewForm.$submitted && addnewForm.pincode.$error.required)  }">
+                                     ng-class="{ 'error' : (addnewForm.postcode.$invalid && !addnewForm.postcode.$pristine && addnewForm.postcode.$touched)  || (addnewForm.$submitted && addnewForm.postcode.$error.required)  }">
                                         <label for="Pincode">Pincode</label>
                                         <input id="Pincode"
-                                        name="pincode"
+                                        name="postcode"
                                         type="number"
                                         class="form-control"
                                         placeholder="Pincode"
                                         ng-maxlength="6"
-                                        ng-minlength="6"   
-                                        ng-model="shipping.pincode"
-                                        ng-blur="changePincode(shipping.pincode)"
+                                        ng-minlength="6"
+                                        ng-model="shipping.postcode"
+                                        ng-blur="changePincode(shipping.postcode)"
                                         required>
 
-                                         <div ng-show="addnewForm.pincode.$error.minlength && !addnewForm.pincode.$pristine"  class="error">
+                                         <div ng-show="addnewForm.postcode.$error.minlength && !addnewForm.postcode.$pristine"  class="error">
 
-                                        <span ng-message="addnewForm.pincode.$invalid" ng-show="addnewForm.pincode.$touched" >Pincode is too short.</span>
+                                        <span ng-message="addnewForm.postcode.$invalid" ng-show="addnewForm.postcode.$touched" >Pincode is too short.</span>
                                         </div>
 
-                                        <div ng-show="addnewForm.pincode.$error.maxlength && !addnewForm.pincode.$pristine" class="error">
+                                        <div ng-show="addnewForm.postcode.$error.maxlength && !addnewForm.postcode.$pristine" class="error">
 
-                                        <span ng-message="addnewForm.pincode.$invalid" ng-show="addnewForm.pincode.$touched">Pincode number is too long .</span>
+                                        <span ng-message="addnewForm.postcode.$invalid" ng-show="addnewForm.postcode.$touched">Pincode number is too long .</span>
                                         </div>
 
                                         <div ng-show="addnewForm.$submitted ">
-                                        <span ng-show="addnewForm.pincode.$error.required" class="error">Tell us your Pincode.</span>
+                                        <span ng-show="addnewForm.postcode.$error.required" class="error">Tell us your Pincode.</span>
                                         </div>
 
 
@@ -923,30 +923,30 @@
 
                                 <div class="col-xs-12 col-sm-4 nopadding" >
                                     <div class="form-group"
-                                     ng-class="{ 'error' : (BillingADDForm.pincode.$invalid && !BillingADDForm.pincode.$pristine && BillingADDForm.pincode.$touched)  || (BillingADDForm.$submitted && BillingADDForm.pincode.$error.required)  }">
+                                     ng-class="{ 'error' : (BillingADDForm.postcode.$invalid && !BillingADDForm.postcode.$pristine && BillingADDForm.postcode.$touched)  || (BillingADDForm.$submitted && BillingADDForm.postcode.$error.required)  }">
                                         <label for="Pincode">Pincode</label>
                                         <input id="Pincode"
-                                        name="pincode"
+                                        name="postcode"
                                         type="number"
                                         class="form-control"
                                         placeholder="Pincode"
                                         ng-minlength="6"
                                         ng-maxlength="6"
-                                        ng-model="addNewBilling.pincode"
-                                               ng-blur="changePincodeBilling(addNewBilling.pincode)"
+                                        ng-model="addNewBilling.postcode"
+                                               ng-blur="changePincodeBilling(addNewBilling.postcode)"
                                                required>
-                                        <div ng-show="BillingADDForm.pincode.$error.minlength && !BillingADDForm.pincode.$pristine"  class="error">
+                                        <div ng-show="BillingADDForm.postcode.$error.minlength && !BillingADDForm.postcode.$pristine"  class="error">
 
-                                        <span ng-message="BillingADDForm.pincode.$invalid" ng-show="BillingADDForm.pincode.$touched" >Pincode is too short.</span>
+                                        <span ng-message="BillingADDForm.postcode.$invalid" ng-show="BillingADDForm.postcode.$touched" >Pincode is too short.</span>
                                         </div>
 
-                                        <div ng-show="BillingADDForm.pincode.$error.maxlength && !BillingADDForm.pincode.$pristine" class="error">
+                                        <div ng-show="BillingADDForm.postcode.$error.maxlength && !BillingADDForm.postcode.$pristine" class="error">
 
-                                        <span ng-message="BillingADDForm.pincode.$invalid" ng-show="BillingADDForm.pincode.$touched"   >Pincode number is too long .</span>
+                                        <span ng-message="BillingADDForm.postcode.$invalid" ng-show="BillingADDForm.postcode.$touched"   >Pincode number is too long .</span>
                                         </div>
 
                                         <div ng-show="BillingADDForm.$submitted ">
-                                        <span ng-show="BillingADDForm.pincode.$error.required" class="error">Tell us your Pincode.</span>
+                                        <span ng-show="BillingADDForm.postcode.$error.required" class="error">Tell us your Pincode.</span>
                                         </div>
                                     </div>
 
