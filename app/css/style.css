@@ -582,7 +582,7 @@ a.signup-g{margin-left:10px;}
     .order-cont .pad-t-7{padding-top:7px;}
     div[check-out] .overlay-out-stock{ background: #222222; opacity: 0.5; width:100%;/* 310px;*/ height:211px; position:relative; top:0px; left:0px;border: solid 1px #981937;}
 
-    .procd-to-checkout{position:fixed; bottom:0; left:0; z-index: 99; margin-bottom: 0px;}
+    .procd-to-checkout{position:fixed; bottom:0; left:0; z-index: 99; margin-bottom: 0px;border-radius: 0px}
 
     div[empt-cart] .empty-head{font-size: 16px; line-height: 2.1; letter-spacing: 1.1px;}
     div[empt-cart] .empty-txt{font-size: 14px; line-height: 0.6;}
