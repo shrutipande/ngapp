@@ -124,6 +124,10 @@ define(['./index'], function (controllers) {
 				json.accessToken = provider === 'facebook' ? data.access_token : undefined;
 				json.clientCode = provider === 'google' ? data.config.data.code : undefined;
 				json.clientId = provider === 'google' ? data.config.data.clientId : undefined;
+				json.redirectUri = provider === 'google' ? data.config.data.redirectUri : undefined;
+
+				// console.log(json);
+				// return;
 
 				craftsvillaService.socialAuth(json)
 				.success(function (_data) {
