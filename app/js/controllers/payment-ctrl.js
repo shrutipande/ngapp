@@ -46,32 +46,32 @@ define(['./index'], function (controllers) {
 				'Visa': {
 					'CC': 'CC',
 					'DC': 'VISA',
-					'img': '../images/card-types/visa.png'
+					'img': '../images/card-types/visa.svg'
 				},
 				'MasterCard': {
 					'CC': 'CC',
 					'DC': 'MAST',
-					'img': '../images/card-types/mastercard.png'
+					'img': '../images/card-types/mastercard.svg'
 				},
 				'American Express': {
 					'CC': 'AMEX',
 					'DC': 'AMEX',
-					'img': '../images/card-types/american-express.png'
+					'img': '../images/card-types/american-express.svg'
 				},
 				'Diners Club': {
 					'CC': 'DINR',
 					'DC': 'DINR',
-					'img': '../images/card-types/dinners-club.png'
+					'img': '../images/card-types/dinners-club.svg'
 				},
 				'Maestro': {
 					'DC': 'MAES',
 					'CC': 'MAES',
-					'img': '../images/card-types/maestro.png'
+					'img': '../images/card-types/maestro.svg'
 				},
 				'Discover': {
 					'DC': '',
 					'CC': '',
-					'img': '../images/card-types/discover.png'
+					'img': '../images/card-types/discover.svg'
 				}
 			};
 

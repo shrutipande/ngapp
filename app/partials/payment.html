@@ -309,7 +309,7 @@
 												ng-blur="forms.creditForm.cardNumber.$xblur=true"
 												ng-focus="forms.creditForm.cardNumber.$xblur=false">
 											<p ng-show="validate('cardNumber', forms.creditForm)">Invalid Credit Card</p>
-											<span class="card-type"><img ng-src="{{getCCTypeImage(forms.creditForm.cardNumber.$ccEagerType)}}" /></span>
+											<span class="card-type" ng-if="forms.creditForm.cardNumber.$viewValue.length > 0"><img ng-src="{{getCCTypeImage(forms.creditForm.cardNumber.$ccEagerType)}}" /></span>
 										</fieldset>
 									</div>
 									<div class="col-xs-12 nopadding">
@@ -406,7 +406,7 @@
 												ng-blur="forms.debitForm.cardNumber.$xblur=true"
 												ng-focus="forms.debitForm.cardNumber.$xblur=false">
 											<p ng-show="validate('cardNumber', forms.debitForm)">Invalid Debit Card</p>
-											<span class="card-type"><img ng-src="{{getCCTypeImage(forms.debitForm.cardNumber.$ccEagerType)}}" /></span>
+											<span class="card-type" ng-if="forms.debitForm.cardNumber.$viewValue.length > 0"><img ng-src="{{getCCTypeImage(forms.debitForm.cardNumber.$ccEagerType)}}" /></span>
 										</fieldset>
 									</div>
 									<div class="col-xs-12 nopadding">
@@ -566,7 +566,7 @@
 															ng-blur="forms.creditForm_mobile.cardNumber.$xblur=true"
 															ng-focus="forms.creditForm_mobile.cardNumber.$xblur=false">
 														<p ng-show="validate('cardNumber', forms.creditForm_mobile)">Invalid Credit Card</p>
-														<span class="card-type"><img ng-src="{{getCCTypeImage(forms.creditForm_mobile.cardNumber.$ccEagerType)}}" /></span>
+														<span class="card-type" ng-if="forms.creditForm_mobile.cardNumber.$viewValue.length > 0"><img ng-src="{{getCCTypeImage(forms.creditForm_mobile.cardNumber.$ccEagerType)}}" /></span>
 													</fieldset>
 												</div>
 												<div class="col-xs-12 nopadding">
@@ -663,7 +663,7 @@
 															ng-blur="forms.debitForm_mobile.cardNumber.$xblur=true"
 															ng-focus="forms.debitForm_mobile.cardNumber.$xblur=false">
 														<p ng-show="validate('cardNumber', forms.debitForm_mobile)">Invalid Debit Card</p>
-														<span class="card-type"><img ng-src="{{getCCTypeImage(forms.debitForm_mobile.cardNumber.$ccEagerType)}}" /></span>
+														<span class="card-type" ng-if="forms.debitForm_mobile.cardNumber.$viewValue.length > 0"><img ng-src="{{getCCTypeImage(forms.debitForm_mobile.cardNumber.$ccEagerType)}}" /></span>
 													</fieldset>
 												</div>
 												<div class="col-xs-12 nopadding">
