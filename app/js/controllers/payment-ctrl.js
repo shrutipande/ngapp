@@ -288,7 +288,13 @@ define(['./index'], function (controllers) {
 	            var hiddenField = document.createElement("input");
 	            hiddenField.setAttribute("type", "hidden");
 	            hiddenField.setAttribute("name", key);
-	            hiddenField.setAttribute("value", data.parameter[key]);
+							
+							if(data.parameter[key] instanceof Array) {
+                hiddenField.setAttribute("value", JSON.stringify(data.parameter[key]));
+              }
+              else {
+                  hiddenField.setAttribute("value", data.parameter[key]);
+              }
 
 	            form.appendChild(hiddenField);
 		         }
