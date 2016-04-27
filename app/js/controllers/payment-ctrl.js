@@ -6,7 +6,7 @@ define(['./index'], function (controllers) {
 			$scope.credit = {};
 			$scope.credit_mobile = {};
 			$scope.debit = {};
-			$scope.nb = { netbanking : {} };
+			$scope.nb = {};
 			$scope.imgHost = $scope.IMGHOST + '/thumb/166x166';
 			$scope.prdctUrl = PRODUCTURL;
 			$scope.showDetails = false;
@@ -47,32 +47,32 @@ define(['./index'], function (controllers) {
 				'Visa': {
 					'CC': 'CC',
 					'DC': 'VISA',
-					'img': '../images/card-types/visa.png'
+					'img': '../images/card-types/visa.svg'
 				},
 				'MasterCard': {
 					'CC': 'CC',
 					'DC': 'MAST',
-					'img': '../images/card-types/mastercard.png'
+					'img': '../images/card-types/mastercard.svg'
 				},
 				'American Express': {
 					'CC': 'AMEX',
 					'DC': 'AMEX',
-					'img': '../images/card-types/american-express.png'
+					'img': '../images/card-types/american-express.svg'
 				},
 				'Diners Club': {
 					'CC': 'DINR',
 					'DC': 'DINR',
-					'img': '../images/card-types/dinners-club.png'
+					'img': '../images/card-types/dinners-club.svg'
 				},
 				'Maestro': {
 					'DC': 'MAES',
 					'CC': 'MAES',
-					'img': '../images/card-types/maestro.png'
+					'img': '../images/card-types/maestro.svg'
 				},
 				'Discover': {
 					'DC': '',
 					'CC': '',
-					'img': '../images/card-types/discover.png'
+					'img': '../images/card-types/discover.svg'
 				}
 			};
 
@@ -192,7 +192,7 @@ define(['./index'], function (controllers) {
 			$scope.submitNBForm = function() {
 				craftsvillaService.placeOrder({
 					"pg": $scope.pg,
-					"bankcode":$scope.nb.netbanking.bank_code,
+					"bankcode":$scope.nb.netbanking,
 					"ccnum": '',
 					"ccname": '',
 					"ccvv": '',
@@ -307,7 +307,13 @@ define(['./index'], function (controllers) {
 	            var hiddenField = document.createElement("input");
 	            hiddenField.setAttribute("type", "hidden");
 	            hiddenField.setAttribute("name", key);
-	            hiddenField.setAttribute("value", data.parameter[key]);
+							
+							if(data.parameter[key] instanceof Array) {
+                hiddenField.setAttribute("value", JSON.stringify(data.parameter[key]));
+              }
+              else {
+                  hiddenField.setAttribute("value", data.parameter[key]);
+              }
 
 	            form.appendChild(hiddenField);
 		         }
@@ -420,7 +426,7 @@ define(['./index'], function (controllers) {
 				case 'payment':
 					return form.$invalid || $scope.validate('cardExp', form);
 				case 'nb':
-					return $scope.nb.netbanking.bank_code;
+					return $scope.nb.netbanking;
 				default:
 					return false;
 				}
@@ -496,7 +502,7 @@ define(['./index'], function (controllers) {
 					case 'debit card':
 						return $scope.validate('payment', $scope.forms.debitForm_mobile);
 					case 'net banking':
-						return !($scope.nb.netbanking.bank_code);
+						return !($scope.nb.netbanking);
 					case 'payu money':
 						return false;
 					case 'paypal':

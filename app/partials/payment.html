@@ -2,7 +2,7 @@
 	<div role-nav class="container">
 		<div class="col-xs-6 nopadding" role="logo">
 			<img role="back" src="images/Shape.png" alt="" title="">
-			<a href="/" title=""><img class="logo" src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015//img/cv_logo.png" alt="" title=""></a>
+			<a href="/" title=""><img class="logo" src="/images/cv_logo.svg" alt="" title=""></a>
 			<span class="hidden-xs">Call 022 288288281 for any assistance</span>
 		</div>
 		<div class="col-xs-6 nopadding buyerProtection">
@@ -312,7 +312,7 @@
 												ng-blur="forms.creditForm.cardNumber.$xblur=true"
 												ng-focus="forms.creditForm.cardNumber.$xblur=false">
 											<p ng-show="validate('cardNumber', forms.creditForm)">Invalid Credit Card</p>
-											<span class="card-type"><img ng-src="{{getCCTypeImage(forms.creditForm.cardNumber.$ccEagerType)}}" /></span>
+											<span class="card-type" ng-if="forms.creditForm.cardNumber.$viewValue.length > 0"><img ng-src="{{getCCTypeImage(forms.creditForm.cardNumber.$ccEagerType)}}" /></span>
 										</fieldset>
 									</div>
 									<div class="col-xs-12 nopadding">
@@ -409,7 +409,7 @@
 												ng-blur="forms.debitForm.cardNumber.$xblur=true"
 												ng-focus="forms.debitForm.cardNumber.$xblur=false">
 											<p ng-show="validate('cardNumber', forms.debitForm)">Invalid Debit Card</p>
-											<span class="card-type"><img ng-src="{{getCCTypeImage(forms.debitForm.cardNumber.$ccEagerType)}}" /></span>
+											<span class="card-type" ng-if="forms.debitForm.cardNumber.$viewValue.length > 0"><img ng-src="{{getCCTypeImage(forms.debitForm.cardNumber.$ccEagerType)}}" /></span>
 										</fieldset>
 									</div>
 									<div class="col-xs-12 nopadding">
@@ -489,15 +489,15 @@
 							<form class="col-xs-12 NetBanking" name="forms.NBForm" novalidate ng-if = "item.method == 'Net Banking'">
 								<ul role="nasted-list">
 									<li ng-repeat = "bank in item.content.priority">
-										<input id="{{bank.bank_code}}" type="radio" name="bank" value="{{bank.bank_code}}" ng-model="nb.netbanking.bank_code" required>
-										<label for="{{bank.bank_code}}"><span></span><img ng-src="/images/{{bank.logo_url}}" alt="{{bank.bank_name}}" /></label>
+										<input id="{{bank.bank_code}}" type="radio" name="bank" value="{{bank.bank_code}}" ng-model="nb.netbanking" required>
+										<label for="{{bank.bank_code}}"><span></span><img ng-src="/images/{{bank.logo_url}}" alt="{{bank.bank_name}}"/></label>
 									</li>
 
 								</ul>
 								<div class="col-xs-12 nopadding">
 									<span class="pull-left or">OR</span>
 									<div class="select-style">
-										<select ng-model="nb.netbanking" name="bank" ng-options="item as item.bank_name for item in item.content.others" required></select>
+										<select ng-model="nb.netbanking" name="bank" ng-options="item.bank_code as item.bank_name for item in item.content.others" required></select>
 									</div>
 									<div ng-show="forms.NBForm.$submitted && forms.NBForm.$invalid">
 										<span class="error">Please provide correct information</span>
@@ -569,7 +569,7 @@
 															ng-blur="forms.creditForm_mobile.cardNumber.$xblur=true"
 															ng-focus="forms.creditForm_mobile.cardNumber.$xblur=false">
 														<p ng-show="validate('cardNumber', forms.creditForm_mobile)">Invalid Credit Card</p>
-														<span class="card-type"><img ng-src="{{getCCTypeImage(forms.creditForm_mobile.cardNumber.$ccEagerType)}}" /></span>
+														<span class="card-type" ng-if="forms.creditForm_mobile.cardNumber.$viewValue.length > 0"><img ng-src="{{getCCTypeImage(forms.creditForm_mobile.cardNumber.$ccEagerType)}}" /></span>
 													</fieldset>
 												</div>
 												<div class="col-xs-12 nopadding">
@@ -666,7 +666,7 @@
 															ng-blur="forms.debitForm_mobile.cardNumber.$xblur=true"
 															ng-focus="forms.debitForm_mobile.cardNumber.$xblur=false">
 														<p ng-show="validate('cardNumber', forms.debitForm_mobile)">Invalid Debit Card</p>
-														<span class="card-type"><img ng-src="{{getCCTypeImage(forms.debitForm_mobile.cardNumber.$ccEagerType)}}" /></span>
+														<span class="card-type" ng-if="forms.debitForm_mobile.cardNumber.$viewValue.length > 0"><img ng-src="{{getCCTypeImage(forms.debitForm_mobile.cardNumber.$ccEagerType)}}" /></span>
 													</fieldset>
 												</div>
 												<div class="col-xs-12 nopadding">
@@ -747,7 +747,7 @@
 											<form name="forms.NBForm_mobile" novalidate >
 												<ul role="nasted-list">
 													<li ng-repeat = "bank in item.content.priority">
-														<input id="{{bank.bank_code}}" type="radio" name="bank" value="{{bank.bank_code}}" ng-model="nb.netbanking.bank_code" required>
+														<input id="{{bank.bank_code}}" type="radio" name="bank" value="{{bank.bank_code}}" ng-model="nb.netbanking" required>
 														<label for="{{bank.bank_code}}"><span></span><img ng-src="/images/{{bank.logo_url}}" alt="{{bank.bank_name}}" /></label>
 													</li>
 
@@ -755,7 +755,7 @@
 												<div class="col-xs-12 nopadding">
 													<span class="pull-left or">OR</span>
 													<div class="select-style">
-														<select ng-model="nb.netbanking" name="bank" ng-options="item as item.bank_name for item in item.content.others" required></select>
+														<select ng-model="nb.netbanking" name="bank" ng-options="item.bank_code as item.bank_name for item in item.content.others" required></select>
 													</div>
 												</div>
 												<div ng-show="forms.NBForm_mobile.$submitted && forms.NBForm_mobile.$invalid">
