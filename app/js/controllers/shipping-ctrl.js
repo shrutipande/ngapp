@@ -149,6 +149,7 @@ define(['./index'], function (controllers) {
           $scope.shipping.isSame=1;
           $scope.shipping.countryName = $scope.addnewcountry.country_name;
           console.log($scope.shipping)
+          $scope.shipping.pincode = $scope.shipping.postcode;
           craftsvillaService.addAddress($scope.shipping, $scope.shipping)
               .success(function (response) {
                 craftsvillaService.getAddress()
