@@ -6,7 +6,7 @@ define(['./index'], function (controllers) {
 			$scope.credit = {};
 			$scope.credit_mobile = {};
 			$scope.debit = {};
-			$scope.nb = { netbanking : {} };
+			$scope.nb = {};
 			$scope.imgHost = $scope.IMGHOST + '/thumb/166x166';
 			$scope.prdctUrl = PRODUCTURL;
 			$scope.showDetails = false;
@@ -181,7 +181,7 @@ define(['./index'], function (controllers) {
 			$scope.submitNBForm = function() {
 				craftsvillaService.placeOrder({
 					"pg": $scope.pg,
-					"bankcode":$scope.nb.netbanking.bank_code,
+					"bankcode":$scope.nb.netbanking,
 					"ccnum": '',
 					"ccname": '',
 					"ccvv": '',
@@ -400,7 +400,7 @@ define(['./index'], function (controllers) {
 				case 'payment':
 					return form.$invalid || $scope.validate('cardExp', form);
 				case 'nb':
-					return $scope.nb.netbanking.bank_code;
+					return $scope.nb.netbanking;
 				default:
 					return false;
 				}
@@ -475,7 +475,7 @@ define(['./index'], function (controllers) {
 					case 'debit card':
 						return $scope.validate('payment', $scope.forms.debitForm_mobile);
 					case 'net banking':
-						return !($scope.nb.netbanking.bank_code);
+						return !($scope.nb.netbanking);
 					case 'payu money':
 						return false;
 					case 'paypal':
