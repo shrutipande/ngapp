@@ -36,6 +36,7 @@ define(['./index'], function (services) {
       placeOrderCOD: placeOrderCOD,
       getSuccessData:getSuccessData,
       getAddressFromPincode : getAddressFromPincode,
+      getOrderDetails : getOrderDetails,
       socialAuth: socialAuth,
       getRecommendation: getRecommendation
     };
@@ -302,9 +303,10 @@ define(['./index'], function (services) {
     function getSuccessData() {
       return $http.get( HOST + 'checkoutService/index/loadFinalQuote');
       //return $http.get( 'https://api.myjson.com/bins/3wu38');
+    }
 
-
-
+    function getOrderDetails(){
+       return $http.get( HOST + 'checkoutService/index/orderDetails');
     }
 
 

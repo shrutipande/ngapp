@@ -10,6 +10,7 @@ define(['./index'], function (controllers) {
 			$scope.imgHost = $scope.IMGHOST + '/thumb/166x166';
 			$scope.prdctUrl = PRODUCTURL;
 			$scope.showDetails = false;
+			$scope.placeOrderLoader=false;
 			// Repeat
 
 			// Tabs
@@ -82,9 +83,11 @@ define(['./index'], function (controllers) {
 			$scope.submitCOD = function () {
 				craftsvillaService.placeOrderCOD()
 				.success(function (data) {
+					$scope.placeOrderLoader=false;
 					$state.go('payments-success');
 				})
 				.error(function (error) {
+					$scope.placeOrderLoader=true;
 					$state.go('payments-failure');
 				});
 			};
@@ -103,6 +106,9 @@ define(['./index'], function (controllers) {
 				.success(function(data){
 					// console.log(data);
 					// return;
+
+					$scope.placeOrderLoader=false;
+
 					var form = document.createElement("form");
 			    form.setAttribute("method", 'POST');
 			    form.setAttribute("action", data.url);
@@ -130,6 +136,7 @@ define(['./index'], function (controllers) {
 					// })
 				})
 				.error(function(err){
+					$scope.placeOrderLoader=true;
 					console.log(err);
 				});
 			};
@@ -148,6 +155,9 @@ define(['./index'], function (controllers) {
 				.success(function(data){
 					// console.log(data);
 					// return;
+
+					$scope.placeOrderLoader=false;
+
 					var form = document.createElement("form");
 			    form.setAttribute("method", 'POST');
 			    form.setAttribute("action", data.url);
@@ -175,6 +185,7 @@ define(['./index'], function (controllers) {
 					// })
 				})
 				.error(function(err){
+					$scope.placeOrderLoader=true;
 					console.log(err);
 				});
 			};
@@ -190,6 +201,8 @@ define(['./index'], function (controllers) {
 					"gateway": 'payu'
 				})
 				.success(function(data){
+					$scope.placeOrderLoader=false;
+
 					var form = document.createElement("form");
 			    form.setAttribute("method", 'POST');
 			    form.setAttribute("action", data.url);
@@ -217,6 +230,7 @@ define(['./index'], function (controllers) {
 					// })
 				})
 				.error(function(err){
+					$scope.placeOrderLoader=true;
 					console.log(err);
 				});
 			};
@@ -234,6 +248,8 @@ define(['./index'], function (controllers) {
 				.success(function(data){
 					// console.log(data);
 					// return;
+					$scope.placeOrderLoader=false;
+
 					var form = document.createElement("form");
 			    form.setAttribute("method", 'POST');
 			    form.setAttribute("action", data.url);
@@ -261,6 +277,7 @@ define(['./index'], function (controllers) {
 					// })
 				})
 				.error(function(err){
+					$scope.placeOrderLoader=true;
 					console.log(err);
 				});
 			};
@@ -279,6 +296,8 @@ define(['./index'], function (controllers) {
 				.success(function(data){
 					// console.log(data);
 					// return;
+					$scope.placeOrderLoader=false;
+
 					var form = document.createElement("form");
 			    form.setAttribute("method", 'POST');
 			    form.setAttribute("action", data.url);
@@ -288,7 +307,13 @@ define(['./index'], function (controllers) {
 	            var hiddenField = document.createElement("input");
 	            hiddenField.setAttribute("type", "hidden");
 	            hiddenField.setAttribute("name", key);
-	            hiddenField.setAttribute("value", data.parameter[key]);
+							
+							if(data.parameter[key] instanceof Array) {
+                hiddenField.setAttribute("value", JSON.stringify(data.parameter[key]));
+              }
+              else {
+                  hiddenField.setAttribute("value", data.parameter[key]);
+              }
 
 	            form.appendChild(hiddenField);
 		         }
@@ -306,6 +331,7 @@ define(['./index'], function (controllers) {
 					// })
 				})
 				.error(function(err){
+					$scope.placeOrderLoader=true;
 					console.log(err);
 				});
 			};
@@ -435,6 +461,7 @@ define(['./index'], function (controllers) {
 			}
 
 			$scope.placeOrder = function () {
+				$scope.placeOrderLoader=true;
 				if(!$scope.changeName) return;
 				var toSubmit = true;
 				if($scope.isPaymentNotAllowed()){

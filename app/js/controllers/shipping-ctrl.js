@@ -21,6 +21,8 @@ define(['./index'], function (controllers) {
     $scope.tempShipping=null;
     $scope.everChanged=false;
 
+    $scope.deliverToAddress=false;
+
     // All Functions
 
     /*----Fetech Country---*/
@@ -440,6 +442,7 @@ define(['./index'], function (controllers) {
 
     $scope.proceed=function(){
       var goahead = false;
+      $scope.deliverToAddress=true;
       console.log($scope.billingID , $scope.shippingID , $scope.tempBilling , $scope.tempShipping)
 
       if ($scope.everChanged == false) {
@@ -464,6 +467,7 @@ define(['./index'], function (controllers) {
             .success(function(response)
             {
               if(response.s == 1){
+                $scope.deliverToAddress=false;
                 $state.go('payment', { platform: 'web' });
               }
               else{

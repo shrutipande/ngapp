@@ -32,7 +32,7 @@
 				<div class="mobile-top visible-sm visible-xs pull-right">
 					<i class="icon-v2 icon-small icon-search-v2 header-mobile-icon"></i>
 					<a href="/wishlist/"><i class="icon-v2 icon-wish icon-small header-mobile-icon"></i></a>
-					<a class="cart-icon-section" rel="nofollow" ng-href="/checkout" ng-click="dataLayer.push({'event':'WentToCartEvent','eventName':'WentToCart','source':'TopNavigation','count':'{{items}}'});">
+					<a class="cart-icon-section" rel="nofollow" ng-href="/buy/#/cart" ng-click="dataLayer.push({'event':'WentToCartEvent','eventName':'WentToCart','source':'TopNavigation','count':'{{items}}'});">
 						<span class="icon-container">
 							<i class="icon-v2 icon-cart icon-small header-mobile-icon"></i>
 							<span class="cart-count-container">
@@ -76,7 +76,7 @@
 				<a class="col-md-2 wishlist" href="/wishlist/">
 					<i class="icon-small icon-wish"></i>
 				</a>
-				<a class="cart-icon-container header-icon-container" rel="nofollow" ng-href="/checkout" ng-click="dataLayer.push({'event':'WentToCartEvent','eventName':'WentToCart','source':'TopNavigation','count':'{{items}}'});">
+				<a class="cart-icon-container header-icon-container" rel="nofollow" ng-href="/buy/#/cart" ng-click="dataLayer.push({'event':'WentToCartEvent','eventName':'WentToCart','source':'TopNavigation','count':'{{items}}'});">
 					<li class="col-md-4 cart-container">
 						<span class="cart-icon">
 							<i class="icon-v2 icon-cart icon-small"></i>
@@ -236,7 +236,7 @@
                 <div class="check-out-msg-txt"> Item removed from your cart</div>
                 <div class="check-out-msg-btn" ng-click="addToCart()">undo</div>
             </div>
-            <div empt-cart="" ng-if="items == '0'">
+            <div empt-cart="" ng-if="items == '0' || noItemsPresent">
                 <div class="empty-head">YOUR CART IS EMPTY</div>
                 <div class="empty-txt">Start shopping with options below.</div>
                 <div class="empty-lst">

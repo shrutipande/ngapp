@@ -184,6 +184,8 @@
                                                     ng-maxlength="6"
                                                     placeholder="Pincode">
 
+                                                    <div ng-show="DeseditaddrForm.pincode.$error.minlength && !DeseditaddrForm.pincode.$pristine"  class="error">
+
                                                     <div ng-show="DeseditaddrForm.postcode.$error.minlength && !DeseditaddrForm.postcode.$pristine"  class="error">
 
                                         <span ng-message="DeseditaddrForm.postcode.$invalid" ng-show="DeseditaddrForm.postcode.$touched" >Pincode is too short.</span>
@@ -383,7 +385,6 @@
                                     </div>
                                     <span ng-message="DeseditaddrForm.address.$error.minlength && !DeseditaddrForm.address.$pristine" ng-show="DeseditaddrForm.address.$invalid && DeseditaddrForm.address.$touched"  class="error">Address is too short.</span>                                            </div>
 
-<!--- postcode-->
                                    <div class="col-xs-12 col-sm-4 nopadding" >
                                     <div class="form-group"
                                      ng-class="{ 'error' : (DeseditaddrForm.postcode.$invalid && !DeseditaddrForm.postcode.$pristine && DeseditaddrForm.postcode.$touched)  || (DeseditaddrForm.$submitted && DeseditaddrForm.postcode.$error.required)  }">
@@ -466,7 +467,6 @@
                                     <span class="error" ng-show="DeseditaddrForm.$submitted && DeseditaddrForm.state.$error.required">Please Select State</span>
 
                                 </div>
-<!----end postcode-->
 
 
                              <div class="form-group col-sm-8 col-xs-12 nopadding"
@@ -535,7 +535,9 @@
                 </div>
 
                     <div  class="col-xs-12 nopadding  hidden-xs" ng-hide="displayAddresscheckbox">
-                            <input class="btn btn-newStyle btn-newStyleActive " type="button" value="DELIVER TO THIS ADDRESS" style="width:30%;" ng-click="proceed();">
+                            <button class="btn btn-newStyle btn-newStyleActive "  style="width:30%;" ng-click="proceed();">
+                               <span ng-show="!deliverToAddress" > DELIVER TO THIS ADDRESS </span>
+                            <img ng-show="deliverToAddress"  src="images/loader.gif" class="small-loader"/>
                         </div>
                     </div>
 
@@ -694,7 +696,7 @@
                                 </div>
 
 
-                                <div class="col-xs-12 col-sm-4 nopadding" >
+                                <div class="col-xs-12 col-sm-6 nopadding" >
                                     <div class="form-group"
                                      ng-class="{ 'error' : (addnewForm.postcode.$invalid && !addnewForm.postcode.$pristine && addnewForm.postcode.$touched)  || (addnewForm.$submitted && addnewForm.postcode.$error.required)  }">
                                         <label for="Pincode">Pincode</label>
@@ -732,7 +734,7 @@
                                      <img ng-show="citystateWait" src="images/loader.gif" class="loader m-loAd">
                                 </div>
 
-                                <div class="col-xs-12 col-sm-6 m-padding">
+                                <div class="col-xs-12 col-sm-6 m-padding padding-right-0">
                                     <div class="form-group" ng-class="{ 'error' : (addnewForm.city.$invalid && !addnewForm.city.$pristine && addnewForm.city.$touched) || (addnewForm.$submitted && addnewForm.city.$error.required) }">
                                         <label for="City">City</label>
                                         <input type="text"

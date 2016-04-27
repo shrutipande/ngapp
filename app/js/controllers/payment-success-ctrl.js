@@ -3,31 +3,39 @@ define(['./index'], function (controllers) {
     controllers.controller('paymentSuccessCtrl', ['$scope', '$state' ,'craftsvillaService', function ($scope, $state, craftsvillaService) {
 
       $scope.norecommendation = false;
+      $scope.waitingOrderDatails=true;
 
-    $scope.getOrderDetails = function() {
+    $scope.onSuccessDetails = function() {
     	console.log("details");
-		craftsvillaService.getSuccessData()
+		craftsvillaService.getOrderDetails()
 		.success(function (response) {
+      $scope.waitingOrderDatails=false;
 				console.log(response.d.product_list);
 				$scope.orderDetails=response.d.product_list;
 				$scope.order=response.d;
-				//$scope.orderNo=response.d.Order_number;
+				$scope.orderNo=response.d.Order_number;
+
+        console.log(response.d.Order_number);
 				console.log($scope.order);
 
 				$scope.shippingDetails=$scope.order.shippingAddress;
+        $socpe.subTotal=$scope.order.sub_total;
+        $socpe.grandTotal=$scope.order.grand_total;
+
+
 				console.log('name:');
 				console.log($scope.shippingDetails.firstname);
 				console.log($scope.shippingDetails.telephone);
 
 
-				$scope.getSubTotal();
+				//$scope.getSubTotal();
 
 				$scope.couponCode=$scope.order.coupon_code;
 				console.log($scope.couponCode);
 				$scope.shippingAmount=$scope.order.shipping_amount;
 				console.log($scope.shippingAmount);
 				console.log($scope.shippingAmount);
-				$scope.totalPayable=$scope.subTotal-$scope.couponCode+$scope.shippingAmount;
+
 
 
 		})
@@ -66,7 +74,7 @@ define(['./index'], function (controllers) {
       };
 
       $scope.initPaymentSuccess = function() {
-     $scope.getOrderDetails();
+     $scope.onSuccessDetails();
     $scope.getRecommendation();
 	};
 	$scope.initPaymentSuccess();
