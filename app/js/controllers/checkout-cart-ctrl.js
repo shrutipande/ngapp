@@ -31,6 +31,12 @@ define(['./index'], function (controllers) {
       $scope.waitingCartDatails=true;
 			craftsvillaService.loadQuote()
 			.success(function(response) {
+				if(response.d.product_list.length==0){
+					$scope.items = 0;
+					return;
+				}
+				console.log('hi');
+
         $scope.waitingCartDatails=false;
         var _outOfStockProducts = [];
 				var _inStockCod = [];
@@ -86,6 +92,11 @@ define(['./index'], function (controllers) {
 			productIds.push(data);
 			craftsvillaService.removeQuoteItems(productIds)
 			.success(function(response) {
+					if(response.d.product_list.length==0){
+					$scope.items = 0;
+					return;
+				}
+				console.log('hi remove');
         data.waitingCartItem = false;
         divideProducts(response);
 				$scope.itemRemoved = 1;
@@ -293,7 +304,8 @@ define(['./index'], function (controllers) {
 		}
 
 		$scope.continueShopping = function() {
-			$window.history.back();
+			//$window.history.back();
+
 		}
     $scope.initCheckoutCart = function() {
       $scope.getCartDetails();

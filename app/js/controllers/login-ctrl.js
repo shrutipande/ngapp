@@ -74,12 +74,13 @@ define(['./index'], function (controllers) {
 	};
 	$scope.sendPassword = function() {
 
+
 		if ($scope.sendPasswordForm.$valid ) {
 			var emailId = $scope.userForgot.forgotEmail;
 			craftsvillaService.forgotPassword(emailId)
 			.success(function (response) {
-				$scope.sendPasswd=true;
 				$scope.forgotPasswd = false;
+				$scope.sendPasswd=true;
 
 			})
 			.error(function (err) {
@@ -94,7 +95,7 @@ define(['./index'], function (controllers) {
 
 
 
-	$scope.sendPassword = function() {
+	/*$scope.sendPassword = function() {
 		console.log("send paswword");
 		console.log($scope.userForgot.forgotEmail);
 
@@ -113,7 +114,7 @@ define(['./index'], function (controllers) {
 				throw new Error(err);
 			})
 		}
-	};
+	};*/
 
 	$scope.authenticate = function(provider) {
 		$auth.authenticate(provider)
