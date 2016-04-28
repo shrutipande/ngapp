@@ -491,8 +491,8 @@ define(['./index'], function(controllers) {
         $scope.initshipping = function() {
             $scope.viewaddress();
             $scope.fetchCountries();
-             $scope.addressTracker();
-
+            $scope.addressTracker();
+            $scope.scrollToTop();
         }
         $scope.initshipping();
     }]);

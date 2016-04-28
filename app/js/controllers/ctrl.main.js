@@ -3,6 +3,8 @@ define(['./index'], function (controllers) {
 	controllers.controller('ctrl.main', [
 		'$scope',
 		'$rootScope',
+		'$window',
+		'$timeout',
 		'ENVIRONMENT',
 
 		'LSTATIC_DEV',
@@ -13,7 +15,7 @@ define(['./index'], function (controllers) {
 
 		'VIEWS',
 
-		function ($scope, $rootScope, ENVIRONMENT, LSTATIC_DEV, LSTATIC_PROD, IMGHOST_DEV, IMGHOST_PROD, VIEWS) {
+		function ($scope, $rootScope, $window, $timeout, ENVIRONMENT, LSTATIC_DEV, LSTATIC_PROD, IMGHOST_DEV, IMGHOST_PROD, VIEWS) {
 			$rootScope.ENVIRONMENT = ENVIRONMENT;
 
 			if($rootScope.ENVIRONMENT === 'development') {
@@ -30,5 +32,15 @@ define(['./index'], function (controllers) {
 			$rootScope.getScript = function (host, path) {
 				return host + path;
 			}
+
+			$rootScope.goBack = function () {
+					$timeout(function () {
+							$window.history.back();
+					}, 1000);
+      }
+
+      $rootScope.scrollToTop = function () {
+          document.body.scrollTop = document.documentElement.scrollTop = 0;
+      }
 		}]);
 });

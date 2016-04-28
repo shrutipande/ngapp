@@ -372,10 +372,12 @@ define(['./index'], function (controllers) {
 		$scope.continueShopping = function() {
 			window.location.href = "/";
 		}
+
 	$scope.initCheckoutCart = function() {
 	  $scope.getCartDetails();
 	  $scope.checkLogin();
 	  $scope.cartTracking();
+	  $scope.scrollToTop();
 	}
 	$scope.initCheckoutCart();
 	}]);
