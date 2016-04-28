@@ -493,6 +493,8 @@ define(['./index'], function(controllers) {
             $scope.fetchCountries();
             $scope.addressTracker();
             $scope.scrollToTop();
+            $scope.addressTracker();
+
         }
         $scope.initshipping();
     }]);

@@ -373,12 +373,14 @@ define(['./index'], function (controllers) {
 			window.location.href = "/";
 		}
 
-	$scope.initCheckoutCart = function() {
-	  $scope.getCartDetails();
-	  $scope.checkLogin();
-	  $scope.cartTracking();
-	  $scope.scrollToTop();
-	}
-	$scope.initCheckoutCart();
+
+    $scope.initCheckoutCart = function() {
+	      $scope.getCartDetails();
+	      $scope.checkLogin();
+		  $scope.scrollToTop();
+		  $scope.cartTracking();
+    }
+    $scope.initCheckoutCart();
+
 	}]);
 });

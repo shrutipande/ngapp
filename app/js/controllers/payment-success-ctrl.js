@@ -137,7 +137,7 @@ define(['./index'], function (controllers) {
                 orderEmail : window.userEmail,
                  item:{tempItem},
             }
-            //digitalData.totalOrderValue = "<?php echo $total_amount; ?>";
+            digitalData.totalOrderValue = productPrice;
             digitalData.events = "purchase";
         }
       }
