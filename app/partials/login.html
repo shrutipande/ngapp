@@ -103,7 +103,10 @@
 								<a role="ForgotPassword"  href="javascript:void(0)" ng-click="forgotPwd()">Forgot password?</a>
 							</fieldset>
 							<div class="BtnContainer col-xs-12 nopadding">
-								<button class="btn newBtn" type="submit"> LOGIN</button>
+								<button class="btn newBtn" type="submit">
+									<span ng-show="!loginLoader">LOGIN</span>
+									<img ng-show="loginLoader"  src="images/loader.gif" class="small-loader"/>
+								</button>
 							</div>
 						</form>
 						<div class="container-fluid ForgotPasswordContainer"  ng-show="forgotPasswd">
@@ -142,7 +145,10 @@
               </div>
 							</fieldset>
 							<div class="BtnContainer col-xs-12 nopadding">
-								<button type="submit" class="btn newBtn" >GUEST CHECKOUT </button>
+								<button type="submit" class="btn newBtn" >
+									<span ng-show="!guestCheckoutLoader">GUEST CHECKOUT</span>
+									<img ng-show="guestCheckoutLoader"  src="images/loader.gif" class="small-loader"/>
+								</button>
 							</div>
 							<p>Have an account? <span><a role="ForgotPassword" href="javascript:void(0)" ng-click="loginHere()">Login Here</a></span></p>
 						</form>

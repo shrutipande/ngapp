@@ -14,10 +14,11 @@ define(['./index'], function (controllers) {
 	};
 	$scope.changeGuestCheckout = function() {
 		if ($scope.guestUserForm.$valid ) {
+			$scope.guestCheckoutLoader = true;
       var emailId = $scope.guest.guestUserEmail;
 			craftsvillaService.continueAsGuest(emailId)
 			.success(function (response) {
-        console.log(response.s)
+        $scope.guestCheckoutLoader = false;
         if(response.s==1 )
 				{
           $localStorage.loginData = response.d;
@@ -28,6 +29,7 @@ define(['./index'], function (controllers) {
 				}
 			})
 			.error(function (err) {
+				$scope.guestCheckoutLoader = false;
 				console.log('error');
 				throw new Error(err);
 			})
@@ -52,10 +54,12 @@ define(['./index'], function (controllers) {
 
 	$scope.loginCred = function() {
 		if ($scope.userLoginForm.$valid) {
+			$scope.loginLoader = true;
 			var emailId = $scope.userLogin.email;
 			var password = $scope.userLogin.password;
 			craftsvillaService.getLogin(emailId, password)
 			.success(function (response) {
+				$scope.loginLoader = false;
 				if(response.s==0 )
 				{
 					delete $localStorage.loginData;
@@ -73,6 +77,7 @@ define(['./index'], function (controllers) {
 				}
 			})
 			.error(function (err) {
+				$scope.loginLoader = false;
 				console.log('error');
 				throw new Error(err);
 			})
