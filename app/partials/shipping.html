@@ -123,7 +123,7 @@
                                             <div ng-show="DeseditaddrForm.$submitted">
                                                 <span ng-show="DeseditaddrForm.firstname.$error.required" class="error">Please Enter your First Name.</span>
                                             </div>
-                                            <span ng-message="DeseditaddrForm.firstname.$error.minlength && !DeseditaddrForm.firstname.$pristine" ng-show="DeseditaddrForm.firstname.$invalid && DeseditaddrForm.firstname.$touched" class="error">First Name is too short</span>
+                                            <span ng-message="DeseditaddrForm.firstname.$error.minlength && !DeseditaddrForm.firstname.$pristine" ng-show="DeseditaddrForm.firstname.$invalid && DeseditaddrForm.firstname.$touched" class="error">First name should be more than two characters</span>
 
                                         </div>
 
@@ -137,7 +137,7 @@
                                             <div ng-show="DeseditaddrForm.$submitted">
                                                 <span ng-show="DeseditaddrForm.lastname.$error.required" class="error">Please Enter your Last Name.</span>
                                             </div>
-                                            <span ng-message="DeseditaddrForm.lastname.$error.minlength && !DeseditaddrForm.lastname.$pristine" ng-show="DeseditaddrForm.lastname.$invalid && DeseditaddrForm.lastname.$touched" class="error">Last Name is too short</span>
+                                            <span ng-message="DeseditaddrForm.lastname.$error.minlength && !DeseditaddrForm.lastname.$pristine" ng-show="DeseditaddrForm.lastname.$invalid && DeseditaddrForm.lastname.$touched" class="error">Last name should be more than two characters</span>
                                         </div>
 
                                         <div
@@ -147,9 +147,9 @@
                                             <label for="Address">Address</label>
                                             <textarea id="Address" ng-model="editAddr.street" name="address" ng-minlength="10" class="form-control"></textarea>
                                             <div ng-show="DeseditaddrForm.$submitted">
-                                                <span ng-show="DeseditaddrForm.address.$error.required" class="error">Tell us your Address.</span>
+                                                <span ng-show="DeseditaddrForm.address.$error.required" class="error">Please enter your address for successful delivery.</span>
                                             </div>
-                                            <span ng-message="DeseditaddrForm.address.$error.minlength && !DeseditaddrForm.address.$pristine" ng-show="DeseditaddrForm.address.$invalid && DeseditaddrForm.address.$touched" class="error">Address is too short.</span>
+                                            <span ng-message="DeseditaddrForm.address.$error.minlength && !DeseditaddrForm.address.$pristine" ng-show="DeseditaddrForm.address.$invalid && DeseditaddrForm.address.$touched" class="error">Address should be more than ten characters.</span>
                                         </div>
 
                                         <div class="col-xs-12 col-sm-4 nopadding">
@@ -161,16 +161,16 @@
 
                                                 <div ng-show="DeseditaddrForm.postcode.$error.minlength && !DeseditaddrForm.postcode.$pristine" class="error">
 
-                                                    <span ng-message="DeseditaddrForm.postcode.$invalid" ng-show="DeseditaddrForm.postcode.$touched">Pincode is too short.</span>
+                                                    <span ng-message="DeseditaddrForm.postcode.$invalid" ng-show="DeseditaddrForm.postcode.$touched">Pincode should be of six digits.</span>
                                                 </div>
 
                                                 <div ng-show="DeseditaddrForm.postcode.$error.maxlength && !DeseditaddrForm.postcode.$pristine" class="error">
 
-                                                    <span ng-message="DeseditaddrForm.postcode.$invalid" ng-show="DeseditaddrForm.postcode.$touched">Pincode number is too long .</span>
+                                                    <span ng-message="DeseditaddrForm.postcode.$invalid" ng-show="DeseditaddrForm.postcode.$touched">Pincode should be of six digits .</span>
                                                 </div>
 
                                                 <div ng-show="DeseditaddrForm.$submitted ">
-                                                    <span ng-show="DeseditaddrForm.postcode.$error.required" class="error">Tell us your Pincode.</span>
+                                                    <span ng-show="DeseditaddrForm.postcode.$error.required" class="error">Please enter your pincode.</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -192,7 +192,7 @@
                                             <label for="State">State</label>
                                             <input id="State" type="text" class="form-control" name="state" ng-model="editAddr.region" placeholder="Select State">
                                             <span ng-show="DeseditaddrForm.state.$error.minlength" class="error">Username is too short.</span>
-                                            <span class="error" ng-show="DeseditaddrForm.$submitted && DeseditaddrForm.state.$error.required">Please Select State</span>
+                                            <span class="error" ng-show="DeseditaddrForm.$submitted && DeseditaddrForm.state.$error.required">Please enter your state</span>
                                         </div>
 
                                         <div class="form-group col-sm-8 col-xs-12 nopadding" ng-class="{ 'error' : DeseditaddrForm.country.$invalid && !DeseditaddrForm.country.$pristine }">
@@ -211,16 +211,16 @@
                                             </div>
                                             <div ng-show="DeseditaddrForm.phonenumber.$error.minlength && !DeseditaddrForm.phonenumber.$pristine" class="error">
 
-                                                <span ng-message="DeseditaddrForm.phonenumber.$invalid" ng-show="DeseditaddrForm.phonenumber.$touched">phonenumber is too short.</span>
+                                                <span ng-message="DeseditaddrForm.phonenumber.$invalid" ng-show="DeseditaddrForm.phonenumber.$touched">Phone number should be of ten digits.</span>
                                             </div>
 
                                             <div ng-show="DeseditaddrForm.phonenumber.$error.maxlength && !DeseditaddrForm.phonenumber.$pristine" class="error">
 
-                                                <span ng-message="DeseditaddrForm.phonenumber.$invalid" ng-show="DeseditaddrForm.phonenumber.$touched">phonenumber number is too long .</span>
+                                                <span ng-message="DeseditaddrForm.phonenumber.$invalid" ng-show="DeseditaddrForm.phonenumber.$touched">Phone number should be of ten digits .</span>
                                             </div>
 
                                             <div ng-show="DeseditaddrForm.$submitted ">
-                                                <span ng-show="DeseditaddrForm.phonenumber.$error.required" class="error">Tell us your phonenumber.</span>
+                                                <span ng-show="DeseditaddrForm.phonenumber.$error.required" class="error">Please enter your phone number for successful delivery.</span>
                                             </div>
 
                                         </div>
@@ -283,7 +283,7 @@
                                     <div ng-show="DeseditaddrForm.$submitted">
                                         <span ng-show="DeseditaddrForm.firstname.$error.required" class="error">Please Enter your First Name.</span>
                                     </div>
-                                    <span ng-message="DeseditaddrForm.firstname.$error.minlength && !DeseditaddrForm.firstname.$pristine" ng-show="DeseditaddrForm.firstname.$invalid && DeseditaddrForm.firstname.$touched" class="error">First Name is too short</span>
+                                    <span ng-message="DeseditaddrForm.firstname.$error.minlength && !DeseditaddrForm.firstname.$pristine" ng-show="DeseditaddrForm.firstname.$invalid && DeseditaddrForm.firstname.$touched" class="error">First name should be more than two characters</span>
 
                                 </div>
 
@@ -297,7 +297,7 @@
                                     <div ng-show="DeseditaddrForm.$submitted">
                                         <span ng-show="DeseditaddrForm.lastname.$error.required" class="error">Please Enter your Last Name.</span>
                                     </div>
-                                    <span ng-message="DeseditaddrForm.lastname.$error.minlength && !DeseditaddrForm.lastname.$pristine" ng-show="DeseditaddrForm.lastname.$invalid && DeseditaddrForm.lastname.$touched" class="error">last Name is too short</span>
+                                    <span ng-message="DeseditaddrForm.lastname.$error.minlength && !DeseditaddrForm.lastname.$pristine" ng-show="DeseditaddrForm.lastname.$invalid && DeseditaddrForm.lastname.$touched" class="error">Last name should be more than two characters</span>
 
                                 </div>
 
@@ -308,9 +308,9 @@
                                     <label for="Address">Address</label>
                                     <textarea id="Address" ng-model="editAddr.street" name="address" ng-minlength="10" class="form-control"></textarea>
                                     <div ng-show="DeseditaddrForm.$submitted">
-                                        <span ng-show="DeseditaddrForm.address.$error.required" class="error">Tell us your Address.</span>
+                                        <span ng-show="DeseditaddrForm.address.$error.required" class="error">Please enter your address for successful delivery.</span>
                                     </div>
-                                    <span ng-message="DeseditaddrForm.address.$error.minlength && !DeseditaddrForm.address.$pristine" ng-show="DeseditaddrForm.address.$invalid && DeseditaddrForm.address.$touched" class="error">Address is too short.</span>
+                                    <span ng-message="DeseditaddrForm.address.$error.minlength && !DeseditaddrForm.address.$pristine" ng-show="DeseditaddrForm.address.$invalid && DeseditaddrForm.address.$touched" class="error">Address should be more than ten characters.</span>
                                 </div>
 
                                 <!--- postcode-->
@@ -321,16 +321,16 @@
 
                                         <div ng-show="DeseditaddrForm.postcode.$error.minlength && !DeseditaddrForm.postcode.$pristine" class="error">
 
-                                            <span ng-message="DeseditaddrForm.postcode.$invalid" ng-show="DeseditaddrForm.postcode.$touched">Pincode is too short.</span>
+                                            <span ng-message="DeseditaddrForm.postcode.$invalid" ng-show="DeseditaddrForm.postcode.$touched">Pincode should be of six digits.</span>
                                         </div>
 
                                         <div ng-show="DeseditaddrForm.postcode.$error.maxlength && !DeseditaddrForm.postcode.$pristine" class="error">
 
-                                            <span ng-message="DeseditaddrForm.postcode.$invalid" ng-show="DeseditaddrForm.postcode.$touched">Pincode number is too long .</span>
+                                            <span ng-message="DeseditaddrForm.postcode.$invalid" ng-show="DeseditaddrForm.postcode.$touched">Pincode should be of six digits .</span>
                                         </div>
 
                                         <div ng-show="DeseditaddrForm.$submitted ">
-                                            <span ng-show="DeseditaddrForm.postcode.$error.required" class="error">Tell us your Pincode.</span>
+                                            <span ng-show="DeseditaddrForm.postcode.$error.required" class="error">Please enter your pincode.</span>
                                         </div>
 
                                     </div>
@@ -352,7 +352,7 @@
                                             <option value="0">Select City</option>
                                             </select> -->
 
-                                        <span class="error" ng-show="DeseditaddrForm.$submitted && DeseditaddrForm.city.$error.required">Please Select City</span>
+                                        <span class="error" ng-show="DeseditaddrForm.$submitted && DeseditaddrForm.city.$error.required">Please enter your city</span>
                                     </div>
                                 </div>
 
@@ -366,7 +366,7 @@
                                     <label for="State">State</label>
                                     <input type="text" ng-model="editAddr.region" name="state" required class="form-control" placeholder="State">
                                     <!-- <span ng-show="DeseditaddrForm.state.$error.minlength" class="error">State is too short.</span> -->
-                                    <span class="error" ng-show="DeseditaddrForm.$submitted && DeseditaddrForm.state.$error.required">Please Select State</span>
+                                    <span class="error" ng-show="DeseditaddrForm.$submitted && DeseditaddrForm.state.$error.required">Please enter your state</span>
 
                                 </div>
                                 <!----end postcode-->
@@ -382,16 +382,16 @@
                                     </div>
                                     <div ng-show="DeseditaddrForm.phonenumber.$error.minlength && !DeseditaddrForm.phonenumber.$pristine" class="error">
 
-                                        <span ng-message="DeseditaddrForm.phonenumber.$invalid" ng-show="DeseditaddrForm.phonenumber.$touched">Phonenumber is too short.</span>
+                                        <span ng-message="DeseditaddrForm.phonenumber.$invalid" ng-show="DeseditaddrForm.phonenumber.$touched">Phone number should be of ten digits.</span>
                                     </div>
 
                                     <div ng-show="DeseditaddrForm.phonenumber.$error.maxlength && !DeseditaddrForm.phonenumber.$pristine" class="error">
 
-                                        <span ng-message="DeseditaddrForm.phonenumber.$invalid" ng-show="DeseditaddrForm.phonenumber.$touched">Phonenumber number is too long .</span>
+                                        <span ng-message="DeseditaddrForm.phonenumber.$invalid" ng-show="DeseditaddrForm.phonenumber.$touched">Phone number should be of ten digits .</span>
                                     </div>
 
                                     <div ng-show="DeseditaddrForm.$submitted ">
-                                        <span ng-show="DeseditaddrForm.phonenumber.$error.required" class="error">Tell us your Phonenumber.</span>
+                                        <span ng-show="DeseditaddrForm.phonenumber.$error.required" class="error">Please enter your phone number for successful delivery.</span>
                                     </div>
 
                                 </div>
@@ -537,7 +537,7 @@
                                     <div ng-show="addnewForm.$submitted">
                                         <span ng-show="addnewForm.firstname.$error.required" class="error">Please Enter your First Name.</span>
                                     </div>
-                                    <span ng-message="addnewForm.firstname.$error.minlength && !addnewForm.firstname.$pristine" ng-show="addnewForm.firstname.$invalid && addnewForm.firstname.$touched" class="error">First Name is too short</span>
+                                    <span ng-message="addnewForm.firstname.$error.minlength && !addnewForm.firstname.$pristine" ng-show="addnewForm.firstname.$invalid && addnewForm.firstname.$touched" class="error">First name should be more than two characters</span>
 
                                 </div>
 
@@ -548,7 +548,7 @@
                                     <div ng-show="addnewForm.$submitted">
                                         <span ng-show="addnewForm.lastname.$error.required" class="error">Please Enter your Last Name.</span>
                                     </div>
-                                    <span ng-message="addnewForm.lastname.$error.minlength && !addnewForm.lastname.$pristine" ng-show="addnewForm.lastname.$invalid && addnewForm.lastname.$touched" class="error">last Name is too short</span>
+                                    <span ng-message="addnewForm.lastname.$error.minlength && !addnewForm.lastname.$pristine" ng-show="addnewForm.lastname.$invalid && addnewForm.lastname.$touched" class="error">Last name should be more than two characters</span>
 
                                 </div>
 
@@ -558,9 +558,9 @@
                                     <textarea id="Address" name="address" ng-model="shipping.address1" class="form-control" ng-minlength="10" placeholder="Enter Address" required></textarea>
 
                                     <div ng-show="addnewForm.$submitted">
-                                        <span ng-show="addnewForm.address.$error.required" class="error">Tell us your Address.</span>
+                                        <span ng-show="addnewForm.address.$error.required" class="error">Please enter your address for successful delivery.</span>
                                     </div>
-                                    <span ng-message="addnewForm.address.$error.minlength && !addnewForm.address.$pristine" ng-show="addnewForm.address.$invalid && addnewForm.address.$touched" class="error">Address is too short.</span>
+                                    <span ng-message="addnewForm.address.$error.minlength && !addnewForm.address.$pristine" ng-show="addnewForm.address.$invalid && addnewForm.address.$touched" class="error">Address should be more than ten characters.</span>
 
                                 </div>
 
@@ -571,16 +571,16 @@
 
                                         <div ng-show="addnewForm.postcode.$error.minlength && !addnewForm.postcode.$pristine" class="error">
 
-                                            <span ng-message="addnewForm.postcode.$invalid" ng-show="addnewForm.postcode.$touched">Pincode is too short.</span>
+                                            <span ng-message="addnewForm.postcode.$invalid" ng-show="addnewForm.postcode.$touched">Pincode should be of six digits.</span>
                                         </div>
 
                                         <div ng-show="addnewForm.postcode.$error.maxlength && !addnewForm.postcode.$pristine" class="error">
 
-                                            <span ng-message="addnewForm.postcode.$invalid" ng-show="addnewForm.postcode.$touched">Pincode number is too long .</span>
+                                            <span ng-message="addnewForm.postcode.$invalid" ng-show="addnewForm.postcode.$touched">Pincode should be of six digits .</span>
                                         </div>
 
                                         <div ng-show="addnewForm.$submitted ">
-                                            <span ng-show="addnewForm.postcode.$error.required" class="error">Tell us your Pincode.</span>
+                                            <span ng-show="addnewForm.postcode.$error.required" class="error">Please enter your pincode.</span>
                                         </div>
 
                                     </div>
@@ -602,7 +602,7 @@
                                             <option value="0">Select City</option>
                                             </select> -->
 
-                                        <span class="error" ng-show="addnewForm.$submitted && addnewForm.city.$error.required">Please Select City</span>
+                                        <span class="error" ng-show="addnewForm.$submitted && addnewForm.city.$error.required">Please enter your city</span>
                                     </div>
                                 </div>
 
@@ -616,7 +616,7 @@
                                     <label for="State">State</label>
                                     <input type="text" ng-model="shipping.state" name="state" required class="form-control" placeholder="State">
                                     <span ng-show="addnewForm.state.$error.minlength" class="error">Username is too short.</span>
-                                    <span class="error" ng-show="addnewForm.$submitted && addnewForm.state.$error.required">Please Select State</span>
+                                    <span class="error" ng-show="addnewForm.$submitted && addnewForm.state.$error.required">Please enter your state</span>
 
                                 </div>
 
@@ -631,16 +631,16 @@
                                     </div>
                                     <div ng-show="addnewForm.phonenumber.$error.minlength && !addnewForm.phonenumber.$pristine" class="error">
 
-                                        <span ng-message="addnewForm.phonenumber.$invalid" ng-show="addnewForm.phonenumber.$touched">phonenumber is too short.</span>
+                                        <span ng-message="addnewForm.phonenumber.$invalid" ng-show="addnewForm.phonenumber.$touched">Phone number should be of ten digits.</span>
                                     </div>
 
                                     <div ng-show="addnewForm.phonenumber.$error.maxlength && !addnewForm.phonenumber.$pristine" class="error">
 
-                                        <span ng-message="addnewForm.phonenumber.$invalid" ng-show="addnewForm.phonenumber.$touched">phonenumber number is too long .</span>
+                                        <span ng-message="addnewForm.phonenumber.$invalid" ng-show="addnewForm.phonenumber.$touched">Phone number should be of ten digits .</span>
                                     </div>
 
                                     <div ng-show="addnewForm.$submitted ">
-                                        <span ng-show="addnewForm.phonenumber.$error.required" class="error">Tell us your phonenumber.</span>
+                                        <span ng-show="addnewForm.phonenumber.$error.required" class="error">Please enter your phone number for successful delivery.</span>
                                     </div>
 
                                 </div>
@@ -699,7 +699,7 @@
                                         <div ng-show="BillingADDForm.$submitted">
                                             <span ng-show="BillingADDForm.firstname.$error.required" class="error">Please Enter your First Name.</span>
                                         </div>
-                                        <span ng-message="BillingADDForm.firstname.$error.minlength && !BillingADDForm.firstname.$pristine" ng-show="BillingADDForm.firstname.$invalid && BillingADDForm.firstname.$touched" class="error">First Name is too short</span>
+                                        <span ng-message="BillingADDForm.firstname.$error.minlength && !BillingADDForm.firstname.$pristine" ng-show="BillingADDForm.firstname.$invalid && BillingADDForm.firstname.$touched" class="error">First name should be more than two characters</span>
 
                                     </div>
 
@@ -711,7 +711,7 @@
                                         <div ng-show="BillingADDForm.$submitted">
                                             <span ng-show="BillingADDForm.lastname.$error.required" class="error">Please Enter your Last Name.</span>
                                         </div>
-                                        <span ng-message="BillingADDForm.lastname.$error.minlength && !BillingADDForm.lastname.$pristine" ng-show="BillingADDForm.lastname.$invalid && BillingADDForm.lastname.$touched" class="error">last Name is too short</span>
+                                        <span ng-message="BillingADDForm.lastname.$error.minlength && !BillingADDForm.lastname.$pristine" ng-show="BillingADDForm.lastname.$invalid && BillingADDForm.lastname.$touched" class="error">Last name should be more than two characters</span>
 
                                     </div>
 
@@ -720,9 +720,9 @@
 
                                         <textarea id="Address" name="address" ng-model="addNewBilling.address1" class="form-control" ng-minlength="3" placeholder="Enter Address" required></textarea>
 
-                                        <span ng-message="BillingADDForm.address.$error.minlength && !BillingADDForm.address.$pristine" ng-show="BillingADDForm.address.$invalid && BillingADDForm.address.$touched" class="error">Address is too short.</span>
+                                        <span ng-message="BillingADDForm.address.$error.minlength && !BillingADDForm.address.$pristine" ng-show="BillingADDForm.address.$invalid && BillingADDForm.address.$touched" class="error">Address should be more than ten characters.</span>
                                         <div ng-show="BillingADDForm.$submitted || BillingADDForm.address.$touched">
-                                            <span ng-show="BillingADDForm.address.$error.required" class="error">Tell us your Address.</span>
+                                            <span ng-show="BillingADDForm.address.$error.required" class="error">Please enter your address for successful delivery.</span>
                                         </div>
 
                                     </div>
@@ -733,16 +733,16 @@
                                             <input id="Pincode" name="postcode" type="number" class="form-control" placeholder="Pincode" ng-minlength="6" ng-maxlength="6" ng-model="addNewBilling.postcode" ng-blur="changePincodeBilling(addNewBilling.postcode)" required>
                                             <div ng-show="BillingADDForm.postcode.$error.minlength && !BillingADDForm.postcode.$pristine" class="error">
 
-                                                <span ng-message="BillingADDForm.postcode.$invalid" ng-show="BillingADDForm.postcode.$touched">Pincode is too short.</span>
+                                                <span ng-message="BillingADDForm.postcode.$invalid" ng-show="BillingADDForm.postcode.$touched">Pincode should be of six digits.</span>
                                             </div>
 
                                             <div ng-show="BillingADDForm.postcode.$error.maxlength && !BillingADDForm.postcode.$pristine" class="error">
 
-                                                <span ng-message="BillingADDForm.postcode.$invalid" ng-show="BillingADDForm.postcode.$touched">Pincode number is too long .</span>
+                                                <span ng-message="BillingADDForm.postcode.$invalid" ng-show="BillingADDForm.postcode.$touched">Pincode should be of six digits .</span>
                                             </div>
 
                                             <div ng-show="BillingADDForm.$submitted ">
-                                                <span ng-show="BillingADDForm.postcode.$error.required" class="error">Tell us your Pincode.</span>
+                                                <span ng-show="BillingADDForm.postcode.$error.required" class="error">Please enter your pincode.</span>
                                             </div>
                                         </div>
 
@@ -761,7 +761,7 @@
                                             <option value="0">Select City</option>
                                             </select> -->
 
-                                            <span class="error" ng-show="BillingADDForm.$submitted && BillingADDForm.city.$error.required">Please Select City</span>
+                                            <span class="error" ng-show="BillingADDForm.$submitted && BillingADDForm.city.$error.required">Please enter your city</span>
                                         </div>
                                     </div>
 
@@ -769,7 +769,7 @@
                                         <label for="State">State</label>
                                         <input type="text" ng-model="addNewBilling.state" name="state" required class="form-control" placeholder="State">
                                         <span ng-show="BillingADDForm.state.$error.minlength" class="error">Username is too short.</span>
-                                        <span class="error" ng-show="BillingADDForm.$submitted && BillingADDForm.state.$error.required">Please Select State</span>
+                                        <span class="error" ng-show="BillingADDForm.$submitted && BillingADDForm.state.$error.required">Please enter your state</span>
 
                                     </div>
 
@@ -784,16 +784,16 @@
                                         </div>
                                         <div ng-show="BillingADDForm.phonenumber.$error.minlength && !BillingADDForm.phonenumber.$pristine" class="error">
 
-                                            <span ng-message="BillingADDForm.phonenumber.$invalid" ng-show="BillingADDForm.phonenumber.$touched">phonenumber is too short.</span>
+                                            <span ng-message="BillingADDForm.phonenumber.$invalid" ng-show="BillingADDForm.phonenumber.$touched">Phone number should be of ten digits.</span>
                                         </div>
 
                                         <div ng-show="BillingADDForm.phonenumber.$error.maxlength && !BillingADDForm.phonenumber.$pristine" class="error">
 
-                                            <span ng-message="BillingADDForm.phonenumber.$invalid" ng-show="BillingADDForm.phonenumber.$touched">phonenumber number is too long .</span>
+                                            <span ng-message="BillingADDForm.phonenumber.$invalid" ng-show="BillingADDForm.phonenumber.$touched">Phone number should be of ten digits .</span>
                                         </div>
 
                                         <div ng-show="BillingADDForm.$submitted ">
-                                            <span ng-show="BillingADDForm.phonenumber.$error.required" class="error">Tell us your phonenumber.</span>
+                                            <span ng-show="BillingADDForm.phonenumber.$error.required" class="error">Please enter your phone number for successful delivery.</span>
                                         </div>
                                     </div>
 
