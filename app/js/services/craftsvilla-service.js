@@ -256,7 +256,7 @@ define(['./index'], function (services) {
           "address1":shipping.address1,
           "city":shipping.city,
           "state":shipping.state,
-          "pincode":shipping.pincode,
+          "pincode":shipping.postcode,
           "country":shipping.countryName,
           "isSame":shipping.isSame,
           "phoneNo":shipping.phoneNo
@@ -267,7 +267,7 @@ define(['./index'], function (services) {
           "address1":billing.address1,
           "city":billing.city,
           "state":billing.state,
-          "pincode":billing.pincode,
+          "pincode":billing.postcode,
           "country":billing.countryName,
           "isSame":shipping.isSame,
           "phoneNo":billing.phoneNo
