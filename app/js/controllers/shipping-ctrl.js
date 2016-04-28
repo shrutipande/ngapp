@@ -150,8 +150,7 @@ define(['./index'], function(controllers) {
                                 .success(function(response) {
                                     if (response.s == 1) {
                                         $scope.addressProceed();
-                                    } else
-                                        alert(response.m)
+                                    }
                                 })
                                 .error(function(error) {
                                     console.log(error);

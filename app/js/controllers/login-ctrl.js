@@ -90,7 +90,7 @@ define(['./index'], function (controllers) {
 					$scope.sendPasswd=true;
 				}
 				else{
-					console.log(response.m);
+					alert(response.m);
 				}
 
 			})
