@@ -85,8 +85,13 @@ define(['./index'], function (controllers) {
 			var emailId = $scope.userForgot.forgotEmail;
 			craftsvillaService.forgotPassword(emailId)
 			.success(function (response) {
-				$scope.forgotPasswd = false;
-				$scope.sendPasswd=true;
+				if (response.s==1) {
+					$scope.forgotPasswd = false;
+					$scope.sendPasswd=true;
+				}
+				else{
+					console.log(response.m);
+				}
 
 			})
 			.error(function (err) {
