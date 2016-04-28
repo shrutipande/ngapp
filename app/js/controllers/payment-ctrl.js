@@ -99,7 +99,7 @@ define(['./index'], function (controllers) {
 					"ccnum": $scope.credit.cardNumber,
 					"ccname": $scope.credit.cardName,
 					"ccvv": $scope.credit.cardCvv,
-					"ccexpmon":$scope.credit.cardMonth,
+					"ccexpmon":$scope.credit.cardMonth > 9 ? $scope.credit.cardMonth : '0' + $scope.credit.cardMonth,
 					"ccexpyr": $scope.credit.cardYear,
 					"gateway": 'payu'
 				})
@@ -148,7 +148,7 @@ define(['./index'], function (controllers) {
 					"ccnum": $scope.debit.cardNumber,
 					"ccname": $scope.debit.cardName,
 					"ccvv": $scope.debit.cardCvv,
-					"ccexpmon":$scope.debit.cardMonth,
+					"ccexpmon":$scope.debit.cardMonth > 9 ? $scope.debit.cardMonth : '0' + $scope.debit.cardMonth,
 					"ccexpyr": $scope.debit.cardYear,
 					"gateway": 'payu'
 				})
