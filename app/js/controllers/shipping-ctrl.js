@@ -473,7 +473,7 @@ define(['./index'], function(controllers) {
         $scope.initshipping = function() {
             $scope.viewaddress();
             $scope.fetchCountries();
-
+            $scope.scrollToTop();
         }
         $scope.initshipping();
     }]);

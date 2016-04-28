@@ -454,6 +454,7 @@ define(['./index'], function (controllers) {
 				console.log("initializing Payment");
 				$scope.getPayments();
 				$scope.finalQuoteDetails();
+				$scope.scrollToTop();
 			};
 
 			$scope.isValidDate = function(year, month) {

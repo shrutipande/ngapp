@@ -11,7 +11,7 @@ define([
 ], function (require, ng, app) {
     'use strict';
 
-    app.run(['$rootScope', '$state', '$window', 'Auth', function ($rootScope, $state, $window, Auth) {
+    app.run(['$rootScope', '$state', 'Auth', function ($rootScope, $state, Auth) {
 
         // any functions or variables to declare at runtime
 
@@ -30,10 +30,6 @@ define([
               event.preventDefault();
             }
         });
-
-        $rootScope.goBack = function () {
-            $window.history.back();
-        }
 
     }]);
 

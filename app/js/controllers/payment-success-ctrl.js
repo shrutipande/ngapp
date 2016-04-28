@@ -74,8 +74,9 @@ define(['./index'], function (controllers) {
       };
 
       $scope.initPaymentSuccess = function() {
-     $scope.onSuccessDetails();
-    $scope.getRecommendation();
+          $scope.onSuccessDetails();
+          $scope.getRecommendation();
+          $scope.scrollToTop();
 	};
 	$scope.initPaymentSuccess();
 

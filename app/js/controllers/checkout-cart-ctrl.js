@@ -315,6 +315,7 @@ define(['./index'], function (controllers) {
     $scope.initCheckoutCart = function() {
       $scope.getCartDetails();
       $scope.checkLogin();
+			$scope.scrollToTop();
     }
     $scope.initCheckoutCart();
 	}]);
