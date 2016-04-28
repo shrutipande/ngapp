@@ -128,6 +128,14 @@ define(['./index'], function (controllers) {
 	};*/
 
 	$scope.authenticate = function(provider) {
+		if(provider == 'google') {
+			$scope.gLoader = true;
+			$scope.fbLoader = false;
+		}
+		else {
+			$scope.gLoader = false;
+			$scope.fbLoader = true;
+		}
 		$auth.authenticate(provider)
 			.then(function(data) {
 
@@ -143,11 +151,15 @@ define(['./index'], function (controllers) {
 
 				craftsvillaService.socialAuth(json)
 				.success(function (_data) {
+					$scope.gLoader = false;
+					$scope.fbLoader = false;
 					if(_data.s === 1) {
 						$localStorage.loginData = _data.d[0];
 						$state.go('shipping');
 					}
 					else {
+						$scope.gLoader = false;
+						$scope.fbLoader = false;
 						delete $localStorage.loginData;
 					}
 				})
