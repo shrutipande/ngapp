@@ -437,8 +437,10 @@ define(['./index'], function(controllers) {
             console.log($scope.billingID, $scope.shippingID, $scope.tempBilling, $scope.chkStatus)
 
             if (goahead) {
+                $scope.deliverToAddress = true;
                 craftsvillaService.assignAddressToQuote($scope.billingID, $scope.shippingID)
                     .success(function(response) {
+                        $scope.deliverToAddress = false;
                         if (response.s == 1) {
                             $state.go('payment', {
                                 platform: 'web'
@@ -449,7 +451,8 @@ define(['./index'], function(controllers) {
 
                     })
                     .error(function(error) {
-                        console.log('Error');
+                        console.log(error);
+                        $scope.deliverToAddress = false;
                     });
             } else {
                 $scope.noshippingSelected = true;
