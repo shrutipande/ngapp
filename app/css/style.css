@@ -642,6 +642,10 @@ a.signup-g{margin-left:10px;}
     word-wrap: break-word;
 }
 
+.no-events {
+    pointer-events: none;
+}
+
 /****** added by rupali for order-success page **/
 
 div[order-success-cont]{float:left;width:770px; margin: 5px 200px; }

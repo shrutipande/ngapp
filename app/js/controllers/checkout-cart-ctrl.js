@@ -303,8 +303,7 @@ define(['./index'], function (controllers) {
 		}
 
 		$scope.continueShopping = function() {
-			//$window.history.back();
-
+			window.location.href = "/";
 		}
     $scope.initCheckoutCart = function() {
       $scope.getCartDetails();
