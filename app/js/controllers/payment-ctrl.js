@@ -461,11 +461,13 @@ define(['./index'], function (controllers) {
 			}
 
 			$scope.placeOrder = function () {
-				$scope.placeOrderLoader=true;
 				if(!$scope.changeName) return;
 				var toSubmit = true;
 				if($scope.isPaymentNotAllowed()){
 					toSubmit = false;
+				}
+				else {
+					$scope.placeOrderLoader=true;
 				}
 				switch($scope.changeName.toLowerCase()) {
 					case 'cash on delivery':
