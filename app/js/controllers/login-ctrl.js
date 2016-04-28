@@ -63,7 +63,13 @@ define(['./index'], function (controllers) {
 				}
 				else{
 					$localStorage.loginData = response.d;
-					$state.go('shipping');
+					if(window.sticktocart==true)
+						{	$state.go('cart');
+						console.log('in cart');}
+						else
+							{$state.go('shipping');
+						console.log('in shipping');}
+
 				}
 			})
 			.error(function (err) {

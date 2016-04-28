@@ -66,7 +66,10 @@ define(['./index'], function (controllers) {
         throw new Error(err);
 			})
 		};
-
+		$scope.loginNow= function (){
+		  window.sticktocart = true;
+		  $state.go("login");
+		};
 		$scope.proceedToCheckout = function() {
 			$scope.proceedToCheckoutLoader=true;
 			craftsvillaService.loginCheck()
