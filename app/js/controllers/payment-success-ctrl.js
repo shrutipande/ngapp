@@ -69,7 +69,7 @@ define(['./index'], function (controllers) {
                 $scope.norecommendation = true
             })
             .error(function (error) {
-                alert(error);
+                console.log(error);
             });
       };
 

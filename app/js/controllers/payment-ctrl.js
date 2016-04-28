@@ -30,7 +30,7 @@ define(['./index'], function (controllers) {
 			};
 			// Cash On Delivery
 			$scope.cashOn = function() {
-				alert("cashOn");
+				// alert("cashOn");
 			};
 			// Credit Card Pay
 
@@ -307,7 +307,7 @@ define(['./index'], function (controllers) {
 	            var hiddenField = document.createElement("input");
 	            hiddenField.setAttribute("type", "hidden");
 	            hiddenField.setAttribute("name", key);
-							
+
 							if(data.parameter[key] instanceof Array) {
                 hiddenField.setAttribute("value", JSON.stringify(data.parameter[key]));
               }
@@ -345,7 +345,7 @@ define(['./index'], function (controllers) {
 			};
 			// Pay U Money
 			$scope.payUbtn = function() {
-				alert("Pay U Money");
+				// alert("Pay U Money");
 			};
 			// Pay U Money
 			$scope.getPayments = function() {
