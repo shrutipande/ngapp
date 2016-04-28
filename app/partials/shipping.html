@@ -422,7 +422,10 @@
                     </div>
 
                     <div class="col-xs-12 nopadding  hidden-xs" ng-hide="displayAddresscheckbox">
-                        <input class="btn btn-newStyle btn-newStyleActive " type="button" value="DELIVER TO THIS ADDRESS" style="width:30%;" ng-click="proceed();">
+                        <button class="btn btn-newStyle btn-newStyleActive "  style="width:30%;" ng-click="proceed();">
+                            <span ng-show="!deliverToAddress" > DELIVER TO THIS ADDRESS </span>
+                            <img ng-show="deliverToAddress"  src="images/loader.gif" class="small-loader"/>
+                        </button>
                     </div>
                 </div>
 
