@@ -516,7 +516,7 @@
 									</div>
 								</div>
 								<div class="col-xs-12 col-sm-8 nopadding">
-									<button  class="btn btn-newStyle bg-green" type="submit" ng-class="{'no-events': placeOrderLoader}">
+									<button  class="btn btn-newStyle bg-green" type="submit" ng-class="{'no-events': placeOrderLoader}" ng-click="placeOrder()">
 										<span ng-show="!placeOrderLoader">PAY <span><i>&#x20B9;</i>{{shippingAmountData.grand_total || 0}}</span> SECURELY</span>
 										<img ng-show="placeOrderLoader"  src="images/loader.gif" class="small-loader"/>
 									</button>
