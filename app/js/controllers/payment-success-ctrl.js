@@ -19,8 +19,8 @@ define(['./index'], function (controllers) {
 				console.log($scope.order);
 
 				$scope.shippingDetails=$scope.order.shippingAddress;
-        $socpe.subTotal=$scope.order.sub_total;
-        $socpe.grandTotal=$scope.order.grand_total;
+        $scope.subTotal=$scope.order.sub_total;
+        $scope.grandTotal=$scope.order.grand_total;
 
 
 				console.log('name:');
