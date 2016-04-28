@@ -6,11 +6,11 @@ module.exports = function(grunt) {
         watch: {
             templates: {
                 files: ['./app/partials/**/*.html', './app/templates/**/*.html'],
-                tasks: ['ngtemplates']
+                tasks: ['clean:html', 'ngtemplates']
             },
             scripts: {
                 files: ['./app/js/**/*.js', '!./app/js/main.min.js'],
-                tasks: ['requirejs']
+                tasks: ['clean:js', 'requirejs']
             },
             styles: {
                 files: ['./app/css/**/*.scss'],
@@ -71,6 +71,10 @@ module.exports = function(grunt) {
                     dest: '.'
                 }]
             }
+        },
+        clean: {
+            js: ['app/js/main.min.js'],
+            html: ['app/js/templates.js']
         }
     });
 
@@ -80,11 +84,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-requirejs');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-angular-templates');
+    grunt.loadNpmTasks('grunt-contrib-clean');
 
     // Production mode tasks
     grunt.registerTask('prod', ['sass', 'ngtemplates', 'requirejs', 'imagemin']);
 
     // Dev mode tasks
-    grunt.registerTask('default', ['sass', 'ngtemplates', 'requirejs', 'watch']);
+    grunt.registerTask('default', ['clean', 'sass', 'ngtemplates', 'requirejs', 'watch']);
 
 };
