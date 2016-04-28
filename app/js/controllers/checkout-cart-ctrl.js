@@ -6,6 +6,7 @@ define(['./index'], function (controllers) {
 		$scope.coupon = {};
 		$scope.isLoggedIn = false;
   		$scope.couponMessage = null;
+		$scope.proceedToCheckoutLoader=false;
 
 		$scope.options = [
 			{'id': 1, 'label': '1'},
@@ -67,11 +68,13 @@ define(['./index'], function (controllers) {
 		};
 
 		$scope.proceedToCheckout = function() {
+			$scope.proceedToCheckoutLoader=true;
 			craftsvillaService.loginCheck()
 				.success(function (response) {
 					if (response.s == 0) {
 						delete $localStorage.loginData;
 						$state.go('login');
+						$scope.proceedToCheckoutLoader=false;
 					}
 					else {
 						$localStorage.loginData = response.d;
@@ -80,6 +83,7 @@ define(['./index'], function (controllers) {
 				})
 				.error(function (error) {
 					throw new Error(err);
+					$scope.proceedToCheckoutLoader=false;
 				})
 		};
 

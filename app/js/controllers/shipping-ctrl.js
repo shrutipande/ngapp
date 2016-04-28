@@ -418,6 +418,7 @@ define(['./index'], function(controllers) {
 
         $scope.proceed = function() {
             var goahead = false;
+
             console.log($scope.billingID, $scope.shippingID, $scope.tempBilling, $scope.tempShipping)
 
             if ($scope.everChanged == false) {
@@ -437,11 +438,13 @@ define(['./index'], function(controllers) {
             console.log($scope.billingID, $scope.shippingID, $scope.tempBilling, $scope.chkStatus)
 
             if (goahead) {
+                $scope.proceedToPaymentLoader=true;
                 $scope.deliverToAddress = true;
                 craftsvillaService.assignAddressToQuote($scope.billingID, $scope.shippingID)
                     .success(function(response) {
                         $scope.deliverToAddress = false;
                         if (response.s == 1) {
+                            $scope.proceedToPaymentLoader=false;
                             $state.go('payment', {
                                 platform: 'web'
                             });
@@ -451,6 +454,7 @@ define(['./index'], function(controllers) {
 
                     })
                     .error(function(error) {
+                        $scope.proceedToPaymentLoader=false;
                         console.log(error);
                         $scope.deliverToAddress = false;
                     });
