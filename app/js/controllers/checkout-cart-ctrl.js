@@ -94,7 +94,6 @@ define(['./index'], function (controllers) {
 			.success(function(response) {
 					if(response.d.product_list.length==0){
 					$scope.items = 0;
-					return;
 				}
 				console.log('hi remove');
         data.waitingCartItem = false;
