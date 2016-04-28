@@ -403,6 +403,12 @@ define(['./index'], function (controllers) {
 					case 'cardName':
 						return form[element].$invalid && !form[element].$pristine && form[element].$xblur;
 					case 'cardExp': {
+							if($scope.changeName == 'Credit card') {
+								if($scope.oldCreditMaestroDetected) return false;
+							}
+							else if($scope.changeName == 'Debit Card') {
+								if($scope.oldDebitMaestroDetected) return false;
+							}
 							// Both should be dirty
 							var check1 = form.cardM.$dirty && form.cardY.$dirty;
 							var check2 = form.cardM.$valid;
@@ -421,8 +427,15 @@ define(['./index'], function (controllers) {
 							}
 							else return false;
 					}
-				case 'cardCVC':
+				case 'cardCVC': {
+					if($scope.changeName == 'Credit card') {
+						if($scope.oldCreditMaestroDetected) return false;
+					}
+					else if($scope.changeName == 'Debit Card') {
+						if($scope.oldDebitMaestroDetected) return false;
+					}
 					return form[element].$invalid && !form[element].$pristine && form[element].$xblur
+				}
 				case 'payment':
 					return form.$invalid || $scope.validate('cardExp', form);
 				case 'nb':
@@ -465,6 +478,13 @@ define(['./index'], function (controllers) {
 				var toSubmit = true;
 				if($scope.isPaymentNotAllowed()){
 					toSubmit = false;
+
+					if($scope.changeName == 'Credit card' && $scope.oldCreditMaestroDetected) {
+						toSubmit = true;
+					}
+					else if($scope.changeName == 'Debit Card' && $scope.oldDebitMaestroDetected) {
+						toSubmit = true;
+					}
 				}
 				else {
 					$scope.placeOrderLoader=true;
@@ -521,6 +541,27 @@ define(['./index'], function (controllers) {
 						return 'PLACE ORDER';
 					default:
 						return $sce.trustAsHtml('PAY <span><i>&#x20B9;</i>' + (($scope.shippingAmountData || {}).grand_total || 0) + '</span> SECURELY');
+					}
+				}
+
+				$scope.validateMaestro = function () {
+					if($scope.changeName == 'Credit card') {
+						var number = $scope.forms.creditForm.cardNumber.$modelValue || $scope.forms.creditForm_mobile.cardNumber.$modelValue;
+						if(('' + number).length === 19) {
+							$scope.oldCreditMaestroDetected = true;
+						}
+						else {
+							$scope.oldCreditMaestroDetected = false;
+						}
+					}
+					else if($scope.changeName == 'Debit Card') {
+						var number = $scope.forms.debitForm.cardNumber.$modelValue || $scope.forms.debitForm_mobile.cardNumber.$modelValue;
+						if(('' + number).length === 19) {
+							$scope.oldDebitMaestroDetected = true;
+						}
+						else {
+							$scope.oldDebitMaestroDetected = false;
+						}
 					}
 				}
 

@@ -307,6 +307,7 @@
 												class="form-control"
 									      type="text"
 									      name="cardNumber"
+												ng-change="validateMaestro()"
 									      ng-model="credit.cardNumber"
 									      required
 									      cc-number
@@ -340,7 +341,7 @@
 									<div class="col-xs-12 nopadding">
 										<div class="col-xs-7 valid-upto">
 											<fieldset class="form-group" ng-class="{ 'error' : validate('cardExp', forms.creditForm) }">
-												<label>Valid Upto</label>
+												<label>Valid Upto<x ng-if="oldCreditMaestroDetected"> (Optional)</x></label>
 												<input
 												ng-model="credit.cardMonth"
 												cc-exp-month
@@ -369,7 +370,7 @@
 										</div>
 										<div class="col-xs-5 cvv-code">
 											<fieldset class="form-group" ng-class="{'error' : validate('cardCVC', forms.creditForm)}">
-												<label>CVV Code</label>
+												<label>CVV<x ng-if="oldCreditMaestroDetected"> (Optional)</x></label>
 												<input
 												type="password"
 												class="form-control"
@@ -385,8 +386,8 @@
 												placeholder="CVV"/>
 											</fieldset>
 										</div>
-										<div ng-show="forms.creditForm.$submitted && forms.creditForm.$invalid">
-											<span class="error">Please provide correct information</span>
+										<div ng-show="forms.creditForm.$submitted && forms.creditForm.$invalid && !oldCreditMaestroDetected">
+											<span class="error">Please provide correct payment information</span>
 										</div>
 									</div>
 									<div class="col-xs-12 nopadding">
@@ -407,6 +408,7 @@
 												class="form-control"
 									      type="text"
 									      name="cardNumber"
+												ng-change="validateMaestro()"
 									      ng-model="debit.cardNumber"
 									      required
 									      cc-number
@@ -440,7 +442,7 @@
 									<div class="col-xs-12 nopadding">
 										<div class="col-xs-7 valid-upto">
 											<fieldset class="form-group" ng-class="{ 'error' : validate('cardExp', forms.debitForm) }">
-												<label>Valid Upto</label>
+												<label>Valid Upto<x ng-if="oldDebitMaestroDetected"> (Optional)</x></label>
 												<input
 												ng-model="debit.cardMonth"
 												cc-exp-month
@@ -469,7 +471,7 @@
 										</div>
 										<div class="col-xs-5 cvv-code">
 											<fieldset class="form-group" ng-class="{'error' : validate('cardCVC', forms.debitForm)}">
-												<label>CVV Code</label>
+												<label>CVV<x ng-if="oldDebitMaestroDetected"> (Optional)</x></label>
 												<input
 												type="password"
 												class="form-control"
@@ -485,8 +487,8 @@
 												placeholder="CVV"/>
 											</fieldset>
 										</div>
-										<div ng-show="forms.debitForm.$submitted && forms.debitForm.$invalid">
-											<span class="error">Please provide correct information</span>
+										<div ng-show="forms.debitForm.$submitted && forms.debitForm.$invalid && !oldDebitMaestroDetected">
+											<span class="error">Please provide correct payment information</span>
 										</div>
 									</div>
 									<div class="col-xs-12 nopadding">
@@ -512,7 +514,7 @@
 										<select ng-model="nb.netbanking" name="bank" ng-options="item.bank_code as item.bank_name for item in item.content.others" required></select>
 									</div>
 									<div ng-show="forms.NBForm.$submitted && forms.NBForm.$invalid">
-										<span class="error">Please provide correct information</span>
+										<span class="error">Please provide correct payment information</span>
 									</div>
 								</div>
 								<div class="col-xs-12 col-sm-8 nopadding">
@@ -573,6 +575,7 @@
 															class="form-control"
 												      type="text"
 												      name="cardNumber"
+															ng-change="validateMaestro()"
 												      ng-model="credit.cardNumber"
 												      required
 												      cc-number
@@ -606,7 +609,7 @@
 												<div class="col-xs-12 nopadding">
 													<div class="col-xs-12 valid-upto">
 														<fieldset class="form-group" ng-class="{ 'error' : validate('cardExp', forms.creditForm_mobile) }">
-															<label>Valid Upto</label>
+															<label>Valid Upto<x ng-if="oldCreditMaestroDetected"> (Optional)</x></label>
 															<input
 															ng-model="credit.cardMonth"
 															cc-exp-month
@@ -635,7 +638,7 @@
 													</div>
 													<div class="col-xs-5 cvv-code">
 														<fieldset class="form-group" ng-class="{'error' : validate('cardCVC', forms.creditForm_mobile)}">
-															<label>CVV Code</label>
+															<label>CVV<x ng-if="oldCreditMaestroDetected"> (Optional)</x></label>
 															<input
 															type="password"
 															class="form-control"
@@ -652,8 +655,8 @@
 														</fieldset>
 													</div>
 												</div>
-												<div ng-show="forms.creditForm_mobile.$submitted && forms.creditForm_mobile.$invalid">
-				                	<span class="error">Please provide correct information</span>
+												<div ng-show="forms.creditForm_mobile.$submitted && forms.creditForm_mobile.$invalid && !oldCreditMaestroDetected">
+				                	<span class="error">Please provide correct payment information</span>
 				                </div>
 												<div class="col-xs-12 nopadding hidden-xs">
 													<button type="submit" class="btn btn-newStyle bg-green" ng-disabled="validate('payment', forms.creditForm_mobile)">PAY <span><i>&#x20B9;</i>{{shippingAmountData.grand_total || 0}}</span> SECURELY</button>
@@ -670,6 +673,7 @@
 															class="form-control"
 												      type="text"
 												      name="cardNumber"
+															ng-change="validateMaestro()"
 												      ng-model="debit.cardNumber"
 												      required
 												      cc-number
@@ -703,7 +707,7 @@
 												<div class="col-xs-12 nopadding">
 													<div class="col-xs-12 valid-upto">
 														<fieldset class="form-group" ng-class="{ 'error' : validate('cardExp', forms.debitForm_mobile) }">
-															<label>Valid Upto</label>
+															<label>Valid Upto<x ng-if="oldDebitMaestroDetected"> (Optional)</x></label>
 															<input
 															ng-model="debit.cardMonth"
 															cc-exp-month
@@ -732,7 +736,7 @@
 													</div>
 													<div class="col-xs-5 cvv-code">
 														<fieldset class="form-group" ng-class="{'error' : validate('cardCVC', forms.debitForm_mobile)}">
-															<label>CVV Code</label>
+															<label>CVV<x ng-if="oldDebitMaestroDetected"> (Optional)</x></label>
 															<input
 															type="password"
 															class="form-control"
@@ -749,8 +753,8 @@
 														</fieldset>
 													</div>
 												</div>
-												<div ng-show="forms.debitForm_mobile.$submitted && forms.debitForm_mobile.$invalid">
-				                	<span class="error">Please provide correct information</span>
+												<div ng-show="forms.debitForm_mobile.$submitted && forms.debitForm_mobile.$invalid && !oldDebitMaestroDetected">
+				                	<span class="error">Please provide correct payment information</span>
 				                </div>
 												<div class="col-xs-12 nopadding hidden-xs">
 													<button type="submit" class="btn btn-newStyle bg-green" ng-disabled="validate('payment', forms.debitForm_mobile)">PAY <span><i>&#x20B9;</i>{{shippingAmountData.grand_total || 0}}</span> SECURELY</button>
@@ -774,7 +778,7 @@
 													</div>
 												</div>
 												<div ng-show="forms.NBForm_mobile.$submitted && forms.NBForm_mobile.$invalid">
-				                	<span class="error">Please provide correct information</span>
+				                	<span class="error">Please provide correct payment information</span>
 				                </div>
 												<div class="col-xs-12 col-sm-8 nopadding hidden-xs">
 													<a class="btn btn-newStyle bg-green" href="javascript:void(0)" ng-click="submitNBForm()">PAY <span><i>&#x20B9;</i>{{shippingAmountData.grand_total || 0}}</span> SECURELY</a>
