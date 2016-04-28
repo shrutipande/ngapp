@@ -155,9 +155,9 @@ define(['./index'], function (controllers) {
 					"bankcode": $scope.getBankCode($scope.forms.creditForm.cardNumber.$ccType, $scope.pg),
 					"ccnum": $scope.credit.cardNumber,
 					"ccname": $scope.credit.cardName,
-					"ccvv": $scope.credit.cardCvv,
-					"ccexpmon":$scope.credit.cardMonth > 9 ? $scope.credit.cardMonth : '0' + $scope.credit.cardMonth,
-					"ccexpyr": $scope.credit.cardYear,
+					"ccvv": $scope.credit.cardCvv || '',
+					"ccexpmon": $scope.credit.cardMonth ? $scope.credit.cardMonth > 9 ? $scope.credit.cardMonth : '0' + $scope.credit.cardMonth : '',
+					"ccexpyr": $scope.credit.cardYear || '',
 					"gateway": 'payu'
 				})
 				.success(function(data){
@@ -232,9 +232,9 @@ define(['./index'], function (controllers) {
 					"bankcode": $scope.getBankCode($scope.forms.debitForm.cardNumber.$ccType, $scope.pg),
 					"ccnum": $scope.debit.cardNumber,
 					"ccname": $scope.debit.cardName,
-					"ccvv": $scope.debit.cardCvv,
-					"ccexpmon":$scope.debit.cardMonth > 9 ? $scope.debit.cardMonth : '0' + $scope.debit.cardMonth,
-					"ccexpyr": $scope.debit.cardYear,
+					"ccvv": $scope.debit.cardCvv || '',
+					"ccexpmon":$scope.debit.cardMonth ? $scope.debit.cardMonth > 9 ? $scope.debit.cardMonth : '0' + $scope.debit.cardMonth : '',
+					"ccexpyr": $scope.debit.cardYear || '',
 					"gateway": 'payu'
 				})
 				.success(function(data){
