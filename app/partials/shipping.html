@@ -120,21 +120,18 @@
                                             <input id="name" type="text" class="form-control" name="firstname" ng-model="editAddr.firstname" ng-minlength="2" placeholder="Enter First Name" required>
                                             {{editAdd.firstname}}
 
-                                            <div ng-show="DeseditaddrForm.$submitted">
+                                            <div ng-show="DeseditaddrForm.$submitted  && DeseditaddrForm.firstname.$pristine">
                                                 <span ng-show="DeseditaddrForm.firstname.$error.required" class="error">Please Enter your First Name.</span>
                                             </div>
                                             <span ng-message="DeseditaddrForm.firstname.$error.minlength && !DeseditaddrForm.firstname.$pristine" ng-show="DeseditaddrForm.firstname.$invalid && DeseditaddrForm.firstname.$touched" class="error">First name should be more than two characters</span>
 
                                         </div>
 
-                                        <div
-                                            class="form-group nopadding col-sm-8 col-xs-12"
-                                            ng-class="{ 'error' : (DeseditaddrForm.lastname.$invalid && !DeseditaddrForm.lastname.$pristine && DeseditaddrForm.lastname.$touched)  || (DeseditaddrForm.$submitted && DeseditaddrForm.lastname.$error.required)  }">
-
+                                        <div class="form-group nopadding col-sm-8 col-xs-12" ng-class="{ 'error' : (DeseditaddrForm.lastname.$invalid && !DeseditaddrForm.lastname.$pristine && DeseditaddrForm.lastname.$touched)  || (DeseditaddrForm.$submitted && DeseditaddrForm.lastname.$error.required)  }">
                                             <label for="name">Last Name</label>
                                             <input id="name" type="text" class="form-control" name="lastname" ng-model="editAddr.lastname" ng-minlength="2" placeholder="Enter Lastname">
 
-                                            <div ng-show="DeseditaddrForm.$submitted">
+                                            <div ng-show="DeseditaddrForm.$submitted && DeseditaddrForm.lastname.$pristine">
                                                 <span ng-show="DeseditaddrForm.lastname.$error.required" class="error">Please Enter your Last Name.</span>
                                             </div>
                                             <span ng-message="DeseditaddrForm.lastname.$error.minlength && !DeseditaddrForm.lastname.$pristine" ng-show="DeseditaddrForm.lastname.$invalid && DeseditaddrForm.lastname.$touched" class="error">Last name should be more than two characters</span>
@@ -146,7 +143,7 @@
 
                                             <label for="Address">Address</label>
                                             <textarea id="Address" ng-model="editAddr.street" name="address" ng-minlength="10" class="form-control"></textarea>
-                                            <div ng-show="DeseditaddrForm.$submitted">
+                                            <div ng-show="DeseditaddrForm.$submitted && DeseditaddrForm.address.$pristine">
                                                 <span ng-show="DeseditaddrForm.address.$error.required" class="error">Please enter your address for successful delivery.</span>
                                             </div>
                                             <span ng-message="DeseditaddrForm.address.$error.minlength && !DeseditaddrForm.address.$pristine" ng-show="DeseditaddrForm.address.$invalid && DeseditaddrForm.address.$touched" class="error">Address should be more than ten characters.</span>
@@ -538,7 +535,7 @@
 
                                     <label for="name">First Name</label>
                                     <input id="name" name="firstname" type="text" class="form-control" placeholder="Enter First Name" ng-model="shipping.firstName" ng-minlength="2" required>
-                                    <div ng-show="addnewForm.$submitted">
+                                    <div ng-show="addnewForm.$submitted && addnewForm.firstname.$pristine">
                                         <span ng-show="addnewForm.firstname.$error.required" class="error">Please Enter your First Name.</span>
                                     </div>
                                     <span ng-message="addnewForm.firstname.$error.minlength && !addnewForm.firstname.$pristine" ng-show="addnewForm.firstname.$invalid && addnewForm.firstname.$touched" class="error">First name should be more than two characters</span>
@@ -549,7 +546,7 @@
                                     <label for="name">Last Name</label>
                                     <input id="name" name="lastname" type="text" class="form-control" placeholder="Enter Last Name" ng-model="shipping.lastName" ng-minlength="2" required>
 
-                                    <div ng-show="addnewForm.$submitted">
+                                    <div ng-show="addnewForm.$submitted  && addnewForm.lastname.$pristine">
                                         <span ng-show="addnewForm.lastname.$error.required" class="error">Please Enter your Last Name.</span>
                                     </div>
                                     <span ng-message="addnewForm.lastname.$error.minlength && !addnewForm.lastname.$pristine" ng-show="addnewForm.lastname.$invalid && addnewForm.lastname.$touched" class="error">Last name should be more than two characters</span>
@@ -561,7 +558,7 @@
 
                                     <textarea id="Address" name="address" ng-model="shipping.address1" class="form-control" ng-minlength="10" placeholder="Enter Address" required></textarea>
 
-                                    <div ng-show="addnewForm.$submitted">
+                                    <div ng-show="addnewForm.$submitted && addnewForm.address.$pristine">
                                         <span ng-show="addnewForm.address.$error.required" class="error">Please enter your address for successful delivery.</span>
                                     </div>
                                     <span ng-message="addnewForm.address.$error.minlength && !addnewForm.address.$pristine" ng-show="addnewForm.address.$invalid && addnewForm.address.$touched" class="error">Address should be more than ten characters.</span>
@@ -703,7 +700,7 @@
                                         ng-class="{ 'error' : (BillingADDForm.firstname.$invalid && !BillingADDForm.firstname.$pristine && BillingADDForm.firstname.$touched)  || (BillingADDForm.$submitted && BillingADDForm.firstname.$error.required)  }">
                                         <label for="name">First Name</label>
                                         <input id="name" name="firstname" type="text" class="form-control" placeholder="Enter First Name" ng-model="addNewBilling.firstName" ng-minlength="2" required>
-                                        <div ng-show="BillingADDForm.$submitted">
+                                        <div ng-show="BillingADDForm.$submitted && BillingADDForm.firstname.$pristine">
                                             <span ng-show="BillingADDForm.firstname.$error.required" class="error">Please Enter your First Name.</span>
                                         </div>
                                         <span ng-message="BillingADDForm.firstname.$error.minlength && !BillingADDForm.firstname.$pristine" ng-show="BillingADDForm.firstname.$invalid && BillingADDForm.firstname.$touched" class="error">First name should be more than two characters</span>
@@ -715,7 +712,7 @@
                                         ng-class="{ 'error' : (BillingADDForm.lastname.$invalid && !BillingADDForm.lastname.$pristine && BillingADDForm.lastname.$touched)  || (BillingADDForm.$submitted && BillingADDForm.lastname.$error.required)  }">
                                         <label for="name">Last Name</label>
                                         <input id="name" name="lastname" type="text" class="form-control" placeholder="Enter Last Name" ng-model="addNewBilling.lastName" ng-minlength="2" required>
-                                        <div ng-show="BillingADDForm.$submitted">
+                                        <div ng-show="BillingADDForm.$submitted  && BillingADDForm.lastname.$pristine">
                                             <span ng-show="BillingADDForm.lastname.$error.required" class="error">Please Enter your Last Name.</span>
                                         </div>
                                         <span ng-message="BillingADDForm.lastname.$error.minlength && !BillingADDForm.lastname.$pristine" ng-show="BillingADDForm.lastname.$invalid && BillingADDForm.lastname.$touched" class="error">Last name should be more than two characters</span>
@@ -728,7 +725,7 @@
                                         <textarea id="Address" name="address" ng-model="addNewBilling.address1" class="form-control" ng-minlength="3" placeholder="Enter Address" required></textarea>
 
                                         <span ng-message="BillingADDForm.address.$error.minlength && !BillingADDForm.address.$pristine" ng-show="BillingADDForm.address.$invalid && BillingADDForm.address.$touched" class="error">Address should be more than ten characters.</span>
-                                        <div ng-show="BillingADDForm.$submitted || BillingADDForm.address.$touched">
+                                        <div ng-show="(BillingADDForm.$submitted || BillingADDForm.address.$touched) && BillingADDForm.lastname.$pristine">
                                             <span ng-show="BillingADDForm.address.$error.required" class="error">Please enter your address for successful delivery.</span>
                                         </div>
 

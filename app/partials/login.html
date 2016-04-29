@@ -86,7 +86,8 @@
 									<input type="email" name="email" class="form-control" placeholder="Enter email address"  ng-model="userLogin.email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required>
 
 								<span ng-message="userLoginForm.email.$invalid && !userLoginForm.email.$pristine " ng-show="userLoginForm.email.$invalid && userLoginForm.email.$touched" class="error" > Please enter valid email address.</span>
-								  <div ng-show="userLoginForm.$submitted" >
+
+								  <div ng-show="userLoginForm.$submitted && userLoginForm.email.$pristine">
 									<span ng-show="userLoginForm.email.$error.required" class="error">Tell us your email.</span>
 								</div >
 							</fieldset>
