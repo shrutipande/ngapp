@@ -25,6 +25,8 @@ define(['./index'], function(controllers) {
 
         /*----Fetech Country---*/
 
+
+
         $scope.fetchCountries = function() {
             $scope.currentCountries;
 
@@ -138,6 +140,12 @@ define(['./index'], function(controllers) {
 
         //add data
         $scope.addnewsubmit = function(chkStatusBilling) {
+            if(typeof dataLayer != "undefined") {
+                dataLayer.push({'event':'TappedButtonEvent','eventName':'TappedButton','type':'ConfirmedAnAddress'});
+            }
+            if(typeof _satellite != "undefined") {
+                 _satellite.track('checkout-step-1');
+            }
             if ($scope.addnewForm.$valid) {
                 if (chkStatusBilling == true) {
                     $scope.shipping.isSame = 1;
@@ -334,7 +342,12 @@ define(['./index'], function(controllers) {
         //}
 
         $scope.addnewsubmitBilling = function(address, chkStatusBilling) {
-
+            if(typeof dataLayer != "undefined") {
+                dataLayer.push({'event':'TappedButtonEvent','eventName':'TappedButton','type':'ConfirmedAnAddress'});
+            }
+            if(typeof _satellite != "undefined") {
+                 _satellite.track('checkout-step-1');
+            }
             var fullname = $scope.addNewBilling.fullname;
             var address = $scope.addNewBilling.address;
             var postcode = $scope.addNewBilling.postcode;
@@ -414,10 +427,13 @@ define(['./index'], function(controllers) {
         }
 
         $scope.proceed = function() {
-            var goahead = false;
-            if(typeof dataLayer != "undefined") {
+           if(typeof dataLayer != "undefined") {
                 dataLayer.push({'event':'TappedButtonEvent','eventName':'TappedButton','type':'ConfirmedAnAddress'});
             }
+            if(typeof _satellite != "undefined") {
+                 _satellite.track('checkout-step-1');
+            }
+            var goahead = false;
             console.log($scope.billingID, $scope.shippingID, $scope.tempBilling, $scope.tempShipping)
 
             if ($scope.everChanged == false) {
@@ -470,13 +486,24 @@ define(['./index'], function(controllers) {
             console.log($scope.mform);
         };
         $scope.addressTracker =function() {
-            if(typeof _satellite != "undefined") {
+             craftsvillaService.loadQuote()
+            .success(function(response) {
+                $scope.cartDetails = response.d;
+                $scope.$emit('cartDetails');
+            });
+        $scope.$on('cartDetails', function () {
+             var productIds =[];
+            var allProducts = $scope.cartDetails.product_list;
+            angular.forEach(allProducts, function(product) {
+                productIds.push(product.product_id);
+            });
+              if(typeof _satellite != "undefined") {
                 digitalData.page={
                   pageInfo:{
-                    pageName:"shipping address",
+                    pageName:"checkout:shipping",
                   },
                   category:{
-                    pageType:"shipping",
+                    pageType:"checkout",
                     primaryCategory: "shipping",
                   },
                   device:{
@@ -486,7 +513,21 @@ define(['./index'], function(controllers) {
                     currencyCode : 'INR',
                   },
                 }
-            }
+               var count = productIds.length;
+               var detail= [];
+               for(var i = 0; i < count; i++){
+                        detail[i]={
+                                productInfo:{
+                                productID: productIds[i], //PRODUCT ID
+                                }
+                            };
+                    }
+            digitalData.cart = {
+                 item: detail
+                }
+
+        }
+    });
 
     }
 
