@@ -48,6 +48,7 @@ define(['./index'], function(controllers) {
                 $scope.editAddr.telephone = +$scope.editAddr.telephone;
 
                 $scope.countries.map(function (country) {
+                    country.country_name = country.country_name || '';
                     if(country.country_name.toLowerCase() === $scope.editAddr.country.toLowerCase()) {
                         $scope.addnewcountry_popup = country;
                     }
