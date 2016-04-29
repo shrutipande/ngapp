@@ -8,6 +8,7 @@ define(['./index'], function (controllers) {
   		$scope.couponMessage = null;
 		$scope.proceedToCheckoutLoader=false;
 
+
 		$scope.options = [
 			{'id': 1, 'label': '1'},
 			{'id': 2, 'label': '2'},
@@ -25,21 +26,23 @@ define(['./index'], function (controllers) {
 		$scope.inStockNotCod = [];
 		$scope.itemRemoved = 0;
 		$scope.latestRemovedItem = null;
-    $scope.couponWait=false;
-    $scope.waitingCartItem=false;
+	$scope.couponWait=false;
+	$scope.waitingCartItem=false;
 
 		$scope.getCartDetails = function() {
-      $scope.waitingCartDatails=true;
+	  $scope.waitingCartDatails=true;
 			craftsvillaService.loadQuote()
 			.success(function(response) {
 				if(response.d.product_list.length==0){
 					$scope.items = 0;
 					return;
 				}
-				console.log('hi');
+				$scope.getCartDetailsVal = response.d;
 
-        $scope.waitingCartDatails=false;
-        var _outOfStockProducts = [];
+
+		$scope.waitingCartDatails=false;
+	  //  $rootscope.sc = response.d.product_list;
+		var _outOfStockProducts = [];
 				var _inStockCod = [];
 				var _inStockNotCod = [];
 
@@ -62,8 +65,8 @@ define(['./index'], function (controllers) {
 				updateTotals(response);
 			})
 			.error(function (err) {
-        $scope.waitingCartDatails=false;
-        throw new Error(err);
+		$scope.waitingCartDatails=false;
+		throw new Error(err);
 			})
 		};
 		$scope.loginNow= function (){
@@ -72,6 +75,45 @@ define(['./index'], function (controllers) {
 		};
 		$scope.proceedToCheckout = function() {
 			$scope.proceedToCheckoutLoader=true;
+			$scope.getCartDetailsVal;
+			var productIds = [];
+			var productName = [];
+			var allProducts = $scope.getCartDetailsVal.product_list;
+			angular.forEach(allProducts, function(product) {
+				productIds.push(product.product_id);
+				productName.push(product.product_name);
+			});
+			if(typeof dataLayer != "undefined") {
+				dataLayer.push({
+					'event':'CheckedOutEvent',
+					'eventName':'CheckedOut',
+					'eventAction':$scope.getCartDetailsVal.total_items,
+					'itemsCount':$scope.getCartDetailsVal.total_items
+				});
+				dataLayer.push({
+					'event':'TappedButtonEvent',
+					'eventName':'TappedButton',
+					'type':'ProceededToPayment',
+					'productInfo':productName,
+					'finalAmount':$scope.getCartDetailsVal.sub_total
+				});
+
+			}
+
+			if(typeof MSDtrack != "undefined") {
+				MSDtrack({
+					'event':'placeOrder',
+					'sourceProdID':productIds,
+					//'sourceCatgID':'<?php echo $msdSourceCatgID;?>',
+					'prodPrice':$scope.getCartDetailsVal.sub_total,
+					'prodQty':$scope.getCartDetailsVal.total_qty
+				});
+			}
+
+			if(typeof _satellite != "undefined") {
+				_satellite.track('checkout-initiation');
+			}
+
 			craftsvillaService.loginCheck()
 				.success(function (response) {
 					if (response.s == 0) {
@@ -91,7 +133,7 @@ define(['./index'], function (controllers) {
 		};
 
 		$scope.removeProductFromCart = function(product_id,data) {
-      data.waitingCartItem = true;
+	  data.waitingCartItem = true;
 			var data = {
 				productID: product_id
 			};
@@ -103,20 +145,38 @@ define(['./index'], function (controllers) {
 					$scope.items = 0;
 				}
 				console.log('hi remove');
-        data.waitingCartItem = false;
-        divideProducts(response);
+		data.waitingCartItem = false;
+		divideProducts(response);
 				$scope.itemRemoved = 1;
 				$scope.latestRemovedItem = product_id;
 				updateTotals(response);
 				document.body.scrollTop = 0;
 			})
 			.error(function(error) {
-        data.waitingCartItem = false;
-        console.log(error);
+		data.waitingCartItem = false;
+		console.log(error);
 			});
 
 		};
-
+		$scope.cartTracking = function() {
+			if(typeof _satellite != "undefined") {
+				 digitalData.page={
+					  pageInfo:{
+						pageName:"cart",
+					  },
+					  category:{
+						pageType:"cart",
+						primaryCategory: "cart",
+					  },
+					  device:{
+						deviceType:isMobile
+					  },
+					  currencycode:{
+					  currencyCode : 'INR',
+					},
+				}
+			}
+		}
 		$scope.removeAllNonCodItems = function() {
 			var productIds = [];
 			var allProducts = $scope.inStockNotCod;
@@ -156,16 +216,16 @@ define(['./index'], function (controllers) {
 		}
 
 		$scope.addNoteToSeller = function(index, product_id, comment,data) {
-      data.showFormNote =false;
-      data.waitingCartItem = true;
+	  data.showFormNote =false;
+	  data.waitingCartItem = true;
 			craftsvillaService.addNoteToSeller(product_id, comment)
 			.success(function(response) {
-        data.waitingCartItem = false;
-        $scope.getCartDetails();
+		data.waitingCartItem = false;
+		$scope.getCartDetails();
 			})
 			.error(function(error) {
-        data.waitingCartItem = false;
-        console.log(error);
+		data.waitingCartItem = false;
+		console.log(error);
 			});
 		};
 
@@ -196,10 +256,10 @@ define(['./index'], function (controllers) {
 		};
 
 		$scope.applyCoupon = function() {
-      $scope.couponWait=true;
+	  $scope.couponWait=true;
 			craftsvillaService.applyCoupon($scope.coupon.couponcode)
 			.success(function(response) {
-        $scope.couponWait = false;
+		$scope.couponWait = false;
 				if(response.s == 1){
 					$scope.successCoupon = true;
 					$scope.couponCode = response.d.coupon_code;
@@ -235,18 +295,18 @@ define(['./index'], function (controllers) {
 		};
 
 		$scope.updateQuantity = function(quantity, product_id,data) {
-      data.waitingCartItem = true;
+	  data.waitingCartItem = true;
 
-      craftsvillaService.updateQty(product_id, quantity.id)
+	  craftsvillaService.updateQty(product_id, quantity.id)
 			.success(function(response) {
-        data.waitingCartItem = true;
+		data.waitingCartItem = true;
 				document.body.scrollTop = 0;
-        $scope.getCartDetails();
+		$scope.getCartDetails();
 			})
 			.error(function(error) {
-        data.waitingCartItem = true;
+		data.waitingCartItem = true;
 
-        console.log(error);
+		console.log(error);
 			});
 		};
 
@@ -312,11 +372,16 @@ define(['./index'], function (controllers) {
 		$scope.continueShopping = function() {
 			window.location.href = "/";
 		}
+
+
     $scope.initCheckoutCart = function() {
-      $scope.getCartDetails();
-      $scope.checkLogin();
-			$scope.scrollToTop();
+	      $scope.getCartDetails();
+	      $scope.checkLogin();
+		  $scope.scrollToTop();
+		  $scope.cartTracking();
+
     }
     $scope.initCheckoutCart();
+
 	}]);
 });

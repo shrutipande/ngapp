@@ -21,6 +21,8 @@ define(['./index'], function (controllers) {
         $scope.guestCheckoutLoader = false;
         if(response.s==1 )
 				{
+					//logindata = responjse.d
+		  window.userEmail = response.d.email;
           $localStorage.loginData = response.d;
           $state.go('shipping');
         }
@@ -56,6 +58,7 @@ define(['./index'], function (controllers) {
 		if ($scope.userLoginForm.$valid) {
 			$scope.loginLoader = true;
 			var emailId = $scope.userLogin.email;
+			window.userEmail = $scope.userLogin.email;
 			var password = $scope.userLogin.password;
 			craftsvillaService.getLogin(emailId, password)
 			.success(function (response) {
@@ -64,8 +67,11 @@ define(['./index'], function (controllers) {
 				{
 					delete $localStorage.loginData;
 					$scope.invalidCred=true;
+
 				}
 				else{
+					//loggedin  response.d
+					window.userEmail = response.d[0].customerData.email;
 					$localStorage.loginData = response.d;
 					if(window.sticktocart==true)
 						{	$state.go('cart');
@@ -151,7 +157,7 @@ define(['./index'], function (controllers) {
 				json.clientId = provider === 'google' ? data.config.data.clientId : undefined;
 				json.redirectUri = provider === 'google' ? data.config.data.redirectUri : undefined;
 
-				// console.log(json);
+				 console.log(provider);
 				// return;
 
 				craftsvillaService.socialAuth(json)
@@ -159,8 +165,11 @@ define(['./index'], function (controllers) {
 					$scope.gLoader = false;
 					$scope.fbLoader = false;
 					if(_data.s === 1) {
+						//login data
 						$localStorage.loginData = _data.d[0];
+						window.userEmail = _data.d[0].customerEmail;
 						$state.go('shipping');
+
 					}
 					else {
 						$scope.gLoader = false;
@@ -176,10 +185,57 @@ define(['./index'], function (controllers) {
 				console.log(error);
 			});
 	};
+	$scope.loginTracker = function() {
+		craftsvillaService.loadQuote()
+		.success(function(response) {
+			$scope.cartDetailsVal = response.d;
+			$scope.$emit('cartDetailsLoaded');
+		});
 
+		$scope.$on('cartDetailsLoaded', function () {
+			var emailId = $scope.userLogin.email;
+			if(typeof _satellite != "undefined") {
+				 digitalData.page={
+		          pageInfo:{
+		            pageName:"login page",
+		          },
+		          category:{
+		            pageType:"login",
+		            primaryCategory: "login",
+		          },
+		          device:{
+		            deviceType: isMobile
+		          },
+		          currencycode:{
+		            currencyCode : 'INR',
+		          },
+
+		        }
+		    }
+		    if(typeof dataLayer != "undefined") {
+			    dataLayer.push({
+		            'event':'UserSignedUpEvent',
+		            'eventName':'UserSignedUp',
+		            'type':'email',
+		            'cartValue': $scope.cartDetailsVal.total_items
+		        });
+			}
+		    if(typeof clevertap != "undefined") {
+		        clevertap.profile.push({
+		            "Site": {
+		                "Name":'',
+		                "Email": emailId,
+		                //"Phone": "+91" +
+		            }
+		        });
+			}
+		});
+	}
     $scope.initLogin = function() {
       console.log("Login Initialised");
 			$scope.scrollToTop();
+      		$scope.loginTracker();
+
     };
 	$scope.initLogin();
 

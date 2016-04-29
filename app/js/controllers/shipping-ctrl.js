@@ -367,8 +367,8 @@ define(['./index'], function(controllers) {
 
 
         // $scope.deliverAddress = function() {
-        // 	//alert('Delivery Address Working');
-        // 	craftsvillaService.updateQty(1234, 2546, 2);
+        //  //alert('Delivery Address Working');
+        //  craftsvillaService.updateQty(1234, 2546, 2);
         // };
 
 
@@ -394,11 +394,11 @@ define(['./index'], function(controllers) {
 
 
         // $scope.setBoth=function(){
-        // 	console.log('setBoth ');
+        //  console.log('setBoth ');
         // }
 
         // $scope.setShippingID=function(addId){
-        // 	console.log('setShippingID ');
+        //  console.log('setShippingID ');
         // }
 
         $scope.setbillingID = function(addId) {
@@ -416,7 +416,9 @@ define(['./index'], function(controllers) {
 
         $scope.proceed = function() {
             var goahead = false;
-
+            if(typeof dataLayer != "undefined") {
+                dataLayer.push({'event':'TappedButtonEvent','eventName':'TappedButton','type':'ConfirmedAnAddress'});
+            }
             console.log($scope.billingID, $scope.shippingID, $scope.tempBilling, $scope.tempShipping)
 
             if ($scope.everChanged == false) {
@@ -468,12 +470,31 @@ define(['./index'], function(controllers) {
             $scope.mform = !$scope.mform;
             console.log($scope.mform);
         };
-
+        $scope.addressTracker =function() {
+        digitalData.page={
+          pageInfo:{
+            pageName:"shipping address",
+          },
+          category:{
+            pageType:"shipping",
+            primaryCategory: "shipping",
+          },
+          device:{
+            deviceType:isMobile
+          },
+          currencycode:{
+            currencyCode : 'INR',
+          },
+        }
+    }
 
         $scope.initshipping = function() {
             $scope.viewaddress();
             $scope.fetchCountries();
+            $scope.addressTracker();
             $scope.scrollToTop();
+            $scope.addressTracker();
+
         }
         $scope.initshipping();
     }]);
