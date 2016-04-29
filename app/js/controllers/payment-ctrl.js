@@ -11,6 +11,7 @@ define(['./index'], function (controllers) {
 			$scope.prdctUrl = PRODUCTURL;
 			$scope.showDetails = false;
 			$scope.placeOrderLoader=false;
+			$scope.successCoupon=false;
 			// Repeat
 
 			// Tabs
@@ -523,7 +524,10 @@ define(['./index'], function (controllers) {
 					$scope.finalQuoteData = response.d.product_list;
 					$scope.shippingAdressData = response.d.shippingAddress;
 					$scope.shippingAmountData = response.d;
+					if($scope.shippingAmountData.totol_discount>0)
+						$scope.successCoupon=true;
 					$scope.shippingAmountData.grand_total = +$scope.shippingAmountData.grand_total;
+					$scope.discountPecent = ($scope.shippingAmountData.totol_discount / $scope.shippingAmountData.sub_total) * 100;
 						if($scope.shippingAmountData.showCod === 0) {
 						$timeout(function() {
 							if($scope.paymentMethods) {
@@ -641,6 +645,7 @@ define(['./index'], function (controllers) {
 			}
 
 			$scope.removeFromCart = function (product_id, product) {
+				if (confirm('Are you sure you want to delete this Item?')) {
 				product.waitingCartItem = true;
 				craftsvillaService.removeQuoteItems([{
 					productID: product_id
@@ -652,6 +657,7 @@ define(['./index'], function (controllers) {
 	        console.log(error);
 				});
 			}
+		}
 
 			$scope.placeOrder = function () {
 				if(!$scope.changeName) return;

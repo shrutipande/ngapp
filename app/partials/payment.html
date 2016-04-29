@@ -125,9 +125,9 @@
 										<div class="ord-amt" ng-show="waitingCartDatails"><img src="images/textloading.gif" class="textloading"></div>
 									</div>
 								</div>
-								<div class="col-xs-12 nopadding">
+								<div class="col-xs-12 nopadding" ng-show="successCoupon && !waitingCartDatails">
 									<div class="col-xs-8 nopadding text-left">
-										<p ng-show="shippingAdressData.discount_amount > 0">Coupon Applied ({{couponCode}})</p>
+										<p ng-show="shippingAmountData.totol_discount > 0">Coupon Applied ({{ shippingAmountData.coupon_code }})</p>
 									</div>
 									<div class="col-xs-4 nopadding text-right">
 					                  <div class="ord-amt pull-right" ng-show="successCoupon && !waitingCartDatails">
@@ -135,21 +135,20 @@
 					                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 14 28" class="icon">
 					                          <path d="M14.031 7.344v1.594q0 0.219-0.141 0.359t-0.359 0.141h-2.625q-0.359 2.25-2.016 3.656t-4.312 1.719q2.609 2.781 7.172 8.375 0.219 0.25 0.063 0.531-0.125 0.281-0.453 0.281h-3.047q-0.25 0-0.391-0.187-4.781-5.734-7.781-8.922-0.141-0.141-0.141-0.344v-1.984q0-0.203 0.148-0.352t0.352-0.148h1.75q2.063 0 3.32-0.672t1.602-1.953h-6.672q-0.219 0-0.359-0.141t-0.141-0.359v-1.594q0-0.219 0.141-0.359t0.359-0.141h6.453q-0.891-1.766-4.188-1.766h-2.266q-0.203 0-0.352-0.148t-0.148-0.352v-2.078q0-0.219 0.141-0.359t0.359-0.141h13q0.219 0 0.359 0.141t0.141 0.359v1.594q0 0.219-0.141 0.359t-0.359 0.141h-3.641q0.734 0.953 1 2.25h2.672q0.219 0 0.359 0.141t0.141 0.359z"></path>
 					                      </svg>
-					                      {{ shippingAdressData.discount_amount | number: 2 }}
+					                      {{ shippingAmountData.totol_discount | number: 2 }}
 					                  </div>
 					                  <div class="ord-amt" ng-show="waitingCartDatails && successCoupon"><img src="images/textloading.gif" class="textloading"></div>
 									</div>
 								</div>
-								<div class="col-xs-12 nopadding">
-									<p ng-show="shippingAdressData.discount_amount > 0">Coupon Applied ({{couponCode}})</p>
-									<p class="green" ng-show="shippingAdressData.discount_amount > 0">You saved {{discount | number: 2}}%</p>
+								<div class="col-xs-12 nopadding" ng-show="successCoupon && !waitingCartDatails">
+									<p class="green" ng-show="shippingAmountData.totol_discount > 0">You saved {{ discountPecent | number: 0}}%</p>
 								</div>
 								<div class="col-xs-12 nopadding">
 									<div class="col-xs-8 nopadding text-left">
 										<p>Shipping</p>
 									</div>
 									<div class="col-xs-4 nopadding text-right">
-					                  <div class="ord-amt pull-right" ng-show="!waitingCartDatails" style="margin-top:{{shippingAdressData.discount_amount > 0 ? '26px' : '0px'}}">
+					                  <div class="ord-amt pull-right" ng-show="!waitingCartDatails">
 					                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 14 28" class="icon">
 					                          <path d="M14.031 7.344v1.594q0 0.219-0.141 0.359t-0.359 0.141h-2.625q-0.359 2.25-2.016 3.656t-4.312 1.719q2.609 2.781 7.172 8.375 0.219 0.25 0.063 0.531-0.125 0.281-0.453 0.281h-3.047q-0.25 0-0.391-0.187-4.781-5.734-7.781-8.922-0.141-0.141-0.141-0.344v-1.984q0-0.203 0.148-0.352t0.352-0.148h1.75q2.063 0 3.32-0.672t1.602-1.953h-6.672q-0.219 0-0.359-0.141t-0.141-0.359v-1.594q0-0.219 0.141-0.359t0.359-0.141h6.453q-0.891-1.766-4.188-1.766h-2.266q-0.203 0-0.352-0.148t-0.148-0.352v-2.078q0-0.219 0.141-0.359t0.359-0.141h13q0.219 0 0.359 0.141t0.141 0.359v1.594q0 0.219-0.141 0.359t-0.359 0.141h-3.641q0.734 0.953 1 2.25h2.672q0.219 0 0.359 0.141t0.141 0.359z"></path>
 					                      </svg>
@@ -198,7 +197,7 @@
 								</div>
 								<div class="col-xs-12 nopadding">
 									<div class="col-xs-8 nopadding text-left">
-										<p ng-show="shippingAdressData.discount_amount > 0">Coupon Applied ({{couponCode}})</p>
+										<p ng-show="shippingAmountData.totol_discount > 0">Coupon Applied ({{ shippingAmountData.coupon_code }})</p>
 									</div>
 									<div class="col-xs-4 nopadding text-right">
 					                  <div class="ord-amt pull-right" ng-show="successCoupon && !waitingCartDatails">
@@ -206,21 +205,20 @@
 					                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 14 28" class="icon">
 					                          <path d="M14.031 7.344v1.594q0 0.219-0.141 0.359t-0.359 0.141h-2.625q-0.359 2.25-2.016 3.656t-4.312 1.719q2.609 2.781 7.172 8.375 0.219 0.25 0.063 0.531-0.125 0.281-0.453 0.281h-3.047q-0.25 0-0.391-0.187-4.781-5.734-7.781-8.922-0.141-0.141-0.141-0.344v-1.984q0-0.203 0.148-0.352t0.352-0.148h1.75q2.063 0 3.32-0.672t1.602-1.953h-6.672q-0.219 0-0.359-0.141t-0.141-0.359v-1.594q0-0.219 0.141-0.359t0.359-0.141h6.453q-0.891-1.766-4.188-1.766h-2.266q-0.203 0-0.352-0.148t-0.148-0.352v-2.078q0-0.219 0.141-0.359t0.359-0.141h13q0.219 0 0.359 0.141t0.141 0.359v1.594q0 0.219-0.141 0.359t-0.359 0.141h-3.641q0.734 0.953 1 2.25h2.672q0.219 0 0.359 0.141t0.141 0.359z"></path>
 					                      </svg>
-					                      {{ shippingAdressData.discount_amount | number: 2 }}
+					                      {{ shippingAmountData.totol_discount | number: 2 }}
 					                  </div>
 					                  <div class="ord-amt" ng-show="waitingCartDatails && successCoupon"><img src="images/textloading.gif" class="textloading"></div>
 									</div>
 								</div>
 								<div class="col-xs-12 nopadding">
-									<p ng-show="shippingAdressData.discount_amount > 0">Coupon Applied ({{couponCode}})</p>
-									<p class="green" ng-show="shippingAdressData.discount_amount > 0">You saved {{discount | number: 2}}%</p>
+									<p class="green" ng-show="shippingAmountData.totol_discount > 0">You saved {{ discountPecent | number: 0}}%</p>
 								</div>
 								<div class="col-xs-12 nopadding">
 									<div class="col-xs-8 nopadding text-left">
 										<p>Shipping</p>
 									</div>
 									<div class="col-xs-4 nopadding text-right">
-					                  <div class="ord-amt pull-right" ng-show="!waitingCartDatails" style="margin-top:{{shippingAdressData.discount_amount > 0 ? '26px' : '0px'}}">
+					                  <div class="ord-amt pull-right" ng-show="!waitingCartDatails">
 					                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 14 28" class="icon">
 					                          <path d="M14.031 7.344v1.594q0 0.219-0.141 0.359t-0.359 0.141h-2.625q-0.359 2.25-2.016 3.656t-4.312 1.719q2.609 2.781 7.172 8.375 0.219 0.25 0.063 0.531-0.125 0.281-0.453 0.281h-3.047q-0.25 0-0.391-0.187-4.781-5.734-7.781-8.922-0.141-0.141-0.141-0.344v-1.984q0-0.203 0.148-0.352t0.352-0.148h1.75q2.063 0 3.32-0.672t1.602-1.953h-6.672q-0.219 0-0.359-0.141t-0.141-0.359v-1.594q0-0.219 0.141-0.359t0.359-0.141h6.453q-0.891-1.766-4.188-1.766h-2.266q-0.203 0-0.352-0.148t-0.148-0.352v-2.078q0-0.219 0.141-0.359t0.359-0.141h13q0.219 0 0.359 0.141t0.141 0.359v1.594q0 0.219-0.141 0.359t-0.359 0.141h-3.641q0.734 0.953 1 2.25h2.672q0.219 0 0.359 0.141t0.141 0.359z"></path>
 					                      </svg>
