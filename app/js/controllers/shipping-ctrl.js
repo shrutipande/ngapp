@@ -141,7 +141,7 @@ define(['./index'], function(controllers) {
             if ($scope.addnewForm.$valid) {
                 if (chkStatusBilling == true) {
                     $scope.shipping.isSame = 1;
-                    $scope.shipping.countryName = $scope.addnewcountry.country_name;
+                    $scope.shipping.countryName = $scope.addnewcountry_shipping.country_name;
                     console.log($scope.shipping)
                     $scope.shipping.pincode = $scope.shipping.postcode;
                     craftsvillaService.addAddress($scope.shipping, $scope.shipping)
@@ -169,8 +169,7 @@ define(['./index'], function(controllers) {
 
         //Edit address
         $scope.changePincode = function(postcode) {
-                console.log($scope.addnewcountry.country_name)
-                if ($scope.addnewcountry.country_name == "India") {
+                if ($scope.addnewcountry_shipping.country_name == "India") {
                     $scope.citystateWait = true;
 
                     craftsvillaService.getAddressFromPincode(postcode)
@@ -214,8 +213,8 @@ define(['./index'], function(controllers) {
         }
         $scope.changePincodeBilling = function(postcode) {
             console.log("&&&&& ----- -&&&&&")
-            console.log($scope.addnewcountry.country_name)
-            if ($scope.addnewcountry.country_name == "India")
+            console.log($scope.addnewcountry_billing.country_name)
+            if ($scope.addnewcountry_billing.country_name == "India")
                 craftsvillaService.getAddressFromPincode(postcode)
                 .success(function(response) {
                     console.log(response);
@@ -246,7 +245,7 @@ define(['./index'], function(controllers) {
             var _address = $scope.editAddr.street;
             var postcode = $scope.editAddr.postcode;
             var city = $scope.editAddr.city;
-            var country = $scope.editAddr.country;
+            var country = $scope.addnewcountry_popup.country_name;
             var state = $scope.editAddr.region;
             var phonenumber = $scope.editAddr.telephone;
             craftsvillaService.updateAddress(firstname, lastname, _address, city, state, postcode, country, phonenumber, addId)
@@ -342,8 +341,8 @@ define(['./index'], function(controllers) {
             var city = $scope.addNewBilling.city;
             var state = $scope.addNewBilling.state;
             var phonenumber = $scope.addNewBilling.phonenumber;
-            $scope.shipping.countryName = $scope.addnewcountry.country_name;
-            $scope.addNewBilling.countryName = $scope.addnewcountry.country_name;
+            $scope.shipping.countryName = $scope.addnewcountry_shipping.country_name;
+            $scope.addNewBilling.countryName = $scope.addnewcountry_billing.country_name;
             craftsvillaService.addAddress($scope.shipping, $scope.addNewBilling)
                 .success(function(response) {
                     if (response.s == 1) {

@@ -318,8 +318,8 @@
                                     <div class="form-group" ng-class="{ 'error' : (DeseditaddrForm.postcode.$invalid && !DeseditaddrForm.postcode.$pristine && DeseditaddrForm.postcode.$touched)  || (DeseditaddrForm.$submitted && DeseditaddrForm.postcode.$error.required)  }">
                                         <label for="Pincode">Pincode</label>
 
-                                        <input id="Pincode" name="postcode" type="number" class="form-control" placeholder="Pincode" ng-maxlength="{{addnewcountry_popup.max_pincode_length}}" ng-minlength="{{addnewcountry_popup.min_pincode_length}}" ng-model="shipping.postcode" ng-blur="changePincode(shipping.postcode)" required ng-if="addnewcountry_popup.is_alpha == 'n'" />
-                                        <input id="Pincode" name="postcode" type="text" class="form-control" placeholder="Pincode" ng-maxlength="{{addnewcountry_popup.max_pincode_length}}" ng-minlength="{{addnewcountry_popup.min_pincode_length}}" ng-model="shipping.postcode" ng-blur="changePincode(shipping.postcode)" required ng-if="addnewcountry_popup.is_alpha == 'y'" />
+                                        <input id="Pincode" name="postcode" type="number" class="form-control" placeholder="Pincode" ng-maxlength="{{addnewcountry_popup.max_pincode_length}}" ng-minlength="{{addnewcountry_popup.min_pincode_length}}" ng-model="editAddr.postcode" ng-blur="changePincode(editAddr.postcode)" required ng-if="addnewcountry_popup.is_alpha == 'n'" />
+                                        <input id="Pincode" name="postcode" type="text" class="form-control" placeholder="Pincode" ng-maxlength="{{addnewcountry_popup.max_pincode_length}}" ng-minlength="{{addnewcountry_popup.min_pincode_length}}" ng-model="editAddr.postcode" ng-blur="changePincode(editAddr.postcode)" required ng-if="addnewcountry_popup.is_alpha == 'y'" />
 
                                         <div ng-show="DeseditaddrForm.postcode.$error.minlength && !DeseditaddrForm.postcode.$pristine" class="error">
 
@@ -738,8 +738,8 @@
                                         <div class="form-group" ng-class="{ 'error' : (BillingADDForm.postcode.$invalid && !BillingADDForm.postcode.$pristine && BillingADDForm.postcode.$touched)  || (BillingADDForm.$submitted && BillingADDForm.postcode.$error.required)  }">
                                             <label for="Pincode">Pincode</label>
 
-                                            <input id="Pincode" name="postcode" type="number" class="form-control" placeholder="Pincode" ng-maxlength="{{addnewcountry_billing.max_pincode_length}}" ng-minlength="{{addnewcountry_billing.min_pincode_length}}" ng-model="shipping.postcode" ng-blur="changePincode(addNewBilling.postcode)" required ng-if="addnewcountry_billing.is_alpha == 'n'" />
-                                            <input id="Pincode" name="postcode" type="text" class="form-control" placeholder="Pincode" ng-maxlength="{{addnewcountry_billing.max_pincode_length}}" ng-minlength="{{addnewcountry_billing.min_pincode_length}}" ng-model="shipping.postcode" ng-blur="changePincode(addNewBilling.postcode)" required ng-if="addnewcountry_billing.is_alpha == 'y'" />
+                                            <input id="Pincode" name="postcode" type="number" class="form-control" placeholder="Pincode" ng-maxlength="{{addnewcountry_billing.max_pincode_length}}" ng-minlength="{{addnewcountry_billing.min_pincode_length}}" ng-model="addNewBilling.postcode" ng-blur="changePincode(addNewBilling.postcode)" required ng-if="addnewcountry_billing.is_alpha == 'n'" />
+                                            <input id="Pincode" name="postcode" type="text" class="form-control" placeholder="Pincode" ng-maxlength="{{addnewcountry_billing.max_pincode_length}}" ng-minlength="{{addnewcountry_billing.min_pincode_length}}" ng-model="addNewBilling.postcode" ng-blur="changePincode(addNewBilling.postcode)" required ng-if="addnewcountry_billing.is_alpha == 'y'" />
                                             <div ng-show="BillingADDForm.postcode.$error.minlength && !BillingADDForm.postcode.$pristine" class="error">
 
                                                 <span ng-message="BillingADDForm.postcode.$invalid" ng-show="BillingADDForm.postcode.$touched">Pincode should be of minimum {{addnewcountry_billing.min_pincode_length}} digits.</span>
