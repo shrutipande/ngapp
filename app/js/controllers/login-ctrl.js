@@ -197,10 +197,10 @@ define(['./index'], function (controllers) {
 			if(typeof _satellite != "undefined") {
 				 digitalData.page={
 		          pageInfo:{
-		            pageName:"login page",
+		            pageName:"checkout:login",
 		          },
 		          category:{
-		            pageType:"login",
+		            pageType:"checkout",
 		            primaryCategory: "login",
 		          },
 		          device:{

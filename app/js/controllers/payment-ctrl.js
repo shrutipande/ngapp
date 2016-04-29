@@ -85,7 +85,6 @@ define(['./index'], function (controllers) {
 			$scope.submitCOD = function () {
 				var productId=$scope.finalQuoteData.map(function(_){return _.product_id});
 		        var count = $scope.finalQuoteData.length;
-		        var detail= [];
 		        if(typeof dataLayer != "undefined") {
 					dataLayer.push({
 			            'event':'PrechargedEvent',
@@ -97,18 +96,6 @@ define(['./index'], function (controllers) {
 			        });
 				}
 				if(typeof _satellite != "undefined") {
-			        for(var i = 0; i < count; i++){
-			            detail[i]={
-			                    productInfo:{
-			                    productID: productId[i], //PRODUCT ID
-			                    }
-			                };
-			                //alert(detail[i].productInfo.productID);
-			        }
-			        digitalData.cart = {
-			             item: detail
-			            } //Direct Call Rule Trigger
-
 			        _satellite.track('checkout-step-2');
 			    }
 				craftsvillaService.placeOrderCOD()
@@ -137,18 +124,6 @@ define(['./index'], function (controllers) {
 			        });
 				}
 				if(typeof _satellite != "undefined") {
-			        for(var i = 0; i < count; i++){
-			            detail[i]={
-			                    productInfo:{
-			                    productID: productId[i], //PRODUCT ID
-			                    }
-			                };
-			                //alert(detail[i].productInfo.productID);
-			        }
-			        digitalData.cart = {
-			             item: detail
-			            } //Direct Call Rule Trigger
-
 			        _satellite.track('checkout-step-2');
 			    }
 				craftsvillaService.placeOrder({
@@ -214,17 +189,6 @@ define(['./index'], function (controllers) {
 			        });
 				}
 				if(typeof _satellite != "undefined") {
-			        for(var i = 0; i < count; i++){
-			            detail[i]={
-			                    productInfo:{
-			                    productID: productId[i], //PRODUCT ID
-			                    }
-			                };
-			                //alert(detail[i].productInfo.productID);
-			        }
-			        digitalData.cart = {
-			             item: detail
-			            } //Direct Call Rule Trigger
 
 			        _satellite.track('checkout-step-2');
 			    }
@@ -290,17 +254,6 @@ define(['./index'], function (controllers) {
 			        });
 				}
 				if(typeof _satellite != "undefined") {
-			        for(var i = 0; i < count; i++){
-			            detail[i]={
-			                    productInfo:{
-			                    productID: productId[i], //PRODUCT ID
-			                    }
-			                };
-			                //alert(detail[i].productInfo.productID);
-			        }
-			        digitalData.cart = {
-			             item: detail
-			            } //Direct Call Rule Trigger
 
 			        _satellite.track('checkout-step-2');
 			    }
@@ -363,18 +316,6 @@ define(['./index'], function (controllers) {
 			        });
 				}
 				if(typeof _satellite != "undefined") {
-			        for(var i = 0; i < count; i++){
-			            detail[i]={
-			                    productInfo:{
-			                    productID: productId[i], //PRODUCT ID
-			                    }
-			                };
-			                //alert(detail[i].productInfo.productID);
-			        }
-			        digitalData.cart = {
-			             item: detail
-			            } //Direct Call Rule Trigger
-
 			        _satellite.track('checkout-step-2');
 			    }
 				craftsvillaService.placeOrder({
@@ -527,6 +468,10 @@ define(['./index'], function (controllers) {
 					$scope.shippingAmountData = response.d;
 					if($scope.shippingAmountData.totol_discount>0)
 						$scope.successCoupon=true;
+
+
+					window.userMobileNo = response.d.shippingAddress.telephone;
+					$scope.paymentTracker();
 					$scope.shippingAmountData.grand_total = +$scope.shippingAmountData.grand_total;
 					$scope.discountPecent = ($scope.shippingAmountData.totol_discount / $scope.shippingAmountData.sub_total) * 100;
 						if($scope.shippingAmountData.showCod === 0) {
@@ -598,16 +543,13 @@ define(['./index'], function (controllers) {
 			}
 			$scope.paymentTracker = function() {
 				if(typeof _satellite != "undefined") {
-				var count = $scope.finalQuoteData.length;
-				var product_ids = $scope.finalQuoteData.map(function(_){return _.product_id});
-				//console.log(product_ids);
 			  	digitalData.page={
 		          pageInfo:{
-		            pageName:"Checkout",
+		            pageName:"checkout:payment",
 		          },
 		          category:{
-		            pageType:"Checkout",
-		            primaryCategory: "Checkout",
+		            pageType:"checkout",
+		            primaryCategory: "payment",
 		          },
 		          device:{
 		            deviceType:isMobile
@@ -617,19 +559,26 @@ define(['./index'], function (controllers) {
 		          },
 
 		        }
-		        var detail= [];
-		        for(var i = 0; i < count; i++){
-		            detail[i]={
-		                    productInfo:{
-		                    productID: product_ids[i], //PRODUCT ID
-		                    }
-		                };
+			    var productIds = [];
+				var allProducts = $scope.finalQuoteData;
+				angular.forEach(allProducts, function(product) {
+					productIds.push(product.product_id);
 
-		        }
-		        digitalData.cart = {
-		             item: detail
-		            }
-		        _satellite.track('checkout-step-1');
+				});
+				var detail=[];
+		        var count = productIds.length;
+		         for(var i = 0; i < count; i++){
+			            detail[i]={
+			                    productInfo:{
+			                    productID: productIds[i], //PRODUCT ID
+			                    }
+			                };
+			        }
+			        digitalData.cart = {
+			             item: detail
+			            }
+
+
 
 		    }
 
@@ -639,6 +588,8 @@ define(['./index'], function (controllers) {
 				$scope.getPayments();
 				$scope.finalQuoteDetails();
 				$scope.scrollToTop();
+
+
 			};
 
 			$scope.isValidDate = function(year, month) {
