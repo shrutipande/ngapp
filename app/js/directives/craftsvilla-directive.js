@@ -1,11 +1,13 @@
 define(['./index'], function (directives) {
-    directives.directive("exampleDirective", [function () {
+    directives.directive("cvTrim", [function () {
       return {
         restrict: 'A',
         link: function(scope, element, attrs) {
-          element.bind('click', function() {
-            element.select();
-          });
+            element.bind('blur', function () {
+                scope.$apply(function (){
+                    element.val(element.val().trim().replace(/\s+/, ' '));
+                });
+            });
         }
       };
     }]);

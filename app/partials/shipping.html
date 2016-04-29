@@ -120,7 +120,7 @@
                                             ng-class="{ 'error' : (DeseditaddrForm.firstname.$invalid && !DeseditaddrForm.firstname.$pristine && DeseditaddrForm.firstname.$touched )  || (DeseditaddrForm.$submitted && DeseditaddrForm.firstname.$error.required)  }">
 
                                             <label for="name">First Name</label>
-                                            <input id="name" type="text" class="form-control" name="firstname" ng-model="editAddr.firstname" ng-minlength="2" placeholder="Enter First Name" required>
+                                            <input cv-trim id="name" type="text" class="form-control" name="firstname" ng-model="editAddr.firstname" ng-minlength="2" placeholder="Enter First Name" required>
                                             {{editAdd.firstname}}
 
                                             <div ng-show="DeseditaddrForm.$submitted  && DeseditaddrForm.firstname.$pristine">
@@ -132,7 +132,7 @@
 
                                         <div class="form-group nopadding col-sm-8 col-xs-12" ng-class="{ 'error' : (DeseditaddrForm.lastname.$invalid && !DeseditaddrForm.lastname.$pristine && DeseditaddrForm.lastname.$touched)  || (DeseditaddrForm.$submitted && DeseditaddrForm.lastname.$error.required)  }">
                                             <label for="name">Last Name</label>
-                                            <input id="name" type="text" class="form-control" name="lastname" ng-model="editAddr.lastname" ng-minlength="2" placeholder="Enter Lastname">
+                                            <input cv-trim id="name" type="text" class="form-control" name="lastname" ng-model="editAddr.lastname" ng-minlength="2" placeholder="Enter Lastname">
 
                                             <div ng-show="DeseditaddrForm.$submitted && DeseditaddrForm.lastname.$pristine">
                                                 <span ng-show="DeseditaddrForm.lastname.$error.required" class="error">Please Enter your Last Name.</span>
@@ -145,7 +145,7 @@
                                             ng-class="{ 'error' : (DeseditaddrForm.address.$invalid && !DeseditaddrForm.address.$pristine && DeseditaddrForm.address.$touched)  || (DeseditaddrForm.$submitted && DeseditaddrForm.address.$error.required)  }">
 
                                             <label for="Address">Address</label>
-                                            <textarea id="Address" ng-model="editAddr.street" name="address" ng-minlength="10" class="form-control"></textarea>
+                                            <textarea cv-trim id="Address" ng-model="editAddr.street" name="address" ng-minlength="10" class="form-control"></textarea>
                                             <div ng-show="DeseditaddrForm.$submitted && DeseditaddrForm.address.$pristine">
                                                 <span ng-show="DeseditaddrForm.address.$error.required" class="error">Please enter your address for successful delivery.</span>
                                             </div>
@@ -157,7 +157,7 @@
                                             <div class="form-group" ng-class="{ 'error' : (DeseditaddrForm.postcode.$invalid && !DeseditaddrForm.postcode.$pristine && DeseditaddrForm.postcode.$touched)  || (DeseditaddrForm.$submitted && DeseditaddrForm.postcode.$error.required)  }">
 
                                                 <label for="Pincode">Pincode</label>
-                                                <input id="Pincode" type="number" class="form-control" name="postcode" ng-model="editAddr.postcode" ng-minlength="6" ng-maxlength="6" placeholder="Pincode">
+                                                <input cv-trim id="Pincode" type="number" class="form-control" name="postcode" ng-model="editAddr.postcode" ng-minlength="6" ng-maxlength="6" placeholder="Pincode">
 
                                                 <div ng-show="DeseditaddrForm.postcode.$error.minlength && !DeseditaddrForm.postcode.$pristine" class="error">
 
@@ -183,21 +183,21 @@
                                         <div class="col-xs-12 col-sm-7 m-padding">
                                             <div class="form-group" ng-class="{ 'error' : (DeseditaddrForm.city.$invalid && !DeseditaddrForm.city.$pristine && DeseditaddrForm.city.$touched) || (DeseditaddrForm.$submitted && DeseditaddrForm.city.$error.required) }">
                                                 <label for="City">City</label>
-                                                <input id="City" type="text" name="city" ng-model="editAddr.city" class="form-control" placeholder="Select City">
+                                                <input cv-trim id="City" type="text" name="city" ng-model="editAddr.city" class="form-control" placeholder="Select City">
 
                                             </div>
                                         </div>
 
                                         <div class="form-group nopadding col-xs-12" ng-class="{ 'error' : (DeseditaddrForm.state.$invalid && !DeseditaddrForm.state.$pristine && DeseditaddrForm.state.$touched) || (DeseditaddrForm.$submitted && DeseditaddrForm.state.$error.required) }">
                                             <label for="State">State</label>
-                                            <input id="State" type="text" class="form-control" name="state" ng-model="editAddr.region" placeholder="Select State">
+                                            <input cv-trim id="State" type="text" class="form-control" name="state" ng-model="editAddr.region" placeholder="Select State">
                                             <span ng-show="DeseditaddrForm.state.$error.minlength" class="error">Username is too short.</span>
                                             <span class="error" ng-show="DeseditaddrForm.$submitted && DeseditaddrForm.state.$error.required">Please enter your state</span>
                                         </div>
 
                                         <div class="form-group col-sm-8 col-xs-12 nopadding" ng-class="{ 'error' : DeseditaddrForm.country.$invalid && !DeseditaddrForm.country.$pristine }">
                                             <label for="Country">Country</label>
-                                            <input id="Country" type="text" class="form-control" name="country" ng-model="editAddr.city" placeholder="Select Country">
+                                            <input cv-trim id="Country" type="text" class="form-control" name="country" ng-model="editAddr.city" placeholder="Select Country">
                                         </div>
 
                                         <div
@@ -206,7 +206,7 @@
                                             <label for="Number">Phone Number</label>
                                             <div class="">
                                                 <div class=""></div>
-                                                <input type="text" class="form-control" id="Number" name="phonenumbar" ng-model="editAddr.telephone" ng-minlength="10" ng-maxlength="10" ng-required="true" placeholder="Phone Number">
+                                                <input type="text" cv-trim class="form-control" id="Number" name="phonenumbar" ng-model="editAddr.telephone" ng-minlength="10" ng-maxlength="10" ng-required="true" placeholder="Phone Number">
 
                                             </div>
                                             <div ng-show="DeseditaddrForm.phonenumber.$error.minlength && !DeseditaddrForm.phonenumber.$pristine" class="error">
@@ -277,7 +277,7 @@
                                     ng-class="{ 'error' : (DeseditaddrForm.firstname.$invalid && !DeseditaddrForm.firstname.$pristine && DeseditaddrForm.firstname.$touched )  || (DeseditaddrForm.$submitted && DeseditaddrForm.firstname.$error.required)  }">
 
                                     <label for="name">First Name</label>
-                                    <input id="name" type="text" class="form-control" name="firstname" ng-model="editAddr.firstname" ng-minlength="2" placeholder="Enter First Name" required>
+                                    <input cv-trim id="name" type="text" class="form-control" name="firstname" ng-model="editAddr.firstname" ng-minlength="2" placeholder="Enter First Name" required>
                                     {{editAdd.firstname}}
 
                                     <div ng-show="DeseditaddrForm.$submitted">
@@ -292,7 +292,7 @@
                                     ng-class="{ 'error' : (DeseditaddrForm.lastname.$invalid && !DeseditaddrForm.lastname.$pristine && DeseditaddrForm.lastname.$touched)  || (DeseditaddrForm.$submitted && DeseditaddrForm.lastname.$error.required)  }">
 
                                     <label for="name">Last Name</label>
-                                    <input id="name" type="text" class="form-control" name="lastname" ng-model="editAddr.lastname" ng-minlength="2" placeholder="Enter Lastname">
+                                    <input cv-trim id="name" type="text" class="form-control" name="lastname" ng-model="editAddr.lastname" ng-minlength="2" placeholder="Enter Lastname">
 
                                     <div ng-show="DeseditaddrForm.$submitted">
                                         <span ng-show="DeseditaddrForm.lastname.$error.required" class="error">Please Enter your Last Name.</span>
@@ -306,7 +306,7 @@
                                     ng-class="{ 'error' : (DeseditaddrForm.address.$invalid && !DeseditaddrForm.address.$pristine && DeseditaddrForm.address.$touched)  || (DeseditaddrForm.$submitted && DeseditaddrForm.address.$error.required)  }">
 
                                     <label for="Address">Address</label>
-                                    <textarea id="Address" ng-model="editAddr.street" name="address" ng-minlength="10" class="form-control"></textarea>
+                                    <textarea cv-trim id="Address" ng-model="editAddr.street" name="address" ng-minlength="10" class="form-control"></textarea>
                                     <div ng-show="DeseditaddrForm.$submitted">
                                         <span ng-show="DeseditaddrForm.address.$error.required" class="error">Please enter your address for successful delivery.</span>
                                     </div>
@@ -318,8 +318,8 @@
                                     <div class="form-group" ng-class="{ 'error' : (DeseditaddrForm.postcode.$invalid && !DeseditaddrForm.postcode.$pristine && DeseditaddrForm.postcode.$touched)  || (DeseditaddrForm.$submitted && DeseditaddrForm.postcode.$error.required)  }">
                                         <label for="Pincode">Pincode</label>
 
-                                        <input id="Pincode" name="postcode" type="number" class="form-control" placeholder="Pincode" ng-maxlength="{{addnewcountry_popup.max_pincode_length}}" ng-minlength="{{addnewcountry_popup.min_pincode_length}}" ng-model="editAddr.postcode" ng-blur="changePincode(editAddr.postcode)" required ng-if="addnewcountry_popup.is_alpha == 'n'" />
-                                        <input id="Pincode" name="postcode" type="text" class="form-control" placeholder="Pincode" ng-maxlength="{{addnewcountry_popup.max_pincode_length}}" ng-minlength="{{addnewcountry_popup.min_pincode_length}}" ng-model="editAddr.postcode" ng-blur="changePincode(editAddr.postcode)" required ng-if="addnewcountry_popup.is_alpha == 'y'" />
+                                        <input cv-trim id="Pincode" name="postcode" type="number" class="form-control" placeholder="Pincode" ng-maxlength="{{addnewcountry_popup.max_pincode_length}}" ng-minlength="{{addnewcountry_popup.min_pincode_length}}" ng-model="editAddr.postcode" ng-blur="changePincode(editAddr.postcode)" required ng-if="addnewcountry_popup.is_alpha == 'n'" />
+                                        <input cv-trim id="Pincode" name="postcode" type="text" class="form-control" placeholder="Pincode" ng-maxlength="{{addnewcountry_popup.max_pincode_length}}" ng-minlength="{{addnewcountry_popup.min_pincode_length}}" ng-model="editAddr.postcode" ng-blur="changePincode(editAddr.postcode)" required ng-if="addnewcountry_popup.is_alpha == 'y'" />
 
                                         <div ng-show="DeseditaddrForm.postcode.$error.minlength && !DeseditaddrForm.postcode.$pristine" class="error">
 
@@ -346,7 +346,7 @@
                                 <div class="col-xs-12 col-sm-6 m-padding">
                                     <div class="form-group" ng-class="{ 'error' : (DeseditaddrForm.city.$invalid && !DeseditaddrForm.city.$pristine && DeseditaddrForm.city.$touched) || (DeseditaddrForm.$submitted && DeseditaddrForm.city.$error.required) }">
                                         <label for="City">City</label>
-                                        <input type="text" ng-model="editAddr.city" name="city" required class="form-control" placeholder="City">
+                                        <input type="text" cv-trim ng-model="editAddr.city" name="city" required class="form-control" placeholder="City">
                                         <!-- <select ng-model="addnew.city"
                                             name="city"
                                             required
@@ -366,7 +366,7 @@
 
                                 <div class="form-group nopadding col-xs-12" ng-class="{ 'error' : (DeseditaddrForm.state.$invalid && !DeseditaddrForm.state.$pristine && DeseditaddrForm.state.$touched) || (DeseditaddrForm.$submitted && DeseditaddrForm.state.$error.required) }">
                                     <label for="State">State</label>
-                                    <input type="text" ng-model="editAddr.region" name="state" required class="form-control" placeholder="State">
+                                    <input type="text" cv-trim ng-model="editAddr.region" name="state" required class="form-control" placeholder="State">
                                     <!-- <span ng-show="DeseditaddrForm.state.$error.minlength" class="error">State is too short.</span> -->
                                     <span class="error" ng-show="DeseditaddrForm.$submitted && DeseditaddrForm.state.$error.required">Please enter your state</span>
 
@@ -379,7 +379,7 @@
                                     <label for="Number">Phone Number</label>
                                     <div class="">
                                         <div class=""></div>
-                                        <input type="number" name="phonenumber" class="form-control" id="Number" placeholder="Phone Number" ng-model="editAddr.telephone" ng-minlength="10" ng-maxlength="20" ng-required="true">
+                                        <input type="number" cv-trim name="phonenumber" class="form-control" id="Number" placeholder="Phone Number" ng-model="editAddr.telephone" ng-minlength="10" ng-maxlength="20" ng-required="true">
 
                                     </div>
                                     <div ng-show="DeseditaddrForm.phonenumber.$error.minlength && !DeseditaddrForm.phonenumber.$pristine" class="error">
@@ -540,7 +540,7 @@
                                 <div class="form-group nopadding col-sm-8 col-xs-12" ng-class="{ 'error' : (addnewForm.firstname.$invalid && !addnewForm.firstname.$pristine && addnewForm.firstname.$touched )  || (addnewForm.$submitted && addnewForm.firstname.$error.required)  }">
 
                                     <label for="name">First Name</label>
-                                    <input id="name" name="firstname" type="text" class="form-control" placeholder="Enter First Name" ng-model="shipping.firstName" ng-minlength="2" required>
+                                    <input cv-trim id="name" name="firstname" type="text" class="form-control" placeholder="Enter First Name" ng-model="shipping.firstName" ng-minlength="2" required>
                                     <div ng-show="addnewForm.$submitted && addnewForm.firstname.$pristine">
                                         <span ng-show="addnewForm.firstname.$error.required" class="error">Please Enter your First Name.</span>
                                     </div>
@@ -550,7 +550,7 @@
 
                                 <div class="form-group nopadding col-sm-8 col-xs-12" ng-class="{ 'error' : (addnewForm.lastname.$invalid && !addnewForm.lastname.$pristine && addnewForm.lastname.$touched)  || (addnewForm.$submitted && addnewForm.lastname.$error.required)  }">
                                     <label for="name">Last Name</label>
-                                    <input id="name" name="lastname" type="text" class="form-control" placeholder="Enter Last Name" ng-model="shipping.lastName" ng-minlength="2" required>
+                                    <input cv-trim id="name" name="lastname" type="text" class="form-control" placeholder="Enter Last Name" ng-model="shipping.lastName" ng-minlength="2" required>
 
                                     <div ng-show="addnewForm.$submitted  && addnewForm.lastname.$pristine">
                                         <span ng-show="addnewForm.lastname.$error.required" class="error">Please Enter your Last Name.</span>
@@ -562,7 +562,7 @@
                                 <div class="form-group nopadding col-xs-12" ng-class="{ 'error' : (addnewForm.address.$invalid && !addnewForm.address.$pristine && addnewForm.address.$touched)  || (addnewForm.$submitted && addnewForm.address.$error.required)  }">
                                     <label for="Address">Address</label>
 
-                                    <textarea id="Address" name="address" ng-model="shipping.address1" class="form-control" ng-minlength="10" placeholder="Enter Address" required></textarea>
+                                    <textarea cv-trim id="Address" name="address" ng-model="shipping.address1" class="form-control" ng-minlength="10" placeholder="Enter Address" required></textarea>
 
                                     <div ng-show="addnewForm.$submitted && addnewForm.address.$pristine">
                                         <span ng-show="addnewForm.address.$error.required" class="error">Please enter your address for successful delivery.</span>
@@ -574,8 +574,8 @@
                                 <div class="col-xs-12 col-sm-4 nopadding">
                                     <div class="form-group" ng-class="{ 'error' : (addnewForm.postcode.$invalid && !addnewForm.postcode.$pristine && addnewForm.postcode.$touched)  || (addnewForm.$submitted && addnewForm.postcode.$error.required)  }">
                                         <label for="Pincode">Pincode</label>
-                                        <input id="Pincode" name="postcode" type="number" class="form-control" placeholder="Pincode" ng-maxlength="{{addnewcountry_shipping.max_pincode_length}}" ng-minlength="{{addnewcountry_shipping.min_pincode_length}}" ng-model="shipping.postcode" ng-blur="changePincode(shipping.postcode)" required ng-if="addnewcountry_shipping.is_alpha == 'n'" />
-                                        <input id="Pincode" name="postcode" type="text" class="form-control" placeholder="Pincode" ng-maxlength="{{addnewcountry_shipping.max_pincode_length}}" ng-minlength="{{addnewcountry_shipping.min_pincode_length}}" ng-model="shipping.postcode" ng-blur="changePincode(shipping.postcode)" required ng-if="addnewcountry_shipping.is_alpha == 'y'" />
+                                        <input cv-trim id="Pincode" name="postcode" type="number" class="form-control" placeholder="Pincode" ng-maxlength="{{addnewcountry_shipping.max_pincode_length}}" ng-minlength="{{addnewcountry_shipping.min_pincode_length}}" ng-model="shipping.postcode" ng-blur="changePincode(shipping.postcode)" required ng-if="addnewcountry_shipping.is_alpha == 'n'" />
+                                        <input cv-trim id="Pincode" name="postcode" type="text" class="form-control" placeholder="Pincode" ng-maxlength="{{addnewcountry_shipping.max_pincode_length}}" ng-minlength="{{addnewcountry_shipping.min_pincode_length}}" ng-model="shipping.postcode" ng-blur="changePincode(shipping.postcode)" required ng-if="addnewcountry_shipping.is_alpha == 'y'" />
 
                                         <div ng-show="addnewForm.postcode.$error.minlength && !addnewForm.postcode.$pristine" class="error">
 
@@ -602,7 +602,7 @@
                                 <div class="col-xs-12 col-sm-6 m-padding">
                                     <div class="form-group" ng-class="{ 'error' : (addnewForm.city.$invalid && !addnewForm.city.$pristine && addnewForm.city.$touched) || (addnewForm.$submitted && addnewForm.city.$error.required) }">
                                         <label for="City">City</label>
-                                        <input type="text" ng-model="shipping.city" name="city" required class="form-control" placeholder="City">
+                                        <input type="text" cv-trim ng-model="shipping.city" name="city" required class="form-control" placeholder="City">
                                         <!-- <select ng-model="addnew.city"
                                             name="city"
                                             required
@@ -622,7 +622,7 @@
 
                                 <div class="form-group nopadding col-xs-12" ng-class="{ 'error' : (addnewForm.state.$invalid && !addnewForm.state.$pristine && addnewForm.state.$touched) || (addnewForm.$submitted && addnewForm.state.$error.required) }">
                                     <label for="State">State</label>
-                                    <input type="text" ng-model="shipping.state" name="state" required class="form-control" placeholder="State">
+                                    <input type="text" cv-trim ng-model="shipping.state" name="state" required class="form-control" placeholder="State">
                                     <span ng-show="addnewForm.state.$error.minlength" class="error">Username is too short.</span>
                                     <span class="error" ng-show="addnewForm.$submitted && addnewForm.state.$error.required">Please enter your state</span>
 
@@ -634,7 +634,7 @@
                                     <label for="Number">Phone Number</label>
                                     <div class="">
                                         <div class=""></div>
-                                        <input type="number" name="phonenumber" class="form-control" id="Number" placeholder="Phone Number" ng-model="shipping.phoneNo" ng-minlength="10" ng-maxlength="20" ng-required="true">
+                                        <input type="number" cv-trim name="phonenumber" class="form-control" id="Number" placeholder="Phone Number" ng-model="shipping.phoneNo" ng-minlength="10" ng-maxlength="20" ng-required="true">
 
                                     </div>
                                     <div ng-show="addnewForm.phonenumber.$error.minlength && !addnewForm.phonenumber.$pristine" class="error">
@@ -705,7 +705,7 @@
                                         class="form-group nopadding col-sm-8 col-xs-12"
                                         ng-class="{ 'error' : (BillingADDForm.firstname.$invalid && !BillingADDForm.firstname.$pristine && BillingADDForm.firstname.$touched)  || (BillingADDForm.$submitted && BillingADDForm.firstname.$error.required)  }">
                                         <label for="name">First Name</label>
-                                        <input id="name" name="firstname" type="text" class="form-control" placeholder="Enter First Name" ng-model="addNewBilling.firstName" ng-minlength="2" required>
+                                        <input cv-trim id="name" name="firstname" type="text" class="form-control" placeholder="Enter First Name" ng-model="addNewBilling.firstName" ng-minlength="2" required>
                                         <div ng-show="BillingADDForm.$submitted && BillingADDForm.firstname.$pristine">
                                             <span ng-show="BillingADDForm.firstname.$error.required" class="error">Please Enter your First Name.</span>
                                         </div>
@@ -717,7 +717,7 @@
                                         class="form-group nopadding col-sm-8 col-xs-12"
                                         ng-class="{ 'error' : (BillingADDForm.lastname.$invalid && !BillingADDForm.lastname.$pristine && BillingADDForm.lastname.$touched)  || (BillingADDForm.$submitted && BillingADDForm.lastname.$error.required)  }">
                                         <label for="name">Last Name</label>
-                                        <input id="name" name="lastname" type="text" class="form-control" placeholder="Enter Last Name" ng-model="addNewBilling.lastName" ng-minlength="2" required>
+                                        <input cv-trim id="name" name="lastname" type="text" class="form-control" placeholder="Enter Last Name" ng-model="addNewBilling.lastName" ng-minlength="2" required>
                                         <div ng-show="BillingADDForm.$submitted  && BillingADDForm.lastname.$pristine">
                                             <span ng-show="BillingADDForm.lastname.$error.required" class="error">Please Enter your Last Name.</span>
                                         </div>
@@ -728,7 +728,7 @@
                                     <div class="form-group nopadding col-xs-12" ng-class="{ 'error' : (BillingADDForm.address.$invalid && !BillingADDForm.address.$pristine && BillingADDForm.address.$touched)  || (BillingADDForm.$submitted && BillingADDForm.address.$error.required)  }">
                                         <label for="Address">Address</label>
 
-                                        <textarea id="Address" name="address" ng-model="addNewBilling.address1" class="form-control" ng-minlength="3" placeholder="Enter Address" required></textarea>
+                                        <textarea cv-trim id="Address" name="address" ng-model="addNewBilling.address1" class="form-control" ng-minlength="3" placeholder="Enter Address" required></textarea>
 
                                         <span ng-message="BillingADDForm.address.$error.minlength && !BillingADDForm.address.$pristine" ng-show="BillingADDForm.address.$invalid && BillingADDForm.address.$touched" class="error">Address should be more than ten characters.</span>
                                         <div ng-show="(BillingADDForm.$submitted || BillingADDForm.address.$touched) && BillingADDForm.lastname.$pristine">
@@ -741,8 +741,8 @@
                                         <div class="form-group" ng-class="{ 'error' : (BillingADDForm.postcode.$invalid && !BillingADDForm.postcode.$pristine && BillingADDForm.postcode.$touched)  || (BillingADDForm.$submitted && BillingADDForm.postcode.$error.required)  }">
                                             <label for="Pincode">Pincode</label>
 
-                                            <input id="Pincode" name="postcode" type="number" class="form-control" placeholder="Pincode" ng-maxlength="{{addnewcountry_billing.max_pincode_length}}" ng-minlength="{{addnewcountry_billing.min_pincode_length}}" ng-model="addNewBilling.postcode" ng-blur="changePincode(addNewBilling.postcode)" required ng-if="addnewcountry_billing.is_alpha == 'n'" />
-                                            <input id="Pincode" name="postcode" type="text" class="form-control" placeholder="Pincode" ng-maxlength="{{addnewcountry_billing.max_pincode_length}}" ng-minlength="{{addnewcountry_billing.min_pincode_length}}" ng-model="addNewBilling.postcode" ng-blur="changePincode(addNewBilling.postcode)" required ng-if="addnewcountry_billing.is_alpha == 'y'" />
+                                            <input cv-trim id="Pincode" name="postcode" type="number" class="form-control" placeholder="Pincode" ng-maxlength="{{addnewcountry_billing.max_pincode_length}}" ng-minlength="{{addnewcountry_billing.min_pincode_length}}" ng-model="addNewBilling.postcode" ng-blur="changePincode(addNewBilling.postcode)" required ng-if="addnewcountry_billing.is_alpha == 'n'" />
+                                            <input cv-trim id="Pincode" name="postcode" type="text" class="form-control" placeholder="Pincode" ng-maxlength="{{addnewcountry_billing.max_pincode_length}}" ng-minlength="{{addnewcountry_billing.min_pincode_length}}" ng-model="addNewBilling.postcode" ng-blur="changePincode(addNewBilling.postcode)" required ng-if="addnewcountry_billing.is_alpha == 'y'" />
                                             <div ng-show="BillingADDForm.postcode.$error.minlength && !BillingADDForm.postcode.$pristine" class="error">
 
                                                 <span ng-message="BillingADDForm.postcode.$invalid" ng-show="BillingADDForm.postcode.$touched">Pincode should be of minimum {{addnewcountry_billing.min_pincode_length}} digits.</span>
@@ -765,7 +765,7 @@
                                             <label for="City">City</label>
                                             {{addnew.city}}
 
-                                            <input type="text" ng-model="addNewBilling.city" name="city" required class="form-control" placeholder="City">
+                                            <input type="text" cv-trim ng-model="addNewBilling.city" name="city" required class="form-control" placeholder="City">
                                             <!-- <select ng-model="addnew.city"
                                             name="city"
                                             required
@@ -779,7 +779,7 @@
 
                                     <div class="form-group nopadding col-xs-12" ng-class="{ 'error' : (BillingADDForm.state.$invalid && !BillingADDForm.state.$pristine ) || (BillingADDForm.$submitted && BillingADDForm.state.$error.required) }">
                                         <label for="State">State</label>
-                                        <input type="text" ng-model="addNewBilling.state" name="state" required class="form-control" placeholder="State">
+                                        <input type="text" cv-trim ng-model="addNewBilling.state" name="state" required class="form-control" placeholder="State">
                                         <span ng-show="BillingADDForm.state.$error.minlength" class="error">Username is too short.</span>
                                         <span class="error" ng-show="BillingADDForm.$submitted && BillingADDForm.state.$error.required">Please enter your state</span>
 
@@ -791,7 +791,7 @@
                                         <label for="Number">Phone Number</label>
                                         <div class="">
                                             <div class=""></div>
-                                            <input type="number" name="phonenumber" class="form-control" id="Number" placeholder="Phone Number" ng-model="addNewBilling.phoneNo" ng-minlength="10" ng-maxlength="20" ng-required="true">
+                                            <input type="number" cv-trim name="phonenumber" class="form-control" id="Number" placeholder="Phone Number" ng-model="addNewBilling.phoneNo" ng-minlength="10" ng-maxlength="20" ng-required="true">
 
                                         </div>
                                         <div ng-show="BillingADDForm.phonenumber.$error.minlength && !BillingADDForm.phonenumber.$pristine" class="error">
