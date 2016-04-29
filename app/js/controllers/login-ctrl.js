@@ -14,12 +14,15 @@ define(['./index'], function (controllers) {
 	};
 	$scope.changeGuestCheckout = function() {
 		if ($scope.guestUserForm.$valid ) {
+			$scope.guestCheckoutLoader = true;
       var emailId = $scope.guest.guestUserEmail;
 			craftsvillaService.continueAsGuest(emailId)
 			.success(function (response) {
-        console.log(response.s)
+        $scope.guestCheckoutLoader = false;
         if(response.s==1 )
 				{
+					//logindata = responjse.d
+		  window.userEmail = response.d.email;
           $localStorage.loginData = response.d;
           $state.go('shipping');
         }
@@ -28,6 +31,7 @@ define(['./index'], function (controllers) {
 				}
 			})
 			.error(function (err) {
+				$scope.guestCheckoutLoader = false;
 				console.log('error');
 				throw new Error(err);
 			})
@@ -52,21 +56,34 @@ define(['./index'], function (controllers) {
 
 	$scope.loginCred = function() {
 		if ($scope.userLoginForm.$valid) {
+			$scope.loginLoader = true;
 			var emailId = $scope.userLogin.email;
+			window.userEmail = $scope.userLogin.email;
 			var password = $scope.userLogin.password;
 			craftsvillaService.getLogin(emailId, password)
 			.success(function (response) {
+				$scope.loginLoader = false;
 				if(response.s==0 )
 				{
 					delete $localStorage.loginData;
 					$scope.invalidCred=true;
+
 				}
 				else{
+					//loggedin  response.d
+					window.userEmail = response.d[0].customerData.email;
 					$localStorage.loginData = response.d;
-					$state.go('shipping');
+					if(window.sticktocart==true)
+						{	$state.go('cart');
+						console.log('in cart');}
+						else
+							{$state.go('shipping');
+						console.log('in shipping');}
+
 				}
 			})
 			.error(function (err) {
+				$scope.loginLoader = false;
 				console.log('error');
 				throw new Error(err);
 			})
@@ -79,8 +96,13 @@ define(['./index'], function (controllers) {
 			var emailId = $scope.userForgot.forgotEmail;
 			craftsvillaService.forgotPassword(emailId)
 			.success(function (response) {
-				$scope.forgotPasswd = false;
-				$scope.sendPasswd=true;
+				if (response.s==1) {
+					$scope.forgotPasswd = false;
+					$scope.sendPasswd=true;
+				}
+				else{
+					alert(response.m);
+				}
 
 			})
 			.error(function (err) {
@@ -117,6 +139,14 @@ define(['./index'], function (controllers) {
 	};*/
 
 	$scope.authenticate = function(provider) {
+		if(provider == 'google') {
+			$scope.gLoader = true;
+			$scope.fbLoader = false;
+		}
+		else {
+			$scope.gLoader = false;
+			$scope.fbLoader = true;
+		}
 		$auth.authenticate(provider)
 			.then(function(data) {
 
@@ -127,16 +157,23 @@ define(['./index'], function (controllers) {
 				json.clientId = provider === 'google' ? data.config.data.clientId : undefined;
 				json.redirectUri = provider === 'google' ? data.config.data.redirectUri : undefined;
 
-				// console.log(json);
+				 console.log(provider);
 				// return;
 
 				craftsvillaService.socialAuth(json)
 				.success(function (_data) {
+					$scope.gLoader = false;
+					$scope.fbLoader = false;
 					if(_data.s === 1) {
+						//login data
 						$localStorage.loginData = _data.d[0];
+						window.userEmail = _data.d[0].customerEmail;
 						$state.go('shipping');
+
 					}
 					else {
+						$scope.gLoader = false;
+						$scope.fbLoader = false;
 						delete $localStorage.loginData;
 					}
 				})
@@ -148,9 +185,57 @@ define(['./index'], function (controllers) {
 				console.log(error);
 			});
 	};
+	$scope.loginTracker = function() {
+		craftsvillaService.loadQuote()
+		.success(function(response) {
+			$scope.cartDetailsVal = response.d;
+			$scope.$emit('cartDetailsLoaded');
+		});
 
+		$scope.$on('cartDetailsLoaded', function () {
+			var emailId = $scope.userLogin.email;
+			if(typeof _satellite != "undefined") {
+				 digitalData.page={
+		          pageInfo:{
+		            pageName:"login page",
+		          },
+		          category:{
+		            pageType:"login",
+		            primaryCategory: "login",
+		          },
+		          device:{
+		            deviceType: isMobile
+		          },
+		          currencycode:{
+		            currencyCode : 'INR',
+		          },
+
+		        }
+		    }
+		    if(typeof dataLayer != "undefined") {
+			    dataLayer.push({
+		            'event':'UserSignedUpEvent',
+		            'eventName':'UserSignedUp',
+		            'type':'email',
+		            'cartValue': $scope.cartDetailsVal.total_items
+		        });
+			}
+		    if(typeof clevertap != "undefined") {
+		        clevertap.profile.push({
+		            "Site": {
+		                "Name":'',
+		                "Email": emailId,
+		                //"Phone": "+91" +
+		            }
+		        });
+			}
+		});
+	}
     $scope.initLogin = function() {
       console.log("Login Initialised");
+			$scope.scrollToTop();
+      		$scope.loginTracker();
+
     };
 	$scope.initLogin();
 

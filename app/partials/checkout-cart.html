@@ -42,7 +42,7 @@
 							</span>
 						</span>
 					</a>
-					<a rel="nofollow" href="/customer/account/login/" class="user-icon-section">
+					<a rel="nofollow" ng-click="loginNow()" class="user-icon-section">
 						<i class="icon-v2 icon-user header-mobile-icon"></i>
 					</a>
 				</div>
@@ -90,7 +90,7 @@
 					</li>
 				</a>
 				<li id="loginLogoutResponse" class="col-md-4">
-					<a class="user-icon-container header-icon-container" href="/login" ng-if="!isLoggedIn">
+					<a class="user-icon-container header-icon-container" ng-click="loginNow()" ng-if="!isLoggedIn">
 				<li class="account-section" ng-if="!isLoggedIn">
 							<span class="user-icon">
 								<i class="icon-v2 icon-user"></i>
@@ -101,7 +101,7 @@
 				</li>
 				</a>
 				<li class="account-section loggedin-section" ng-if="isLoggedIn">
-					<a href="#" class="dropdown-toggle user-icon-container header-icon-container" data-toggle="dropdown" aria-expanded="true">
+					<a  class="dropdown-toggle user-icon-container header-icon-container" data-toggle="dropdown" aria-expanded="true">
 						<span class="user-icon"><i class="icon-v2 icon-user loggedin-icon"></i></span>
 						<span class="user-text">Account</span>
 						<b class="caret"></b>
@@ -518,7 +518,7 @@
 		<p>Shipping</p>
 	</div>
 	<div class="o-right-cont">
-		<div class="ord-amt" style="margin-top:{{successCoupon ? '26px' : '0px'}}" >
+		<div class="ord-amt"  >
 			<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 14 28" class="icon">
 				<path d="M14.031 7.344v1.594q0 0.219-0.141 0.359t-0.359 0.141h-2.625q-0.359 2.25-2.016 3.656t-4.312 1.719q2.609 2.781 7.172 8.375 0.219 0.25 0.063 0.531-0.125 0.281-0.453 0.281h-3.047q-0.25 0-0.391-0.187-4.781-5.734-7.781-8.922-0.141-0.141-0.141-0.344v-1.984q0-0.203 0.148-0.352t0.352-0.148h1.75q2.063 0 3.32-0.672t1.602-1.953h-6.672q-0.219 0-0.359-0.141t-0.141-0.359v-1.594q0-0.219 0.141-0.359t0.359-0.141h6.453q-0.891-1.766-4.188-1.766h-2.266q-0.203 0-0.352-0.148t-0.148-0.352v-2.078q0-0.219 0.141-0.359t0.359-0.141h13q0.219 0 0.359 0.141t0.141 0.359v1.594q0 0.219-0.141 0.359t-0.359 0.141h-3.641q0.734 0.953 1 2.25h2.672q0.219 0 0.359 0.141t0.141 0.359z"></path>
 			</svg>
@@ -587,7 +587,14 @@
 						<div class="ord-amt" ng-show="waitingCartDatails"><img src="images/textloading.gif" class="textloading"></div>
 					</div>
 				-->
-					<button class="btn col-xs-12 procd-to-checkout" ng-click="proceedToCheckout()">Proceed to checkout<img style="margin-left:5px;height:auto; width:5%;" src="images/Checkout-CTA-icon.png"></button>
+					<div class="col-xs-12 divider" ></div>
+
+					<button class="btn col-xs-12 procd-to-checkout" ng-click="proceedToCheckout()">
+						<span ng-show="!proceedToCheckoutLoader" >
+							Proceed to checkout<img style="margin-left:5px;height:auto; width:5%;" src="images/Checkout-CTA-icon.png">
+						</span>
+						<img ng-show="proceedToCheckoutLoader"  src="images/loader.gif" class="small-loader"/>
+					</button>
 				</div>
 			</div>
 			<!-- checkout right panel ends -->
@@ -702,4 +709,10 @@
 		$('.with-searchbar').hide();
 		$('.without-searchbar').show();
 	});
+
+</script>
+<script type="text/javascript">
+if(typeof _satellite != "undefined") {
+	_satellite.pageBottom();
+	}
 </script>

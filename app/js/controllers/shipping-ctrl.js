@@ -30,10 +30,9 @@ define(['./index'], function(controllers) {
 
             craftsvillaService.getCountry()
                 .success(function(response) {
-                    console.log(response);
                     $scope.countries = response.d;
-                    console.log($scope.countries[0])
-                    $scope.addnewcountry = $scope.countries[0];
+                    $scope.addnewcountry_shipping = angular.copy($scope.countries[0]);
+                    $scope.addnewcountry_billing = angular.copy($scope.countries[0]);
                 })
 
         }
@@ -43,8 +42,14 @@ define(['./index'], function(controllers) {
                 console.log(address);
                 $scope.popupEditAddress = false;
                 $scope.editAddr = angular.copy(address);
-                $scope.editAddr.postcode = +$scope.editAddr.postcode;
+                $scope.editAddr.postcode = isNaN(parseInt($scope.editAddr.postcode)) ? $scope.editAddr.postcode : +$scope.editAddr.postcode;
                 $scope.editAddr.telephone = +$scope.editAddr.telephone;
+
+                $scope.countries.map(function (country) {
+                    if(country.country_name.toLowerCase() === $scope.editAddr.country.toLowerCase()) {
+                        $scope.addnewcountry_popup = country;
+                    }
+                })
 
                 if ($scope.DeseditaddrForm) {
                     //alert('Edit Address');
@@ -141,7 +146,7 @@ define(['./index'], function(controllers) {
             if ($scope.addnewForm.$valid) {
                 if (chkStatusBilling == true) {
                     $scope.shipping.isSame = 1;
-                    $scope.shipping.countryName = $scope.addnewcountry.country_name;
+                    $scope.shipping.countryName = $scope.addnewcountry_shipping.country_name;
                     console.log($scope.shipping)
                     $scope.shipping.pincode = $scope.shipping.postcode;
                     craftsvillaService.addAddress($scope.shipping, $scope.shipping)
@@ -150,8 +155,7 @@ define(['./index'], function(controllers) {
                                 .success(function(response) {
                                     if (response.s == 1) {
                                         $scope.addressProceed();
-                                    } else
-                                        alert(response.m)
+                                    }
                                 })
                                 .error(function(error) {
                                     console.log(error);
@@ -170,8 +174,7 @@ define(['./index'], function(controllers) {
 
         //Edit address
         $scope.changePincode = function(postcode) {
-                console.log($scope.addnewcountry.country_name)
-                if ($scope.addnewcountry.country_name == "India") {
+                if ($scope.addnewcountry_shipping.country_name == "India") {
                     $scope.citystateWait = true;
 
                     craftsvillaService.getAddressFromPincode(postcode)
@@ -215,8 +218,8 @@ define(['./index'], function(controllers) {
         }
         $scope.changePincodeBilling = function(postcode) {
             console.log("&&&&& ----- -&&&&&")
-            console.log($scope.addnewcountry.country_name)
-            if ($scope.addnewcountry.country_name == "India")
+            console.log($scope.addnewcountry_billing.country_name)
+            if ($scope.addnewcountry_billing.country_name == "India")
                 craftsvillaService.getAddressFromPincode(postcode)
                 .success(function(response) {
                     console.log(response);
@@ -247,7 +250,7 @@ define(['./index'], function(controllers) {
             var _address = $scope.editAddr.street;
             var postcode = $scope.editAddr.postcode;
             var city = $scope.editAddr.city;
-            var country = $scope.editAddr.country;
+            var country = $scope.addnewcountry_popup.country_name;
             var state = $scope.editAddr.region;
             var phonenumber = $scope.editAddr.telephone;
             craftsvillaService.updateAddress(firstname, lastname, _address, city, state, postcode, country, phonenumber, addId)
@@ -343,8 +346,8 @@ define(['./index'], function(controllers) {
             var city = $scope.addNewBilling.city;
             var state = $scope.addNewBilling.state;
             var phonenumber = $scope.addNewBilling.phonenumber;
-            $scope.shipping.countryName = $scope.addnewcountry.country_name;
-            $scope.addNewBilling.countryName = $scope.addnewcountry.country_name;
+            $scope.shipping.countryName = $scope.addnewcountry_shipping.country_name;
+            $scope.addNewBilling.countryName = $scope.addnewcountry_billing.country_name;
             craftsvillaService.addAddress($scope.shipping, $scope.addNewBilling)
                 .success(function(response) {
                     if (response.s == 1) {
@@ -368,8 +371,8 @@ define(['./index'], function(controllers) {
 
 
         // $scope.deliverAddress = function() {
-        // 	//alert('Delivery Address Working');
-        // 	craftsvillaService.updateQty(1234, 2546, 2);
+        //  //alert('Delivery Address Working');
+        //  craftsvillaService.updateQty(1234, 2546, 2);
         // };
 
 
@@ -395,11 +398,11 @@ define(['./index'], function(controllers) {
 
 
         // $scope.setBoth=function(){
-        // 	console.log('setBoth ');
+        //  console.log('setBoth ');
         // }
 
         // $scope.setShippingID=function(addId){
-        // 	console.log('setShippingID ');
+        //  console.log('setShippingID ');
         // }
 
         $scope.setbillingID = function(addId) {
@@ -417,6 +420,9 @@ define(['./index'], function(controllers) {
 
         $scope.proceed = function() {
             var goahead = false;
+            if(typeof dataLayer != "undefined") {
+                dataLayer.push({'event':'TappedButtonEvent','eventName':'TappedButton','type':'ConfirmedAnAddress'});
+            }
             console.log($scope.billingID, $scope.shippingID, $scope.tempBilling, $scope.tempShipping)
 
             if ($scope.everChanged == false) {
@@ -436,11 +442,13 @@ define(['./index'], function(controllers) {
             console.log($scope.billingID, $scope.shippingID, $scope.tempBilling, $scope.chkStatus)
 
             if (goahead) {
+                $scope.proceedToPaymentLoader=true;
                 $scope.deliverToAddress = true;
                 craftsvillaService.assignAddressToQuote($scope.billingID, $scope.shippingID)
                     .success(function(response) {
                         $scope.deliverToAddress = false;
                         if (response.s == 1) {
+                            $scope.proceedToPaymentLoader=false;
                             $state.go('payment', {
                                 platform: 'web'
                             });
@@ -450,6 +458,7 @@ define(['./index'], function(controllers) {
 
                     })
                     .error(function(error) {
+                        $scope.proceedToPaymentLoader=false;
                         console.log(error);
                         $scope.deliverToAddress = false;
                     });
@@ -465,11 +474,33 @@ define(['./index'], function(controllers) {
             $scope.mform = !$scope.mform;
             console.log($scope.mform);
         };
+        $scope.addressTracker =function() {
+            if(typeof _satellite != "undefined") {
+                digitalData.page={
+                  pageInfo:{
+                    pageName:"shipping address",
+                  },
+                  category:{
+                    pageType:"shipping",
+                    primaryCategory: "shipping",
+                  },
+                  device:{
+                    deviceType:isMobile
+                  },
+                  currencycode:{
+                    currencyCode : 'INR',
+                  },
+                }
+            }
 
+    }
 
         $scope.initshipping = function() {
             $scope.viewaddress();
             $scope.fetchCountries();
+            $scope.addressTracker();
+            $scope.scrollToTop();
+            $scope.addressTracker();
 
         }
         $scope.initshipping();

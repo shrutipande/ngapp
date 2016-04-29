@@ -1,7 +1,7 @@
 <div role-header class="container-fluid nopadding">
 	<div role-nav class="container">
 		<div class="col-xs-6 nopadding" role="logo">
-			<img role="back" src="images/Shape.png" alt="" title="">
+			<img role="back" src="images/Shape.png" alt="" title="" ng-click="goBack()">
 			<a href="/" title=""><img class="logo" src="/images/cv_logo.svg" alt="" title=""></a>
 			<span class="hidden-xs">Call 022 288288281 for any assistance</span>
 		</div>
@@ -125,9 +125,9 @@
 										<div class="ord-amt" ng-show="waitingCartDatails"><img src="images/textloading.gif" class="textloading"></div>
 									</div>
 								</div>
-								<div class="col-xs-12 nopadding">
+								<div class="col-xs-12 nopadding" ng-show="successCoupon && !waitingCartDatails">
 									<div class="col-xs-8 nopadding text-left">
-										<p ng-show="shippingAdressData.discount_amount > 0">Coupon Applied ({{couponCode}})</p>
+										<p ng-show="shippingAmountData.totol_discount > 0">Coupon Applied ({{ shippingAmountData.coupon_code }})</p>
 									</div>
 									<div class="col-xs-4 nopadding text-right">
 					                  <div class="ord-amt pull-right" ng-show="successCoupon && !waitingCartDatails">
@@ -135,21 +135,20 @@
 					                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 14 28" class="icon">
 					                          <path d="M14.031 7.344v1.594q0 0.219-0.141 0.359t-0.359 0.141h-2.625q-0.359 2.25-2.016 3.656t-4.312 1.719q2.609 2.781 7.172 8.375 0.219 0.25 0.063 0.531-0.125 0.281-0.453 0.281h-3.047q-0.25 0-0.391-0.187-4.781-5.734-7.781-8.922-0.141-0.141-0.141-0.344v-1.984q0-0.203 0.148-0.352t0.352-0.148h1.75q2.063 0 3.32-0.672t1.602-1.953h-6.672q-0.219 0-0.359-0.141t-0.141-0.359v-1.594q0-0.219 0.141-0.359t0.359-0.141h6.453q-0.891-1.766-4.188-1.766h-2.266q-0.203 0-0.352-0.148t-0.148-0.352v-2.078q0-0.219 0.141-0.359t0.359-0.141h13q0.219 0 0.359 0.141t0.141 0.359v1.594q0 0.219-0.141 0.359t-0.359 0.141h-3.641q0.734 0.953 1 2.25h2.672q0.219 0 0.359 0.141t0.141 0.359z"></path>
 					                      </svg>
-					                      {{ shippingAdressData.discount_amount | number: 2 }}
+					                      {{ shippingAmountData.totol_discount | number: 2 }}
 					                  </div>
 					                  <div class="ord-amt" ng-show="waitingCartDatails && successCoupon"><img src="images/textloading.gif" class="textloading"></div>
 									</div>
 								</div>
-								<div class="col-xs-12 nopadding">
-									<p ng-show="shippingAdressData.discount_amount > 0">Coupon Applied ({{couponCode}})</p>
-									<p class="green" ng-show="shippingAdressData.discount_amount > 0">You saved {{discount | number: 2}}%</p>
+								<div class="col-xs-12 nopadding" ng-show="successCoupon && !waitingCartDatails">
+									<p class="green" ng-show="shippingAmountData.totol_discount > 0">You saved {{ discountPecent | number: 0}}%</p>
 								</div>
 								<div class="col-xs-12 nopadding">
 									<div class="col-xs-8 nopadding text-left">
 										<p>Shipping</p>
 									</div>
 									<div class="col-xs-4 nopadding text-right">
-					                  <div class="ord-amt pull-right" ng-show="!waitingCartDatails" style="margin-top:{{shippingAdressData.discount_amount > 0 ? '26px' : '0px'}}">
+					                  <div class="ord-amt pull-right" ng-show="!waitingCartDatails">
 					                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 14 28" class="icon">
 					                          <path d="M14.031 7.344v1.594q0 0.219-0.141 0.359t-0.359 0.141h-2.625q-0.359 2.25-2.016 3.656t-4.312 1.719q2.609 2.781 7.172 8.375 0.219 0.25 0.063 0.531-0.125 0.281-0.453 0.281h-3.047q-0.25 0-0.391-0.187-4.781-5.734-7.781-8.922-0.141-0.141-0.141-0.344v-1.984q0-0.203 0.148-0.352t0.352-0.148h1.75q2.063 0 3.32-0.672t1.602-1.953h-6.672q-0.219 0-0.359-0.141t-0.141-0.359v-1.594q0-0.219 0.141-0.359t0.359-0.141h6.453q-0.891-1.766-4.188-1.766h-2.266q-0.203 0-0.352-0.148t-0.148-0.352v-2.078q0-0.219 0.141-0.359t0.359-0.141h13q0.219 0 0.359 0.141t0.141 0.359v1.594q0 0.219-0.141 0.359t-0.359 0.141h-3.641q0.734 0.953 1 2.25h2.672q0.219 0 0.359 0.141t0.141 0.359z"></path>
 					                      </svg>
@@ -198,7 +197,7 @@
 								</div>
 								<div class="col-xs-12 nopadding">
 									<div class="col-xs-8 nopadding text-left">
-										<p ng-show="shippingAdressData.discount_amount > 0">Coupon Applied ({{couponCode}})</p>
+										<p ng-show="shippingAmountData.totol_discount > 0">Coupon Applied ({{ shippingAmountData.coupon_code }})</p>
 									</div>
 									<div class="col-xs-4 nopadding text-right">
 					                  <div class="ord-amt pull-right" ng-show="successCoupon && !waitingCartDatails">
@@ -206,21 +205,20 @@
 					                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 14 28" class="icon">
 					                          <path d="M14.031 7.344v1.594q0 0.219-0.141 0.359t-0.359 0.141h-2.625q-0.359 2.25-2.016 3.656t-4.312 1.719q2.609 2.781 7.172 8.375 0.219 0.25 0.063 0.531-0.125 0.281-0.453 0.281h-3.047q-0.25 0-0.391-0.187-4.781-5.734-7.781-8.922-0.141-0.141-0.141-0.344v-1.984q0-0.203 0.148-0.352t0.352-0.148h1.75q2.063 0 3.32-0.672t1.602-1.953h-6.672q-0.219 0-0.359-0.141t-0.141-0.359v-1.594q0-0.219 0.141-0.359t0.359-0.141h6.453q-0.891-1.766-4.188-1.766h-2.266q-0.203 0-0.352-0.148t-0.148-0.352v-2.078q0-0.219 0.141-0.359t0.359-0.141h13q0.219 0 0.359 0.141t0.141 0.359v1.594q0 0.219-0.141 0.359t-0.359 0.141h-3.641q0.734 0.953 1 2.25h2.672q0.219 0 0.359 0.141t0.141 0.359z"></path>
 					                      </svg>
-					                      {{ shippingAdressData.discount_amount | number: 2 }}
+					                      {{ shippingAmountData.totol_discount | number: 2 }}
 					                  </div>
 					                  <div class="ord-amt" ng-show="waitingCartDatails && successCoupon"><img src="images/textloading.gif" class="textloading"></div>
 									</div>
 								</div>
 								<div class="col-xs-12 nopadding">
-									<p ng-show="shippingAdressData.discount_amount > 0">Coupon Applied ({{couponCode}})</p>
-									<p class="green" ng-show="shippingAdressData.discount_amount > 0">You saved {{discount | number: 2}}%</p>
+									<p class="green" ng-show="shippingAmountData.totol_discount > 0">You saved {{ discountPecent | number: 0}}%</p>
 								</div>
 								<div class="col-xs-12 nopadding">
 									<div class="col-xs-8 nopadding text-left">
 										<p>Shipping</p>
 									</div>
 									<div class="col-xs-4 nopadding text-right">
-					                  <div class="ord-amt pull-right" ng-show="!waitingCartDatails" style="margin-top:{{shippingAdressData.discount_amount > 0 ? '26px' : '0px'}}">
+					                  <div class="ord-amt pull-right" ng-show="!waitingCartDatails">
 					                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 14 28" class="icon">
 					                          <path d="M14.031 7.344v1.594q0 0.219-0.141 0.359t-0.359 0.141h-2.625q-0.359 2.25-2.016 3.656t-4.312 1.719q2.609 2.781 7.172 8.375 0.219 0.25 0.063 0.531-0.125 0.281-0.453 0.281h-3.047q-0.25 0-0.391-0.187-4.781-5.734-7.781-8.922-0.141-0.141-0.141-0.344v-1.984q0-0.203 0.148-0.352t0.352-0.148h1.75q2.063 0 3.32-0.672t1.602-1.953h-6.672q-0.219 0-0.359-0.141t-0.141-0.359v-1.594q0-0.219 0.141-0.359t0.359-0.141h6.453q-0.891-1.766-4.188-1.766h-2.266q-0.203 0-0.352-0.148t-0.148-0.352v-2.078q0-0.219 0.141-0.359t0.359-0.141h13q0.219 0 0.359 0.141t0.141 0.359v1.594q0 0.219-0.141 0.359t-0.359 0.141h-3.641q0.734 0.953 1 2.25h2.672q0.219 0 0.359 0.141t0.141 0.359z"></path>
 					                      </svg>
@@ -249,7 +247,9 @@
 
 				</div>
 			</div>
+
 			<!--// Desktop -->
+
 			<div class="col-xs-12 col-sm-6 col-md-8 new-payment-method hidden-xs">
 				<div class="col-xs-12 nopadding box-border">
 					<div class="col-xs-12 col-sm-3 nopadding payment-list"> <!-- required for floating -->
@@ -307,6 +307,7 @@
 												class="form-control"
 									      type="text"
 									      name="cardNumber"
+												ng-change="validateMaestro()"
 									      ng-model="credit.cardNumber"
 									      required
 									      cc-number
@@ -340,7 +341,7 @@
 									<div class="col-xs-12 nopadding">
 										<div class="col-xs-7 valid-upto">
 											<fieldset class="form-group" ng-class="{ 'error' : validate('cardExp', forms.creditForm) }">
-												<label>Valid Upto</label>
+												<label>Valid Upto<x ng-if="oldCreditMaestroDetected"> (Optional)</x></label>
 												<input
 												ng-model="credit.cardMonth"
 												cc-exp-month
@@ -369,7 +370,7 @@
 										</div>
 										<div class="col-xs-5 cvv-code">
 											<fieldset class="form-group" ng-class="{'error' : validate('cardCVC', forms.creditForm)}">
-												<label>CVV Code</label>
+												<label>CVV<x ng-if="oldCreditMaestroDetected"> (Optional)</x></label>
 												<input
 												type="password"
 												class="form-control"
@@ -385,8 +386,8 @@
 												placeholder="CVV"/>
 											</fieldset>
 										</div>
-										<div ng-show="forms.creditForm.$submitted && forms.creditForm.$invalid">
-											<span class="error">Please provide correct information</span>
+										<div ng-show="forms.creditForm.$submitted && forms.creditForm.$invalid && !oldCreditMaestroDetected">
+											<span class="error">Please provide correct payment information</span>
 										</div>
 									</div>
 									<div class="col-xs-12 nopadding">
@@ -407,6 +408,7 @@
 												class="form-control"
 									      type="text"
 									      name="cardNumber"
+												ng-change="validateMaestro()"
 									      ng-model="debit.cardNumber"
 									      required
 									      cc-number
@@ -440,7 +442,7 @@
 									<div class="col-xs-12 nopadding">
 										<div class="col-xs-7 valid-upto">
 											<fieldset class="form-group" ng-class="{ 'error' : validate('cardExp', forms.debitForm) }">
-												<label>Valid Upto</label>
+												<label>Valid Upto<x ng-if="oldDebitMaestroDetected"> (Optional)</x></label>
 												<input
 												ng-model="debit.cardMonth"
 												cc-exp-month
@@ -469,7 +471,7 @@
 										</div>
 										<div class="col-xs-5 cvv-code">
 											<fieldset class="form-group" ng-class="{'error' : validate('cardCVC', forms.debitForm)}">
-												<label>CVV Code</label>
+												<label>CVV<x ng-if="oldDebitMaestroDetected"> (Optional)</x></label>
 												<input
 												type="password"
 												class="form-control"
@@ -485,8 +487,8 @@
 												placeholder="CVV"/>
 											</fieldset>
 										</div>
-										<div ng-show="forms.debitForm.$submitted && forms.debitForm.$invalid">
-											<span class="error">Please provide correct information</span>
+										<div ng-show="forms.debitForm.$submitted && forms.debitForm.$invalid && !oldDebitMaestroDetected">
+											<span class="error">Please provide correct payment information</span>
 										</div>
 									</div>
 									<div class="col-xs-12 nopadding">
@@ -512,11 +514,11 @@
 										<select ng-model="nb.netbanking" name="bank" ng-options="item.bank_code as item.bank_name for item in item.content.others" required></select>
 									</div>
 									<div ng-show="forms.NBForm.$submitted && forms.NBForm.$invalid">
-										<span class="error">Please provide correct information</span>
+										<span class="error">Please provide correct payment information</span>
 									</div>
 								</div>
 								<div class="col-xs-12 col-sm-8 nopadding">
-									<button  class="btn btn-newStyle bg-green" type="submit" ng-class="{'no-events': placeOrderLoader}">
+									<button  class="btn btn-newStyle bg-green" type="submit" ng-class="{'no-events': placeOrderLoader}" ng-click="placeOrder()">
 										<span ng-show="!placeOrderLoader">PAY <span><i>&#x20B9;</i>{{shippingAmountData.grand_total || 0}}</span> SECURELY</span>
 										<img ng-show="placeOrderLoader"  src="images/loader.gif" class="small-loader"/>
 									</button>
@@ -573,6 +575,7 @@
 															class="form-control"
 												      type="text"
 												      name="cardNumber"
+															ng-change="validateMaestro()"
 												      ng-model="credit.cardNumber"
 												      required
 												      cc-number
@@ -606,7 +609,7 @@
 												<div class="col-xs-12 nopadding">
 													<div class="col-xs-12 valid-upto">
 														<fieldset class="form-group" ng-class="{ 'error' : validate('cardExp', forms.creditForm_mobile) }">
-															<label>Valid Upto</label>
+															<label>Valid Upto<x ng-if="oldCreditMaestroDetected"> (Optional)</x></label>
 															<input
 															ng-model="credit.cardMonth"
 															cc-exp-month
@@ -635,7 +638,7 @@
 													</div>
 													<div class="col-xs-5 cvv-code">
 														<fieldset class="form-group" ng-class="{'error' : validate('cardCVC', forms.creditForm_mobile)}">
-															<label>CVV Code</label>
+															<label>CVV<x ng-if="oldCreditMaestroDetected"> (Optional)</x></label>
 															<input
 															type="password"
 															class="form-control"
@@ -652,8 +655,8 @@
 														</fieldset>
 													</div>
 												</div>
-												<div ng-show="forms.creditForm_mobile.$submitted && forms.creditForm_mobile.$invalid">
-				                	<span class="error">Please provide correct information</span>
+												<div ng-show="forms.creditForm_mobile.$submitted && forms.creditForm_mobile.$invalid && !oldCreditMaestroDetected">
+				                	<span class="error">Please provide correct payment information</span>
 				                </div>
 												<div class="col-xs-12 nopadding hidden-xs">
 													<button type="submit" class="btn btn-newStyle bg-green" ng-disabled="validate('payment', forms.creditForm_mobile)">PAY <span><i>&#x20B9;</i>{{shippingAmountData.grand_total || 0}}</span> SECURELY</button>
@@ -670,6 +673,7 @@
 															class="form-control"
 												      type="text"
 												      name="cardNumber"
+															ng-change="validateMaestro()"
 												      ng-model="debit.cardNumber"
 												      required
 												      cc-number
@@ -703,7 +707,7 @@
 												<div class="col-xs-12 nopadding">
 													<div class="col-xs-12 valid-upto">
 														<fieldset class="form-group" ng-class="{ 'error' : validate('cardExp', forms.debitForm_mobile) }">
-															<label>Valid Upto</label>
+															<label>Valid Upto<x ng-if="oldDebitMaestroDetected"> (Optional)</x></label>
 															<input
 															ng-model="debit.cardMonth"
 															cc-exp-month
@@ -732,7 +736,7 @@
 													</div>
 													<div class="col-xs-5 cvv-code">
 														<fieldset class="form-group" ng-class="{'error' : validate('cardCVC', forms.debitForm_mobile)}">
-															<label>CVV Code</label>
+															<label>CVV<x ng-if="oldDebitMaestroDetected"> (Optional)</x></label>
 															<input
 															type="password"
 															class="form-control"
@@ -749,8 +753,8 @@
 														</fieldset>
 													</div>
 												</div>
-												<div ng-show="forms.debitForm_mobile.$submitted && forms.debitForm_mobile.$invalid">
-				                	<span class="error">Please provide correct information</span>
+												<div ng-show="forms.debitForm_mobile.$submitted && forms.debitForm_mobile.$invalid && !oldDebitMaestroDetected">
+				                	<span class="error">Please provide correct payment information</span>
 				                </div>
 												<div class="col-xs-12 nopadding hidden-xs">
 													<button type="submit" class="btn btn-newStyle bg-green" ng-disabled="validate('payment', forms.debitForm_mobile)">PAY <span><i>&#x20B9;</i>{{shippingAmountData.grand_total || 0}}</span> SECURELY</button>
@@ -774,7 +778,7 @@
 													</div>
 												</div>
 												<div ng-show="forms.NBForm_mobile.$submitted && forms.NBForm_mobile.$invalid">
-				                	<span class="error">Please provide correct information</span>
+				                	<span class="error">Please provide correct payment information</span>
 				                </div>
 												<div class="col-xs-12 col-sm-8 nopadding hidden-xs">
 													<a class="btn btn-newStyle bg-green" href="javascript:void(0)" ng-click="submitNBForm()">PAY <span><i>&#x20B9;</i>{{shippingAmountData.grand_total || 0}}</span> SECURELY</a>
@@ -820,3 +824,10 @@
 	</div>
 </div>
 <!--// Content -->
+
+<script type="text/javascript">
+if(typeof _satellite != "undefined") {
+	_satellite.pageBottom();
+}
+</script>
+

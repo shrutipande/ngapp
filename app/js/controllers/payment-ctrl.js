@@ -11,6 +11,7 @@ define(['./index'], function (controllers) {
 			$scope.prdctUrl = PRODUCTURL;
 			$scope.showDetails = false;
 			$scope.placeOrderLoader=false;
+			$scope.successCoupon=false;
 			// Repeat
 
 			// Tabs
@@ -20,6 +21,7 @@ define(['./index'], function (controllers) {
 				// $scope.paymentMethods = [{"pid":"1","method":"Cash On Delivery","bankcode":null,"content":null},{"pid":"4","method":"Credit card","bankcode":null,"content":null},{"pid":"5","method":"Debit Card","bankcode":null,"content":null},{"pid":"6","method":"Net Banking","bankcode":null,"content":{"priority":[{"bid":"38","bank_name":"Punjab Nation Bank - Corporate","bank_code":"CPNB","logo_url":"http://www.spymobilesoftware.org/images/axis-logo.png"},{"bid":"37","bank_name":"Punjab Nation Bank - Retail","bank_code":"PNBB","logo_url":"http://www.spymobilesoftware.org/images/axis-logo.png"},{"bid":"36","bank_name":"Catholic Syrian Bank","bank_code":"CSBN","logo_url":"http://www.spymobilesoftware.org/images/axis-logo.png"},{"bid":"35","bank_name":"ING Vysya","bank_code":"INGB","logo_url":"http://www.spymobilesoftware.org/images/axis-logo.png"}],"others":[{"bid":"34","bank_name":"Dhanlaxmi","bank_code":"DLSB","logo_url":"http://www.spymobilesoftware.org/images/axis-logo.png"},{"bid":"33","bank_name":"kotak bank","bank_code":"162B","logo_url":"http://www.spymobilesoftware.org/images/axis-logo.png"},{"bid":"32","bank_name":"Deutsche bank","bank_code":"DSHB","logo_url":"http://www.spymobilesoftware.org/images/axis-logo.png"},{"bid":"31","bank_name":"State Bank of Patiala","bank_code":"SBPB","logo_url":"http://www.spymobilesoftware.org/images/axis-logo.png"},{"bid":"30","bank_name":"Canara Bank","bank_code":"CABB","logo_url":"http://www.spymobilesoftware.org/images/axis-logo.png"},{"bid":"29","bank_name":"CityUnion","bank_code":"CUBB","logo_url":"http://www.spymobilesoftware.org/images/axis-logo.png"},{"bid":"28","bank_name":"Yes Bank","bank_code":"YESB","logo_url":"http://www.spymobilesoftware.org/images/axis-logo.png"},{"bid":"27","bank_name":"Vijaya Bank","bank_code":"VJYB","logo_url":"http://www.spymobilesoftware.org/images/axis-logo.png"},{"bid":"26","bank_name":"United Bank Of India","bank_code":"UNIB","logo_url":"http://www.spymobilesoftware.org/images/axis-logo.png"},{"bid":"25","bank_name":"Union Bank - Corporate","bank_code":"UBIBC","logo_url":"http://www.spymobilesoftware.org/images/axis-logo.png"},{"bid":"24","bank_name":"Union Bank - Retai","bank_code":"UBIB","logo_url":"http://www.spymobilesoftware.org/images/axis-logo.png"},{"bid":"23","bank_name":"South Indian Bank","bank_code":"SOIB","logo_url":"http://www.spymobilesoftware.org/images/axis-logo.png"},{"bid":"22","bank_name":"State Bank of Travancore","bank_code":"SBTB","logo_url":"http://www.spymobilesoftware.org/images/axis-logo.png"},{"bid":"21","bank_name":"State Bank of Mysore","bank_code":"SBMB","logo_url":"http://www.spymobilesoftware.org/images/axis-logo.png"},{"bid":"20","bank_name":"State Bank of India","bank_code":"SBIB","logo_url":"http://www.spymobilesoftware.org/images/axis-logo.png"},{"bid":"19","bank_name":"State Bank of Hyderabad","bank_code":"SBHB","logo_url":"http://www.spymobilesoftware.org/images/axis-logo.png"},{"bid":"18","bank_name":"State Bank of Bikaner and Jaipur","bank_code":"SBBJB","logo_url":"http://www.spymobilesoftware.org/images/axis-logo.png"},{"bid":"17","bank_name":"Karur Vysya - Corporate","bank_code":"KRVBC","logo_url":"http://www.spymobilesoftware.org/images/axis-logo.png"},{"bid":"16","bank_name":"Karur Vysya- Retail","bank_code":"KRVB","logo_url":"http://www.spymobilesoftware.org/images/axis-logo.png"},{"bid":"15","bank_name":"Karnataka Bank","bank_code":"KRKB","logo_url":"http://www.spymobilesoftware.org/images/axis-logo.png"},{"bid":"14","bank_name":"Jammu and Kashmir Bank","bank_code":"JAKB","logo_url":"http://www.spymobilesoftware.org/images/axis-logo.png"},{"bid":"13","bank_name":"Indian Overseas Bank","bank_code":"INOB","logo_url":"http://www.spymobilesoftware.org/images/axis-logo.png"},{"bid":"12","bank_name":"IndusInd Bank","bank_code":"INIB","logo_url":"http://www.spymobilesoftware.org/images/axis-logo.png"},{"bid":"11","bank_name":"Indian Bank ","bank_code":"INDB","logo_url":"http://www.spymobilesoftware.org/images/axis-logo.png"},{"bid":"10","bank_name":"Industrial Development Bank of India","bank_code":"IDBB","logo_url":"http://www.spymobilesoftware.org/images/axis-logo.png"},{"bid":"9","bank_name":"ICICI","bank_code":"ICIB","logo_url":"http://www.spymobilesoftware.org/images/axis-logo.png"},{"bid":"8","bank_name":"HDFC Bank","bank_code":"HDFB","logo_url":"http://www.spymobilesoftware.org/images/axis-logo.png"},{"bid":"7","bank_name":"Federal Bank","bank_code":"FEDB","logo_url":"http://www.spymobilesoftware.org/images/axis-logo.png"},{"bid":"6","bank_name":"Development Credit Bank","bank_code":"DCBB","logo_url":"http://www.spymobilesoftware.org/images/axis-logo.png"},{"bid":"5","bank_name":"Corporation Bank","bank_code":"CRPB","logo_url":"http://www.spymobilesoftware.org/images/axis-logo.png"},{"bid":"4","bank_name":"Central Bank Of India","bank_code":"CBIB","logo_url":"http://www.spymobilesoftware.org/images/axis-logo.png"},{"bid":"3","bank_name":"Bank of Maharashtra","bank_code":"BOMB","logo_url":"http://www.spymobilesoftware.org/images/axis-logo.png"},{"bid":"2","bank_name":"Bank of India","bank_code":"BOIB","logo_url":"http://www.spymobilesoftware.org/images/axis-logo.png"},{"bid":"1","bank_name":"AXIS Bank","bank_code":"AXIB","logo_url":"http://www.spymobilesoftware.org/images/axis-logo.png"}]}},{"pid":"7","method":"PayU Money","bankcode":null,"content":null}];
 			$scope.changeSlide = function(obj) {
 				$scope.changeName = obj.method;
+				window.paymentMethods = $scope.changeName;
 				// $scope.payUBankCode = obj.bank_code;
 				if($scope.changeName.toLowerCase().indexOf('payu') > -1) {
 					$scope.pg = 'Wallet';
@@ -81,6 +83,34 @@ define(['./index'], function (controllers) {
 			};
 
 			$scope.submitCOD = function () {
+				var productId=$scope.finalQuoteData.map(function(_){return _.product_id});
+		        var count = $scope.finalQuoteData.length;
+		        var detail= [];
+		        if(typeof dataLayer != "undefined") {
+					dataLayer.push({
+			            'event':'PrechargedEvent',
+			            'eventName':'PrechargedEventName',
+			            'type':'PlacedOrder',
+			            'productInfo':productId,
+			            'finalAmount':$scope.shippingAmountData.grand_total,
+			            'type':'Cash on Delivery'
+			        });
+				}
+				if(typeof _satellite != "undefined") {
+			        for(var i = 0; i < count; i++){
+			            detail[i]={
+			                    productInfo:{
+			                    productID: productId[i], //PRODUCT ID
+			                    }
+			                };
+			                //alert(detail[i].productInfo.productID);
+			        }
+			        digitalData.cart = {
+			             item: detail
+			            } //Direct Call Rule Trigger
+
+			        _satellite.track('checkout-step-2');
+			    }
 				craftsvillaService.placeOrderCOD()
 				.success(function (data) {
 					$scope.placeOrderLoader=false;
@@ -93,14 +123,42 @@ define(['./index'], function (controllers) {
 			};
 
 			$scope.submitCreditForm = function() {
+				var productId=$scope.finalQuoteData.map(function(_){return _.product_id});
+		        var count = $scope.finalQuoteData.length;
+		        var detail= [];
+				if(typeof dataLayer != "undefined") {
+					dataLayer.push({
+			            'event':'PrechargedEvent',
+			            'eventName':'PrechargedEventName',
+			            'type':'PlacedOrder',
+			            'productInfo':productId,
+			            'finalAmount':$scope.shippingAmountData.grand_total,
+			            'type':'Credit Card'
+			        });
+				}
+				if(typeof _satellite != "undefined") {
+			        for(var i = 0; i < count; i++){
+			            detail[i]={
+			                    productInfo:{
+			                    productID: productId[i], //PRODUCT ID
+			                    }
+			                };
+			                //alert(detail[i].productInfo.productID);
+			        }
+			        digitalData.cart = {
+			             item: detail
+			            } //Direct Call Rule Trigger
+
+			        _satellite.track('checkout-step-2');
+			    }
 				craftsvillaService.placeOrder({
 					"pg": $scope.pg,
 					"bankcode": $scope.getBankCode($scope.forms.creditForm.cardNumber.$ccType, $scope.pg),
 					"ccnum": $scope.credit.cardNumber,
 					"ccname": $scope.credit.cardName,
-					"ccvv": $scope.credit.cardCvv,
-					"ccexpmon":$scope.credit.cardMonth > 9 ? $scope.credit.cardMonth : '0' + $scope.credit.cardMonth,
-					"ccexpyr": $scope.credit.cardYear,
+					"ccvv": $scope.credit.cardCvv || '',
+					"ccexpmon": $scope.credit.cardMonth ? $scope.credit.cardMonth > 9 ? $scope.credit.cardMonth : '0' + $scope.credit.cardMonth : '',
+					"ccexpyr": $scope.credit.cardYear || '',
 					"gateway": 'payu'
 				})
 				.success(function(data){
@@ -142,14 +200,42 @@ define(['./index'], function (controllers) {
 			};
 
 			$scope.submitDebitForm = function() {
+				var productId=$scope.finalQuoteData.map(function(_){return _.product_id});
+		        var count = $scope.finalQuoteData.length;
+		        var detail= [];
+				if(typeof dataLayer != "undefined") {
+					dataLayer.push({
+			            'event':'PrechargedEvent',
+			            'eventName':'PrechargedEventName',
+			            'type':'PlacedOrder',
+			            'productInfo':productId,
+			            'finalAmount':$scope.shippingAmountData.grand_total,
+			            'type':'Debit Card'
+			        });
+				}
+				if(typeof _satellite != "undefined") {
+			        for(var i = 0; i < count; i++){
+			            detail[i]={
+			                    productInfo:{
+			                    productID: productId[i], //PRODUCT ID
+			                    }
+			                };
+			                //alert(detail[i].productInfo.productID);
+			        }
+			        digitalData.cart = {
+			             item: detail
+			            } //Direct Call Rule Trigger
+
+			        _satellite.track('checkout-step-2');
+			    }
 				craftsvillaService.placeOrder({
 					"pg": $scope.pg,
 					"bankcode": $scope.getBankCode($scope.forms.debitForm.cardNumber.$ccType, $scope.pg),
 					"ccnum": $scope.debit.cardNumber,
 					"ccname": $scope.debit.cardName,
-					"ccvv": $scope.debit.cardCvv,
-					"ccexpmon":$scope.debit.cardMonth > 9 ? $scope.debit.cardMonth : '0' + $scope.debit.cardMonth,
-					"ccexpyr": $scope.debit.cardYear,
+					"ccvv": $scope.debit.cardCvv || '',
+					"ccexpmon":$scope.debit.cardMonth ? $scope.debit.cardMonth > 9 ? $scope.debit.cardMonth : '0' + $scope.debit.cardMonth : '',
+					"ccexpyr": $scope.debit.cardYear || '',
 					"gateway": 'payu'
 				})
 				.success(function(data){
@@ -190,6 +276,34 @@ define(['./index'], function (controllers) {
 				});
 			};
 			$scope.submitNBForm = function() {
+				var productId=$scope.finalQuoteData.map(function(_){return _.product_id});
+		        var count = $scope.finalQuoteData.length;
+		        var detail= [];
+				if(typeof dataLayer != "undefined") {
+					dataLayer.push({
+			            'event':'PrechargedEvent',
+			            'eventName':'PrechargedEventName',
+			            'type':'PlacedOrder',
+			            'productInfo':productId,
+			            'finalAmount':$scope.shippingAmountData.grand_total,
+			            'type':'Netbanking'
+			        });
+				}
+				if(typeof _satellite != "undefined") {
+			        for(var i = 0; i < count; i++){
+			            detail[i]={
+			                    productInfo:{
+			                    productID: productId[i], //PRODUCT ID
+			                    }
+			                };
+			                //alert(detail[i].productInfo.productID);
+			        }
+			        digitalData.cart = {
+			             item: detail
+			            } //Direct Call Rule Trigger
+
+			        _satellite.track('checkout-step-2');
+			    }
 				craftsvillaService.placeOrder({
 					"pg": $scope.pg,
 					"bankcode":$scope.nb.netbanking,
@@ -235,6 +349,34 @@ define(['./index'], function (controllers) {
 				});
 			};
 			$scope.submitPayUForm = function() {
+				var productId=$scope.finalQuoteData.map(function(_){return _.product_id});
+		        var count = $scope.finalQuoteData.length;
+		        var  detail = [];
+				if(typeof dataLayer != "undefined") {
+					dataLayer.push({
+			            'event':'PrechargedEvent',
+			            'eventName':'PrechargedEventName',
+			            'type':'PlacedOrder',
+			            'productInfo':productId,
+			            'finalAmount':$scope.shippingAmountData.grand_total,
+			            'type':'Pay u'
+			        });
+				}
+				if(typeof _satellite != "undefined") {
+			        for(var i = 0; i < count; i++){
+			            detail[i]={
+			                    productInfo:{
+			                    productID: productId[i], //PRODUCT ID
+			                    }
+			                };
+			                //alert(detail[i].productInfo.productID);
+			        }
+			        digitalData.cart = {
+			             item: detail
+			            } //Direct Call Rule Trigger
+
+			        _satellite.track('checkout-step-2');
+			    }
 				craftsvillaService.placeOrder({
 					"pg": 'Wallet',
 					"bankcode": 'payuw',
@@ -354,6 +496,8 @@ define(['./index'], function (controllers) {
 					console.log(response);
 					$scope.paymentMethods = response.d[0];
 					$scope.changeName = $scope.paymentMethods[0].method;
+					$scope.pg = 'CC';
+									window.paymentMethods = $scope.changeName;
 					console.log($scope.paymentMethods);
 				})
 				.error(function(err) {
@@ -381,9 +525,11 @@ define(['./index'], function (controllers) {
 					$scope.finalQuoteData = response.d.product_list;
 					$scope.shippingAdressData = response.d.shippingAddress;
 					$scope.shippingAmountData = response.d;
+					if($scope.shippingAmountData.totol_discount>0)
+						$scope.successCoupon=true;
 					$scope.shippingAmountData.grand_total = +$scope.shippingAmountData.grand_total;
-
-					if($scope.shippingAmountData.showCod === 0) {
+					$scope.discountPecent = ($scope.shippingAmountData.totol_discount / $scope.shippingAmountData.sub_total) * 100;
+						if($scope.shippingAmountData.showCod === 0) {
 						$timeout(function() {
 							if($scope.paymentMethods) {
 									$scope.changeName = $scope.paymentMethods[1].method;
@@ -396,6 +542,7 @@ define(['./index'], function (controllers) {
 				});
 			};
 
+
 			$scope.validate = function (element, form) {
 				switch (element) {
 					case 'cardNumber':
@@ -403,6 +550,12 @@ define(['./index'], function (controllers) {
 					case 'cardName':
 						return form[element].$invalid && !form[element].$pristine && form[element].$xblur;
 					case 'cardExp': {
+							if($scope.changeName == 'Credit card') {
+								if($scope.oldCreditMaestroDetected) return false;
+							}
+							else if($scope.changeName == 'Debit Card') {
+								if($scope.oldDebitMaestroDetected) return false;
+							}
 							// Both should be dirty
 							var check1 = form.cardM.$dirty && form.cardY.$dirty;
 							var check2 = form.cardM.$valid;
@@ -421,8 +574,15 @@ define(['./index'], function (controllers) {
 							}
 							else return false;
 					}
-				case 'cardCVC':
+				case 'cardCVC': {
+					if($scope.changeName == 'Credit card') {
+						if($scope.oldCreditMaestroDetected) return false;
+					}
+					else if($scope.changeName == 'Debit Card') {
+						if($scope.oldDebitMaestroDetected) return false;
+					}
 					return form[element].$invalid && !form[element].$pristine && form[element].$xblur
+				}
 				case 'payment':
 					return form.$invalid || $scope.validate('cardExp', form);
 				case 'nb':
@@ -436,11 +596,49 @@ define(['./index'], function (controllers) {
 				if(!$scope.cardTypes[ccType]) return '';
 				return $scope.cardTypes[ccType].img;
 			}
+			$scope.paymentTracker = function() {
+				if(typeof _satellite != "undefined") {
+				var count = $scope.finalQuoteData.length;
+				var product_ids = $scope.finalQuoteData.map(function(_){return _.product_id});
+				//console.log(product_ids);
+			  	digitalData.page={
+		          pageInfo:{
+		            pageName:"Checkout",
+		          },
+		          category:{
+		            pageType:"Checkout",
+		            primaryCategory: "Checkout",
+		          },
+		          device:{
+		            deviceType:isMobile
+		          },
+		          currencycode:{
+		            currencyCode : 'INR',
+		          },
 
+		        }
+		        var detail= [];
+		        for(var i = 0; i < count; i++){
+		            detail[i]={
+		                    productInfo:{
+		                    productID: product_ids[i], //PRODUCT ID
+		                    }
+		                };
+
+		        }
+		        digitalData.cart = {
+		             item: detail
+		            }
+		        _satellite.track('checkout-step-1');
+
+		    }
+
+			}
 			$scope.initPayment = function() {
 				console.log("initializing Payment");
 				$scope.getPayments();
 				$scope.finalQuoteDetails();
+				$scope.scrollToTop();
 			};
 
 			$scope.isValidDate = function(year, month) {
@@ -448,6 +646,7 @@ define(['./index'], function (controllers) {
 			}
 
 			$scope.removeFromCart = function (product_id, product) {
+				if (confirm('Are you sure you want to delete this Item?')) {
 				product.waitingCartItem = true;
 				craftsvillaService.removeQuoteItems([{
 					productID: product_id
@@ -459,12 +658,20 @@ define(['./index'], function (controllers) {
 	        console.log(error);
 				});
 			}
+		}
 
 			$scope.placeOrder = function () {
 				if(!$scope.changeName) return;
 				var toSubmit = true;
 				if($scope.isPaymentNotAllowed()){
 					toSubmit = false;
+
+					if($scope.changeName == 'Credit card' && $scope.oldCreditMaestroDetected) {
+						toSubmit = true;
+					}
+					else if($scope.changeName == 'Debit Card' && $scope.oldDebitMaestroDetected) {
+						toSubmit = true;
+					}
 				}
 				else {
 					$scope.placeOrderLoader=true;
@@ -521,6 +728,27 @@ define(['./index'], function (controllers) {
 						return 'PLACE ORDER';
 					default:
 						return $sce.trustAsHtml('PAY <span><i>&#x20B9;</i>' + (($scope.shippingAmountData || {}).grand_total || 0) + '</span> SECURELY');
+					}
+				}
+
+				$scope.validateMaestro = function () {
+					if($scope.changeName == 'Credit card') {
+						var number = $scope.forms.creditForm.cardNumber.$modelValue || $scope.forms.creditForm_mobile.cardNumber.$modelValue;
+						if(('' + number).length === 19) {
+							$scope.oldCreditMaestroDetected = true;
+						}
+						else {
+							$scope.oldCreditMaestroDetected = false;
+						}
+					}
+					else if($scope.changeName == 'Debit Card') {
+						var number = $scope.forms.debitForm.cardNumber.$modelValue || $scope.forms.debitForm_mobile.cardNumber.$modelValue;
+						if(('' + number).length === 19) {
+							$scope.oldDebitMaestroDetected = true;
+						}
+						else {
+							$scope.oldDebitMaestroDetected = false;
+						}
 					}
 				}
 
