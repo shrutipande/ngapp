@@ -74,6 +74,10 @@ define(['./index'], function (controllers) {
 		  $state.go("login");
 		};
 		$scope.proceedToCheckout = function() {
+			if ($scope.outOfStockProducts.length>0){
+				alert("Please remove out of stock products.")
+				return;
+			}
 			$scope.proceedToCheckoutLoader=true;
 			$scope.getCartDetailsVal;
 			var productIds = [];
