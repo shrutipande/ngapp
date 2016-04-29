@@ -235,6 +235,7 @@ define(['./index'], function (controllers) {
       console.log("Login Initialised");
 			$scope.scrollToTop();
       		$scope.loginTracker();
+
     };
 	$scope.initLogin();
 

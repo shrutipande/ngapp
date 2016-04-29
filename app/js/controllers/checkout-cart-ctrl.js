@@ -379,6 +379,7 @@ define(['./index'], function (controllers) {
 	      $scope.checkLogin();
 		  $scope.scrollToTop();
 		  $scope.cartTracking();
+
     }
     $scope.initCheckoutCart();
 
