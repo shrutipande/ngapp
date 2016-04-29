@@ -33,7 +33,6 @@ define(['./index'], function(controllers) {
                     $scope.countries = response.d;
                     $scope.addnewcountry_shipping = angular.copy($scope.countries[0]);
                     $scope.addnewcountry_billing = angular.copy($scope.countries[0]);
-                    $scope.addnewcountry_popup = angular.copy($scope.countries[0]);
                 })
 
         }
@@ -43,8 +42,14 @@ define(['./index'], function(controllers) {
                 console.log(address);
                 $scope.popupEditAddress = false;
                 $scope.editAddr = angular.copy(address);
-                $scope.editAddr.postcode = +$scope.editAddr.postcode;
+                $scope.editAddr.postcode = address.country === 'India' ? +$scope.editAddr.postcode : $scope.editAddr.postcode;
                 $scope.editAddr.telephone = +$scope.editAddr.telephone;
+
+                $scope.countries.map(function (country) {
+                    if(country.country_name.toLowerCase() === $scope.editAddr.country.toLowerCase()) {
+                        $scope.addnewcountry_popup = country;
+                    }
+                })
 
                 if ($scope.DeseditaddrForm) {
                     //alert('Edit Address');
