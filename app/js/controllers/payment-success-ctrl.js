@@ -75,71 +75,81 @@ define(['./index'], function (controllers) {
             });
       };
       $scope.orderDetailsTracker = function() {
-        var productIds = $scope.orderDetails.map(function(_){return _.product_id});
-        var productQty = $scope.orderDetails.product_qty;
-        var productPrice=$scope.subTotal;
-        var count=productIds.length;
-        if(typeof MSDtrack != "undefined") {
-            MSDtrack({
-              'event':'buy',
-              'sourceProdID':productIds,
-              //'sourceCatgID':'<?php echo $msdSourceCatgID;?>',
-              'prodPrice': productPrice,
-              'prodQty': productQty
-            });
-        }
-        if(typeof dataLayer != "undefined") {
-            dataLayer.push({
-              'event':'ChargedEvent',
-              'eventName':'Charged',
-              'chargedId': $scope.orderNo,
-              'chargedAmount': productPrice,
-              'totalCartAmount': productPrice,
-              'cartProductIDs':productIds
-            });
-        }
-
-        if(typeof _satellite != "undefined") {
-            digitalData.page={
-                pageInfo:{
-                  pageName:"order complete",
-                },
-                category:{
-                  pageType:"order complete",
-                  primaryCategory: "order complete",
-                },
-                device:{
-                  deviceType:isMobile
-                },
-                currencycode:{
-                  currencyCode : 'INR',
-                },
-              }
-          var tempItem= [];
-          var orderId = $scope.orderNo;
-          for(var i = 0; i < count; i++){
-          tempItem[i]=  {
-                quantity: productQty[i],
-                price: {
-                basePrice: productQty[i] * productPrice[i]
-                },
-                productInfo:{
-                productID: productIds[i] //SKU
-                }
-                }
-
-              }
-              //alert(JSON.stringify(tempItem));
-             digitalData.transaction = {
-                purchaseID: orderId,
-                paymentMethod: window.paymentMethods,
-                totalOrderValue : productPrice,
-                orderEmail : window.userEmail,
-                item: tempItem
+        craftsvillaService.loadQuote()
+        .success(function(response) {
+          $scope.orderDetailsVal = response.d.product_list;
+          $scope.$emit('orderDetailsLoaded');
+        });
+      $scope.$on('orderDetailsLoaded', function () {
+            var productIds = $scope.orderDetailsVal.map(function(_){return _.product_id});
+            var productTotalQty = $scope.orderDetailsVal.total_qty;
+            var productSubTotal=$scope.orderDetailsVal.sub_total;
+            var productGrandTotal=$scope.orderDetailsVal.grand_total;
+            console.log()
+            var count=productIds.length;
+            if(typeof MSDtrack != "undefined") {
+                MSDtrack({
+                  'event':'buy',
+                  'sourceProdID':productIds,
+                  //'sourceCatgID':'<?php echo $msdSourceCatgID;?>',
+                  'prodPrice': productPrice,
+                  'prodQty': productTotalQty
+                });
             }
-            digitalData.totalOrderValue = productPrice;
-            digitalData.events = "purchase";
-        }
+            if(typeof dataLayer != "undefined") {
+                dataLayer.push({
+                  'event':'ChargedEvent',
+                  'eventName':'Charged',
+                  'chargedId': $scope.orderNo,
+                  'chargedAmount': productSubTotal,
+                  'totalCartAmount': productGrandTotal,
+                  'cartProductIDs':productIds
+                });
+            }
+
+            if(typeof _satellite != "undefined") {
+                digitalData.page={
+                    pageInfo:{
+                      pageName:"order complete",
+                    },
+                    category:{
+                      pageType:"order complete",
+                      primaryCategory: "order complete",
+                    },
+                    device:{
+                      deviceType:isMobile
+                    },
+                    currencycode:{
+                      currencyCode : 'INR',
+                    },
+                  }
+              var tempItem= [];
+              var orderId = $scope.orderNo;
+              for(var i = 0; i < count; i++){
+              tempItem[i]=  {
+                    quantity: productQty[i],
+                    price: {
+                    basePrice: productQty[i] * productPrice[i]
+                    },
+                    productInfo:{
+                    productID: productIds[i] //SKU
+                    }
+                    }
+
+                  }
+                  //alert(JSON.stringify(tempItem));
+                 digitalData.transaction = {
+                    purchaseID: orderId,
+                    paymentMethod: window.paymentMethods,
+                    totalOrderValue : productPrice,
+                    orderEmail : window.userEmail,
+                    mobileNo : window.userMobileNo,
+                     item:tempItem,
+                }
+                digitalData.totalOrderValue = productPrice;
+                digitalData.events = "purchase";
+            }
+        });
       }
       $scope.initPaymentSuccess = function() {
           $scope.onSuccessDetails();
