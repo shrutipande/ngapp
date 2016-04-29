@@ -250,8 +250,8 @@
                 <div class="contn-shpng" ng-click="continueShopping()">CONTINUE SHOPPING</div>
             </div>
             <div class="col-xs-12 nopadding left-panel" ng-if="items != '0'">
-                <div class="cart-items-card out-of-stock-items" ng-repeat="product in outOfStockProducts">
-                    <a href="javascript:void(0)" class="cart-details-close" ng-click="removeProductFromCart(product.product_id,product)"><img src="images/delete-icon.png" width:'100%'></a>
+                <div class="cart-items-card out-of-stock-items" ng-repeat="product in outOfStockProducts" ng-disabled="true">
+                    <!-- <a href="javascript:void(0)" class="cart-details-close" ng-click="removeProductFromCart(product.product_id,product)"><img src="images/delete-icon.png" width:'100%'></a> -->
                     <div class="cart-items-cont">
                         <div class="cart-img-cont">
                             <a ng-href="{{product.url}}"><img ng-src="{{IMGHOST}}/thumb/216x216{{ product.product_image }}" class="img-responsive"></a>
@@ -274,10 +274,10 @@
                                         <li><a href="#">3</a></li>
                                     </ul>
                                 </div> -->
-                                <select ng-model="product.quantity" class="form-control width-auto" ng-options="opt as opt.id for opt in options" ng-change="updateQuantity(product.quantity, product.product_id)">
+                                <select ng-init="initializeQuantity(product)" ng-model="product.quantity" class="form-control width-auto" ng-options="opt as opt.id for opt in options" ng-change="updateQuantity(product.quantity, product.product_id,product)" ng-disabled="true">
                                 </select>
                             </div>
-                            <div class="seller-note hidden-xs" ng-click="showNoteToSeller(product)" ng-if="!product.seller_note">add a note to seller</div>
+                            <div class="seller-note hidden-xs" ng-if="!product.seller_note" ng-disabled="true">add a note to seller</div>
                         </div>
                     </div>
                     <div class="cart-seller-cont hidden-lg">
@@ -286,8 +286,8 @@
                         </form>
                     </div>
                     <div class="cart-seller-cont">
-                        <div class="text hidden-lg" ng-click="showNoteToSeller(product)" ng-if="!product.seller_note">add a note to seller</div>
-                        <div class="open-cont" ng-show= "product.showFormNote">
+                        <div class="text hidden-lg" ng-if="!product.seller_note" ng-disabled="true">add a note to seller</div>
+                        <div class="open-cont" ng-show= "product.showFormNote" ng-disabled="true">
                             <form name="sellerForm{{$index}}" ng-submit="addNoteToSeller($index, product.product_id, product.sellernote, product)" novalidate>
                                 <div ng-class="{ 'error' : (sellerForm{{$index}}.sellernote.$invalid && !sellerForm{{$index}}.sellernote.$pristine) || (sellerForm{{$index}}.$submitted && sellerForm{{$index}}.sellernote.$error.required) }">
                                     <p> Add note to seller </p>
@@ -300,10 +300,10 @@
                             </form>
                             <span class="buttons l-m-20 t-m-10 m-right-20" ng-click="hideNoteToSeller(product)">cancel</span>
                         </div>
-                        <div class="open-cont" ng-if="!!product.seller_note">
+                        <div class="open-cont" ng-if="!!product.seller_note" ng-disabled="true">
                             <p>{{product.seller_note}}</p>
-                            <button class="buttons  b-border t-m-10" ng-click="updateNoteToSeller(product,product.seller_note)">edit</button>
-                            <a href="javascript:void(0)" class="buttons l-m-20 t-m-10 m-left-20" ng-click="removeNoteToSeller(product)">remove</a>
+                            <button class="buttons  b-border t-m-10">edit</button>
+                            <a href="javascript:void(0)" class="buttons l-m-20 t-m-10 m-left-20">remove</a>
                         </div>
                     </div>
                     <div class="overlay-out-stock" ng-show="product.waitingCartItem">
