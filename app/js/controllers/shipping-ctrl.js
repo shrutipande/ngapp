@@ -30,10 +30,10 @@ define(['./index'], function(controllers) {
 
             craftsvillaService.getCountry()
                 .success(function(response) {
-                    console.log(response);
                     $scope.countries = response.d;
-                    console.log($scope.countries[0])
-                    $scope.addnewcountry_shipping = $scope.countries[0];
+                    $scope.addnewcountry_shipping = angular.copy($scope.countries[0]);
+                    $scope.addnewcountry_billing = angular.copy($scope.countries[0]);
+                    $scope.addnewcountry_popup = angular.copy($scope.countries[0]);
                 })
 
         }
