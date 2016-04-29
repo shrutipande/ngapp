@@ -471,21 +471,24 @@ define(['./index'], function(controllers) {
             console.log($scope.mform);
         };
         $scope.addressTracker =function() {
-        digitalData.page={
-          pageInfo:{
-            pageName:"shipping address",
-          },
-          category:{
-            pageType:"shipping",
-            primaryCategory: "shipping",
-          },
-          device:{
-            deviceType:isMobile
-          },
-          currencycode:{
-            currencyCode : 'INR',
-          },
-        }
+            if(typeof _satellite != "undefined") {
+                digitalData.page={
+                  pageInfo:{
+                    pageName:"shipping address",
+                  },
+                  category:{
+                    pageType:"shipping",
+                    primaryCategory: "shipping",
+                  },
+                  device:{
+                    deviceType:isMobile
+                  },
+                  currencycode:{
+                    currencyCode : 'INR',
+                  },
+                }
+            }
+
     }
 
         $scope.initshipping = function() {
