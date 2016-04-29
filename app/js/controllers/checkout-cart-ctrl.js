@@ -202,6 +202,7 @@ define(['./index'], function (controllers) {
 
 		$scope.removeOutOfStockProducts = function() {
 			var allProducts = $scope.outOfStockProducts;
+			var productIds = [];
 			angular.forEach(allProducts, function(product) {
 				var data = {
 					productID: product.product_id
@@ -351,8 +352,11 @@ define(['./index'], function (controllers) {
 		function divideProducts(response) {
 			$scope.inStockCod = [];
 			$scope.inStockNotCod = [];
+			$scope.outOfStockProducts = [];
 			angular.forEach(response.d.product_list, function(product) {
-				if(product.cod_available) {
+				if(!product.IsInStock) {
+					$scope.outOfStockProducts.push(product);
+				} else if(product.cod_available) {
 					$scope.inStockCod.push(product);
 				} else {
 					$scope.inStockNotCod.push(product);
