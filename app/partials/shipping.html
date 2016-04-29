@@ -515,13 +515,13 @@
                                 <div class="form-group nopadding col-sm-8 col-xs-12">
                                     <label>
                                         Country:
-                                        <span role="country">{{addnewcountry.country_name}}</span>
+                                        <span role="country">{{addnewcountry_shipping.country_name}}</span>
                                         <a href="javascript:void(0)" ng-click="changecountry = true">
                                             <span ng-hide="changecountry">Change</span>
                                         </a>
                                     </label>
                                     <div class="select-style" ng-show="changecountry">
-                                        <select ng-model="addnewcountry" name="state" ng-options="item as item.country_name for item in countries track by item.country_code" required>
+                                        <select ng-model="addnewcountry_shipping" name="state" ng-options="item as item.country_name for item in countries track by item.country_code" required>
 
                                             <option value>Select Country</option>
                                         </select>
@@ -569,16 +569,17 @@
                                 <div class="col-xs-12 col-sm-4 nopadding">
                                     <div class="form-group" ng-class="{ 'error' : (addnewForm.postcode.$invalid && !addnewForm.postcode.$pristine && addnewForm.postcode.$touched)  || (addnewForm.$submitted && addnewForm.postcode.$error.required)  }">
                                         <label for="Pincode">Pincode</label>
-                                        <input id="Pincode" name="postcode" type="number" class="form-control" placeholder="Pincode" ng-maxlength="6" ng-minlength="6" ng-model="shipping.postcode" ng-blur="changePincode(shipping.postcode)" required>
+                                        <input id="Pincode" name="postcode" type="number" class="form-control" placeholder="Pincode" ng-maxlength="{{addnewcountry_shipping.max_pincode_length}}" ng-minlength="{{addnewcountry_shipping.min_pincode_length}}" ng-model="shipping.postcode" ng-blur="changePincode(shipping.postcode)" required ng-if="addnewcountry_shipping.is_alpha == 'n'" />
+                                        <input id="Pincode" name="postcode" type="text" class="form-control" placeholder="Pincode" ng-maxlength="{{addnewcountry_shipping.max_pincode_length}}" ng-minlength="{{addnewcountry_shipping.min_pincode_length}}" ng-model="shipping.postcode" ng-blur="changePincode(shipping.postcode)" required ng-if="addnewcountry_shipping.is_alpha == 'y'" />
 
                                         <div ng-show="addnewForm.postcode.$error.minlength && !addnewForm.postcode.$pristine" class="error">
 
-                                            <span ng-message="addnewForm.postcode.$invalid" ng-show="addnewForm.postcode.$touched">Pincode should be of six digits.</span>
+                                            <span ng-message="addnewForm.postcode.$invalid" ng-show="addnewForm.postcode.$touched">Pincode should be of minimum {{addnewcountry_shipping.min_pincode_length}} digits.</span>
                                         </div>
 
                                         <div ng-show="addnewForm.postcode.$error.maxlength && !addnewForm.postcode.$pristine" class="error">
 
-                                            <span ng-message="addnewForm.postcode.$invalid" ng-show="addnewForm.postcode.$touched">Pincode should be of six digits .</span>
+                                            <span ng-message="addnewForm.postcode.$invalid" ng-show="addnewForm.postcode.$touched">Pincode should be of maximum {{addnewcountry_shipping.max_pincode_length}} digits.</span>
                                         </div>
 
                                         <div ng-show="addnewForm.$submitted ">

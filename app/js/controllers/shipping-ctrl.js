@@ -33,7 +33,7 @@ define(['./index'], function(controllers) {
                     console.log(response);
                     $scope.countries = response.d;
                     console.log($scope.countries[0])
-                    $scope.addnewcountry = $scope.countries[0];
+                    $scope.addnewcountry_shipping = $scope.countries[0];
                 })
 
         }
