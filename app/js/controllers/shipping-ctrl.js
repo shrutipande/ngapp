@@ -20,6 +20,8 @@ define(['./index'], function(controllers) {
         $scope.tempShipping = null;
         $scope.everChanged = false;
 
+        $scope.forms = {};
+
         // All Functions
 
         /*----Fetech Country---*/
@@ -159,17 +161,9 @@ define(['./index'], function(controllers) {
                     $scope.shipping.pincode = $scope.shipping.postcode;
                     craftsvillaService.addAddress($scope.shipping, $scope.shipping)
                         .success(function(response) {
-                            craftsvillaService.getAddress()
-                                .success(function(response) {
-                                    if (response.s == 1) {
-                                        $scope.addressProceed();
-                                    }
-                                })
-                                .error(function(error) {
-                                    console.log(error);
-
-                                });
-
+                            if (response.s == 1) {
+                                $scope.addressProceed();
+                            }
                         })
 
                     .error(function(error) {
@@ -347,13 +341,21 @@ define(['./index'], function(controllers) {
         //}
 
         $scope.addnewsubmitBilling = function(address, chkStatusBilling) {
+
+            $scope.addnewForm.$submitted = true;
+
             if(typeof dataLayer != "undefined") {
                 dataLayer.push({'event':'TappedButtonEvent','eventName':'TappedButton','type':'ConfirmedAnAddress'});
             }
             if(typeof _satellite != "undefined") {
                  _satellite.track('checkout-step-1');
             }
-            var fullname = $scope.addNewBilling.fullname;
+
+            if(!$scope.BillingADDForm.$valid)
+                return;
+
+
+            // var fullname = $scope.addNewBilling.fullname;
             var address = $scope.addNewBilling.address;
             var postcode = $scope.addNewBilling.postcode;
             var city = $scope.addNewBilling.city;
