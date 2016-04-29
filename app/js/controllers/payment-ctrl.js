@@ -469,6 +469,7 @@ define(['./index'], function (controllers) {
 					if($scope.shippingAmountData.totol_discount>0)
 						$scope.successCoupon=true;
 
+
 					window.userMobileNo = response.d.shippingAddress.telephone;
 					$scope.paymentTracker();
 					$scope.shippingAmountData.grand_total = +$scope.shippingAmountData.grand_total;
