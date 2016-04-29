@@ -496,6 +496,7 @@ define(['./index'], function (controllers) {
 					console.log(response);
 					$scope.paymentMethods = response.d[0];
 					$scope.changeName = $scope.paymentMethods[0].method;
+					$scope.pg = 'CC';
 									window.paymentMethods = $scope.changeName;
 					console.log($scope.paymentMethods);
 				})

@@ -42,7 +42,7 @@ define(['./index'], function(controllers) {
                 console.log(address);
                 $scope.popupEditAddress = false;
                 $scope.editAddr = angular.copy(address);
-                $scope.editAddr.postcode = address.country === 'India' ? +$scope.editAddr.postcode : $scope.editAddr.postcode;
+                $scope.editAddr.postcode = isNaN(parseInt($scope.editAddr.postcode)) ? $scope.editAddr.postcode : +$scope.editAddr.postcode;
                 $scope.editAddr.telephone = +$scope.editAddr.telephone;
 
                 $scope.countries.map(function (country) {
