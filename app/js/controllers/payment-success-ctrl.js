@@ -135,7 +135,7 @@ define(['./index'], function (controllers) {
                 paymentMethod: window.paymentMethods,
                 totalOrderValue : productPrice,
                 orderEmail : window.userEmail,
-                 item:{tempItem},
+                item: tempItem
             }
             digitalData.totalOrderValue = productPrice;
             digitalData.events = "purchase";
