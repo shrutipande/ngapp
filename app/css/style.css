@@ -345,7 +345,7 @@ div[check-out] .width55{width:55%;}
 div[check-out] .width100{width:100% !important;}
 
 div[check-out] .inln-blck{display: inline-block;}
-div[check-out] .green{color:#6da40e;}
+#checkoutFlow .green{color:#6da40e;}
 
 div[check-out] .header {padding-top:26px; font-size: 18px; line-height: 1.5;  letter-spacing: 1.7px;  color: #747474; text-transform: uppercase;}
 /*div[check-out] .left-panel, div[check-out] .right-panel{margin-top:10px;}*/
