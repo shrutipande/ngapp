@@ -159,8 +159,10 @@ define(['./index'], function(controllers) {
                     $scope.shipping.countryName = $scope.addnewcountry_shipping.country_name;
                     console.log($scope.shipping)
                     $scope.shipping.pincode = $scope.shipping.postcode;
+                    $scope.saveAndContinueLoader = true;
                     craftsvillaService.addAddress($scope.shipping, $scope.shipping)
                         .success(function(response) {
+                            $scope.saveAndContinueLoader = false;
                             if (response.s == 1) {
                                 $scope.addressProceed();
                             }
@@ -168,6 +170,7 @@ define(['./index'], function(controllers) {
 
                     .error(function(error) {
                         console.log('Error');
+                        $scope.saveAndContinueLoader = false;
                     });
                 }
             }
@@ -363,8 +366,10 @@ define(['./index'], function(controllers) {
             var phonenumber = $scope.addNewBilling.phonenumber;
             $scope.shipping.countryName = $scope.addnewcountry_shipping.country_name;
             $scope.addNewBilling.countryName = $scope.addnewcountry_billing.country_name;
+            $scope.saveAndContinueLoader = true;
             craftsvillaService.addAddress($scope.shipping, $scope.addNewBilling)
                 .success(function(response) {
+                    $scope.saveAndContinueLoader = false;
                     if (response.s == 1) {
                         $scope.addressProceed();
                     }
@@ -373,6 +378,7 @@ define(['./index'], function(controllers) {
 
             .error(function(error) {
                 console.log('Error');
+                $scope.saveAndContinueLoader = false;
             });
 
 

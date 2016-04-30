@@ -656,7 +656,9 @@
                                 <div class="form-group nopadding col-xs-12">
                                     <!-- <input class="btn btn-newStyle btn-newStyleActive Width60" type="button" value="SAVE & CONTINUE"> -->
                                     <button type="submit" class="btn btn-newStyle btn-newStyleActive Width60" ng-hide="!addBilingaddreshideshow">
-                                        SAVE & CONTINUE</button>
+                                        <span ng-show="!saveAndContinueLoader">SAVE & CONTINUE</span>
+                                        <img ng-show="saveAndContinueLoader"  src="images/loader.gif" class="small-loader"/>
+                                    </button>
 
                                 </div>
 
@@ -812,7 +814,9 @@
                                     <div class="form-group nopadding col-xs-12">
                                         <!-- <input class="btn btn-newStyle btn-newStyleActive Width60" type="button" value="SAVE & CONTINUE"> -->
                                         <button type="submit" class="btn btn-newStyle btn-newStyleActive Width60">
-                                            SAVE & CONTINUE</button>
+                                            <span ng-show="!saveAndContinueLoader">SAVE & CONTINUE</span>
+    										<img ng-show="saveAndContinueLoader"  src="images/loader.gif" class="small-loader"/>
+                                        </button>
 
                                     </div>
 
