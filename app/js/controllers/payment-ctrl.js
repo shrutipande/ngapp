@@ -1,5 +1,6 @@
 define(['./index'], function (controllers) {
-     controllers.controller('paymentCtrl', ['$scope', '$state', '$stateParams', '$timeout', '$sce', 'craftsvillaService','PRODUCTURL','$cookies', function ($scope,$state,$stateParams,$timeout,$sce,craftsvillaService,PRODUCTURL,$cookies) {
+    'use strict';
+    controllers.controller('paymentCtrl', ['$scope', '$state', '$stateParams', '$timeout', '$sce', '$filter', 'craftsvillaService','PRODUCTURL','$cookies', function ($scope,$state,$stateParams,$timeout,$sce,$filter,craftsvillaService,PRODUCTURL,$cookies) {
 			var controllerRef = this;
 			$scope.forms = {};
 			$scope.credit = {};
@@ -677,7 +678,7 @@ define(['./index'], function (controllers) {
 					case 'cash on delivery':
 						return 'PLACE ORDER';
 					default:
-						return $sce.trustAsHtml('PAY <span><i>&#x20B9;</i>' + (($scope.shippingAmountData || {}).grand_total || 0) + '</span> SECURELY');
+						return $sce.trustAsHtml('PAY <span><i>&#x20B9;</i>' + $filter('number')($scope.shippingAmountData.grand_total) + '</span> SECURELY');
 					}
 				}
 
