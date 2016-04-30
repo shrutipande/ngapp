@@ -179,6 +179,7 @@ define(['./index'], function (controllers) {
 					  currencyCode : 'INR',
 					},
 				}
+				digitalData.events= 'cart-view';
 			}
 		}
 		$scope.removeAllNonCodItems = function() {

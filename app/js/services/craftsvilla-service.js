@@ -38,7 +38,8 @@ define(['./index'], function (services) {
       getAddressFromPincode : getAddressFromPincode,
       getOrderDetails : getOrderDetails,
       socialAuth: socialAuth,
-      getRecommendation: getRecommendation
+      getRecommendation: getRecommendation,
+      sendAffiliateData: sendAffiliateData
     };
 
     //////////////////////////////////////////
@@ -336,6 +337,16 @@ define(['./index'], function (services) {
         url: HOST + 'checkoutService/index/socialLogin',
         data: json,
         withCredentials: true
+      });
+    }
+
+    function sendAffiliateData(timestamp, affiliateName, orderId, orderValue, utmMedium) {
+      return $http.post(HOST + 'checkoutService/index/saveAffiliate', {
+        date_timestamp: timestamp,
+        affiliate_name: affiliateName,
+        order_id: orderId,
+        order_value: orderValue,
+        utm_medium: utmMedium
       });
     }
   }]);
