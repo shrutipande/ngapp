@@ -31,8 +31,8 @@
 				</a>
 				<div class="mobile-top visible-sm visible-xs pull-right">
 					<i class="icon-v2 icon-small icon-search-v2 header-mobile-icon"></i>
-					<a href="/wishlist/"><i class="icon-v2 icon-wish icon-small header-mobile-icon"></i></a>
-					<a class="cart-icon-section" rel="nofollow" ng-href="/buy/#/cart" ng-click="dataLayer.push({'event':'WentToCartEvent','eventName':'WentToCart','source':'TopNavigation','count':'{{items}}'});">
+					<a href="/wishlist/" target="_self"><i class="icon-v2 icon-wish icon-small header-mobile-icon"></i></a>
+					<a class="cart-icon-section" rel="nofollow" ng-href="/buy/cart" ng-click="dataLayer.push({'event':'WentToCartEvent','eventName':'WentToCart','source':'TopNavigation','count':'{{items}}'});">
 						<span class="icon-container">
 							<i class="icon-v2 icon-cart icon-small header-mobile-icon"></i>
 							<span class="cart-count-container">
@@ -91,27 +91,34 @@
 				</a>
 				<li id="loginLogoutResponse" class="col-md-4">
 					<a class="user-icon-container header-icon-container" ng-click="loginNow()" ng-if="!isLoggedIn">
-				<li class="account-section" ng-if="!isLoggedIn">
+        				<li class="account-section" ng-if="!isLoggedIn">
 							<span class="user-icon">
 								<i class="icon-v2 icon-user"></i>
 							</span>
 							<span class="user-text">
 								Sign In
 							</span>
-				</li>
-				</a>
-				<li class="account-section loggedin-section" ng-if="isLoggedIn">
-					<a  class="dropdown-toggle user-icon-container header-icon-container" data-toggle="dropdown" aria-expanded="true">
-						<span class="user-icon"><i class="icon-v2 icon-user loggedin-icon"></i></span>
-						<span class="user-text">Account</span>
-						<b class="caret"></b>
-					</a>
-					<ul class="dropdown-menu dropdown-custom">
-						<li><a href="/customer/account"><i class="fa fa-cog"></i> Manage Account</a></li>
-						<li class="divider"></li><li><a href="/wishlist/"><i class="fa fa-heart"></i> Wishlist</a></li>
-						<li class="divider"></li><li><a href="/customer/account/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
-					</ul>
-				</li>
+        				</li>
+				    </a>
+    				<li class="account-section loggedin-section" ng-if="isLoggedIn">
+    					<a href="#" class="dropdown-toggle user-icon-container header-icon-container" data-toggle="dropdown">
+                            <span class="user-icon"><i class="icon-v2 icon-user loggedin-icon"></i></span>
+                            <span class="user-text">Account</span> <b class="caret"></b>
+                        </a>
+    					<ul class="dropdown-menu dropdown-custom" role="menu" aria-labelledby="dropdownMenu">
+                            <li>
+                                <a href="/customer/account" target="_self"><i class="fa fa-cog"></i> Manage Account</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="/wishlist/" target="_self"><i class="fa fa-heart"></i> Wishlist</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="/customer/account/logout" target="_self"><i class="fa fa-sign-out"></i> Logout</a>
+                            </li>
+                        </ul>
+    				</li>
 				</li>
 			</ul>
 		</div><!-- /.navbar-collapse -->
