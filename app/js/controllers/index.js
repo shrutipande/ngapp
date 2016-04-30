@@ -5,6 +5,5 @@
  * which avails each controller of, for example, the `config` constants object.
  **/
 define(['angular', '../services/index'], function (ng) {
-    'use strict';
-    return ng.module('app.controllers', ['app.services']);
+     return ng.module('app.controllers', ['app.services']);
 });

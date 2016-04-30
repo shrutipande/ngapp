@@ -3,6 +3,5 @@
  * properly referenced in one of the module dependencies in the array.
  **/
 define(['angular'], function (ng) {
-    'use strict';
-    return ng.module('app.directives', ['app.services']);
+     return ng.module('app.directives', ['app.services']);
 });

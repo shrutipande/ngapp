@@ -1,6 +1,5 @@
 define(['./index'], function (filters) {
-  'use strict';
-  // expand input and show post button on focus
+   // expand input and show post button on focus
   filters.filter('urlAndFormat', function() {
     var replacements = [
         {

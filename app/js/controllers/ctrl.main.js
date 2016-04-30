@@ -1,6 +1,5 @@
 define(['./index'], function (controllers) {
-	'use strict';
-	controllers.controller('ctrl.main', [
+ 	controllers.controller('ctrl.main', [
 		'$scope',
 		'$rootScope',
 		'$window',

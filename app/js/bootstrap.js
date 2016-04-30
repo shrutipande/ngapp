@@ -9,7 +9,6 @@ define([
     'routes',
     'impl'
 ], function (require, ng, app) {
-    'use strict';
 
     app.run(['$rootScope', '$state', 'Auth', function ($rootScope, $state, Auth) {
 
