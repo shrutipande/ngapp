@@ -1,6 +1,5 @@
 define(['./index'], function (controllers) {
-	'use strict';
-	controllers.controller('checkoutCartCtrl', ['$scope', '$localStorage', 'craftsvillaService', '$state', '$window', function ($scope, $localStorage, craftsvillaService, $state, $window) {
+ 	controllers.controller('checkoutCartCtrl', ['$scope', '$localStorage', 'craftsvillaService', '$state', '$window', function ($scope, $localStorage, craftsvillaService, $state, $window) {
 		$scope.successCoupon = false;
 		$scope.showFormNote = false;
 		$scope.coupon = {};

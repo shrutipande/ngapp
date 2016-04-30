@@ -1,6 +1,5 @@
 define(['./index'], function (controllers) {
-    'use strict';
-    controllers.controller('paymentErrorCtrl', ['$scope',  function ($scope, $rootScope) {
+     controllers.controller('paymentErrorCtrl', ['$scope',  function ($scope, $rootScope) {
         $scope.scrollToTop();
         if(typeof _satellite != "undefined") {
                 digitalData.page={

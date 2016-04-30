@@ -1,6 +1,5 @@
 define(['./index'], function (controllers) {
-    'use strict';
-    controllers.controller('paymentSuccessCtrl', ['$scope', '$state' ,'craftsvillaService', '$cookies', function ($scope, $state, craftsvillaService, $cookies) {
+     controllers.controller('paymentSuccessCtrl', ['$scope', '$state' ,'craftsvillaService', '$cookies', function ($scope, $state, craftsvillaService, $cookies) {
 
       $scope.norecommendation = false;
       $scope.waitingOrderDatails=true;

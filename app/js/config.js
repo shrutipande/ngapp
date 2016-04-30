@@ -1,8 +1,7 @@
 /*global define */
 
 define(['angular'], function(angular) {
-    'use strict';
-    return angular.module('app.config', ['satellizer','ngAnimate'])
+     return angular.module('app.config', ['satellizer','ngAnimate'])
         .constant('VERSION', '0.0.1')
         .constant('PRODUCTURL', 'http://dev7.craftsvilla.com/catalog/product/view/id/')
         .constant('HOST', 'http://dev7.craftsvilla.com/')

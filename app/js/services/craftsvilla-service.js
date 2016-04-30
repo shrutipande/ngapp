@@ -1,6 +1,5 @@
 define(['./index'], function (services) {
-  'use strict';
-  // expand input and show post button on focus
+   // expand input and show post button on focus
   services.service('craftsvillaService', ['$http','HOST', function($http,HOST) {
 
     return {

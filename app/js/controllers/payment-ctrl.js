@@ -1,6 +1,5 @@
 define(['./index'], function (controllers) {
-    'use strict';
-    controllers.controller('paymentCtrl', ['$scope', '$state', '$stateParams', '$timeout', '$sce', 'craftsvillaService','PRODUCTURL','$cookies', function ($scope,$state,$stateParams,$timeout,$sce,craftsvillaService,PRODUCTURL,$cookies) {
+     controllers.controller('paymentCtrl', ['$scope', '$state', '$stateParams', '$timeout', '$sce', 'craftsvillaService','PRODUCTURL','$cookies', function ($scope,$state,$stateParams,$timeout,$sce,craftsvillaService,PRODUCTURL,$cookies) {
 			var controllerRef = this;
 			$scope.forms = {};
 			$scope.credit = {};

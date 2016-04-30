@@ -1,6 +1,5 @@
 define(['./index'], function(controllers) {
-    'use strict';
-    controllers.controller('shippingCtrl', ['$scope', '$state', 'craftsvillaService', function($scope, $state, craftsvillaService) {
+     controllers.controller('shippingCtrl', ['$scope', '$state', 'craftsvillaService', function($scope, $state, craftsvillaService) {
         //Variables
         $scope.addNew = {};
         $scope.billingID = null;

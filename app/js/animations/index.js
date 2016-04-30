@@ -1,4 +1,3 @@
 define(['angular'], function (ng) {
-    'use strict';
-    return ng.module('app.animations', []);
+     return ng.module('app.animations', []);
 });

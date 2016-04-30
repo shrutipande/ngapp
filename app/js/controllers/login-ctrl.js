@@ -1,6 +1,5 @@
 define(['./index'], function (controllers) {
-	'use strict';
-	controllers.controller('loginCtrl', ['$scope', '$state', '$auth', '$localStorage', 'craftsvillaService', function ($scope, $state ,$auth, $localStorage, craftsvillaService) {
+ 	controllers.controller('loginCtrl', ['$scope', '$state', '$auth', '$localStorage', 'craftsvillaService', function ($scope, $state ,$auth, $localStorage, craftsvillaService) {
 	$scope.guestUser = false;
 	$scope.forgotPasswd = false;
 	$scope.sendPasswd= false;

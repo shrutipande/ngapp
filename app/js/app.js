@@ -14,7 +14,6 @@ define([
   'satellizer',
     'angular-animate'
 ], function (ng) {
-  'use strict';
 
   return ng.module('app', [
     'app.config',

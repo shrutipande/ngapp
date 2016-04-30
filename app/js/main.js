@@ -4,8 +4,8 @@
  * or 3rd party libraries
  */
 require.config({
-
-    paths: {
+  "waitSeconds" : 200,
+  paths: {
         'domReady': '../bower_components/requirejs-domready/domReady',
         'angular': '../bower_components/angular/angular.min',
         'angular-sanitize' : '../bower_components/angular-sanitize/angular-sanitize.min',
