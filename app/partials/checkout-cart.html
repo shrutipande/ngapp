@@ -248,10 +248,10 @@
                 <div class="empty-txt">Start shopping with options below.</div>
                 <div class="empty-lst">
                     <ul>
-                        <li><a target="_self" href="/sarees-sari.html">Sarees</a></li>
-                        <li><a target="_self" href="/clothing/salwar-suit.html">Salwar Suits</a></li>
-                        <li><a target="_self" href="/clothing/lehnga.html">Lehengas</a></li>
-                        <li><a target="_self" href="/jewellery-jewelry.html">Jewellery</a></li>
+                        <li><a target="_self" href="/womens-clothing/sarees">Sarees</a></li>
+                        <li><a target="_self" href="/womens-clothing/salwar-suits">Salwar Suits</a></li>
+                        <li><a target="_self" href="/womens-clothing/lehangas">Bridal Lehenga</a></li>
+                        <li><a target="_self" href="/jewellery">Jewellery</a></li>
                     </ul>
                 </div>
                 <div class="contn-shpng" ng-click="continueShopping()">CONTINUE SHOPPING</div>
@@ -625,7 +625,7 @@
 		queryTokenizer: Bloodhound.tokenizers.whitespace,
 		limit: 10,
 		remote: {
-			url: 'http://www.craftsvilla.com/v1/getAutosuggestion?term=%QUERY',
+			url: '/v1/getAutosuggestion?term=%QUERY',
 			filter: function (response) {
 				var categories = [];
 				var products = [];
