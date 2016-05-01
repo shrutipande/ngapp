@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:ng="http://angularjs.org" id="ng-app" class="js no-flexbox canvas canvastext no-webgl no-touch geolocation postmessage no-websqldatabase no-indexeddb hashchange no-history draganddrop no-websockets rgba hsla multiplebgs backgroundsize no-borderimage borderradius boxshadow no-textshadow opacity no-cssanimations no-csscolumns no-cssgradients no-cssreflections csstransforms no-csstransforms3d no-csstransitions fontface generatedcontent video audio localstorage sessionstorage no-webworkers no-applicationcache svg inlinesvg smil svgclippaths">
+<html xmlns:ng="http://angularjs.org" id="ng-app">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,13 +26,6 @@
 	<body ng-controller="ctrl.main" id="checkoutFlow">
 		<div ui-view></div>
 		<!-- <div ng-include="'partials/footer.html'"></div> -->
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-		<script type="text/javascript">
-		if (!Modernizr.canvas) {
-			console.log("Redirecting to old code")
-			window.location = '/checkout/cart';
-		}
-		</script>
 
 		<script data-main="js/main.min.js" src="bower_components/requirejs/require.js"></script>
 		<!-- <script data-main="/ngapp/app/js/main.min.js" src="/ngapp/app/bower_components/requirejs/require.js"></script> -->
