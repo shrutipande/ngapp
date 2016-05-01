@@ -153,7 +153,7 @@
                                 <input type="email" name="guestEmail" class="form-control height45 border-radius2 guest-m-b-t" placeholder="Enter email address" ng-model="guest.guestUserEmail" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required>
                                 <span ng-message="guestUserForm.guestEmail.$invalid && !guestUserForm.guestEmail.$pristine" ng-show="guestUserForm.guestEmail.$invalid && guestUserForm.guestEmail.$touched" class="error">Please enter valid Email ID.</span>
                                 <div ng-show="guestUserForm.$submitted">
-                                    <span ng-show="guestUserForm.guestEmail.$error.required" class="error">Tell us your email.</span>
+                                    <span ng-show="guestUserForm.guestEmail.$error.required" class="error">Please enter your email address</span>
                                 </div>
                             </fieldset>
                             <div class="BtnContainer col-xs-12 nopadding">

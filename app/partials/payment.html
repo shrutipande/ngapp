@@ -81,7 +81,7 @@
 							<div class="media">
 								<span role="close" ng-click="removeFromCart(quotedata.product_id, quotedata)"><a  ><img src="images/delete-icon.png" alt="" title=""></a></span>
 								<div class="media-left">
-									<a href="{{prdctUrl + quotedata.product_id}}">
+									<a href="{{prdctUrl + quotedata.product_id}}" target="_self">
 										<img class="media-object" src=" {{imgHost + quotedata.product_image}}" alt=""  width="100px" height="100px" title="">
 									</a>
 								</div>
@@ -103,6 +103,7 @@
 									<span>{{shippingAdressData.firstname + ' ' + shippingAdressData.lastname}}</span>
 									<span class="normal">{{shippingAdressData.street +','+shippingAdressData.city +','+ shippingAdressData.region +','+ shippingAdressData.postcode}}</span>
 									<span class="normal">{{shippingAdressData.telephone}}</span>
+									<p>{{shippingAdressData.country_id}}</p>
 								</p>
 							</div>
 						</div>

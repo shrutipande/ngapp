@@ -195,25 +195,25 @@
 <div class="dropdown visible-xs" id="custom-header-dropdown">
 	<ul class="dropdown-menu dropdown-category" aria-labelledby="dropdownMenu1">
 		<li class="dropdown-header"><b>FASHION</b></li>
-		<li><a href="/womens-clothing/sarees">Sarees</a></li>
-		<li><a href="/womens-clothing/lehangas">Bridal Lehenga</a></li>
-		<li><a href="/womens-clothing/salwar-suits">Salwar Suits</a></li>
-		<li><a href="/womens-clothing">Other Clothing</a></li>
-		<li><a href="/jewellery">Jewellery</a></li>
-		<li><a href="/accessories/bags">Bags</a></li>
-		<li><a href="/accessories">Accessories</a></li>
-		<li><a href="/accessories/footwear">Footwear</a></li>
+		<li><a target="_self" href="/womens-clothing/sarees">Sarees</a></li>
+		<li><a target="_self" href="/womens-clothing/lehangas">Bridal Lehenga</a></li>
+		<li><a target="_self" href="/womens-clothing/salwar-suits">Salwar Suits</a></li>
+		<li><a target="_self" href="/womens-clothing">Other Clothing</a></li>
+		<li><a target="_self" href="/jewellery">Jewellery</a></li>
+		<li><a target="_self" href="/accessories/bags">Bags</a></li>
+		<li><a target="_self" href="/accessories">Accessories</a></li>
+		<li><a target="_self" href="/accessories/footwear">Footwear</a></li>
 		<li class="dropdown-header"><b>HOME</b></li>
-		<li><a href="/home-decor">Home Decor</a></li>
-		<li><a href="/home-furnishing">Home Furnishings</a></li>
+		<li><a target="_self" href="/home-decor">Home Decor</a></li>
+		<li><a target="_self" href="/home-furnishing">Home Furnishings</a></li>
 		<li class="dropdown-header"><b>LIFESTYLE</b></li>
-		<li><a href="/food-health">Food &amp; Health</a></li>
-		<li><a href="/bath-beauty">Bath &amp; Beauty</a></li>
+		<li><a target="_self" href="/food-health">Food &amp; Health</a></li>
+		<li><a target="_self" href="/bath-beauty">Bath &amp; Beauty</a></li>
 		<li class="dropdown-header"><b>OTHER</b></li>
-		<li><a href="#">Gifts</a></li>
-		<li><a href="/kids.html">Kids</a></li>
-		<li><a href="#">Books</a></li>
-		<li><a href="/spiritual">Spiritual</a></li>
+		<li><a target="_self" target="_self" href="#">Gifts</a></li>
+		<li><a target="_self" href="/kids.html">Kids</a></li>
+		<li><a target="_self" href="#">Books</a></li>
+		<li><a target="_self" href="/spiritual">Spiritual</a></li>
 	</ul>
 </div>
 <div class="row-fluid">
@@ -248,10 +248,10 @@
                 <div class="empty-txt">Start shopping with options below.</div>
                 <div class="empty-lst">
                     <ul>
-                        <li><a href="/sarees-sari.html">Sarees</a></li>
-                        <li><a href="/clothing/salwar-suit.html">Salwar Suits</a></li>
-                        <li><a href="/clothing/lehnga.html">Lehengas</a></li>
-                        <li><a href="/jewellery-jewelry.html">Jewellery</a></li>
+                        <li><a target="_self" href="/sarees-sari.html">Sarees</a></li>
+                        <li><a target="_self" href="/clothing/salwar-suit.html">Salwar Suits</a></li>
+                        <li><a target="_self" href="/clothing/lehnga.html">Lehengas</a></li>
+                        <li><a target="_self" href="/jewellery-jewelry.html">Jewellery</a></li>
                     </ul>
                 </div>
                 <div class="contn-shpng" ng-click="continueShopping()">CONTINUE SHOPPING</div>
@@ -261,7 +261,7 @@
                     <!-- <a href="javascript:void(0)" class="cart-details-close" ng-click="removeProductFromCart(product.product_id,product)"><img src="images/delete-icon.png" width:'100%'></a> -->
                     <div class="cart-items-cont">
                         <div class="cart-img-cont">
-                            <a ng-href="{{product.url}}"><img ng-src="{{IMGHOST}}/thumb/216x216{{ product.product_image }}" class="img-responsive"></a>
+                            <a target="_self" ng-href="{{product.url}}"><img ng-src="{{IMGHOST}}/thumb/216x216{{ product.product_image }}" class="img-responsive"></a>
                         </div>
                         <div class="cart-details-cont">
                             <div class="col-xs-12 nopadding  c-itm-name">{{ product.product_name }}</div>
@@ -326,7 +326,7 @@
                     <a href="javascript:void(0)" class="cart-details-close" ng-click="removeProductFromCart(data.product_id,data)"><img src="images/delete-icon.png" width:'100%'></a>
                     <div class="cart-items-cont">
                         <div class="cart-img-cont">
-                            <a ng-href="{{data.url}}"><img ng-src="{{IMGHOST}}/thumb/216x216{{data.product_image}}" class="img-responsive"></a>
+                            <a target="_self" ng-href="{{data.url}}"><img ng-src="{{IMGHOST}}/thumb/216x216{{data.product_image}}" class="img-responsive"></a>
                         </div>
                         <div class="cart-details-cont">
                             <div class="col-xs-12 nopadding c-itm-name">{{data.product_name}}</div>
@@ -388,7 +388,7 @@
                     <a href="javascript:void(0)" class="cart-details-close" ng-click="removeProductFromCart(data.product_id,data)"><img src="images/delete-icon.png" width:100%></a>
                     <div class="cart-items-cont">
                         <div class="cart-img-cont">
-                            <a ng-href="{{data.url}}"><img ng-src="{{IMGHOST}}/thumb/216x216{{data.product_image}}" class="img-responsive"></a>
+                            <a target="_self" ng-href="{{data.url}}"><img ng-src="{{IMGHOST}}/thumb/216x216{{data.product_image}}" class="img-responsive"></a>
                         </div>
                         <div class="cart-details-cont">
                             <div class="col-xs-12 nopadding c-itm-name">{{data.product_name}}</div>

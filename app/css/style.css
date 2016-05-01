@@ -98,7 +98,7 @@ div[data-overlay] { position: fixed; top: 0; left: 0; width: 100%; height: 100%;
 .FPcontainer,.SPcontainer { max-width: 567px; width: 100%; border-radius: 2px; background: #ffffff; position: fixed; left: 0; right: 0; top: 0; bottom: 0; margin: auto; padding: 15px; }
 .FPcontainer{ height: 270px; }
 .SPcontainer{ height: 128px; }
-span[role="close"] { display: block; text-align: right; float: left; width: 100%; position: absolute; top: 18px; right: 9px; }
+span[role="close"] { display: block; text-align: right; float: left; position: absolute; top: 18px; right: 9px; cursor: pointer}
 span[role="close"] a { display: block; width: 15px; height: 15px; float: right; }
 span[role="close"] a:focus { outline: none; }
 span[role="close"] a img { margin: -11px 0 0 0; }
