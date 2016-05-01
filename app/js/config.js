@@ -47,14 +47,12 @@ define(['angular'], function(angular) {
                 responseType: 'token',
                 url: '/checkoutService/index/socialLogin',
                 skipAuthorization: true,
-                redirectUri: 'http://dev7.craftsvilla.com',
             });
 
             $authProvider.google({
                 clientId: '34235241642-4rsq630ova71avmsph5ded5uvp3tac8t.apps.googleusercontent.com',
                 url: '/checkoutService/index/socialLogin',
                 skipAuthorization: true,
-                redirectUri: 'http://dev7.craftsvilla.com',
             });
         }]);
 });
