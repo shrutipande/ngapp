@@ -374,6 +374,7 @@ div[check-out]   .out-o-stk{color:#9b9b9b;}
 
 .cart-details-cont .c-itm-price{margin-top:20px; font-size: 16px; font-weight:bold; line-height: 1.2;  color: #4c4c4c;}
 .cart-details-cont .c-itm-qty{margin-top:20px; margin-bottom:20px;}
+.cart-details-cont .c-itm-qty select{cursor: pointer;}
 .c-itm-qty .text{float:left; margin:4px 5px 0 0; font-size: 14px; line-height: 1.4;  color: #4c4c4c;}
 .cart-details-cont  .seller-note{margin-top:20px;font-size: 14px; line-height: 1.4; color: #971937; text-transform: uppercase; cursor: pointer;}
 div[check-out] .overlay-out-stock{ background: #222222; opacity: 0.5; width:100%;/*761px;*/ height: 215px; position:relative; top:0px; left: 0px;border: solid 1px #981937;}
