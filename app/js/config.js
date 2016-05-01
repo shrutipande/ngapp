@@ -46,15 +46,15 @@ define(['angular'], function(angular) {
                 clientId: '1696658660596971',
                 responseType: 'token',
                 url: '/checkoutService/index/socialLogin',
-                skipAuthorization: true
-
+                skipAuthorization: true,
+                redirectUri: window.location.origin || window.location.protocol + '//' + window.location.host,
             });
 
             $authProvider.google({
                 clientId: '34235241642-4rsq630ova71avmsph5ded5uvp3tac8t.apps.googleusercontent.com',
                 url: '/checkoutService/index/socialLogin',
-                skipAuthorization: true
-
+                skipAuthorization: true,
+                redirectUri: window.location.origin || window.location.protocol + '//' + window.location.host,
             });
         }]);
 });
