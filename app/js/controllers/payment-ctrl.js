@@ -439,6 +439,7 @@ define(['./index'], function (controllers) {
 					$scope.pg = 'CC';
 									window.paymentMethods = $scope.changeName;
 					console.log($scope.paymentMethods);
+					$scope.finalQuoteDetails();
 				})
 				.error(function(err) {
 
@@ -585,7 +586,7 @@ define(['./index'], function (controllers) {
 			$scope.initPayment = function() {
 				console.log("initializing Payment");
 				$scope.getPayments();
-				$scope.finalQuoteDetails();
+				// $scope.finalQuoteDetails(); -> adding it to callback of getPayments
 				$scope.scrollToTop();
 
 
