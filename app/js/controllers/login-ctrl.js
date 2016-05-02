@@ -207,9 +207,9 @@ define(['./index'], function (controllers) {
 		          },
 		          currencycode:{
 		            currencyCode : 'INR',
-		          },
-
+		          }
 		        }
+		        _satellite.track("login");
 		    }
 		    if(typeof dataLayer != "undefined") {
 			    dataLayer.push({

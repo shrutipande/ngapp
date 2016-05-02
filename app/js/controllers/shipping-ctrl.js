@@ -289,6 +289,7 @@ define(['./index'], function(controllers) {
 
 
         $scope.viewaddress = function() {
+            $scope.addressTracker();
             craftsvillaService.getAddress()
                 .success(function(response) {
                     if (response.s == 1) {
@@ -502,57 +503,56 @@ define(['./index'], function(controllers) {
             //console.log($scope.mform);
         };
         $scope.addressTracker =function() {
-             craftsvillaService.loadQuote()
+            craftsvillaService.loadQuote()
             .success(function(response) {
                 $scope.cartDetails = response.d;
                 $scope.$emit('cartDetails');
-            });
-        $scope.$on('cartDetails', function () {
-             var productIds =[];
-            var allProducts = $scope.cartDetails.product_list;
-            angular.forEach(allProducts, function(product) {
-                productIds.push(product.product_id);
-            });
-              if(typeof _satellite != "undefined") {
-                digitalData.page={
-                  pageInfo:{
-                    pageName:"checkout:shipping",
-                  },
-                  category:{
-                    pageType:"checkout",
-                    primaryCategory: "shipping",
-                  },
-                  device:{
-                    deviceType:isMobile
-                  },
-                  currencycode:{
-                    currencyCode : 'INR',
-                  },
-                }
-               var count = productIds.length;
-               var detail= [];
-               for(var i = 0; i < count; i++){
-                        detail[i]={
-                                productInfo:{
-                                productID: productIds[i], //PRODUCT ID
-                                }
-                            };
+             });
+            $scope.$on('cartDetails', function () {
+                var productIds =[];
+                var allProducts = $scope.cartDetails.product_list;
+                angular.forEach(allProducts, function(product) {
+                    productIds.push(product.product_id);
+                });
+                  if(typeof _satellite != "undefined") {
+                     console.log("view");
+                    digitalData.page={
+                      pageInfo:{
+                        pageName:"checkout:shipping",
+                      },
+                      category:{
+                        pageType:"checkout",
+                        primaryCategory: "shipping",
+                      },
+                      device:{
+                        deviceType:isMobile
+                      },
+                      currencycode:{
+                        currencyCode : 'INR',
+                      },
                     }
-            digitalData.cart = {
-                 item: detail
-                }
+                   var count = productIds.length;
+                   var detail= [];
+                   for(var i = 0; i < count; i++){
+                            detail[i]={
+                                    productInfo:{
+                                    productID: productIds[i], //PRODUCT ID
+                                    }
+                                };
+                        }
+                digitalData.cart = {
+                     item: detail
+                    }
 
-        }
-    });
+            }
+        });
 
     }
 
         $scope.initshipping = function() {
             $scope.viewaddress();
             $scope.fetchCountries();
-            $scope.addressTracker();
             $scope.scrollToTop();
-            $scope.addressTracker();
 
         }
         $scope.initshipping();
