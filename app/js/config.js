@@ -4,7 +4,7 @@ define(['angular'], function(angular) {
      return angular.module('app.config', ['satellizer','ngAnimate'])
         .constant('VERSION', '0.0.1')
      //    .constant('PRODUCTURL', 'http://dev7.craftsvilla.com/catalog/product/view/id/')
-        .constant('PRODUCTURL', 'https://www.craftsvilla.com/catalog/product/view/id/')
+        .constant('PRODUCTURL', 'http://www.craftsvilla.com/catalog/product/view/id/')
      //    .constant('HOST', 'http://dev7.craftsvilla.com/')
         .constant('HOST', 'https://securestatic.craftsvilla.com/')
 
