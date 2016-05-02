@@ -3,8 +3,10 @@
 define(['angular'], function(angular) {
      return angular.module('app.config', ['satellizer','ngAnimate'])
         .constant('VERSION', '0.0.1')
-        .constant('PRODUCTURL', 'http://dev7.craftsvilla.com/catalog/product/view/id/')
-        .constant('HOST', 'http://dev7.craftsvilla.com/')
+     //    .constant('PRODUCTURL', 'http://dev7.craftsvilla.com/catalog/product/view/id/')
+        .constant('PRODUCTURL', 'https://secure.craftsvilla.com/catalog/product/view/id/')
+     //    .constant('HOST', 'http://dev7.craftsvilla.com/')
+        .constant('HOST', 'https://secure.craftsvilla.com/')
 
         .constant('IMGHOST_DEV', 'http://img1.craftsvilla.com')
         .constant('IMGHOST_PROD', 'https://secureimg1.craftsvilla.com')
@@ -13,8 +15,8 @@ define(['angular'], function(angular) {
         .constant('LSTATIC_PROD', 'https://securelstatic1.craftsvilla.com/')
 
         // Change this to switch between dev and prod
-        .constant('ENVIRONMENT', 'development')
-        // .constant('ENVIRONMENT', 'production')
+     //    .constant('ENVIRONMENT', 'development')
+        .constant('ENVIRONMENT', 'production')
 
         .constant('VIEWS', {
             footer: 'partials/footer.html'
@@ -37,7 +39,8 @@ define(['angular'], function(angular) {
             delete $httpProvider.defaults.headers.common['X-Requested-With'];
         }])
         .config(['$authProvider', 'HOST', function($authProvider, HOST) {
-            $authProvider.baseUrl = 'http://dev7.craftsvilla.com';
+            $authProvider.baseUrl = 'https://secure.craftsvilla.com';
+          //   $authProvider.baseUrl = 'http://dev7.craftsvilla.com';
             $authProvider.withCredentials = true;
 
             // $authProvider.httpInterceptor = function() { return true; },

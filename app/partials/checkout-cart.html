@@ -127,7 +127,7 @@
 <!-- Craftsvilla navbar ends here -->
 
 <a class="col-xs-12 buyer_protection_mobile visible-sm visible-xs" id="buyer_protection_mobile" data-toggle="modal" data-target="#myModal">
-	<img src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/img/sheild.png" class="protection-shield"/>
+	<img src="{{IMGHOST}}skin/frontend/default/craftsvilla2015/img/sheild.png" class="protection-shield"/>
 	<span class="protection_text"><b>100%</b> Buyer Protection</span>
 	<span class="learn_more">Learn More</span>
 </a>
@@ -221,7 +221,7 @@
 		<!-- Product page breadcrumbs starts here -->
 		<!-- new checkout design starts here -->
 		<div class="col-xs-12  col-md-12 buyer-section hidden-sm hidden-xs" data-toggle="modal" data-target="#myModal">
-			<img class="buyer-icon" src="http://lstatic1.craftsvilla.com/skin/frontend/default/craftsvilla2015/img/sheild.png">
+			<img class="buyer-icon" src="{{IMGHOST}}skin/frontend/default/craftsvilla2015/img/sheild.png">
 			<span class="buyer-text"><b>100%</b> <span class="buyer-regular-text regular-text">Buyer Protection</span> |
 			<span class="secure-text regular-text">Secure Payments &amp; Easy Returns | <span class="learn-text regular-text">Learn More</span></span></span>
         </div>
@@ -671,7 +671,7 @@
 				if(data.type=='product') {
 					var text = [
 						'<div class="custom_results_image custom_results">',
-						'<div class="result_image hidden-xs hidden-sm" style="background-image:url(http://secureimg1.craftsvilla.com/thumb/166x166/' + data.image + ')"></div>',
+						'<div class="result_image hidden-xs hidden-sm" style="background-image:url(https://secureimg1.craftsvilla.com/thumb/166x166/' + data.image + ')"></div>',
 						'<div class="result_text">' + data.text  + '</div>'
 					].join('\n');
 					if(data.vendor_name.trim().length) {
