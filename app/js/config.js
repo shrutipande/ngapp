@@ -56,6 +56,7 @@ define(['angular'], function(angular) {
                 clientId: '284180597119-51glidbrmd6u9lg77hjvqhbq69vl62j9.apps.googleusercontent.com',
                 url: '/checkoutService/index/socialLogin',
                 skipAuthorization: true,
+                redirectUri: window.location.origin ? window.location.origin +  '/buy/login' : window.location.protocol + '//' + window.location.host + '/buy/login',
             });
         }]);
 });
