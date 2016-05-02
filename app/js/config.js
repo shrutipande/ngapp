@@ -6,7 +6,7 @@ define(['angular'], function(angular) {
      //    .constant('PRODUCTURL', 'http://dev7.craftsvilla.com/catalog/product/view/id/')
         .constant('PRODUCTURL', 'https://secure.craftsvilla.com/catalog/product/view/id/')
      //    .constant('HOST', 'http://dev7.craftsvilla.com/')
-        .constant('HOST', 'https://secure.craftsvilla.com/')
+        .constant('HOST', 'https://securestatic.craftsvilla.com/')
 
         .constant('IMGHOST_DEV', 'http://img1.craftsvilla.com')
         .constant('IMGHOST_PROD', 'https://secureimg1.craftsvilla.com')

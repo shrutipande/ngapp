@@ -75,6 +75,17 @@ module.exports = function(grunt) {
         clean: {
             js: ['app/js/main.min.js'],
             html: ['app/js/templates.js']
+        },
+        cssmin: {
+          options: {
+            shorthandCompacting: false,
+            roundingPrecision: -1
+          },
+          target: {
+            files: {
+              'app/css/main.min.css': ['app/css/style.css', 'app/css/animate.css']
+            }
+          }
         }
     });
 
@@ -85,11 +96,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-angular-templates');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
 
     // Production mode tasks
     grunt.registerTask('prod', ['sass', 'ngtemplates', 'requirejs', 'imagemin']);
 
     // Dev mode tasks
-    grunt.registerTask('default', ['clean', 'sass', 'ngtemplates', 'requirejs', 'watch']);
+    grunt.registerTask('default', ['clean', 'cssmin', 'ngtemplates', 'requirejs', 'watch']);
 
 };
