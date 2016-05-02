@@ -5,42 +5,42 @@ define(['./index'], function (controllers) {
       $scope.waitingOrderDatails=true;
 
     $scope.onSuccessDetails = function() {
-      console.log("details");
+      //console.log("details");
       craftsvillaService.getOrderDetails()
       .success(function (response) {
       $scope.waitingOrderDatails=false;
-				console.log(response.d.product_list);
+				//console.log(response.d.product_list);
 				$scope.orderDetails=response.d.product_list;
 				$scope.order=response.d;
 				$scope.orderNo=response.d.Order_number;
 
-        console.log(response.d.Order_number);
-				console.log($scope.order);
+        //console.log(response.d.Order_number);
+				//console.log($scope.order);
 
 				$scope.shippingDetails=$scope.order.shippingAddress;
         $scope.subTotal=$scope.order.sub_total;
         $scope.grandTotal=$scope.order.grand_total;
 
 
-				console.log('name:');
-				console.log($scope.shippingDetails.firstname);
-				console.log($scope.shippingDetails.telephone);
+				//console.log('name:');
+				//console.log($scope.shippingDetails.firstname);
+				//console.log($scope.shippingDetails.telephone);
 
 
 				//$scope.getSubTotal();
 
 				$scope.couponCode=$scope.order.coupon_code;
-				console.log($scope.couponCode);
+				//console.log($scope.couponCode);
 				$scope.shippingAmount=$scope.order.shipping_amount;
-				console.log($scope.shippingAmount);
-				console.log($scope.shippingAmount);
+				//console.log($scope.shippingAmount);
+				//console.log($scope.shippingAmount);
 
 				$scope.totalPayable=$scope.subTotal-$scope.couponCode+$scope.shippingAmount;
         $scope.orderDetailsTracker();
         $scope.sendAffiliateData();
 		})
 		.error(function (err) {
-			console.log('error');
+			//console.log('error');
 			throw new Error(err);
 		})
     	};
@@ -51,13 +51,13 @@ define(['./index'], function (controllers) {
     		 var product = $scope.orderDetails[i];
         	$scope.subTotal += parseInt(product.product_price);
     }
-     console.log($scope.subTotal);
+     //console.log($scope.subTotal);
     return $scope.subTotal;
 
 }
 
     $scope.continueShopping = function() {
-		  console.log('click on continue shopping');
+		  //console.log('click on continue shopping');
 	  };
 
       $scope.getRecommendation = function() {
@@ -69,7 +69,7 @@ define(['./index'], function (controllers) {
                 $scope.norecommendation = true
             })
             .error(function (error) {
-                console.log(error);
+                //console.log(error);
             });
       };
       $scope.orderDetailsTracker = function() {
@@ -179,7 +179,7 @@ define(['./index'], function (controllers) {
         }
         craftsvillaService.sendAffiliateData(dformat, affiliateName, $scope.orderNo, $scope.grandTotal, utmMedium)
         .success(function(response) {
-          console.log(response);
+          //console.log(response);
         })
         .error(function(error) {
           throw new Error(err);

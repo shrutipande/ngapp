@@ -147,7 +147,7 @@ define(['./index'], function (controllers) {
 					if(response.d.product_list.length==0){
 					$scope.items = 0;
 				}
-				console.log('hi remove');
+				//console.log('hi remove');
 		data.waitingCartItem = false;
 		divideProducts(response);
 				$scope.itemRemoved = 1;
@@ -157,7 +157,7 @@ define(['./index'], function (controllers) {
 			})
 			.error(function(error) {
 		data.waitingCartItem = false;
-		console.log(error);
+		//console.log(error);
 			});
 
 		};
@@ -196,7 +196,7 @@ define(['./index'], function (controllers) {
 				updateTotals(response);
 			})
 			.error(function(error) {
-				console.log(error);
+				//console.log(error);
 			});
 		};
 
@@ -215,7 +215,7 @@ define(['./index'], function (controllers) {
 				updateTotals(response);
 			})
 			.error(function(error) {
-				console.log(error);
+				//console.log(error);
 			});
 
 		}
@@ -230,7 +230,7 @@ define(['./index'], function (controllers) {
 			})
 			.error(function(error) {
 		data.waitingCartItem = false;
-		console.log(error);
+		//console.log(error);
 			});
 		};
 
@@ -248,7 +248,7 @@ define(['./index'], function (controllers) {
 				data.showFormNote = false;
 			})
 			.error(function(error) {
-				console.log(error);
+				//console.log(error);
 			});
 		};
 
@@ -311,7 +311,7 @@ define(['./index'], function (controllers) {
 			.error(function(error) {
 		data.waitingCartItem = true;
 
-		console.log(error);
+		//console.log(error);
 			});
 		};
 
@@ -324,7 +324,7 @@ define(['./index'], function (controllers) {
 				$scope.itemRemoved = 0;
 			})
 			.error(function(error) {
-				console.log(error);
+				//console.log(error);
 			});
 		}
 

@@ -22,7 +22,7 @@ define([
         });
 
         $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
-            console.log(toState.authenticate, Auth.isLoggedIn(), fromState.authenticate);
+            //console.log(toState.authenticate, Auth.isLoggedIn(), fromState.authenticate);
             if (toState.authenticate && !Auth.isLoggedIn()){
               // User isn’t authenticated
               $state.go("login");

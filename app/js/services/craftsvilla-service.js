@@ -105,14 +105,14 @@ define(['./index'], function (services) {
     }
 
     function applyCoupon(couponCode) {
-      console.log(couponCode);
+      //console.log(couponCode);
       return $http.post( HOST + 'checkoutService/index/applyCoupon', {
         "couponCode" : couponCode
       });
     }
 
     function removeCoupon(couponCode) {
-      console.log(couponCode);
+      //console.log(couponCode);
       return $http.post( HOST + 'checkoutService/index/removeCoupon', {
         "couponCode": couponCode
       });
@@ -228,7 +228,7 @@ define(['./index'], function (services) {
     }
 
     function updateAddress(firstName,lastName, address1, city, state, pincode, country, phoneNo, addressId) {
-      console.log(firstName,lastName, address1, city, state, pincode, country, phoneNo, addressId);
+      //console.log(firstName,lastName, address1, city, state, pincode, country, phoneNo, addressId);
       return $http.post( HOST + 'checkoutService/index/updateAddress', {
         "firstName" : firstName,
         "lastName" : lastName,
@@ -247,7 +247,7 @@ define(['./index'], function (services) {
     }
 
     function addAddress(shipping, billing) {
-      console.log(shipping, billing);
+      //console.log(shipping, billing);
 
       return $http.post( HOST + 'checkoutService/index/addAddress', {
         "shippingAddreess":{

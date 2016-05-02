@@ -136,7 +136,7 @@ define(['./index'], function (controllers) {
 					"gateway": 'payu'
 				})
 				.success(function(data){
-					// console.log(data);
+					// //console.log(data);
 					// return;
 
 					$scope.placeOrderLoader=false;
@@ -164,12 +164,12 @@ define(['./index'], function (controllers) {
 					//
 					// })
 					// .error(function(err){
-					// 	console.log(err);
+					// 	//console.log(err);
 					// })
 				})
 				.error(function(err){
 					$scope.placeOrderLoader=true;
-					console.log(err);
+					//console.log(err);
 				});
 			};
 
@@ -202,7 +202,7 @@ define(['./index'], function (controllers) {
 					"gateway": 'payu'
 				})
 				.success(function(data){
-					// console.log(data);
+					// //console.log(data);
 					// return;
 
 					$scope.placeOrderLoader=false;
@@ -230,12 +230,12 @@ define(['./index'], function (controllers) {
 					//
 					// })
 					// .error(function(err){
-					// 	console.log(err);
+					// 	//console.log(err);
 					// })
 				})
 				.error(function(err){
 					$scope.placeOrderLoader=true;
-					console.log(err);
+					//console.log(err);
 				});
 			};
 			$scope.submitNBForm = function() {
@@ -292,12 +292,12 @@ define(['./index'], function (controllers) {
 					//
 					// })
 					// .error(function(err){
-					// 	console.log(err);
+					// 	//console.log(err);
 					// })
 				})
 				.error(function(err){
 					$scope.placeOrderLoader=true;
-					console.log(err);
+					//console.log(err);
 				});
 			};
 			$scope.submitPayUForm = function() {
@@ -328,7 +328,7 @@ define(['./index'], function (controllers) {
 					"gateway": 'payu'
 				})
 				.success(function(data){
-					// console.log(data);
+					// //console.log(data);
 					// return;
 					$scope.placeOrderLoader=false;
 
@@ -355,12 +355,12 @@ define(['./index'], function (controllers) {
 					//
 					// })
 					// .error(function(err){
-					// 	console.log(err);
+					// 	//console.log(err);
 					// })
 				})
 				.error(function(err){
 					$scope.placeOrderLoader=true;
-					console.log(err);
+					//console.log(err);
 				});
 			};
 
@@ -376,7 +376,7 @@ define(['./index'], function (controllers) {
 					"gateway": 'paypal'
 				})
 				.success(function(data){
-					// console.log(data);
+					// //console.log(data);
 					// return;
 					$scope.placeOrderLoader=false;
 
@@ -409,12 +409,12 @@ define(['./index'], function (controllers) {
 					//
 					// })
 					// .error(function(err){
-					// 	console.log(err);
+					// 	//console.log(err);
 					// })
 				})
 				.error(function(err){
 					$scope.placeOrderLoader=true;
-					console.log(err);
+					//console.log(err);
 				});
 			};
 			// Debit Card
@@ -433,12 +433,12 @@ define(['./index'], function (controllers) {
 			$scope.getPayments = function() {
 				craftsvillaService.getPaymentMethods()
 				.success( function(response) {
-					console.log(response);
+					//console.log(response);
 					$scope.paymentMethods = response.d[0];
 					$scope.changeName = $scope.paymentMethods[0].method;
 					$scope.pg = 'CC';
 									window.paymentMethods = $scope.changeName;
-					console.log($scope.paymentMethods);
+					//console.log($scope.paymentMethods);
 				})
 				.error(function(err) {
 
@@ -583,7 +583,7 @@ define(['./index'], function (controllers) {
 
 			}
 			$scope.initPayment = function() {
-				console.log("initializing Payment");
+				//console.log("initializing Payment");
 				$scope.getPayments();
 				$scope.finalQuoteDetails();
 				$scope.scrollToTop();
@@ -605,7 +605,7 @@ define(['./index'], function (controllers) {
 					$scope.finalQuoteDetails()
 				})
 				.error(function(error) {
-	        console.log(error);
+	        //console.log(error);
 				});
 			}
 		}

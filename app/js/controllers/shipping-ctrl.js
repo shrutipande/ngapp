@@ -45,7 +45,7 @@ define(['./index'], function(controllers) {
 
         //Icon Edit popup view
         $scope.shippingEdit = function(address) {
-                console.log(address);
+                //console.log(address);
                 $scope.popupEditAddress = false;
                 $scope.editAddr = angular.copy(address);
                 $scope.editAddr.postcode = isNaN(parseInt($scope.editAddr.postcode)) ? $scope.editAddr.postcode : +$scope.editAddr.postcode;
@@ -60,19 +60,19 @@ define(['./index'], function(controllers) {
 
                 if ($scope.DeseditaddrForm) {
                     //alert('Edit Address');
-                    console.log($scope.editAddr);
+                    //console.log($scope.editAddr);
 
                 }
 
             }
             //Edit popup form close
         $scope.formclose = function() {
-            console.log('working');
+            //console.log('working');
             $scope.popupEditAddress = true;
         };
 
         $scope.checkSameOrNot = function(addId, chkStatus) {
-            console.log(addId, chkStatus)
+            //console.log(addId, chkStatus)
             $scope.shippingID = addId;
 
             if ($scope.chkStatus == true) {
@@ -82,28 +82,28 @@ define(['./index'], function(controllers) {
 
         //Checkbox view address hide address
         $scope.checkStatus = function(value) {
-            console.log(value);
+            //console.log(value);
             if (value) {
                 $scope.everChanged = !$scope.everChanged;
-                console.log('checked:show');
+                //console.log('checked:show');
                 $scope.displayAddress = true;
                 $scope.displayAddresscheckbox = false;
                 $scope.selectedShippingID = $scope.shippingID;
                 $scope.billingID = $scope.selectedShippingID;
-                console.log("billing:" + $scope.billingID)
+                //console.log("billing:" + $scope.billingID)
                 $scope.tempBilling = $scope.billingID;
                 $scope.tempShipping = $scope.shippingID;
                 if ($scope.noshippingSelected)
                     $scope.noshippingSelected = !$scope.noshippingSelected;
             } else {
                 $scope.everChanged = !$scope.everChanged;
-                console.log('checked:hide');
+                //console.log('checked:hide');
                 $scope.selectedShippingID = $scope.shippingID;
-                console.log("**** ---- ***");
-                console.log($scope.selectedShippingID);
+                //console.log("**** ---- ***");
+                //console.log($scope.selectedShippingID);
                 $scope.billingID = null;
-                console.log($scope.billingID);
-                console.log("billing:" + $scope.billingID)
+                //console.log($scope.billingID);
+                //console.log("billing:" + $scope.billingID)
                 $scope.tempBilling = null;
                 $scope.tempShipping = $scope.shippingID;
                 $scope.displayAddress = false;
@@ -126,8 +126,8 @@ define(['./index'], function(controllers) {
         //    //alert('checked:hide');
         //    $scope.billingID = null;
         //    $scope.selectedShippingID = $scope.shippingID;
-        //    console.log("^^^^^^");
-        //    console.log($scope.selectedShippingID);
+        //    //console.log("^^^^^^");
+        //    //console.log($scope.selectedShippingID);
         //    $scope.displayAddress=false;
         //    $scope.displayAddresscheckbox=true;
         //
@@ -160,7 +160,7 @@ define(['./index'], function(controllers) {
                 if (chkStatusBilling == true) {
                     $scope.shipping.isSame = 1;
                     $scope.shipping.countryName = $scope.addnewcountry_shipping.country_name;
-                    console.log($scope.shipping)
+                    //console.log($scope.shipping)
                     $scope.shipping.pincode = $scope.shipping.postcode;
                     $scope.saveAndContinueLoader = true;
                     craftsvillaService.addAddress($scope.shipping, $scope.shipping)
@@ -172,7 +172,7 @@ define(['./index'], function(controllers) {
                         })
 
                     .error(function(error) {
-                        console.log('Error');
+                        //console.log('Error');
                         $scope.saveAndContinueLoader = false;
                     });
                 }
@@ -188,7 +188,7 @@ define(['./index'], function(controllers) {
                     craftsvillaService.getAddressFromPincode(postcode)
                         .success(function(response) {
                             $scope.citystateWait = false;
-                            console.log(response);
+                            //console.log(response);
                             if (response.s == 1) {
                                 address.city = response.d[0].city;
                                 address.state = response.d[0].state;
@@ -198,20 +198,20 @@ define(['./index'], function(controllers) {
                             }
                         })
                         .error(function(error) {
-                            console.log('Error');
+                            //console.log('Error');
                         });
                 }
             }
             //Edit address
         $scope.changePincodeMobile = function(postcode) {
-            console.log($scope.addnewcountry.country_name)
+            //console.log($scope.addnewcountry.country_name)
             if ($scope.addnewcountry.country_name == "India") {
                 $scope.citystateWait = true;
 
                 craftsvillaService.getAddressFromPincode(postcode)
                     .success(function(response) {
                         $scope.citystateWait = false;
-                        console.log(response);
+                        //console.log(response);
                         if (response.s == 1) {
                             $scope.editAddr.city = response.d[0].city;
                             $scope.editAddr.state = response.d[0].state;
@@ -220,17 +220,17 @@ define(['./index'], function(controllers) {
                         }
                     })
                     .error(function(error) {
-                        console.log('Error');
+                        //console.log('Error');
                     });
             }
         }
         $scope.changePincodeBilling = function(postcode) {
-            console.log("&&&&& ----- -&&&&&")
-            console.log($scope.addnewcountry_billing.country_name)
+            //console.log("&&&&& ----- -&&&&&")
+            //console.log($scope.addnewcountry_billing.country_name)
             if ($scope.addnewcountry_billing.country_name == "India")
                 craftsvillaService.getAddressFromPincode(postcode)
                 .success(function(response) {
-                    console.log(response);
+                    //console.log(response);
                     if (response.s == 1) {
                         $scope.addNewBilling.city = response.d[0].city;
                         $scope.addNewBilling.state = response.d[0].state;
@@ -240,7 +240,7 @@ define(['./index'], function(controllers) {
                 })
 
             .error(function(error) {
-                console.log('Error');
+                //console.log('Error');
             });
 
         }
@@ -249,7 +249,7 @@ define(['./index'], function(controllers) {
         $scope.editsubmitForm = function() {
             //alert("saefgs")
 
-            console.log($scope.editAddr);
+            //console.log($scope.editAddr);
 
 
             var addId = $scope.editAddr.entity_id;
@@ -263,7 +263,7 @@ define(['./index'], function(controllers) {
             var phonenumber = $scope.editAddr.telephone;
             craftsvillaService.updateAddress(firstname, lastname, _address, city, state, postcode, country, phonenumber, addId)
                 .success(function(response) {
-                    console.log(response);
+                    //console.log(response);
                     if (response.s == 0) {
 
                     } else {
@@ -275,7 +275,7 @@ define(['./index'], function(controllers) {
                 })
 
             .error(function(error) {
-                console.log('Error');
+                //console.log('Error');
             });
 
 
@@ -293,12 +293,12 @@ define(['./index'], function(controllers) {
                 .success(function(response) {
                     if (response.s == 1) {
                         $scope.addressExists = true;
-                        console.log("***********")
-                        console.log(response)
-                        console.log("**********")
+                        //console.log("***********")
+                        //console.log(response)
+                        //console.log("**********")
 
                         $scope.addresses = response.d;
-                        console.log($scope.addresses)
+                        //console.log($scope.addresses)
                             //$scope.addnewsubmit($scope.addresses[0]);
                         $scope.shippingID = $scope.addresses[0].entity_id;
                         $scope.billingID = $scope.addresses[0].entity_id;
@@ -308,7 +308,7 @@ define(['./index'], function(controllers) {
                     }
                 })
                 .error(function(error) {
-                    console.log(error);
+                    //console.log(error);
 
                 });
         }
@@ -336,11 +336,11 @@ define(['./index'], function(controllers) {
 
 
         //$scope.deliveryAddress=function(address){
-        //  console.log(address);
+        //  //console.log(address);
         //  $scope.billingID = address.entity_id
         //  craftsvillaService.assignAddressToQuote($scope.billingID, 2546)
         //      .success(function(response){
-        //            console.log(response)
+        //            //console.log(response)
         //          }
         //      );
         //
@@ -380,7 +380,7 @@ define(['./index'], function(controllers) {
                 })
 
             .error(function(error) {
-                console.log('Error');
+                //console.log('Error');
                 $scope.saveAndContinueLoader = false;
             });
 
@@ -389,7 +389,7 @@ define(['./index'], function(controllers) {
         }
 
         $scope.editaddressSave = function() {
-            console.log(addNewBilling);
+            //console.log(addNewBilling);
         };
 
 
@@ -422,17 +422,17 @@ define(['./index'], function(controllers) {
 
 
         // $scope.setBoth=function(){
-        //  console.log('setBoth ');
+        //  //console.log('setBoth ');
         // }
 
         // $scope.setShippingID=function(addId){
-        //  console.log('setShippingID ');
+        //  //console.log('setShippingID ');
         // }
 
         $scope.setbillingID = function(addId) {
             $scope.billingID = addId;
             $scope.tempBilling = addId;
-            console.log($scope.billingID, $scope.tempBilling)
+            //console.log($scope.billingID, $scope.tempBilling)
             $scope.noshippingSelected = false;
         }
 
@@ -450,23 +450,23 @@ define(['./index'], function(controllers) {
                  _satellite.track('checkout-step-1');
             }
             var goahead = false;
-            console.log($scope.billingID, $scope.shippingID, $scope.tempBilling, $scope.tempShipping)
+            //console.log($scope.billingID, $scope.shippingID, $scope.tempBilling, $scope.tempShipping)
 
             if ($scope.everChanged == false) {
-                console.log("yes 1st")
+                //console.log("yes 1st")
                 if ($scope.billingID !== null && $scope.shippingID !== null)
                     goahead = true;
             } else {
-                console.log(" 2nd")
+                //console.log(" 2nd")
                 if ($scope.billingID !== null && $scope.shippingID !== null && $scope.tempBilling !== null)
                     goahead = true;
             }
 
 
-            console.log("everchange", $scope.everChanged)
-            console.log("checkstatus", $scope.chkStatus)
-            console.log("tempBilling", $scope.tempBilling)
-            console.log($scope.billingID, $scope.shippingID, $scope.tempBilling, $scope.chkStatus)
+            //console.log("everchange", $scope.everChanged)
+            //console.log("checkstatus", $scope.chkStatus)
+            //console.log("tempBilling", $scope.tempBilling)
+            //console.log($scope.billingID, $scope.shippingID, $scope.tempBilling, $scope.chkStatus)
 
             if (goahead) {
                 $scope.proceedToPaymentLoader=true;
@@ -486,7 +486,7 @@ define(['./index'], function(controllers) {
                     })
                     .error(function(error) {
                         $scope.proceedToPaymentLoader=false;
-                        console.log(error);
+                        //console.log(error);
                         $scope.deliverToAddress = false;
                     });
             } else {
@@ -499,7 +499,7 @@ define(['./index'], function(controllers) {
         $scope.MaddnewAddress = function() {
 
             $scope.mform = !$scope.mform;
-            console.log($scope.mform);
+            //console.log($scope.mform);
         };
         $scope.addressTracker =function() {
              craftsvillaService.loadQuote()
