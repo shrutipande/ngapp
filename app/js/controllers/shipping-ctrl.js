@@ -154,7 +154,7 @@ define(['./index'], function(controllers) {
                 dataLayer.push({'event':'TappedButtonEvent','eventName':'TappedButton','type':'ConfirmedAnAddress'});
             }
             if(typeof _satellite != "undefined") {
-                 _satellite.track('checkout-step-1');
+                 _satellite.track('new-checkout-step-1');
             }
             if ($scope.addnewForm.$valid) {
                 if (chkStatusBilling == true) {
@@ -355,7 +355,7 @@ define(['./index'], function(controllers) {
                 dataLayer.push({'event':'TappedButtonEvent','eventName':'TappedButton','type':'ConfirmedAnAddress'});
             }
             if(typeof _satellite != "undefined") {
-                 _satellite.track('checkout-step-1');
+                 _satellite.track('new-checkout-step-1');
             }
 
             if(!$scope.BillingADDForm.$valid)
@@ -448,7 +448,7 @@ define(['./index'], function(controllers) {
                 dataLayer.push({'event':'TappedButtonEvent','eventName':'TappedButton','type':'ConfirmedAnAddress'});
             }
             if(typeof _satellite != "undefined") {
-                 _satellite.track('checkout-step-1');
+                 _satellite.track('new-checkout-step-1');
             }
             var goahead = false;
             //console.log($scope.billingID, $scope.shippingID, $scope.tempBilling, $scope.tempShipping)
