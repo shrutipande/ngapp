@@ -95,7 +95,7 @@ define(['./index'], function (controllers) {
 			        });
 				}
 				if(typeof _satellite != "undefined") {
-			        _satellite.track('checkout-step-2');
+			        _satellite.track('new-checkout-step-2');
 			    }
 				craftsvillaService.placeOrderCOD()
 				.success(function (data) {
@@ -123,7 +123,7 @@ define(['./index'], function (controllers) {
 			        });
 				}
 				if(typeof _satellite != "undefined") {
-			        _satellite.track('checkout-step-2');
+			        _satellite.track('new-checkout-step-2');
 			    }
 				craftsvillaService.placeOrder({
 					"pg": $scope.pg,
@@ -189,7 +189,7 @@ define(['./index'], function (controllers) {
 				}
 				if(typeof _satellite != "undefined") {
 
-			        _satellite.track('checkout-step-2');
+			        _satellite.track('new-checkout-step-2');
 			    }
 				craftsvillaService.placeOrder({
 					"pg": $scope.pg,
@@ -254,7 +254,7 @@ define(['./index'], function (controllers) {
 				}
 				if(typeof _satellite != "undefined") {
 
-			        _satellite.track('checkout-step-2');
+			        _satellite.track('new-checkout-step-2');
 			    }
 				craftsvillaService.placeOrder({
 					"pg": $scope.pg,
@@ -315,7 +315,7 @@ define(['./index'], function (controllers) {
 			        });
 				}
 				if(typeof _satellite != "undefined") {
-			        _satellite.track('checkout-step-2');
+			        _satellite.track('new-checkout-step-2');
 			    }
 				craftsvillaService.placeOrder({
 					"pg": 'Wallet',
