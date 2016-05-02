@@ -37,7 +37,7 @@ define(['./index'], function (controllers) {
 					return;
 				}
 				$scope.getCartDetailsVal = response.d;
-
+				$scope.cartTracking();
 
 		$scope.waitingCartDatails=false;
 	  //  $rootscope.sc = response.d.product_list;
@@ -162,6 +162,11 @@ define(['./index'], function (controllers) {
 
 		};
 		$scope.cartTracking = function() {
+			var productIdsInCart = []
+			var allProductsList = $scope.getCartDetailsVal.product_list;
+			angular.forEach(allProductsList, function(product) {
+				productIdsInCart.push(product.product_id);
+			});
 			if(typeof _satellite != "undefined") {
 				 digitalData.page={
 					  pageInfo:{
@@ -178,7 +183,19 @@ define(['./index'], function (controllers) {
 					  currencyCode : 'INR',
 					},
 				}
-				digitalData.events= 'cart-view';
+	            var productCount = productIdsInCart.length;
+	            var detail= [];
+	            for(var i = 0; i < productCount; i++){
+	                detail[i]={
+	                        productInfo:{
+	                        productID: productIdsInCart[i], //PRODUCT ID
+	                        }
+	                    };
+	            }
+		        digitalData.cart = {
+		             item: detail
+		            }
+				_satellite.track("cart-view");
 			}
 		}
 		$scope.removeAllNonCodItems = function() {
@@ -386,7 +403,7 @@ define(['./index'], function (controllers) {
 	      $scope.getCartDetails();
 	      $scope.checkLogin();
 		  $scope.scrollToTop();
-		  $scope.cartTracking();
+
 
     }
     $scope.initCheckoutCart();
