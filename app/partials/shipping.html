@@ -318,8 +318,8 @@
                                     <div class="form-group" ng-class="{ 'error' : (DeseditaddrForm.postcode.$invalid && !DeseditaddrForm.postcode.$pristine && DeseditaddrForm.postcode.$touched)  || (DeseditaddrForm.$submitted && DeseditaddrForm.postcode.$error.required)  }">
                                         <label for="Pincode">Pincode</label>
 
-                                        <input cv-trim id="Pincode" name="postcode" type="number" class="form-control" placeholder="Pincode" ng-maxlength="{{addnewcountry_popup.max_pincode_length}}" ng-minlength="{{addnewcountry_popup.min_pincode_length}}" ng-model="editAddr.postcode" ng-blur="changePincode(editAddr.postcode)" required ng-if="addnewcountry_popup.is_alpha == 'n'" />
-                                        <input cv-trim id="Pincode" name="postcode" type="text" class="form-control" placeholder="Pincode" ng-maxlength="{{addnewcountry_popup.max_pincode_length}}" ng-minlength="{{addnewcountry_popup.min_pincode_length}}" ng-model="editAddr.postcode" ng-blur="changePincode(editAddr.postcode)" required ng-if="addnewcountry_popup.is_alpha == 'y'" />
+                                        <input cv-trim id="Pincode" name="postcode" type="number" class="form-control" placeholder="Pincode" ng-maxlength="{{addnewcountry_popup.max_pincode_length}}" ng-minlength="{{addnewcountry_popup.min_pincode_length}}" ng-model="editAddr.postcode" ng-blur="changePincode(editAddr.postcode, editAddr)" required ng-if="addnewcountry_popup.is_alpha == 'n'" />
+                                        <input cv-trim id="Pincode" name="postcode" type="text" class="form-control" placeholder="Pincode" ng-maxlength="{{addnewcountry_popup.max_pincode_length}}" ng-minlength="{{addnewcountry_popup.min_pincode_length}}" ng-model="editAddr.postcode" ng-blur="changePincode(editAddr.postcode, editAddr)" required ng-if="addnewcountry_popup.is_alpha == 'y'" />
 
                                         <div ng-show="DeseditaddrForm.postcode.$error.minlength && !DeseditaddrForm.postcode.$pristine" class="error">
 
@@ -574,8 +574,8 @@
                                 <div class="col-xs-12 col-sm-4 nopadding">
                                     <div class="form-group" ng-class="{ 'error' : (addnewForm.postcode.$invalid && !addnewForm.postcode.$pristine && addnewForm.postcode.$touched)  || (addnewForm.$submitted && addnewForm.postcode.$error.required)  }">
                                         <label for="Pincode">Pincode</label>
-                                        <input cv-trim id="Pincode" name="postcode" type="number" class="form-control" placeholder="Pincode" ng-maxlength="{{addnewcountry_shipping.max_pincode_length}}" ng-minlength="{{addnewcountry_shipping.min_pincode_length}}" ng-model="shipping.postcode" ng-blur="changePincode(shipping.postcode)" required ng-if="addnewcountry_shipping.is_alpha == 'n'" />
-                                        <input cv-trim id="Pincode" name="postcode" type="text" class="form-control" placeholder="Pincode" ng-maxlength="{{addnewcountry_shipping.max_pincode_length}}" ng-minlength="{{addnewcountry_shipping.min_pincode_length}}" ng-model="shipping.postcode" ng-blur="changePincode(shipping.postcode)" required ng-if="addnewcountry_shipping.is_alpha == 'y'" />
+                                        <input cv-trim id="Pincode" name="postcode" type="number" class="form-control" placeholder="Pincode" ng-maxlength="{{addnewcountry_shipping.max_pincode_length}}" ng-minlength="{{addnewcountry_shipping.min_pincode_length}}" ng-model="shipping.postcode" ng-blur="changePincode(shipping.postcode, shipping)" required ng-if="addnewcountry_shipping.is_alpha == 'n'" />
+                                        <input cv-trim id="Pincode" name="postcode" type="text" class="form-control" placeholder="Pincode" ng-maxlength="{{addnewcountry_shipping.max_pincode_length}}" ng-minlength="{{addnewcountry_shipping.min_pincode_length}}" ng-model="shipping.postcode" ng-blur="changePincode(shipping.postcode, shipping)" required ng-if="addnewcountry_shipping.is_alpha == 'y'" />
 
                                         <div ng-show="addnewForm.postcode.$error.minlength && !addnewForm.postcode.$pristine" class="error">
 
@@ -743,8 +743,8 @@
                                         <div class="form-group" ng-class="{ 'error' : (BillingADDForm.postcode.$invalid && !BillingADDForm.postcode.$pristine && BillingADDForm.postcode.$touched)  || (BillingADDForm.$submitted && BillingADDForm.postcode.$error.required)  }">
                                             <label for="Pincode">Pincode</label>
 
-                                            <input cv-trim id="Pincode" name="postcode" type="number" class="form-control" placeholder="Pincode" ng-maxlength="{{addnewcountry_billing.max_pincode_length}}" ng-minlength="{{addnewcountry_billing.min_pincode_length}}" ng-model="addNewBilling.postcode" ng-blur="changePincode(addNewBilling.postcode)" required ng-if="addnewcountry_billing.is_alpha == 'n'" />
-                                            <input cv-trim id="Pincode" name="postcode" type="text" class="form-control" placeholder="Pincode" ng-maxlength="{{addnewcountry_billing.max_pincode_length}}" ng-minlength="{{addnewcountry_billing.min_pincode_length}}" ng-model="addNewBilling.postcode" ng-blur="changePincode(addNewBilling.postcode)" required ng-if="addnewcountry_billing.is_alpha == 'y'" />
+                                            <input cv-trim id="Pincode" name="postcode" type="number" class="form-control" placeholder="Pincode" ng-maxlength="{{addnewcountry_billing.max_pincode_length}}" ng-minlength="{{addnewcountry_billing.min_pincode_length}}" ng-model="addNewBilling.postcode" ng-blur="changePincode(addNewBilling.postcode, addNewBilling)" required ng-if="addnewcountry_billing.is_alpha == 'n'" />
+                                            <input cv-trim id="Pincode" name="postcode" type="text" class="form-control" placeholder="Pincode" ng-maxlength="{{addnewcountry_billing.max_pincode_length}}" ng-minlength="{{addnewcountry_billing.min_pincode_length}}" ng-model="addNewBilling.postcode" ng-blur="changePincode(addNewBilling.postcode, addNewBilling)" required ng-if="addnewcountry_billing.is_alpha == 'y'" />
                                             <div ng-show="BillingADDForm.postcode.$error.minlength && !BillingADDForm.postcode.$pristine" class="error">
 
                                                 <span ng-message="BillingADDForm.postcode.$invalid" ng-show="BillingADDForm.postcode.$touched">Pincode should be of minimum {{addnewcountry_billing.min_pincode_length}} digits.</span>
@@ -762,7 +762,7 @@
 
                                     </div>
 
-                                    <div class="col-xs-12 col-sm-7 m-padding">
+                                    <div class="col-xs-12 col-sm-6 m-padding">
                                         <div class="form-group" ng-class="{ 'error' : (BillingADDForm.city.$invalid && !BillingADDForm.city.$pristine ) || (BillingADDForm.$submitted && BillingADDForm.city.$error.required) }">
                                             <label for="City">City</label>
                                             {{addnew.city}}
@@ -777,6 +777,12 @@
 
                                             <span class="error" ng-show="BillingADDForm.$submitted && BillingADDForm.city.$error.required">Please enter your city</span>
                                         </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-2 m-padding hidden-xs mt28">
+
+                                        <img ng-show="citystateWait" src="images/loader.gif" class="loader">
+
                                     </div>
 
                                     <div class="form-group nopadding col-xs-12" ng-class="{ 'error' : (BillingADDForm.state.$invalid && !BillingADDForm.state.$pristine ) || (BillingADDForm.$submitted && BillingADDForm.state.$error.required) }">

@@ -13,6 +13,7 @@ define(['./index'], function(controllers) {
         $scope.selectedBillingID = null;
         $scope.selectedShippingID = null;
         $scope.shipping = {};
+        $scope.addNewBilling = {};
         $scope.noshippingSelected = false;
         $scope.addressExists = false;
         $scope.citystateWait = false;
@@ -21,6 +22,8 @@ define(['./index'], function(controllers) {
         $scope.everChanged = false;
 
         $scope.forms = {};
+
+        window.scope = $scope;
 
         // All Functions
 
@@ -178,8 +181,8 @@ define(['./index'], function(controllers) {
 
 
         //Edit address
-        $scope.changePincode = function(postcode) {
-                if ($scope.addnewcountry_shipping.country_name == "India") {
+        $scope.changePincode = function(postcode, address) {
+                if ($scope.addnewcountry_shipping.country_name == "India" && $scope.addnewcountry_billing.country_name == "India") {
                     $scope.citystateWait = true;
 
                     craftsvillaService.getAddressFromPincode(postcode)
@@ -187,9 +190,9 @@ define(['./index'], function(controllers) {
                             $scope.citystateWait = false;
                             console.log(response);
                             if (response.s == 1) {
-                                $scope.shipping.city = response.d[0].city;
-                                $scope.shipping.state = response.d[0].state;
-                                $scope.editAddr.region = response.d[0].state;
+                                address.city = response.d[0].city;
+                                address.state = response.d[0].state;
+                                address.region = response.d[0].state;
 
 
                             }
