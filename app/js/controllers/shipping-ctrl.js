@@ -23,8 +23,6 @@ define(['./index'], function(controllers) {
 
         $scope.forms = {};
 
-        window.scope = $scope;
-
         // All Functions
 
         /*----Fetech Country---*/

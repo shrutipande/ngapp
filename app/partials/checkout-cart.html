@@ -76,7 +76,7 @@
 				<a class="col-md-2 wishlist" href="http://www.craftsvilla.com/wishlist/">
 					<i class="icon-small icon-wish"></i>
 				</a>
-				<a class="cart-icon-container header-icon-container" rel="nofollow" ng-href="/buy/#/cart" ng-click="dataLayer.push({'event':'WentToCartEvent','eventName':'WentToCart','source':'TopNavigation','count':'{{items}}'});">
+				<a class="cart-icon-container header-icon-container" rel="nofollow" ng-href="/buy/cart" ng-click="dataLayer.push({'event':'WentToCartEvent','eventName':'WentToCart','source':'TopNavigation','count':'{{items}}'});">
 					<li class="col-md-4 cart-container">
 						<span class="cart-icon">
 							<i class="icon-v2 icon-cart icon-small"></i>
@@ -625,7 +625,7 @@
 		queryTokenizer: Bloodhound.tokenizers.whitespace,
 		limit: 10,
 		remote: {
-			url: '/v1/getAutosuggestion?term=%QUERY',
+			url: 'https://securestatic.craftsvilla.com/v1/getAutosuggestion?term=%QUERY',
 			filter: function (response) {
 				var categories = [];
 				var products = [];
@@ -703,9 +703,9 @@
 			"searchQuery": datum.text
 		});
 		if(datum.type=="product") {
-			window.location = '/catalog/product/view/id/' + datum.entity_id + '/s/'+ datum.url_path + '/';
+			window.location = 'http://www.craftsvilla.com/catalog/product/view/id/' + datum.entity_id + '/s/'+ datum.url_path + '/';
 		} else {
-			window.location = '/' + datum.url_path;
+			window.location = 'http://www.craftsvilla.com/' + datum.url_path;
 		}
 	});
 	$('.mobile-top .icon-search-v2').click(function(e) {
