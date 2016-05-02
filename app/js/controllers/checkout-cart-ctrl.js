@@ -378,7 +378,7 @@ define(['./index'], function (controllers) {
 		}
 
 		$scope.continueShopping = function() {
-			window.location.href = "/";
+			window.location.href = "https://www.craftsvilla.com/";
 		}
 
 
