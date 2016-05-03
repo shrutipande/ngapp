@@ -43,9 +43,8 @@ module.exports = function(grunt) {
             compile: {
                 options: {
                     mainConfigFile: "./app/js/main.js",
-                    optimize: "uglify",
                     name: "main",
-                    out: "./app/js/main.min.js",
+                    out: "./app/js/main.concat.js",
                     preserveLicenseComments: false
                 }
             }
@@ -74,7 +73,8 @@ module.exports = function(grunt) {
         },
         clean: {
             js: ['app/js/main.min.js'],
-            html: ['app/js/templates.js']
+            html: ['app/js/templates.js'],
+            jsconcat: ['app/js/main.concat.js'],
         },
         cssmin: {
           options: {
@@ -86,7 +86,21 @@ module.exports = function(grunt) {
               'app/css/main.min.css': ['app/css/style.css', 'app/css/animate.css']
             }
           }
+      },
+      uglify: {
+        options: {
+          mangle: false,
+          compress: {
+            drop_console: true
+          }
+        },
+        main: {
+          files: {
+            "./app/js/main.min.js": ["./app/js/main.concat.js"]
+          }
         }
+      }
+
     });
 
     // Load plugins
@@ -97,11 +111,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-angular-templates');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
 
     // Production mode tasks
     grunt.registerTask('prod', ['sass', 'ngtemplates', 'requirejs', 'imagemin']);
 
     // Dev mode tasks
-    grunt.registerTask('default', ['clean', 'cssmin', 'ngtemplates', 'requirejs', 'watch']);
+    grunt.registerTask('default', ['clean', 'cssmin', 'ngtemplates', 'requirejs', 'uglify', 'clean:jsconcat', 'watch']);
 
 };
