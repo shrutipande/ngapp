@@ -48,14 +48,14 @@
     <div class="col-xs-12 col-sm-6 socialMediaContainer" ng-hide="guestUser">
         <div class="row">
             <div class="col-xs-6 nopadding socialMedia">
-                <a class="signup-fb" href="javascript:void(0)" ng-click="authenticate('facebook')" style="display: none;">
+                <a class="signup-fb" href="javascript:void(0)" ng-click="authenticate('facebook')" ng-if="!IE.isTheBrowser">
                     <small><img src="images/facebook_alt.png" width="8" height="17" alt="" title=""></small>
                     <span class="cart-s-m">Log In with Facebook</span>
                     <img ng-show="fbLoader" src="images/loader.gif" class="small-loader" style="position: absolute;left: 50%;"/>
                 </a>
             </div>
             <div class="col-xs-6 nopadding socialMedia">
-                <a class="signup-g" href="javascript:void(0)" ng-click="authenticate('google')">
+                <a class="signup-g" href="javascript:void(0)" ng-click="authenticate('google')" ng-if="!IE.isTheBrowser">
                     <small><img src="images/googlw_Plus.png" width="26" height="16" alt="" title=""></small>
                     <span class="cart-s-m">Log In with Google</span>
                     <img ng-show="gLoader" src="images/loader.gif" class="small-loader" style="position: absolute;left: 50%;"/>
@@ -176,12 +176,12 @@
             <div class="col-xs-12 col-sm-6 socialMediaContainer hidden-xs" ng-hide="guestUser">
                 <div class="col-xs-12 col-sm-10 pull-right">
                     <div class="col-xs-12 nopadding socialMedia">
-                        <a class="signup-fb" href="javascript:void(0)" ng-click="authenticate('facebook')">
+                        <a class="signup-fb" href="javascript:void(0)" ng-click="authenticate('facebook')" ng-if="!IE.isTheBrowser">
                             <small><img src="images/facebook_alt.png" width="8" height="17" alt="" title=""></small>
                             <span class="cart-s-m">Log In with Facebook</span>
                             <img ng-show="fbLoader" src="images/loader.gif" class="small-loader" style="position: absolute;left: 50%;"/>
                         </a>
-                        <a class="signup-g" href="javascript:void(0)" ng-click="authenticate('google')">
+                        <a class="signup-g" href="javascript:void(0)" ng-click="authenticate('google')" ng-if="!IE.isTheBrowser">
                             <small><img src="images/googlw_Plus.png" width="26" height="16" alt="" title=""></small>
                             <span class="cart-s-m">Log In with Google</span>
                             <img ng-show="gLoader" src="images/loader.gif" class="small-loader" style="position: absolute;left: 50%;"/>
