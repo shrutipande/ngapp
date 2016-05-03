@@ -8,7 +8,7 @@ define(['./index'], function (controllers) {
 	$scope.userLogin={};
 
 	$scope.changeGuest = function() {
-		console.log("click on continue as guest");
+		//console.log("click on continue as guest");
 		$scope.guestUser = true;
 	};
 	$scope.changeGuestCheckout = function() {
@@ -31,16 +31,16 @@ define(['./index'], function (controllers) {
 			})
 			.error(function (err) {
 				$scope.guestCheckoutLoader = false;
-				console.log('error');
+				//console.log('error');
 				throw new Error(err);
 			})
 		}
 	};
 	$scope.signupFB = function() {
-		console.log("sign up FB");
+		//console.log("sign up FB");
 	};
 	$scope.signupGgle = function() {
-		console.log("sign up Google");
+		//console.log("sign up Google");
 	};
 	$scope.loginHere = function() {
 		$scope.guestUser = false;
@@ -74,16 +74,16 @@ define(['./index'], function (controllers) {
 					$localStorage.loginData = response.d;
 					if(window.sticktocart==true)
 						{	$state.go('cart');
-						console.log('in cart');}
+						//console.log('in cart');}
 						else
 							{$state.go('shipping');
-						console.log('in shipping');}
+						//console.log('in shipping');}
 
 				}
 			})
 			.error(function (err) {
 				$scope.loginLoader = false;
-				console.log('error');
+				//console.log('error');
 				throw new Error(err);
 			})
 		}
@@ -105,7 +105,7 @@ define(['./index'], function (controllers) {
 
 			})
 			.error(function (err) {
-				console.log('error');
+				//console.log('error');
 				throw new Error(err);
 			})
 		}
@@ -117,21 +117,21 @@ define(['./index'], function (controllers) {
 
 
 	/*$scope.sendPassword = function() {
-		console.log("send paswword");
-		console.log($scope.userForgot.forgotEmail);
+		//console.log("send paswword");
+		//console.log($scope.userForgot.forgotEmail);
 
 		if ($scope.sendPasswordForm.$valid && $scope.userForgot.forgotEmail) {
-			console.log($scope.userForgot);
+			//console.log($scope.userForgot);
 			var emailId = $scope.userForgot.forgotEmail;
 			craftsvillaService.forgotPassword(emailId)
 			.success(function (response) {
-				console.log('send password');
-				console.log(response);
-				console.log("click on Send Password");
+				//console.log('send password');
+				//console.log(response);
+				//console.log("click on Send Password");
 				$scope.sendPasswd = true;
 			})
 			.error(function (err) {
-				console.log('error');
+				//console.log('error');
 				throw new Error(err);
 			})
 		}
@@ -156,7 +156,7 @@ define(['./index'], function (controllers) {
 				json.clientId = provider === 'google' ? data.config.data.clientId : undefined;
 				json.redirectUri = provider === 'google' ? data.config.data.redirectUri : undefined;
 
-				 console.log(provider);
+				 //console.log(provider);
 				// return;
 
 				craftsvillaService.socialAuth(json)
@@ -177,11 +177,11 @@ define(['./index'], function (controllers) {
 					}
 				})
 				.error(function (_err) {
-					console.log(_err);
+					//console.log(_err);
 				})
 			})
 			.catch(function(error) {
-				console.log(error);
+				//console.log(error);
 			});
 	};
 	$scope.loginTracker = function() {
@@ -207,9 +207,9 @@ define(['./index'], function (controllers) {
 		          },
 		          currencycode:{
 		            currencyCode : 'INR',
-		          },
-
+		          }
 		        }
+		        _satellite.track("login");
 		    }
 		    if(typeof dataLayer != "undefined") {
 			    dataLayer.push({
@@ -231,7 +231,7 @@ define(['./index'], function (controllers) {
 		});
 	}
     $scope.initLogin = function() {
-      console.log("Login Initialised");
+      //console.log("Login Initialised");
 			$scope.scrollToTop();
       		$scope.loginTracker();
 
