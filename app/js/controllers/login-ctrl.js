@@ -73,11 +73,12 @@ define(['./index'], function (controllers) {
 					window.userEmail = response.d[0].customerData.email;
 					$localStorage.loginData = response.d;
 					if(window.sticktocart==true)
-						{	$state.go('cart');
-						//console.log('in cart');}
-						else
-							{$state.go('shipping');
-						//console.log('in shipping');}
+						{
+							$state.go('cart');
+						}
+						else {
+							$state.go('shipping');
+						}
 
 				}
 			})
