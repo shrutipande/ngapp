@@ -84,7 +84,7 @@
                         <form name="userLoginForm" ng-submit=" loginCred()" novalidate>
                             <fieldset class="form-group" ng-class="{ 'error' : (userLoginForm.email.$invalid && !userLoginForm.email.$pristine && userLoginForm.email.$touched) || (userLoginForm.$submitted && userLoginForm.email.$error.required)}">
                                 <label>Email</label>
-                                <input type="email" name="email" class="form-control" placeholder="Enter email address" ng-model="userLogin.email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required>
+                                <input type="email" name="email" class="form-control" placeholder="Enter email address" ng-model="userLogin.email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required id="loginEmail">
 
                                 <span ng-message="userLoginForm.email.$invalid && !userLoginForm.email.$pristine " ng-show="userLoginForm.email.$invalid && userLoginForm.email.$touched" class="error">
                                     Please enter valid email address.</span>
@@ -95,7 +95,7 @@
                             </fieldset>
                             <fieldset class="form-group " ng-class="{'error': (userLoginForm.password.$invalid && !userLoginForm.password.$pristine && userLoginForm.password.$touched) || (userLoginForm.$submitted && userLoginForm.password.$error.required)}">
                                 <label>Password</label>
-                                <input type="password" name="password" class="form-control" placeholder="Enter password" ng-minlength="6" ng-model="userLogin.password" required>
+                                <input type="password" name="password" class="form-control" placeholder="Enter password" ng-minlength="6" ng-model="userLogin.password" required id="loginPassword">
                                 <span ng-message="userLoginForm.password.$invalid && !userLoginForm.password.$pristine " ng-show="userLoginForm.password.$invalid && userLoginForm.password.$touched" class="error">
                                     Please enter valid password.</span>
 
@@ -104,11 +104,11 @@
                                 </div >
                             </fieldset>
                             <div class="alert alert-warning rougeColor" ng-show="invalidCred">Invalid email ID or Password!</div>
-                            <fieldset class="form-group">
+                            <fieldset class="form-group" id="forgotPasswordLink">
                                 <a role="ForgotPassword" href="javascript:void(0)" ng-click="forgotPwd()">Forgot password?</a>
                             </fieldset>
                             <div class="BtnContainer col-xs-12 nopadding">
-                                <button class="btn newBtn" type="submit">
+                                <button class="btn newBtn" type="submit" id="loginBtn">
                                     <span ng-show="!loginLoader">LOGIN</span>
                                     <img ng-show="loginLoader" src="images/loader.gif" class="small-loader"/>
                                 </button>
@@ -125,7 +125,7 @@
                                     <fieldset
                                         class="form-group"
                                         ng-class="{ 'error' : (sendPasswordForm.forgotEmail.$invalid && !sendPasswordForm.forgotEmail.$pristine && sendPasswordForm.forgotEmail.$touched)  || (sendPasswordForm.$submitted && sendPasswordForm.forgotEmail.$error.required)  }">
-                                        <input type="email" name="forgotEmail" class="form-control" placeholder="Enter email address" ng-model="userForgot.forgotEmail" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required>
+                                        <input type="email" name="forgotEmail" class="form-control" placeholder="Enter email address" ng-model="userForgot.forgotEmail" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required id="forgotPassEmail">
                                         <span ng-message="sendPasswordForm.forgotEmail.$invalid && !sendPasswordForm.forgotEmail.$pristine" ng-show="sendPasswordForm.forgotEmail.$invalid && sendPasswordForm.forgotEmail.$touched" class="error">Please enter valid Email ID.</span>
                                         <div ng-show="sendPasswordForm.$submitted">
                                             <span ng-show="sendPasswordForm.forgotEmail.$error.required" class="error">Please enter your email.</span>
@@ -150,7 +150,7 @@
                         <form name="guestUserForm" ng-submit="changeGuestCheckout()" novalidate>
                             <fieldset class="form-group" ng-class="{ 'error' : (guestUserForm.guestEmail.$invalid && !guestUserForm.guestEmail.$pristine && guestUserForm.guestEmail.$touched) || (guestUserForm.$submitted && guestUserForm.guestEmail.$error.required) }">
                                 <label class="font16">Email</label>
-                                <input type="email" name="guestEmail" class="form-control height45 border-radius2 guest-m-b-t" placeholder="Enter email address" ng-model="guest.guestUserEmail" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required>
+                                <input type="email" name="guestEmail" class="form-control height45 border-radius2 guest-m-b-t" placeholder="Enter email address" ng-model="guest.guestUserEmail" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required id="guestUserEmail">
                                 <div ng-show="guestUserForm.guestEmail.$invalid">
                                     <span ng-show="!guestUserForm.$submitted && !guestUserForm.guestEmail.$pristine" class="error">Please enter a valid email address</span>
                                     <span ng-show="guestUserForm.$submitted && guestUserForm.guestEmail.$pristine" class="error">Please enter a valid email address</span>
@@ -158,7 +158,7 @@
                                 </div>
                             </fieldset>
                             <div class="BtnContainer col-xs-12 nopadding">
-                                <button type="submit" class="btn newBtn">
+                                <button type="submit" class="btn newBtn" id="guestCheckoutBtn">
                                     <span ng-show="!guestCheckoutLoader">GUEST CHECKOUT</span>
                                     <img ng-show="guestCheckoutLoader" src="images/loader.gif" class="small-loader"/>
                                 </button>
@@ -190,7 +190,7 @@
                             <h4>CHECKOUT AS A GUEST</h4>
                             <p>New to craftsvilla? Use our quick and secure method.</p>
                             <div class="BtnContainer col-xs-12 nopadding" ng-hide="guestUser">
-                                <button class="btn guestBtn" ng-click="changeGuest()">CONTINUE AS GUEST</button>
+                                <button class="btn guestBtn" ng-click="changeGuest()" id="continueAsGuestBtn">CONTINUE AS GUEST</button>
                             </div>
                         </div>
                     </div>

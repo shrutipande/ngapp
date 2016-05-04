@@ -473,9 +473,9 @@
                         <div class="col-xs-12 nopadding">
                             <form class="coupon-cont-form" name="couponForm" ng-submit="applyCoupon()" novalidate>
                                 <div>
-                                    <input type="text" class="col-xs-8 coupon-input" name="couponcode" ng-model="coupon.couponcode" ng-class="{ 'red-border' : (couponForm.couponcode.$invalid && !couponForm.couponcode.$pristine) || (couponForm.$submitted && couponForm.couponcode.$error.required) }" required>
+                                    <input type="text" class="col-xs-8 coupon-input" name="couponcode" ng-model="coupon.couponcode" ng-class="{ 'red-border' : (couponForm.couponcode.$invalid && !couponForm.couponcode.$pristine) || (couponForm.$submitted && couponForm.couponcode.$error.required) }" required id="couponCodeTextBox">
                                 </div>
-                                <button type="submit" class="col-xs-4 coupon-c-button">
+                                <button type="submit" class="col-xs-4 coupon-c-button" id="couponCodeApplyButton">
                                     <span ng-show="!couponWait">APPLY</span>
                                     <img ng-show="couponWait"  src="images/loader.gif" class="loader"/>
                                 </button>
@@ -596,7 +596,7 @@
 				-->
 					<div class="col-xs-12 divider" ></div>
 
-					<button class="btn col-xs-12 procd-to-checkout" ng-click="proceedToCheckout()">
+					<button class="btn col-xs-12 procd-to-checkout" ng-click="proceedToCheckout()" id="proccedToCheckoutBtn">
 						<span ng-show="!proceedToCheckoutLoader" >
 							Proceed to checkout<img style="margin-left:5px;height:auto; width:5%;margin-bottom:5px;" src="images/Checkout-CTA-icon.png">
 						</span>
@@ -718,4 +718,3 @@
 	});
 
 </script>
-

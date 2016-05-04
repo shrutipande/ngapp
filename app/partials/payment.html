@@ -269,7 +269,7 @@
 								<h3>Pay Using Cash on Delivery</h3>
 								<p>Please keep a total of Rs {{shippingAmountData.grand_total | number: 0}} to pay on delivery </p>
 								<div class="col-xs-12 col-sm-7 nopadding">
-									<button  class="btn btn-newStyle bg-green" ng-click="placeOrder()" ng-class="{'no-events': placeOrderLoader}">
+									<button  class="btn btn-newStyle bg-green" ng-click="placeOrder()" ng-class="{'no-events': placeOrderLoader}" id="placeOrderCODDesktopBtn">
 										<span ng-show="!placeOrderLoader">PLACE ORDER</span>
 										<img ng-show="placeOrderLoader"  src="images/loader.gif" class="small-loader"/>
 									</button>
@@ -282,7 +282,7 @@
 							<div class="col-xs-12 payuform" ng-if = "item.method == 'PayU Money'">
 								<p>You will be redirected to PayU to complete the order</p>
 								<div class="col-xs-12 col-sm-7 nopadding">
-									<button  class="btn btn-newStyle bg-green"  ng-click="placeOrder()" ng-class="{'no-events': placeOrderLoader}">
+									<button  class="btn btn-newStyle bg-green"  ng-click="placeOrder()" ng-class="{'no-events': placeOrderLoader}" id="placeOrderPayUDesktopBtn">
 										<span ng-show="!placeOrderLoader">PAY <span><i>&#x20B9;</i>{{shippingAmountData.grand_total | number: 0}}</span> SECURELY</span>
 										<img ng-show="placeOrderLoader"  src="images/loader.gif" class="small-loader"/>
 									</button>
@@ -392,7 +392,7 @@
 										</div>
 									</div>
 									<div class="col-xs-12 nopadding">
-										<button  class="btn btn-newStyle bg-green" type="submit" ng-class="{'no-events': placeOrderLoader}">
+										<button  class="btn btn-newStyle bg-green" type="submit" ng-class="{'no-events': placeOrderLoader}" id="placeOrderCCDesktopBtn">
 											<span ng-show="!placeOrderLoader" ng-bind-html="getPlaceOrderText()"></span>
 											<img ng-show="placeOrderLoader"  src="images/loader.gif" class="small-loader"/>
 										</button>
@@ -493,7 +493,7 @@
 										</div>
 									</div>
 									<div class="col-xs-12 nopadding">
-										<button  class="btn btn-newStyle bg-green" type="submit" ng-class="{'no-events': placeOrderLoader}">
+										<button  class="btn btn-newStyle bg-green" type="submit" ng-class="{'no-events': placeOrderLoader}" id="placeOrderDCDesktopBtn">
 											<span ng-show="!placeOrderLoader">PAY <span><i>&#x20B9;</i>{{shippingAmountData.grand_total | number: 0}}</span> SECURELY</span>
 											<img ng-show="placeOrderLoader"  src="images/loader.gif" class="small-loader"/>
 										</button>
@@ -519,7 +519,7 @@
 									</div>
 								</div>
 								<div class="col-xs-12 col-sm-8 nopadding">
-									<button  class="btn btn-newStyle bg-green" type="submit" ng-class="{'no-events': placeOrderLoader}" ng-click="placeOrder()">
+									<button  class="btn btn-newStyle bg-green" type="submit" ng-class="{'no-events': placeOrderLoader}" ng-click="placeOrder()" id="placeOrderNBDesktopBtn">
 										<span ng-show="!placeOrderLoader">PAY <span><i>&#x20B9;</i>{{shippingAmountData.grand_total | number: 0}}</span> SECURELY</span>
 										<img ng-show="placeOrderLoader"  src="images/loader.gif" class="small-loader"/>
 									</button>
@@ -794,7 +794,7 @@
 				</div>
 			</div>
 			<div class="col-xs-12 nopadding visible-xs fixed-button" ng-if="!(changeName == 'Cash On Delivery' && shippingAmountData.showCod == 0)">
-				<button  class="btn btn-newStyle bg-green"  ng-click="placeOrder()" ng-class="{'no-events': placeOrderLoader}">
+				<button  class="btn btn-newStyle bg-green"  ng-click="placeOrder()" ng-class="{'no-events': placeOrderLoader}" id="placeOrderAllMobileBtn">
 					<span ng-show="!placeOrderLoader" ng-bind-html="getPlaceOrderText()"></span>
 					<img ng-show="placeOrderLoader"  src="images/loader.gif" class="small-loader"/>
 				</button>
@@ -825,4 +825,3 @@
 	</div>
 </div>
 <!--// Content -->
-
