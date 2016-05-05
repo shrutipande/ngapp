@@ -100,7 +100,14 @@ define(['./index'], function (controllers) {
 				craftsvillaService.placeOrderCOD()
 				.success(function (data) {
 					$scope.placeOrderLoader=false;
-					$state.go('payments-success');
+					if(data.s == 1) {
+						$state.go('payments-success');
+					}
+					else {
+						$state.go('payment', {
+                 platform: 'web'
+             });
+					}
 				})
 				.error(function (error) {
 					$scope.placeOrderLoader=true;
