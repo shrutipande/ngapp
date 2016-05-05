@@ -17,6 +17,7 @@ define(['./index'], function (controllers) {
                       currencyCode : 'INR',
                     },
                   }
+                  _satellite.track("page-load");
         }
     }]);
 });

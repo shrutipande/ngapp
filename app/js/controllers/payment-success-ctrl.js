@@ -146,6 +146,7 @@ define(['./index'], function (controllers) {
                     item:tempItem,
                 }
                 digitalData.totalOrderValue = productGrandTotal;
+                _satellite.track("page-load");
                 _satellite.track("purchase");
             }
         });

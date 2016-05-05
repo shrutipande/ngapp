@@ -579,7 +579,7 @@ define(['./index'], function (controllers) {
 			        digitalData.cart = {
 			             item: detail
 			            }
-
+			        _satellite.track("page-load");
 
 
 		    }

@@ -210,6 +210,7 @@ define(['./index'], function (controllers) {
 		            currencyCode : 'INR',
 		          }
 		        }
+		        _satellite.track("page-load");
 		        _satellite.track("login");
 		    }
 		    if(typeof dataLayer != "undefined") {
