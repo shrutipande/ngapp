@@ -8,6 +8,12 @@ define(['./index'], function (controllers) {
       //console.log("details");
       craftsvillaService.getOrderDetails()
       .success(function (response) {
+
+          if(response.s == 0) {
+              $state.go('cart');
+              return;
+          }
+
       $scope.waitingOrderDatails=false;
 				//console.log(response.d.product_list);
 				$scope.orderDetails=response.d.product_list;
