@@ -167,6 +167,36 @@ define(['./index'], function (controllers) {
 			angular.forEach(allProductsList, function(product) {
 				productIdsInCart.push(product.product_id);
 			});
+			var couponCode = document.getElementById('couponCodeTextBox').value;
+			  if(couponCode == ''){
+			    var couponCode = 'NA';
+			    var couponCodeApplied = 'no';
+			  }else{
+			    var couponCodeApplied = 'yes';
+			  }
+			if(typeof dataLayer != "undefined") {
+			  dataLayer = [{
+			   'pageLink':'https://secure.craftsvilla.com/buy/cart',
+		       'title': 'Craftsvilla - Shopping Cart',
+		       'userEmailAddress':window.czuser.email,
+		       'type':'email',
+		       //'city':'<?php echo $city;?>',
+		       'loggedIn':$scope.isLoggedIn,
+		       'cartValue':$scope.getCartDetailsVal.total_items,
+		       'cartItemsCount':$scope.getCartDetailsVal.total_qty
+			   }];
+			  dataLayer.push({
+			    'numberOfProductsInCart':$scope.getCartDetailsVal.total_items,
+			    'countOfItemsInCart':$scope.getCartDetailsVal.total_qty,
+			    'totalAmountOfProducts':$scope.getCartDetailsVal.grand_total,
+			   // 'totalTax':'<?php echo Mage::helper("checkout")->getQuote()->getShippingAddress()->getData("tax_amount"); ?>',
+			    'totalCartAmount':$scope.getCartDetailsVal.grand_total,
+			    'couponCode':couponCode,
+			    'cartProductIDs':productIdsInCart,
+			    'couponCodeApplied':couponCodeApplied,
+			    'cartItems':$scope.getCartDetailsVal.total_items
+			  });
+			}
 			if(typeof _satellite != "undefined") {
 				 digitalData.page={
 					  pageInfo:{
@@ -353,6 +383,7 @@ define(['./index'], function (controllers) {
 			.success(function(response) {
 				if(response.s == 1) {
 					$localStorage.loginData = response.d;
+					window.czuser= response.d;
 					$scope.isLoggedIn = true;
 				} else {
 					delete $localStorage.loginData;

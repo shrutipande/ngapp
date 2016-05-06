@@ -102,14 +102,27 @@ define(['./index'], function (controllers) {
                 });
             }
             if(typeof dataLayer != "undefined") {
+                dataLayer = [{
+                   'pageLink':'https://secure.craftsvilla.com/buy/payment-success',
+                   'title': "Craftsvilla - Success",
+                   'userEmailAddress':window.czuser.email,
+                   'type':'email',
+                   //'city':'<?php echo $city;?>',
+                   'loggedIn':$scope.isLoggedIn,
+                   'cartValue':quantities,
+                   'cartItemsCount':count
+                   }];
                 dataLayer.push({
                   'event':'ChargedEvent',
                   'eventName':'Charged',
                   'chargedId': $scope.orderNo,
                   'chargedAmount': productSubTotal,
                   'totalCartAmount': productGrandTotal,
-                  'cartProductIDs':productIds
+                  'cartProductIDs':productIds,
+                  'email':window.czuser.email,
+                  'pageType': 'new'
                 });
+
             }
 
             if(typeof _satellite != "undefined") {

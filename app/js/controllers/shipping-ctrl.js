@@ -512,6 +512,18 @@ define(['./index'], function(controllers) {
                 angular.forEach(allProducts, function(product) {
                     productIds.push(product.product_id);
                 });
+                if(typeof _satellite != "undefined") {
+                    dataLayer = [{
+                   'pageLink':'https://secure.craftsvilla.com/buy/shipping',
+                   'title': "Craftsvilla - shipping",
+                   'userEmailAddress':window.czuser.email,
+                   'type':'email',
+                   //'city':'<?php echo $city;?>',
+                   'loggedIn':$scope.isLoggedIn,
+                   'cartValue':$scope.cartDetails.total_qty,
+                   'cartItemsCount':$scope.cartDetails.total_items
+                   }];
+                }
                   if(typeof _satellite != "undefined") {
                      console.log("view");
                     digitalData.page={

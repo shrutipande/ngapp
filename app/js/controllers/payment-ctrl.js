@@ -590,8 +590,19 @@ define(['./index'], function (controllers) {
 
 
 		    }
-
-			}
+		    if(typeof dataLayer != "undefined") {
+		    	dataLayer = [{
+                   'pageLink':'https://secure.craftsvilla.com/buy/payment/web/',
+                   'title': "Craftsvilla - Payment",
+                   'userEmailAddress':window.czuser.email,
+                   'type':'email',
+                   //'city':'<?php echo $city;?>',
+                   'loggedIn':$scope.isLoggedIn,
+                   'cartValue':count,
+                   'cartItemsCount':count
+                   }];
+            }
+		}
 			$scope.initPayment = function() {
 				//console.log("initializing Payment");
 				$scope.getPayments();

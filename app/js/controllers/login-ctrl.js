@@ -214,6 +214,16 @@ define(['./index'], function (controllers) {
 		        _satellite.track("login");
 		    }
 		    if(typeof dataLayer != "undefined") {
+		    	dataLayer = [{
+			   'pageLink':'https://secure.craftsvilla.com/buy/login',
+		       'title': "Craftsvilla - Login",
+		       'userEmailAddress':window.czuser.email,
+		       'type':'email',
+		       //'city':'<?php echo $city;?>',
+		       'loggedIn':$scope.isLoggedIn,
+		       'cartValue':$scope.cartDetailsVal.total_qty,
+		       'cartItemsCount':$scope.cartDetailsVal.total_items
+			   }];
 			    dataLayer.push({
 		            'event':'UserSignedUpEvent',
 		            'eventName':'UserSignedUp',
