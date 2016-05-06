@@ -10,9 +10,7 @@ define([
   './directives/index',
   './filters/index',
   './services/index',
-  './animations/index',
   'satellizer',
-    'angular-animate'
 ], function (ng) {
 
   return ng.module('app', [
@@ -21,12 +19,10 @@ define([
     'app.controllers',
     'app.filters',
     'app.directives',
-    'app.animations',
     'ngSanitize',
     'ui.router',
     'credit-cards',
     'satellizer',
-    'ngAnimate',
     'ngStorage',
     'ngCookies'
   ]);

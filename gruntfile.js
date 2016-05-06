@@ -83,7 +83,7 @@ module.exports = function(grunt) {
           },
           target: {
             files: {
-              'app/css/main.min.css': ['app/css/style.css', 'app/css/animate.css']
+              'app/css/main.min.css': ['app/css/style.css']
             }
           }
       },

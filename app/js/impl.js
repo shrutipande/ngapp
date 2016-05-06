@@ -15,5 +15,4 @@ define([
     './directives/craftsvilla-directive',
     './services/craftsvilla-service',
     './filters/craftsvilla-filter',
-    './animations/craftsvilla-animation'
 ], function () {});
